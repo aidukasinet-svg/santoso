@@ -382,43 +382,54 @@ async function loadData() {
   });
 
   // 1. Events
+  const DEFAULT_EVENTS = [
+    {
+      event_name: 'Malam Anugerah Tuban Creative Festival 2024',
+      date: '2024',
+      venue: 'Panggung Utama Festival Seni Tuban',
+      city: 'Tuban, Jawa Timur',
+      photo_url: 'assets/images/santoso-hero.jpg',
+      description: 'Penampilan panggung solo vocal pada malam anugerah seni dan kreativitas Tuban Creative Festival 2024.'
+    }
+  ];
+
   fetchAPI({ action: 'getAll', sheet: 'music_event' }).then(res => {
     const grid = document.getElementById('gridEvent');
-    if (res.status === 'success' && res.data && res.data.length > 0) {
-      grid.innerHTML = res.data.map(ev => `
-        <div class="event-card">
-          ${ev.photo_url ? `<img src="${ev.photo_url}" alt="${ev.event_name || 'Event'}" class="event-card-img" />` : ''}
-          <div class="event-card-body">
-            <div>
-              <div class="event-meta">${ev.date || ''} · ${ev.city || 'Tuban'}</div>
-              <h3 class="event-card-title">${ev.event_name || ''}</h3>
-              <p class="event-card-desc">${ev.description || ''}</p>
-            </div>
-            <div class="event-venue">
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="margin-right:4px;"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
-              ${ev.venue || '-'}
-            </div>
+    const events = (res.status === 'success' && res.data && res.data.length > 0) ? res.data : DEFAULT_EVENTS;
+    grid.innerHTML = events.map(ev => `
+      <div class="event-card">
+        ${ev.photo_url ? `<img src="${ev.photo_url}" alt="${ev.event_name || 'Event'}" class="event-card-img" />` : ''}
+        <div class="event-card-body">
+          <div>
+            <div class="event-meta">${ev.date || ''} · ${ev.city || 'Tuban'}</div>
+            <h3 class="event-card-title">${ev.event_name || ''}</h3>
+            <p class="event-card-desc">${ev.description || ''}</p>
+          </div>
+          <div class="event-venue">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="margin-right:4px;"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
+            ${ev.venue || '-'}
           </div>
         </div>
-      `).join('');
-    } else {
-      grid.innerHTML = `<div class="empty-box" style="grid-column:1/-1;"><svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="var(--music)" stroke-width="1.5" style="margin-bottom:8px;"><path d="M12 2a3 3 0 0 0-3 3v7a3 3 0 0 0 6 0V5a3 3 0 0 0-3-3Z"/><path d="M19 10v2a7 7 0 0 1-14 0v-2"/><line x1="12" x2="12" y1="19" y2="22"/></svg><p>Belum ada data event musik yang dipublikasikan.</p></div>`;
-    }
+      </div>
+    `).join('');
   });
 
-  // 2. Galeri
+  // 2. Galeri Foto
+  const DEFAULT_GALLERY = [
+    { photo_url: 'assets/images/santoso-hero.jpg', caption: 'Penampilan Malam Anugerah Tuban Creative Festival 2024' },
+    { photo_url: 'assets/images/acoustic-vocal.jpg', caption: 'Sesi Akustik Solo Vokal & Live Performance' },
+    { photo_url: 'assets/images/santoso-portrait.jpg', caption: 'Santoso, S.Pd., M.Pd. — Solois & Pembina Seni Tarik Suara' }
+  ];
+
   fetchAPI({ action: 'getAll', sheet: 'music_gallery' }).then(res => {
     const grid = document.getElementById('gridGaleri');
-    if (res.status === 'success' && res.data && res.data.length > 0) {
-      grid.innerHTML = res.data.map(g => `
-        <div class="gallery-item">
-          <img src="${g.photo_url}" alt="${g.caption || 'Foto Penampilan'}" loading="lazy" />
-          ${g.caption ? `<div class="gallery-caption">${g.caption}</div>` : ''}
-        </div>
-      `).join('');
-    } else {
-      grid.innerHTML = `<div class="empty-box" style="grid-column:1/-1;"><svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="var(--music)" stroke-width="1.5" style="margin-bottom:8px;"><rect width="20" height="20" x="2" y="2" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" x2="17.51" y1="6.5" y2="6.5"/></svg><p>Belum ada foto galeri penampilan.</p></div>`;
-    }
+    const galleryItems = (res.status === 'success' && res.data && res.data.length > 0) ? res.data : DEFAULT_GALLERY;
+    grid.innerHTML = galleryItems.map(g => `
+      <div class="gallery-item">
+        <img src="${g.photo_url}" alt="${g.caption || 'Foto Penampilan'}" loading="lazy" />
+        ${g.caption ? `<div class="gallery-caption">${g.caption}</div>` : ''}
+      </div>
+    `).join('');
   });
 
   // 3. Video

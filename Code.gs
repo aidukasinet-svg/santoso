@@ -338,12 +338,10 @@ function handleRequest(e) {
   try {
     var params = e.parameter || {};
     var action = params.action || "";
-    var method = e.method || "GET";
-
-    // Parse body untuk POST
+    // Parse body jika ada
     var body = {};
-    if (method === "POST" && e.postData) {
-      try { body = JSON.parse(e.postData.contents); } catch (ex) {}
+    if (e && e.postData && e.postData.contents) {
+      try { body = JSON.parse(e.postData.contents); } catch (ex) { body = {}; }
     }
 
     var result;
@@ -373,7 +371,9 @@ function handleRequest(e) {
 
       // ---- ADMIN ENDPOINTS (requires X-Admin-Key or adminKey param) ----
       case "login":
-        result = adminLogin(body.username, body.password);
+        var loginU = (body && body.username !== undefined ? body.username : params.username) || "";
+        var loginP = (body && body.password !== undefined ? body.password : params.password) || "";
+        result = adminLogin(loginU, loginP);
         break;
 
       case "add":
@@ -454,24 +454,32 @@ function checkAdminKey(params, body) {
 
 function adminLogin(username, password) {
   var ss = getDatabase();
-  var sheet = ss.getSheetByName("_config");
+  var sheet = ss.getSheetByName("_config") || ss.getSheetByName("config");
+  if (!sheet) {
+    return { status: "error", message: "Sheet _config tidak ditemukan." };
+  }
   var data = sheet.getDataRange().getValues();
   var config = {};
   for (var i = 1; i < data.length; i++) {
-    config[data[i][0]] = data[i][1];
+    var k = String(data[i][0] || "").trim();
+    var v = String(data[i][1] || "").trim();
+    if (k) config[k] = v;
   }
 
-  var storedUser = config["admin_username"] || "admin";
-  var storedPass = config["admin_password_hash"] || "admin123";
+  var storedUser = (config["admin_username"] || "admin").trim();
+  var storedPass = (config["admin_password_hash"] || "admin123").trim();
 
-  if (username === storedUser && password === storedPass) {
+  var inputUser = String(username || "").trim();
+  var inputPass = String(password || "").trim();
+
+  if (inputUser === storedUser && inputPass === storedPass) {
     return {
       status: "success",
       apiKey: config["api_key"] || "",
       message: "Login berhasil"
     };
   } else {
-    return { status: "error", message: "Username atau password salah." };
+    return { status: "error", message: "Username atau password salah. Coba lagi." };
   }
 }
 
