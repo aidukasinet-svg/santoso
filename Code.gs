@@ -133,11 +133,11 @@ function setupDatabase() {
     var timelineSheet = ss.getSheetByName("timeline");
     if (timelineSheet.getLastRow() <= 1) {
       var tlSeeds = [
-        ["1", "2012", "Lulus S.Pd. & Mulai Mengabdi", "Menyelesaikan studi Sarjana Pendidikan Guru SD dan memulai pengabdian mengajar di Kabupaten Tuban.", "Pendidikan", "🎓", true],
-        ["2", "2015", "Debut Panggung Musik Profesional", "Aktif tampil solo vocal di berbagai panggung festival seni dan event resmi daerah Jawa Timur.", "Musik", "🎤", true],
-        ["3", "2018", "Mendirikan Unit Usaha MUA & Wardrobe", "Mengembangkan keahlian tata rias dan busana pengantin menjadi unit usaha profesional berbadan layanan.", "Usaha", "💼", true],
-        ["4", "2021", "Meraih Gelar Magister Pendidikan (M.Pd.)", "Menuntaskan studi pascasarjana dengan fokus inovasi media pembelajaran interaktif tingkat sekolah dasar.", "Pendidikan", "📚", true],
-        ["5", "2023", "Guru Inovatif & Pembina Seni Vokal", "Meraih apresiasi pendidik inovatif dinas pendidikan serta aktif melatih paduan suara dan seni vokal pelajar.", "Pendidikan", "🏅", true]
+        ["1", "2012", "Lulus S.Pd. & Mulai Mengabdi", "Menyelesaikan studi Sarjana Pendidikan Guru SD dan memulai pengabdian mengajar di Kabupaten Tuban.", "Pendidikan", "", true],
+        ["2", "2015", "Debut Panggung Musik Profesional", "Aktif tampil solo vocal di berbagai panggung festival seni dan event resmi daerah Jawa Timur.", "Musik", "", true],
+        ["3", "2018", "Mendirikan Unit Usaha MUA & Wardrobe", "Mengembangkan keahlian tata rias dan busana pengantin menjadi unit usaha profesional berbadan layanan.", "Usaha", "", true],
+        ["4", "2021", "Meraih Gelar Magister Pendidikan (M.Pd.)", "Menuntaskan studi pascasarjana dengan fokus inovasi media pembelajaran interaktif tingkat sekolah dasar.", "Pendidikan", "", true],
+        ["5", "2023", "Guru Inovatif & Pembina Seni Vokal", "Meraih apresiasi pendidik inovatif dinas pendidikan serta aktif melatih paduan suara dan seni vokal pelajar.", "Pendidikan", "", true]
       ];
       for (var i = 0; i < tlSeeds.length; i++) timelineSheet.appendRow(tlSeeds[i]);
     }

@@ -8,7 +8,7 @@
  * =========================================================================
  */
 
-const DEFAULT_GAS_URL = "PASTE_YOUR_GAS_URL_HERE"; // Ganti setelah deploy Apps Script
+const DEFAULT_GAS_URL = "https://script.google.com/macros/s/AKfycbwBU6IumXIHOpIS_kw3bINs2HpIpn5dyqIWw8olQafiUS-LfNyYYY2xKnAZ1ajTE_sVsw/exec"; // Ganti setelah deploy Apps Script
 
 export default {
   async fetch(request, env, ctx) {

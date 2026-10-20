@@ -219,7 +219,7 @@
       <a href="usaha.html">Usaha</a>
       <a href="prestasi.html" class="active">Prestasi</a>
       <a href="index.html#kontak">Kontak</a>
-      <a href="admin.html" class="btn-admin">⚙ Admin</a>
+      <a href="admin.html" class="btn-admin"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="vertical-align:-1px;margin-right:5px;"><path d="M12.22 2h-.44a2 2 0 0 0-2 2v.18a2 2 0 0 1-1 1.73l-.43.25a2 2 0 0 1-2 0l-.15-.08a2 2 0 0 0-2.73.73l-.22.38a2 2 0 0 0 .73 2.73l.15.1a2 2 0 0 1 1 1.72v.51a2 2 0 0 1-1 1.74l-.15.09a2 2 0 0 0-.73 2.73l.22.38a2 2 0 0 0 2.73.73l.15-.08a2 2 0 0 1 2 0l.43.25a2 2 0 0 1 1 1.73V20a2 2 0 0 0 2 2h.44a2 2 0 0 0 2-2v-.18a2 2 0 0 1 1-1.73l.43-.25a2 2 0 0 1 2 0l.15.08a2 2 0 0 0 2.73-.73l.22-.39a2 2 0 0 0-.73-2.73l-.15-.08a2 2 0 0 1-1-1.74v-.5a2 2 0 0 1 1-1.74l.15-.09a2 2 0 0 0 .73-2.73l-.22-.38a2 2 0 0 0-2.73-.73l-.15.08a2 2 0 0 1-2 0l-.43-.25a2 2 0 0 1-1-1.73V4a2 2 0 0 0-2-2z"/><circle cx="12" cy="12" r="3"/></svg>Admin</a>
     </div>
     <button class="nav-hamburger" onclick="toggleNav()" aria-label="Menu">
       <span></span><span></span><span></span>
@@ -230,7 +230,9 @@
 <!-- HEADER -->
 <header class="header-section">
   <div class="container">
-    <div class="header-badge">🏅 Rekam Jejak Prestasi</div>
+    <div class="header-badge">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="margin-right:6px;"><path d="M6 9H4.5a2.5 2.5 0 0 1 0-5H6"/><path d="M18 9h1.5a2.5 2.5 0 0 0 0-5H18"/><path d="M4 22h16"/><path d="M18 2H6v7a6 6 0 0 0 12 0V2Z"/></svg>Rekam Jejak Prestasi
+    </div>
     <h1 class="header-title">Capaian & Penghargaan</h1>
     <p class="header-sub">
       Dedikasi yang berbuah apresiasi — bukti kerja keras di bidang pendidikan, panggung musik, dan dunia wirausaha.
@@ -244,9 +246,9 @@
   <div class="controls-bar">
     <div class="filter-pills">
       <button class="filter-btn active" onclick="setFilter('Semua', this)">Semua Kategori</button>
-      <button class="filter-btn" onclick="setFilter('Pendidikan', this)">🎓 Pendidikan</button>
-      <button class="filter-btn" onclick="setFilter('Musik', this)">🎤 Musik & Vokal</button>
-      <button class="filter-btn" onclick="setFilter('Usaha', this)">💼 Usaha / MUA</button>
+      <button class="filter-btn" onclick="setFilter('Pendidikan', this)">Pendidikan</button>
+      <button class="filter-btn" onclick="setFilter('Musik', this)">Musik & Vokal</button>
+      <button class="filter-btn" onclick="setFilter('Usaha', this)">Usaha / MUA</button>
     </div>
     <div class="search-box">
       <input type="text" id="achSearch" placeholder="Cari nama penghargaan..." oninput="handleSearch()" />
@@ -265,7 +267,7 @@
 
 <footer>
   <div class="container">
-    <p>© 2024 <strong>Santoso, S.Pd., M.Pd.</strong> — Pendidik · Penyanyi · Entrepreneur</p>
+    <p>&copy; 2024 <strong>Santoso, S.Pd., M.Pd.</strong> — Pendidik · Penyanyi · Entrepreneur</p>
     <p style="margin-top:10px;">
       <a href="index.html">Beranda</a>
       <a href="pendidikan.html">Pendidikan</a>
@@ -339,13 +341,13 @@ function renderAchievements() {
           </div>
           <div class="ach-footer">
             <span>Tahun ${a.year || '-'}</span>
-            ${a.cert_url ? `<a href="${a.cert_url}" target="_blank" rel="noopener" class="ach-btn">Lihat Piagam ↗</a>` : ''}
+            ${a.cert_url ? `<a href="${a.cert_url}" target="_blank" rel="noopener" class="ach-btn">Lihat Piagam <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg></a>` : ''}
           </div>
         </div>
       `;
     }).join('');
   } else {
-    grid.innerHTML = `<div class="empty-box" style="grid-column:1/-1;"><span>🏅</span>Tidak ada data prestasi yang cocok dengan filter.</div>`;
+    grid.innerHTML = `<div class="empty-box" style="grid-column:1/-1;"><svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="var(--edu)" stroke-width="1.5" style="margin-bottom:8px;"><path d="M6 9H4.5a2.5 2.5 0 0 1 0-5H6"/><path d="M18 9h1.5a2.5 2.5 0 0 0 0-5H18"/><path d="M4 22h16"/><path d="M18 2H6v7a6 6 0 0 0 12 0V2Z"/></svg><p>Tidak ada data prestasi yang cocok dengan filter.</p></div>`;
   }
 }
 

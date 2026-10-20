@@ -251,7 +251,7 @@
       <a href="usaha.html">Usaha</a>
       <a href="prestasi.html">Prestasi</a>
       <a href="index.html#kontak">Kontak</a>
-      <a href="admin.html" class="btn-admin">⚙ Admin</a>
+      <a href="admin.html" class="btn-admin"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="vertical-align:-1px;margin-right:5px;"><path d="M12.22 2h-.44a2 2 0 0 0-2 2v.18a2 2 0 0 1-1 1.73l-.43.25a2 2 0 0 1-2 0l-.15-.08a2 2 0 0 0-2.73.73l-.22.38a2 2 0 0 0 .73 2.73l.15.1a2 2 0 0 1 1 1.72v.51a2 2 0 0 1-1 1.74l-.15.09a2 2 0 0 0-.73 2.73l.22.38a2 2 0 0 0 2.73.73l.15-.08a2 2 0 0 1 2 0l.43.25a2 2 0 0 1 1 1.73V20a2 2 0 0 0 2 2h.44a2 2 0 0 0 2-2v-.18a2 2 0 0 1 1-1.73l.43-.25a2 2 0 0 1 2 0l.15.08a2 2 0 0 0 2.73-.73l.22-.39a2 2 0 0 0-.73-2.73l-.15-.08a2 2 0 0 1-1-1.74v-.5a2 2 0 0 1 1-1.74l.15-.09a2 2 0 0 0 .73-2.73l-.22-.38a2 2 0 0 0-2.73-.73l-.15.08a2 2 0 0 1-2 0l-.43-.25a2 2 0 0 1-1-1.73V4a2 2 0 0 0-2-2z"/><circle cx="12" cy="12" r="3"/></svg>Admin</a>
     </div>
     <button class="nav-hamburger" onclick="toggleNav()" aria-label="Menu">
       <span></span><span></span><span></span>
@@ -262,13 +262,15 @@
 <!-- HEADER -->
 <header class="music-header">
   <div class="container">
-    <div class="music-badge">🎤 Portofolio Musik & Vokal</div>
+    <div class="music-badge">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="margin-right:6px;"><path d="M12 2a3 3 0 0 0-3 3v7a3 3 0 0 0 6 0V5a3 3 0 0 0-3-3Z"/><path d="M19 10v2a7 7 0 0 1-14 0v-2"/><line x1="12" x2="12" y1="19" y2="22"/></svg>Portofolio Musik & Vokal
+    </div>
     <h1 class="music-title">Bernyanyi dengan Jiwa,<br />Menghidupkan Suasana Panggung.</h1>
     <p class="music-subtitle">
       Perjalanan panggung, melodi nada akustik, dan dedikasi seni tarik suara dari solois profesional Santoso.
     </p>
     <div class="music-cta-row">
-      <a href="#" id="bookingWa" target="_blank" class="btn-booking">Hubungi untuk Booking Panggung ↗</a>
+      <a href="#" id="bookingWa" target="_blank" class="btn-booking" style="display:inline-flex;align-items:center;justify-content:center;gap:6px;">Hubungi untuk Booking Panggung <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg></a>
       <a href="index.html#kontak" class="btn-booking" style="background:transparent;color:var(--text);border:1.5px solid var(--border);">Kirim Formulir Undangan</a>
     </div>
   </div>
@@ -278,10 +280,10 @@
 <div class="tabs-wrapper">
   <div class="container">
     <div class="tabs-list">
-      <button class="tab-btn active" onclick="switchTab('event', this)">🎪 Event & Panggung</button>
-      <button class="tab-btn" onclick="switchTab('galeri', this)">📸 Galeri Penampilan</button>
-      <button class="tab-btn" onclick="switchTab('video', this)">🎬 Rekaman Video</button>
-      <button class="tab-btn" onclick="switchTab('prestasi', this)">🏆 Prestasi Musik</button>
+      <button class="tab-btn active" onclick="switchTab('event', this)">Event & Panggung</button>
+      <button class="tab-btn" onclick="switchTab('galeri', this)">Galeri Penampilan</button>
+      <button class="tab-btn" onclick="switchTab('video', this)">Rekaman Video</button>
+      <button class="tab-btn" onclick="switchTab('prestasi', this)">Prestasi Musik</button>
     </div>
   </div>
 </div>
@@ -334,7 +336,7 @@
 
 <footer>
   <div class="container">
-    <p>© 2024 <strong>Santoso, S.Pd., M.Pd.</strong> — Pendidik · Penyanyi · Entrepreneur</p>
+    <p>&copy; 2024 <strong>Santoso, S.Pd., M.Pd.</strong> — Pendidik · Penyanyi · Entrepreneur</p>
     <p style="margin-top:10px;">
       <a href="index.html">Beranda</a>
       <a href="pendidikan.html">Pendidikan</a>
@@ -392,12 +394,15 @@ async function loadData() {
               <h3 class="event-card-title">${ev.event_name || ''}</h3>
               <p class="event-card-desc">${ev.description || ''}</p>
             </div>
-            <div class="event-venue">📍 ${ev.venue || '-'}</div>
+            <div class="event-venue">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="margin-right:4px;"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
+              ${ev.venue || '-'}
+            </div>
           </div>
         </div>
       `).join('');
     } else {
-      grid.innerHTML = `<div class="empty-box" style="grid-column:1/-1;"><span>🎤</span>Belum ada data event musik yang dipublikasikan.</div>`;
+      grid.innerHTML = `<div class="empty-box" style="grid-column:1/-1;"><svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="var(--music)" stroke-width="1.5" style="margin-bottom:8px;"><path d="M12 2a3 3 0 0 0-3 3v7a3 3 0 0 0 6 0V5a3 3 0 0 0-3-3Z"/><path d="M19 10v2a7 7 0 0 1-14 0v-2"/><line x1="12" x2="12" y1="19" y2="22"/></svg><p>Belum ada data event musik yang dipublikasikan.</p></div>`;
     }
   });
 
@@ -412,7 +417,7 @@ async function loadData() {
         </div>
       `).join('');
     } else {
-      grid.innerHTML = `<div class="empty-box" style="grid-column:1/-1;"><span>📸</span>Belum ada foto galeri penampilan.</div>`;
+      grid.innerHTML = `<div class="empty-box" style="grid-column:1/-1;"><svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="var(--music)" stroke-width="1.5" style="margin-bottom:8px;"><rect width="20" height="20" x="2" y="2" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" x2="17.51" y1="6.5" y2="6.5"/></svg><p>Belum ada foto galeri penampilan.</p></div>`;
     }
   });
 
@@ -438,7 +443,7 @@ async function loadData() {
         `;
       }).join('');
     } else {
-      grid.innerHTML = `<div class="empty-box" style="grid-column:1/-1;"><span>🎬</span>Belum ada video rekaman musik.</div>`;
+      grid.innerHTML = `<div class="empty-box" style="grid-column:1/-1;"><svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="var(--music)" stroke-width="1.5" style="margin-bottom:8px;"><polygon points="5 3 19 12 5 21 5 3"/></svg><p>Belum ada video rekaman musik.</p></div>`;
     }
   });
 
@@ -451,11 +456,11 @@ async function loadData() {
           <div class="event-meta" style="color:#B45309;">${p.level || 'Penghargaan'} · Tahun ${p.year || '-'}</div>
           <h3 class="event-card-title">${p.title || ''}</h3>
           <p class="event-card-desc">Penyelenggara: <strong>${p.organizer || '-'}</strong></p>
-          ${p.cert_url ? `<a href="${p.cert_url}" target="_blank" rel="noopener" style="color:var(--music);font-weight:600;font-size:13px;text-decoration:none;">Lihat Sertifikat / Bukti ↗</a>` : ''}
+          ${p.cert_url ? `<a href="${p.cert_url}" target="_blank" rel="noopener" style="color:var(--music);font-weight:600;font-size:13px;text-decoration:none;display:inline-flex;align-items:center;gap:4px;">Lihat Sertifikat / Bukti <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg></a>` : ''}
         </div>
       `).join('');
     } else {
-      grid.innerHTML = `<div class="empty-box" style="grid-column:1/-1;"><span>🏆</span>Belum ada data prestasi vokal & musik.</div>`;
+      grid.innerHTML = `<div class="empty-box" style="grid-column:1/-1;"><svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="var(--music)" stroke-width="1.5" style="margin-bottom:8px;"><path d="M6 9H4.5a2.5 2.5 0 0 1 0-5H6"/><path d="M18 9h1.5a2.5 2.5 0 0 0 0-5H18"/><path d="M4 22h16"/><path d="M18 2H6v7a6 6 0 0 0 12 0V2Z"/></svg><p>Belum ada data prestasi vokal & musik.</p></div>`;
     }
   });
 }
