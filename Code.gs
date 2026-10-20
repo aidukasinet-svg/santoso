@@ -1,15 +1,25 @@
 /**
  * =========================================================================
- * BACKEND GOOGLE APPS SCRIPT — SANTOSO DIGITAL IDENTITY
+ * SANTOSO DIGITAL IDENTITY — BACKEND GOOGLE APPS SCRIPT
  * =========================================================================
  * File: Code.gs
  * Spreadsheet: https://docs.google.com/spreadsheets/d/155Ixmb121EaJjoxUbw9nXNL-LUcctzAmj2WFsrFKkkU
  *
- * CARA DEPLOY:
- * 1. Salin file ini ke Google Apps Script
- * 2. Jalankan fungsi setupDatabase() sekali
- * 3. Deploy sebagai Web App (Execute as: Me, Who has access: Anyone)
- * 4. Salin URL /exec ke config.js dan _worker.js
+ * FITUR UTAMA:
+ * - REST API Web App (doGet & doPost) untuk Portal Publik & Dashboard Admin
+ * - Full CRUD: Portofolio Sekolah (9 modul + Kategori Kustom), Musik, Usaha, Profil
+ * - Custom Menu Google Sheets: "Santoso Biopage"
+ * - Batch operations (setValues) & SpreadsheetApp.flush() compliant
+ *
+ * PANDUAN INSTALASI & UPDATE:
+ * 1. Buka Google Sheets > Extensions > Apps Script
+ * 2. Hapus isi lama, lalu tempel seluruh kode file ini > Simpan (Ctrl+S)
+ * 3. Pilih fungsi 'setupDatabase' di toolbar atas > Klik 'Run'
+ *    * Otorisasi Pertama Kali: Klik 'Advanced' > 'Go to Santoso Biopage (unsafe)' > 'Allow'
+ * 4. Deploy Web App:
+ *    - Untuk update: Klik 'Deploy' > 'Manage deployments' > Edit (Pensil) > Version: 'New version' > 'Deploy'
+ *    - Pertama kali: Klik 'Deploy' > 'New deployment' > Web App (Execute as: Me, Access: Anyone)
+ * 5. Reload halaman Google Spreadsheet untuk memunculkan menu 'Santoso Biopage'
  * =========================================================================
  */
 
@@ -84,11 +94,12 @@ var SCHEMA = {
 // MENU GOOGLE SHEETS
 // =========================================================================
 function onOpen() {
-  SpreadsheetApp.getUi()
-    .createMenu("Santoso Biopage")
-    .addItem("Setup Database (Pertama Kali)", "setupDatabase")
+  var ui = SpreadsheetApp.getUi();
+  ui.createMenu("Santoso Biopage")
+    .addItem("Setup Database (Inisialisasi Sheet)", "setupDatabase")
     .addSeparator()
-    .addItem("Buka Web Portal", "openWebPortalDialog")
+    .addItem("Buka Web Portal Publik", "openWebPortalDialog")
+    .addItem("Buka Dashboard Admin", "openAdminDialog")
     .addToUi();
 }
 
@@ -97,11 +108,30 @@ function openWebPortalDialog() {
     '<div style="font-family:Arial,sans-serif;padding:20px;text-align:center;">' +
     '<h3 style="color:#1B3A6B;margin-top:0;">Santoso Digital Identity</h3>' +
     '<p style="color:#6B6560;font-size:13px;">Portal biopage telah live di Cloudflare Pages.</p>' +
+    '<div style="margin:20px 0;display:flex;gap:8px;justify-content:center;">' +
+    '<a href="https://santoso-504.pages.dev" target="_blank" style="background:#1B3A6B;color:#fff;padding:10px 16px;border-radius:6px;text-decoration:none;font-weight:bold;font-size:13px;">Web Utama &rarr;</a>' +
+    '<a href="https://santoso-504.pages.dev/portosekolah" target="_blank" style="background:#1B3A6B;color:#fff;padding:10px 16px;border-radius:6px;text-decoration:none;font-weight:bold;font-size:13px;">Porto Sekolah &rarr;</a>' +
+    '</div></div>'
+  ).setWidth(400).setHeight(190);
+  SpreadsheetApp.getUi().showModalDialog(html, "Portal Santoso");
+}
+
+function openAdminDialog() {
+  var html = HtmlService.createHtmlOutput(
+    '<div style="font-family:Arial,sans-serif;padding:20px;text-align:center;">' +
+    '<h3 style="color:#1B3A6B;margin-top:0;">Dashboard Admin Santoso</h3>' +
+    '<p style="color:#6B6560;font-size:13px;">Kelola konten musik, usaha, dan seluruh portofolio sekolah.</p>' +
     '<div style="margin:20px 0;">' +
-    '<a href="https://santoso.pages.dev" target="_blank" style="background:#1B3A6B;color:#fff;padding:10px 20px;border-radius:6px;text-decoration:none;font-weight:bold;">Buka santoso.pages.dev &rarr;</a>' +
+    '<a href="https://santoso-504.pages.dev/admin.html" target="_blank" style="background:#1C1A17;color:#fff;padding:10px 20px;border-radius:6px;text-decoration:none;font-weight:bold;font-size:13px;">Buka Admin Dashboard &rarr;</a>' +
     '</div></div>'
   ).setWidth(380).setHeight(180);
-  SpreadsheetApp.getUi().showModalDialog(html, "Portal Santoso");
+  SpreadsheetApp.getUi().showModalDialog(html, "Admin Dashboard");
+}
+
+function batchAppend(sheet, rows) {
+  if (!sheet || !rows || rows.length === 0) return;
+  var startRow = Math.max(1, sheet.getLastRow()) + 1;
+  sheet.getRange(startRow, 1, rows.length, rows[0].length).setValues(rows);
 }
 
 // =========================================================================
@@ -109,7 +139,7 @@ function openWebPortalDialog() {
 // =========================================================================
 function setupDatabase() {
   try {
-    var ss = SpreadsheetApp.openById(SPREADSHEET_ID);
+    var ss = getDatabase();
 
     // Buat semua sheet jika belum ada & pasang header bergaya
     for (var sheetKey in SHEETS) {
@@ -165,7 +195,7 @@ function setupDatabase() {
         ["4", "2021", "Meraih Gelar Magister Pendidikan (M.Pd.)", "Menuntaskan studi pascasarjana dengan fokus inovasi media pembelajaran interaktif tingkat sekolah dasar.", "Pendidikan", "", true],
         ["5", "2023", "Guru Inovatif & Pembina Seni Vokal", "Meraih apresiasi pendidik inovatif dinas pendidikan serta aktif melatih paduan suara dan seni vokal pelajar.", "Pendidikan", "", true]
       ];
-      for (var i = 0; i < tlSeeds.length; i++) timelineSheet.appendRow(tlSeeds[i]);
+      batchAppend(timelineSheet, tlSeeds);
     }
 
     // 4. Edu Karya
@@ -176,7 +206,7 @@ function setupDatabase() {
         ["2", "Modul Ajar Berbasis Kearifan Lokal Tuban", "Perangkat pembelajaran kontekstual mengintegrasikan budaya pesisir Tuban dalam kurikulum sekolah.", "2022", "https://drive.google.com", "Perangkat Ajar", true],
         ["3", "Gerakan Gemar Membaca & Pojok Literasi Kelas", "Inovasi manajemen kelas menghidupkan ruang baca ramah anak yang mendongkrak minat baca hingga 90%.", "2021", "https://drive.google.com", "Metode Belajar", true]
       ];
-      for (var i = 0; i < ekSeeds.length; i++) eduKaryaSheet.appendRow(ekSeeds[i]);
+      batchAppend(eduKaryaSheet, ekSeeds);
     }
 
     // 5. Edu Publikasi
@@ -186,7 +216,7 @@ function setupDatabase() {
         ["1", "Pengembangan Media Interaktif Gamifikasi untuk Siswa Sekolah Dasar", "Jurnal Inovasi & Riset Pendidikan Dasar", "2023", "https://ejournal.kemdikbud.go.id", "", true],
         ["2", "Pendekatan Humanis dalam Pendidikan Karakter Anak Usia Sekolah Dasar", "Prosiding Seminar Nasional Pendidikan", "2022", "https://ejournal.kemdikbud.go.id", "", true]
       ];
-      for (var i = 0; i < epSeeds.length; i++) eduPublikasiSheet.appendRow(epSeeds[i]);
+      batchAppend(eduPublikasiSheet, epSeeds);
     }
 
     // 6. Edu PKB
@@ -197,7 +227,7 @@ function setupDatabase() {
         ["2", "Bimtek Implementasi Kurikulum Merdeka & Asesmen Autentik", "Dinas Pendidikan Kab. Tuban", "2023", "https://drive.google.com", "64", true],
         ["3", "Pelatihan Pemanfaatan AI & Teknologi Digital dalam Pembelajaran", "Balai Guru Penggerak Jawa Timur", "2024", "https://drive.google.com", "32", true]
       ];
-      for (var i = 0; i < pkbSeeds.length; i++) eduPkbSheet.appendRow(pkbSeeds[i]);
+      batchAppend(eduPkbSheet, pkbSeeds);
     }
 
     // 7. Edu Prestasi
@@ -207,7 +237,7 @@ function setupDatabase() {
         ["1", "Juara 1 Lomba Inovasi Pembelajaran Guru SD", "Dinas Pendidikan Kab. Tuban", "2023", "Kabupaten", "https://drive.google.com", true],
         ["2", "Pendidik Berdedikasi dan Kreatif", "Gugus Sekolah Dasar Tuban", "2022", "Kecamatan", "https://drive.google.com", true]
       ];
-      for (var i = 0; i < edpSeeds.length; i++) eduPrestasiSheet.appendRow(edpSeeds[i]);
+      batchAppend(eduPrestasiSheet, edpSeeds);
     }
 
     // 8. Music Event
@@ -218,7 +248,7 @@ function setupDatabase() {
         ["2", "Gala Dinner & Annual Celebration Soloist", "2024-02-14", "Grand Ballroom Hotel Aston", "Tuban", "https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?w=800&q=80", "Solois utama membawakan repertoar lagu jazz dan pop akustik pengiring jamuan makan malam.", true],
         ["3", "Konser Amal & Nada Peduli Pendidikan", "2023-11-25", "Taman Budaya Pesisir", "Tuban", "https://images.unsplash.com/photo-1465847899084-d164df4dedc6?w=800&q=80", "Konser musik amal bersama musisi daerah penggalangan beasiswa siswa prasejahtera.", true]
       ];
-      for (var i = 0; i < meSeeds.length; i++) musicEventSheet.appendRow(meSeeds[i]);
+      batchAppend(musicEventSheet, meSeeds);
     }
 
     // 9. Music Gallery
@@ -229,7 +259,7 @@ function setupDatabase() {
         ["2", "https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?w=800&q=80", "Sesi rekaman audio dan take vocal di studio akustik", "2", true],
         ["3", "https://images.unsplash.com/photo-1465847899084-d164df4dedc6?w=800&q=80", "Apresiasi penonton setelah konser amal bertema pendidikan", "3", true]
       ];
-      for (var i = 0; i < mgSeeds.length; i++) musicGallerySheet.appendRow(mgSeeds[i]);
+      batchAppend(musicGallerySheet, mgSeeds);
     }
 
     // 10. Music Video
@@ -239,7 +269,7 @@ function setupDatabase() {
         ["1", "Santoso — Menghujam Jantung (Live Vocal Acoustic Cover)", "https://www.youtube.com/embed/dQw4w9WgXcQ", "YouTube", "2024", true],
         ["2", "Santoso — Medley Tembang Jawa & Pop Nusantara Akustik", "https://www.youtube.com/embed/dQw4w9WgXcQ", "YouTube", "2023", true]
       ];
-      for (var i = 0; i < mvSeeds.length; i++) musicVideoSheet.appendRow(mvSeeds[i]);
+      batchAppend(musicVideoSheet, mvSeeds);
     }
 
     // 11. Music Prestasi
@@ -249,7 +279,7 @@ function setupDatabase() {
         ["1", "Juara 1 Lomba Solo Vokal Pop Pria Dewasa", "Dewan Kesenian Tuban", "2023", "Kabupaten", "https://drive.google.com", true],
         ["2", "Penyanyi Favorit Festival Musik Akustik Pesisir", "Komunitas Musisi Jawa Timur", "2022", "Provinsi", "https://drive.google.com", true]
       ];
-      for (var i = 0; i < mpSeeds.length; i++) musicPrestasiSheet.appendRow(mpSeeds[i]);
+      batchAppend(musicPrestasiSheet, mpSeeds);
     }
 
     // 12. Business List
@@ -259,7 +289,7 @@ function setupDatabase() {
         ["1", "Santoso Wedding & MUA", "Kecantikan Elegan di Momen Terindah Anda", "Layanan Make Up Artist (MUA) profesional melayani rias pengantin adat Jawa paes modern, wisuda, siraman, dan makeup pesta dengan kosmetik premium tahan lama.", "MUA & Tata Rias", "https://instagram.com/santoso", "6281234567890", true],
         ["2", "Santoso Wardrobe & Kebaya Rental", "Koleksi Busana Pengantin, Kebaya & Gaun Elegan", "Penyewaan busana pengantin tradisional modern, kebaya wisuda kekinian, beskap adat Jawa, dan jas formal dengan kondisi sangat prima dan bersih.", "Persewaan Busana", "https://instagram.com/santoso", "6281234567890", true]
       ];
-      for (var i = 0; i < blSeeds.length; i++) businessListSheet.appendRow(blSeeds[i]);
+      batchAppend(businessListSheet, blSeeds);
     }
 
     // 13. Business Gallery
@@ -270,7 +300,7 @@ function setupDatabase() {
         ["2", "1", "https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?w=800&q=80", "Tata rias paes ageng pengantin adat Jawa anggun", true],
         ["3", "2", "https://images.unsplash.com/photo-1558769132-cb1aea458c5e?w=800&q=80", "Koleksi kebaya brokat wisuda modern warna sage green", true]
       ];
-      for (var i = 0; i < bgSeeds.length; i++) businessGallerySheet.appendRow(bgSeeds[i]);
+      batchAppend(businessGallerySheet, bgSeeds);
     }
 
     // 14. Testimonials
@@ -281,7 +311,7 @@ function setupDatabase() {
         ["2", "1", "Siti Nurjanah, S.Kom. (Wisudawati)", "Make up wisuda Pak Santoso juara banget! Nggak dempul, foto hasilnya cantik banget dan nggak bikin jerawatan. Pasti rekomendasiin ke adik tingkat!", "5", true],
         ["3", "2", "Ibu Ratih (Panitia Acara Seni)", "Busana adat dan kebaya yang disewa bersih, wangi, dan jahitannya sangat rapi. Pelayanan ramah dan harga sangat bersahabat.", "5", true]
       ];
-      for (var i = 0; i < tSeeds.length; i++) testimonialsSheet.appendRow(tSeeds[i]);
+      batchAppend(testimonialsSheet, tSeeds);
     }
 
     // 15. Achievements
@@ -294,7 +324,7 @@ function setupDatabase() {
         ["4", "Penyanyi Favorit Festival Musik Akustik Pesisir", "Musik", "Komunitas Seni Jawa Timur", "2022", "Provinsi", "https://drive.google.com", true],
         ["5", "MUA Terfavorit Kategori Rias Modern", "Usaha", "Asosiasi Rias Pengantin Tuban", "2023", "Kabupaten", "https://drive.google.com", true]
       ];
-      for (var i = 0; i < achSeeds.length; i++) achievementsSheet.appendRow(achSeeds[i]);
+      batchAppend(achievementsSheet, achSeeds);
     }
 
     // 16. Portofolio Sekolah — Bukti Implementasi
@@ -314,7 +344,7 @@ function setupDatabase() {
         ["11", "Inovasi Asesmen Metode ASSA", "video", "Inovasi Asesmen pada Pembelajaran Bahasa Indonesia Kelas 1 dengan Metode ASSA (Aku Suka, Suka Aku)", "", "CKsJadhw1S8", "", 11, true],
         ["12", "Workshop LAPIS LADA", "document", "Workshop aplikasi LAPIS LADA", "", "", "Workshop lapis lada (Dokumen)", 12, true]
       ];
-      for (var i = 0; i < siSeeds.length; i++) siSheet.appendRow(siSeeds[i]);
+      batchAppend(siSheet, siSeeds);
     }
 
     // 17. Portofolio Sekolah — Prestasi
@@ -325,7 +355,7 @@ function setupDatabase() {
         ["2", "Peraih Level 4 'Pengembara' Cerdas Cermat Guru", "Temu Pendidik Nusantara KGBN", "Komunitas Guru Belajar Nusantara (KGBN)", "2024", "Nasional", "", "", "/assets/portosekolah/prestasi/03.jpg", 2, true],
         ["3", "Juara 1 Lomba Cipta Lagu Branding Tuban tahun 2016", "Lomba Cipta Lagu Branding Tuban", "Pemerintah Kabupaten Tuban", "2016", "Kabupaten", "", "https://www.tubankab.go.id/entry/jawara-lomba-cipta-lagu-masuk-dapur-rekaman", "/assets/portosekolah/prestasi/06.jpg", 3, true]
       ];
-      for (var i = 0; i < spSeeds.length; i++) spSheet.appendRow(spSeeds[i]);
+      batchAppend(spSheet, spSeeds);
     }
 
     // 18. Portofolio Sekolah — Karya Tulis & Inovasi
@@ -347,7 +377,7 @@ function setupDatabase() {
         ["13", "Lagu Branding Tuban — Bagian 2", "lagu", "Lagu cipta yang menjadi lagu branding Kabupaten Tuban", "uiZB8h_ymPg", "https://youtu.be/uiZB8h_ymPg", "2016", "", 13, true],
         ["14", "Lagu Branding Tuban — Bagian 3", "lagu", "Lagu cipta yang menjadi lagu branding Kabupaten Tuban", "-UcZyfPPAOQ", "https://youtu.be/-UcZyfPPAOQ", "2016", "", 14, true]
       ];
-      for (var i = 0; i < skSeeds.length; i++) skSheet.appendRow(skSeeds[i]);
+      batchAppend(skSheet, skSeeds);
     }
 
     // 19. Portofolio Sekolah — Pengembangan Diri
@@ -375,7 +405,7 @@ function setupDatabase() {
         ["19", "SK_PIM_NARSUM.pdf", "berkas", "", "", "", "SK_PIM_NARSUM.pdf", "", "", 19, true],
         ["20", "sertiifikat tari.pdf", "berkas", "", "", "", "sertiifikat tari.pdf", "", "", 20, true]
       ];
-      for (var i = 0; i < spkbSeeds.length; i++) spkbSheet.appendRow(spkbSeeds[i]);
+      batchAppend(spkbSheet, spkbSeeds);
     }
 
     // 20. Portofolio Sekolah — Pendampingan Rekan Sejawat (40 Kegiatan)
@@ -387,7 +417,7 @@ function setupDatabase() {
         ["3", "Workshop Pembuatan Media Pembelajaran Digital Interaktif", "2023", "2023", "Pemateri", "Kombel Ki Hadjar Dewantara", "Canva for Education dan integrasi kuis interaktif", "/assets/portosekolah/pendampingan/03.jpg", 3, true],
         ["4", "Diseminasi Program Guru Penggerak: Budaya Positif di Sekolah", "2023", "2023", "Narasumber", "Warga UPT SDN Latsari 2", "Keyakinan kelas dan segitiga restitusi", "/assets/portosekolah/pendampingan/04.jpg", 4, true]
       ];
-      for (var i = 0; i < smSeeds.length; i++) smSheet.appendRow(smSeeds[i]);
+      batchAppend(smSheet, smSeeds);
     }
 
     // 21. Portofolio Sekolah — Penggunaan AI (Prompts & Gemini Codes)
@@ -417,7 +447,7 @@ function setupDatabase() {
         ["21", "gemini_code", "/compare", "Perbandingan", "", "", "Menyajikan perbedaan dan persamaan dua konsep atau lebih secara berdampingan, biasanya dalam tabel.", 21, true],
         ["22", "gemini_code", "/review", "Ulasan & Evaluasi", "", "", "Mengevaluasi materi yang telah diajarkan, merangkum umpan balik, atau merancang kisi-kisi dan materi pengayaan/remedial.", 22, true]
       ];
-      for (var i = 0; i < saiSeeds.length; i++) saiSheet.appendRow(saiSeeds[i]);
+      batchAppend(saiSheet, saiSeeds);
     }
 
     // 22. Portofolio Sekolah — Organisasi Profesi (Orprof)
@@ -432,7 +462,7 @@ function setupDatabase() {
         ["6", "Tim Bidang Pengembangan Anggota dan Penggerak", "KGBN Tuban", "2023–2025", "SK KGBN 2023-2025.pdf", "", "", 6, true],
         ["7", "Ketua Kombel Ki Hadjar Dewantara", "UPT SDN Latsari 2 Bancar", "", "SK Kombel_UPT SDN Latsari 2.pdf", "", "", 7, true]
       ];
-      for (var i = 0; i < soSeeds.length; i++) soSheet.appendRow(soSeeds[i]);
+      batchAppend(soSheet, soSeeds);
     }
 
     // 23. Portofolio Sekolah — Riwayat Pendidikan Profil
@@ -446,7 +476,7 @@ function setupDatabase() {
         ["5", "2009–2013", "Universitas Terbuka", "S1", "Pendidikan Guru Sekolah Dasar (PGSD)", 5, true],
         ["6", "2023–2025", "Universitas Gresik", "S2", "Manajemen Pendidikan", 6, true]
       ];
-      for (var i = 0; i < spEduSeeds.length; i++) spEduSheet.appendRow(spEduSeeds[i]);
+      batchAppend(spEduSheet, spEduSeeds);
     }
 
     // 24. Portofolio Sekolah — Kategori Kustom & Items (Starter Demo)
@@ -455,7 +485,7 @@ function setupDatabase() {
       var sCatSeeds = [
         ["1", "karya-siswa", "Karya Siswa & Ekstrakurikuler", "Wadah publikasi karya kreativitas seni dan inovasi proyek pelajar UPT SDN Latsari 2 Bancar.", "sparkles", 1, true]
       ];
-      for (var i = 0; i < sCatSeeds.length; i++) sCatSheet.appendRow(sCatSeeds[i]);
+      batchAppend(sCatSheet, sCatSeeds);
     }
 
     var sItemSheet = ss.getSheetByName("school_custom_items");
@@ -463,14 +493,27 @@ function setupDatabase() {
       var sItemSeeds = [
         ["1", "karya-siswa", "Pameran Karya Seni Rupa & Daur Ulang P5", "Proyek Penguatan Profil Pelajar Pancasila", "Karya kolaboratif peserta didik memanfaatkan bahan daur ulang ramah lingkungan menjadi produk seni fungsional.", "2024", "image", "/assets/portosekolah/bukti-implementasi/01.jpg", "", 1, true]
       ];
-      for (var i = 0; i < sItemSeeds.length; i++) sItemSheet.appendRow(sItemSeeds[i]);
+      batchAppend(sItemSheet, sItemSeeds);
     }
 
     SpreadsheetApp.flush();
     Logger.log("Setup database selesai! Spreadsheet: " + ss.getUrl());
     try {
-      Browser.msgBox("Setup Selesai!", "Database Santoso Biopage berhasil diinisialisasi beserta seluruh data starter.\n\nLangkah berikutnya:\n1. Deploy sebagai Web App\n2. Salin URL /exec ke config.js", Browser.Buttons.OK);
-    } catch (msgErr) {}
+      var activeSs = SpreadsheetApp.getActiveSpreadsheet();
+      if (activeSs) {
+        activeSs.toast("Inisialisasi database Santoso Biopage berhasil! Seluruh sheet dan data awal siap digunakan.", "Santoso Biopage", 6);
+      }
+    } catch (toastErr) {}
+    try {
+      var ui = SpreadsheetApp.getUi();
+      if (ui) {
+        ui.alert(
+          "Setup Database Selesai!",
+          "Database Santoso Biopage berhasil diinisialisasi beserta seluruh data starter.\n\nLangkah berikutnya:\n1. Klik tombol 'Deploy' > 'Manage deployments' > Edit > New version.\n2. Buka web portal publik atau admin dashboard.",
+          ui.ButtonSet.OK
+        );
+      }
+    } catch (uiErr) {}
     return { status: "success", url: ss.getUrl() };
   } catch (err) {
     Logger.log("Error setupDatabase: " + err.toString());
@@ -508,6 +551,10 @@ function generateApiKey() {
 }
 
 function getDatabase() {
+  try {
+    var active = SpreadsheetApp.getActiveSpreadsheet();
+    if (active) return active;
+  } catch (e) {}
   return SpreadsheetApp.openById(SPREADSHEET_ID);
 }
 
