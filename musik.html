@@ -381,6 +381,17 @@ async function loadData() {
     }
   });
 
+  function formatDisplayDate(val) {
+    if (!val) return '';
+    if (typeof val === 'string' && val.includes('T')) {
+      const d = new Date(val);
+      if (!isNaN(d.getTime())) {
+        return d.toLocaleDateString('id-ID', { year: 'numeric', month: 'short', day: 'numeric' });
+      }
+    }
+    return val;
+  }
+
   // 1. Events
   const DEFAULT_EVENTS = [
     {
@@ -401,7 +412,7 @@ async function loadData() {
         ${ev.photo_url ? `<img src="${ev.photo_url}" alt="${ev.event_name || 'Event'}" class="event-card-img" />` : ''}
         <div class="event-card-body">
           <div>
-            <div class="event-meta">${ev.date || ''} · ${ev.city || 'Tuban'}</div>
+            <div class="event-meta">${formatDisplayDate(ev.date)} · ${ev.city || 'Tuban'}</div>
             <h3 class="event-card-title">${ev.event_name || ''}</h3>
             <p class="event-card-desc">${ev.description || ''}</p>
           </div>
@@ -448,7 +459,7 @@ async function loadData() {
             </div>
             <div class="video-info">
               <h3>${v.title || ''}</h3>
-              <p>${v.platform || 'YouTube'} · ${v.date || ''}</p>
+              <p>${v.platform || 'YouTube'} · ${formatDisplayDate(v.date)}</p>
             </div>
           </div>
         `;
