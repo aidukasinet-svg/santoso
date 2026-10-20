@@ -1,0 +1,13 @@
+# Dependencies & OS files
+.DS_Store
+Thumbs.db
+*.zip
+*.log
+
+# Antigravity artifacts & cache
+.gemini/
+.agents/
+
+# Secrets (NEVER commit these)
+secrets.txt
+*.env

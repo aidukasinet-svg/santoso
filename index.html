@@ -1,0 +1,900 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Santoso, S.Pd., M.Pd. — Pendidik · Penyanyi · Entrepreneur</title>
+  <meta name="description" content="Portal digital Santoso — seorang pendidik berdedikasi, penyanyi profesional, dan entrepreneur. Satu nama. Banyak dunia." />
+  <meta property="og:title" content="Santoso, S.Pd., M.Pd." />
+  <meta property="og:description" content="Satu nama. Banyak dunia. Portal digital Santoso — Pendidik, Penyanyi, Entrepreneur." />
+  <meta property="og:type" content="website" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;900&family=DM+Serif+Display:ital@0;1&display=swap" rel="stylesheet" />
+
+  <style>
+    /* =====================================================================
+       DESIGN SYSTEM — SANTOSO DIGITAL IDENTITY
+       Tiga Dunia: Pendidikan (Navy) · Musik (Crimson) · Usaha (Forest)
+       ===================================================================== */
+    :root {
+      --bg:            #F9F7F4;
+      --bg-subtle:     #F2EFE9;
+      --surface:       #FFFFFF;
+      --border:        #E4DED6;
+      --text:          #1C1A17;
+      --text-sec:      #6B6560;
+      --text-muted:    #A09890;
+
+      /* Domain accents */
+      --edu:           #1B3A6B;
+      --edu-light:     #2D5AA0;
+      --edu-soft:      #EEF2F9;
+      --edu-border:    #C5D4ED;
+
+      --music:         #7B1E2E;
+      --music-light:   #A5263A;
+      --music-soft:    #F9EEEF;
+      --music-border:  #E8BFBF;
+
+      --biz:           #1E4A3A;
+      --biz-light:     #2A6450;
+      --biz-soft:      #EEF5F2;
+      --biz-border:    #BCDDD3;
+
+      --radius-sm:     6px;
+      --radius-md:     14px;
+      --radius-lg:     22px;
+      --shadow-sm:     0 1px 3px rgba(28,26,23,.08);
+      --shadow-md:     0 6px 20px rgba(28,26,23,.10);
+      --shadow-lg:     0 16px 48px rgba(28,26,23,.12);
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Outfit', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      font-size: 16px;
+    }
+
+    /* ---- LAYOUT ---- */
+    .container { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
+    section { padding: 80px 0; }
+    section + section { border-top: 1px solid var(--border); }
+
+    /* ---- NAVBAR ---- */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      height: 64px;
+      background: rgba(249,247,244,.85);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+      transition: background .3s;
+    }
+    nav .nav-inner {
+      max-width: 1200px; margin: 0 auto; padding: 0 24px;
+      height: 100%; display: flex; align-items: center; justify-content: space-between;
+    }
+    .nav-logo {
+      display: flex; align-items: center; gap: 10px;
+      text-decoration: none; color: var(--text); font-weight: 700; font-size: 17px;
+    }
+    .nav-logo-mark {
+      width: 36px; height: 36px; border-radius: 50%;
+      background: var(--edu); color: #fff;
+      display: flex; align-items: center; justify-content: center;
+      font-weight: 900; font-size: 15px; letter-spacing: -.03em;
+      flex-shrink: 0;
+    }
+    .nav-links { display: flex; align-items: center; gap: 6px; }
+    .nav-links a {
+      padding: 6px 12px; border-radius: var(--radius-sm);
+      text-decoration: none; color: var(--text-sec); font-size: 14px; font-weight: 500;
+      transition: color .2s, background .2s;
+    }
+    .nav-links a:hover { color: var(--text); background: var(--bg-subtle); }
+    .nav-links a.active { color: var(--edu); font-weight: 600; }
+    .nav-links .btn-admin {
+      background: var(--text); color: #fff; padding: 6px 14px;
+      border-radius: var(--radius-sm); font-size: 13px; font-weight: 600;
+    }
+    .nav-links .btn-admin:hover { background: var(--edu); color: #fff; }
+    .nav-hamburger { display: none; background: none; border: none; cursor: pointer; padding: 8px; }
+    .nav-hamburger span { display: block; width: 22px; height: 2px; background: var(--text); margin: 5px 0; border-radius: 2px; transition: .3s; }
+
+    @media (max-width: 768px) {
+      .nav-links { display: none; }
+      .nav-hamburger { display: block; }
+      .nav-links.open {
+        display: flex; flex-direction: column; align-items: stretch;
+        position: fixed; top: 64px; left: 0; right: 0; bottom: 0;
+        background: var(--bg); padding: 20px; gap: 4px; overflow-y: auto;
+      }
+      .nav-links.open a { padding: 12px 16px; font-size: 16px; }
+    }
+
+    /* ---- HERO ---- */
+    #hero {
+      padding: 0; min-height: 100dvh;
+      display: flex; flex-direction: column;
+    }
+    .hero-inner {
+      flex: 1; display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0; align-items: stretch;
+    }
+    .hero-content {
+      display: flex; flex-direction: column; justify-content: center;
+      padding: 120px 64px 80px 24px;
+      max-width: 640px; margin-left: auto;
+    }
+    .hero-eyebrow {
+      display: inline-flex; align-items: center; gap: 8px;
+      font-size: 11px; font-weight: 600; letter-spacing: .15em;
+      text-transform: uppercase; color: var(--edu); margin-bottom: 20px;
+    }
+    .hero-eyebrow::before {
+      content: ''; width: 20px; height: 1.5px; background: var(--edu);
+    }
+    .hero-name {
+      font-size: clamp(2.4rem, 4.5vw, 3.8rem);
+      font-weight: 900; line-height: 1.05; letter-spacing: -.03em;
+      margin-bottom: 12px;
+    }
+    .hero-title {
+      font-family: 'DM Serif Display', serif;
+      font-style: italic;
+      font-size: clamp(1.1rem, 2vw, 1.4rem);
+      color: var(--text-sec); margin-bottom: 20px; line-height: 1.4;
+    }
+    .hero-pills {
+      display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 32px;
+    }
+    .pill {
+      padding: 6px 14px; border-radius: 999px;
+      font-size: 13px; font-weight: 600; letter-spacing: .02em;
+      border: 1.5px solid; transition: background .2s, color .2s;
+      cursor: default;
+    }
+    .pill-edu   { color: var(--edu);   border-color: var(--edu-border);   background: var(--edu-soft); }
+    .pill-music { color: var(--music); border-color: var(--music-border); background: var(--music-soft); }
+    .pill-biz   { color: var(--biz);   border-color: var(--biz-border);   background: var(--biz-soft); }
+
+    .hero-quote {
+      font-size: 15px; color: var(--text-sec); margin-bottom: 36px;
+      padding-left: 16px; border-left: 3px solid var(--border);
+      line-height: 1.6; max-width: 420px;
+    }
+    .hero-ctas { display: flex; gap: 12px; flex-wrap: wrap; }
+    .btn {
+      display: inline-flex; align-items: center; gap: 8px;
+      padding: 12px 22px; border-radius: var(--radius-sm);
+      font-family: 'Outfit', sans-serif; font-size: 15px; font-weight: 600;
+      text-decoration: none; border: none; cursor: pointer;
+      transition: background .2s, transform .15s, box-shadow .2s;
+    }
+    .btn:active { transform: translateY(1px) scale(.99); }
+    .btn-primary {
+      background: var(--edu); color: #fff;
+    }
+    .btn-primary:hover {
+      background: var(--edu-light);
+      box-shadow: 0 8px 24px rgba(27,58,107,.28);
+    }
+    .btn-outline {
+      background: transparent; color: var(--text);
+      border: 1.5px solid var(--border);
+    }
+    .btn-outline:hover { background: var(--bg-subtle); border-color: var(--text-sec); }
+
+    .hero-visual {
+      position: relative; overflow: hidden;
+      background: linear-gradient(160deg, var(--bg-subtle) 0%, var(--edu-soft) 100%);
+    }
+    .hero-visual img {
+      width: 100%; height: 100%; object-fit: cover;
+      object-position: top center;
+    }
+    .hero-visual-overlay {
+      position: absolute; inset: 0;
+      background: linear-gradient(to right, var(--bg) 0%, transparent 30%);
+    }
+    .hero-scroll-hint {
+      display: flex; align-items: center; justify-content: center; gap: 8px;
+      padding: 16px; font-size: 12px; color: var(--text-muted);
+      letter-spacing: .08em; text-transform: uppercase;
+    }
+    .hero-scroll-hint::before, .hero-scroll-hint::after {
+      content: ''; flex: 1; height: 1px; background: var(--border);
+    }
+
+    @media (max-width: 768px) {
+      .hero-inner { grid-template-columns: 1fr; }
+      .hero-content { padding: 100px 24px 48px; max-width: none; }
+      .hero-visual { height: 280px; }
+      .hero-visual-overlay { background: linear-gradient(to bottom, var(--bg) 0%, transparent 30%); }
+    }
+
+    /* ---- SECTION HEADERS ---- */
+    .section-label {
+      font-size: 11px; font-weight: 600; letter-spacing: .15em;
+      text-transform: uppercase; color: var(--text-muted); margin-bottom: 12px;
+    }
+    .section-title {
+      font-size: clamp(1.8rem, 3vw, 2.6rem);
+      font-weight: 800; line-height: 1.15; letter-spacing: -.025em;
+      margin-bottom: 16px;
+    }
+    .section-sub {
+      font-size: 16px; color: var(--text-sec);
+      max-width: 560px; line-height: 1.7;
+    }
+    .section-header { margin-bottom: 48px; }
+
+    /* ---- TIGA DUNIA BENTO ---- */
+    #tiga-dunia { background: var(--bg); }
+    .bento-3 {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+    }
+    .bento-card {
+      position: relative; overflow: hidden;
+      border-radius: var(--radius-lg);
+      border: 1px solid var(--border);
+      background: var(--surface);
+      padding: 36px 28px;
+      display: flex; flex-direction: column;
+      min-height: 320px;
+      transition: box-shadow .25s, transform .25s;
+      text-decoration: none; color: inherit;
+    }
+    .bento-card:hover {
+      box-shadow: var(--shadow-lg);
+      transform: translateY(-3px);
+    }
+    .bento-card::before {
+      content: ''; position: absolute; top: 0; left: 0; right: 0; height: 4px;
+    }
+    .bento-edu::before { background: var(--edu); }
+    .bento-music::before { background: var(--music); }
+    .bento-biz::before { background: var(--biz); }
+
+    .bento-icon {
+      width: 52px; height: 52px; border-radius: var(--radius-md);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 24px; margin-bottom: 20px; flex-shrink: 0;
+    }
+    .bento-edu .bento-icon   { background: var(--edu-soft); color: var(--edu); }
+    .bento-music .bento-icon { background: var(--music-soft); color: var(--music); }
+    .bento-biz .bento-icon   { background: var(--biz-soft); color: var(--biz); }
+
+    .bento-card h3 {
+      font-size: 1.3rem; font-weight: 700; margin-bottom: 10px; letter-spacing: -.015em;
+    }
+    .bento-card p {
+      font-size: 14px; color: var(--text-sec); line-height: 1.65; flex: 1; margin-bottom: 20px;
+    }
+    .bento-link {
+      font-size: 13px; font-weight: 600; letter-spacing: .02em;
+      display: flex; align-items: center; gap: 6px; margin-top: auto;
+    }
+    .bento-edu .bento-link   { color: var(--edu); }
+    .bento-music .bento-link { color: var(--music); }
+    .bento-biz .bento-link   { color: var(--biz); }
+
+    @media (max-width: 900px) { .bento-3 { grid-template-columns: 1fr; } }
+
+    /* ---- ABOUT ---- */
+    #tentang .about-grid {
+      display: grid; grid-template-columns: 360px 1fr; gap: 64px; align-items: start;
+    }
+    .about-photo {
+      width: 100%; aspect-ratio: 3/4; object-fit: cover;
+      border-radius: var(--radius-lg); box-shadow: var(--shadow-lg);
+      border: 1px solid var(--border);
+    }
+    .about-photo-placeholder {
+      width: 100%; aspect-ratio: 3/4;
+      background: linear-gradient(135deg, var(--edu-soft), var(--bg-subtle));
+      border-radius: var(--radius-lg);
+      display: flex; flex-direction: column;
+      align-items: center; justify-content: center;
+      gap: 12px; color: var(--edu); font-size: 48px;
+    }
+    .about-bio { font-size: 16px; color: var(--text-sec); line-height: 1.8; margin-bottom: 28px; }
+    .about-values {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-top: 28px;
+    }
+    .about-value {
+      background: var(--bg-subtle); border: 1px solid var(--border);
+      border-radius: var(--radius-md); padding: 16px;
+    }
+    .about-value strong { display: block; font-size: 14px; font-weight: 700; margin-bottom: 4px; }
+    .about-value span { font-size: 13px; color: var(--text-sec); }
+
+    @media (max-width: 900px) {
+      #tentang .about-grid { grid-template-columns: 1fr; }
+    }
+
+    /* ---- PRESTASI HIGHLIGHT ---- */
+    #prestasi-home { background: var(--bg-subtle); }
+    .prestasi-grid {
+      display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px;
+    }
+    .prestasi-card {
+      background: var(--surface); border: 1px solid var(--border);
+      border-radius: var(--radius-md); padding: 24px;
+      transition: box-shadow .2s, transform .2s;
+    }
+    .prestasi-card:hover { box-shadow: var(--shadow-md); transform: translateY(-2px); }
+    .prestasi-cat {
+      display: inline-flex; align-items: center; gap: 6px;
+      font-size: 11px; font-weight: 600; letter-spacing: .12em;
+      text-transform: uppercase; padding: 4px 10px; border-radius: 999px;
+      margin-bottom: 14px; border: 1px solid;
+    }
+    .cat-edu   { color: var(--edu);   background: var(--edu-soft);   border-color: var(--edu-border); }
+    .cat-music { color: var(--music); background: var(--music-soft); border-color: var(--music-border); }
+    .cat-biz   { color: var(--biz);   background: var(--biz-soft);   border-color: var(--biz-border); }
+
+    .prestasi-card h4 { font-size: 15px; font-weight: 700; margin-bottom: 6px; line-height: 1.35; }
+    .prestasi-card .prestasi-meta { font-size: 12px; color: var(--text-muted); }
+
+    @media (max-width: 768px) { .prestasi-grid { grid-template-columns: 1fr 1fr; } }
+    @media (max-width: 500px) { .prestasi-grid { grid-template-columns: 1fr; } }
+
+    /* ---- QUOTE ---- */
+    #kutipan {
+      background: var(--edu); color: #fff; padding: 72px 0;
+    }
+    .kutipan-inner {
+      text-align: center; max-width: 700px; margin: 0 auto;
+    }
+    .kutipan-mark {
+      font-family: 'DM Serif Display', serif;
+      font-size: 80px; line-height: .8; color: rgba(255,255,255,.3);
+      margin-bottom: -8px;
+    }
+    .kutipan-text {
+      font-family: 'DM Serif Display', serif;
+      font-size: clamp(1.4rem, 3vw, 2rem);
+      font-style: italic; line-height: 1.5; margin-bottom: 20px;
+    }
+    .kutipan-by {
+      font-size: 13px; font-weight: 600; letter-spacing: .1em;
+      text-transform: uppercase; opacity: .7;
+    }
+
+    /* ---- KONTAK ---- */
+    #kontak { background: var(--bg); }
+    .kontak-grid {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: start;
+    }
+    .kontak-info h3 { font-size: 1.2rem; font-weight: 700; margin-bottom: 20px; }
+    .kontak-item {
+      display: flex; align-items: center; gap: 14px; margin-bottom: 16px;
+    }
+    .kontak-icon {
+      width: 42px; height: 42px; border-radius: var(--radius-sm);
+      background: var(--edu-soft); color: var(--edu);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 18px; flex-shrink: 0;
+    }
+    .kontak-item a { color: var(--text); text-decoration: none; font-weight: 500; font-size: 15px; }
+    .kontak-item a:hover { color: var(--edu); }
+    .btn-wa {
+      display: inline-flex; align-items: center; gap: 10px;
+      background: #25D366; color: #fff; margin-top: 20px;
+    }
+    .btn-wa:hover { background: #128C7E; }
+
+    .kontak-form { display: flex; flex-direction: column; gap: 14px; }
+    .form-group label {
+      display: block; font-size: 13px; font-weight: 600; margin-bottom: 6px;
+      color: var(--text);
+    }
+    .form-group input, .form-group select, .form-group textarea {
+      width: 100%; padding: 11px 14px;
+      background: var(--surface); border: 1.5px solid var(--border);
+      border-radius: var(--radius-sm); font-family: 'Outfit', sans-serif;
+      font-size: 15px; color: var(--text); transition: border-color .2s, box-shadow .2s;
+    }
+    .form-group input:focus, .form-group select:focus, .form-group textarea:focus {
+      outline: none; border-color: var(--edu);
+      box-shadow: 0 0 0 3px rgba(27,58,107,.12);
+    }
+    .form-group textarea { resize: vertical; min-height: 100px; }
+    .btn-submit {
+      background: var(--edu); color: #fff;
+      width: 100%; justify-content: center;
+    }
+    .btn-submit:hover { background: var(--edu-light); }
+    .btn-submit:disabled { opacity: .6; cursor: not-allowed; }
+
+    #form-status { padding: 12px 16px; border-radius: var(--radius-sm); font-size: 14px; display: none; }
+    #form-status.success { background: #dcfce7; color: #166534; border: 1px solid #bbf7d0; }
+    #form-status.error   { background: #fee2e2; color: #991b1b; border: 1px solid #fecaca; }
+
+    @media (max-width: 768px) { .kontak-grid { grid-template-columns: 1fr; gap: 40px; } }
+
+    /* ---- FOOTER ---- */
+    footer {
+      background: var(--text); color: rgba(255,255,255,.7);
+      padding: 36px 0; font-size: 13px; text-align: center;
+    }
+    footer strong { color: #fff; font-weight: 600; }
+    footer a { color: rgba(255,255,255,.5); text-decoration: none; margin: 0 8px; }
+    footer a:hover { color: #fff; }
+
+    /* ---- LOADING STATE ---- */
+    .loading-shimmer {
+      background: linear-gradient(90deg, var(--bg-subtle) 25%, var(--border) 50%, var(--bg-subtle) 75%);
+      background-size: 200% 100%; border-radius: var(--radius-md);
+      animation: shimmer 1.5s infinite;
+    }
+    @keyframes shimmer { 0% { background-position: 200% 0; } 100% { background-position: -200% 0; } }
+
+    /* ---- SCROLL REVEAL ---- */
+    .reveal { opacity: 0; transform: translateY(24px); transition: opacity .6s ease, transform .6s ease; }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+
+    @media (prefers-reduced-motion: reduce) {
+      .reveal { opacity: 1 !important; transform: none !important; transition: none !important; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ============================================================
+     NAVBAR
+     ============================================================ -->
+<nav id="navbar">
+  <div class="nav-inner">
+    <a href="#hero" class="nav-logo">
+      <div class="nav-logo-mark">S</div>
+      <span>Santoso</span>
+    </a>
+    <div class="nav-links" id="navLinks">
+      <a href="#hero" class="active" onclick="closeNav()">Beranda</a>
+      <a href="#tentang" onclick="closeNav()">Tentang</a>
+      <a href="pendidikan.html" onclick="closeNav()">Pendidikan</a>
+      <a href="musik.html" onclick="closeNav()">Musik</a>
+      <a href="usaha.html" onclick="closeNav()">Usaha</a>
+      <a href="#prestasi-home" onclick="closeNav()">Prestasi</a>
+      <a href="#kontak" onclick="closeNav()">Kontak</a>
+      <a href="admin.html" class="btn-admin" onclick="closeNav()">⚙ Admin</a>
+    </div>
+    <button class="nav-hamburger" id="hamburger" onclick="toggleNav()" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<!-- ============================================================
+     HERO
+     ============================================================ -->
+<section id="hero">
+  <div class="hero-inner">
+    <div class="hero-content">
+      <div class="hero-eyebrow">Portal Digital</div>
+      <h1 class="hero-name" id="heroName">Santoso,<br />S.Pd., M.Pd.</h1>
+      <p class="hero-title" id="heroTitle">Satu nama. Banyak dunia.</p>
+      <div class="hero-pills">
+        <span class="pill pill-edu">📚 Pendidik</span>
+        <span class="pill pill-music">🎤 Penyanyi</span>
+        <span class="pill pill-biz">💼 Entrepreneur</span>
+      </div>
+      <p class="hero-quote" id="heroBio">
+        Mengajar adalah panggilan. Bernyanyi adalah jiwa. Berwirausaha adalah bukti bahwa hidup bisa terus tumbuh.
+      </p>
+      <div class="hero-ctas">
+        <a href="#tentang" class="btn btn-primary">Kenali Saya</a>
+        <a href="#kontak" class="btn btn-outline">Hubungi Saya</a>
+      </div>
+    </div>
+    <div class="hero-visual">
+      <div class="about-photo-placeholder" id="heroPhotoPlaceholder" style="height:100%;border-radius:0;">
+        <span>👨‍🏫</span>
+        <span style="font-size:13px;color:var(--text-muted)">Foto Pak Santoso</span>
+      </div>
+      <img id="heroPhoto" src="" alt="Foto Santoso, S.Pd., M.Pd." style="display:none;" />
+      <div class="hero-visual-overlay"></div>
+    </div>
+  </div>
+  <div class="hero-scroll-hint">Gulir untuk menjelajah</div>
+</section>
+
+<!-- ============================================================
+     TIGA DUNIA
+     ============================================================ -->
+<section id="tiga-dunia">
+  <div class="container">
+    <div class="section-header reveal">
+      <p class="section-label">Tiga Dunia Satu Pribadi</p>
+      <h2 class="section-title">Dari kelas hingga panggung,<br />dari kantor hingga lapangan.</h2>
+    </div>
+    <div class="bento-3">
+      <a href="pendidikan.html" class="bento-card bento-edu reveal">
+        <div class="bento-icon">🎓</div>
+        <h3>Portofolio Pendidikan</h3>
+        <p>Karya inovasi pembelajaran, karya tulis, pengembangan profesi, dan rekam jejak sebagai pendidik yang berdedikasi.</p>
+        <span class="bento-link">Lihat Portofolio →</span>
+      </a>
+      <a href="musik.html" class="bento-card bento-music reveal">
+        <div class="bento-icon">🎤</div>
+        <h3>Portofolio Musik</h3>
+        <p>Penampilan di berbagai panggung festival, galeri foto, rekam video, dan perjalanan karir sebagai penyanyi profesional.</p>
+        <span class="bento-link">Lihat Portofolio →</span>
+      </a>
+      <a href="usaha.html" class="bento-card bento-biz reveal">
+        <div class="bento-icon">💼</div>
+        <h3>Portofolio Usaha</h3>
+        <p>Berbagai unit usaha termasuk MUA dan layanan lainnya — dengan galeri karya dan testimoni klien yang puas.</p>
+        <span class="bento-link">Lihat Portofolio →</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     TENTANG
+     ============================================================ -->
+<section id="tentang">
+  <div class="container">
+    <div class="about-grid">
+      <div class="reveal">
+        <div class="about-photo-placeholder" id="aboutPhotoPlaceholder">
+          <span>👨‍🏫</span>
+          <span style="font-size:13px;color:var(--text-muted)">Foto Resmi</span>
+        </div>
+        <img id="aboutPhoto" src="" alt="Santoso, S.Pd., M.Pd." class="about-photo" style="display:none;" />
+      </div>
+      <div>
+        <div class="reveal">
+          <p class="section-label">Tentang Saya</p>
+          <h2 class="section-title">Santoso,<br />S.Pd., M.Pd.</h2>
+          <p class="about-bio" id="aboutBio">
+            Saya adalah seorang pendidik yang berdedikasi, penyanyi profesional, dan entrepreneur. Selama lebih dari satu dekade, saya telah membentuk generasi penerus bangsa di kelas, menyebarkan kebahagiaan lewat musik di panggung, dan membangun usaha dengan sepenuh hati.
+          </p>
+          <p id="aboutSchool" style="font-size:14px;color:var(--text-muted);margin-bottom:24px;">SD Negeri — Tuban, Jawa Timur</p>
+        </div>
+        <div class="about-values reveal">
+          <div class="about-value">
+            <strong>📚 Pendidik</strong>
+            <span>Guru SD berdedikasi dengan inovasi pembelajaran</span>
+          </div>
+          <div class="about-value">
+            <strong>🎤 Penyanyi</strong>
+            <span>Penyanyi profesional di berbagai event & festival</span>
+          </div>
+          <div class="about-value">
+            <strong>💼 Entrepreneur</strong>
+            <span>Pemilik usaha MUA dan berbagai layanan lainnya</span>
+          </div>
+          <div class="about-value">
+            <strong>✍️ Penulis</strong>
+            <span>Karya tulis dan publikasi ilmiah pendidikan</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     KUTIPAN INSPIRATIF
+     ============================================================ -->
+<section id="kutipan">
+  <div class="container">
+    <div class="kutipan-inner">
+      <div class="kutipan-mark">"</div>
+      <p class="kutipan-text" id="kutipanText">
+        Mengajar adalah panggilan. Bernyanyi adalah jiwa. Berwirausaha adalah bukti bahwa hidup bisa terus tumbuh.
+      </p>
+      <p class="kutipan-by" id="kutipanBy">— Santoso, S.Pd., M.Pd.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     PRESTASI HIGHLIGHT
+     ============================================================ -->
+<section id="prestasi-home">
+  <div class="container">
+    <div class="section-header reveal">
+      <p class="section-label">Rekam Jejak</p>
+      <h2 class="section-title">Prestasi & Penghargaan</h2>
+      <p class="section-sub">Capaian terbaik dari tiga dunia yang dijalani dengan sepenuh hati.</p>
+    </div>
+    <div class="prestasi-grid" id="prestasiGrid">
+      <!-- Loading skeleton -->
+      <div class="prestasi-card loading-shimmer" style="height:120px;"></div>
+      <div class="prestasi-card loading-shimmer" style="height:120px;"></div>
+      <div class="prestasi-card loading-shimmer" style="height:120px;"></div>
+    </div>
+    <div style="text-align:center;margin-top:36px;" class="reveal">
+      <a href="prestasi.html" class="btn btn-outline">Lihat Semua Prestasi →</a>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     KONTAK
+     ============================================================ -->
+<section id="kontak">
+  <div class="container">
+    <div class="kontak-grid">
+      <div class="reveal">
+        <p class="section-label">Hubungi Saya</p>
+        <h2 class="section-title">Mari Berkolaborasi</h2>
+        <p class="section-sub" style="margin-bottom:28px;">
+          Untuk informasi booking penampilan, konsultasi usaha, atau keperluan pendidikan, jangan ragu untuk menghubungi saya.
+        </p>
+        <div class="kontak-item">
+          <div class="kontak-icon">📱</div>
+          <div>
+            <div style="font-size:11px;color:var(--text-muted);text-transform:uppercase;letter-spacing:.1em;">WhatsApp</div>
+            <a href="#" id="waLink">+62 812 xxxx xxxx</a>
+          </div>
+        </div>
+        <div class="kontak-item">
+          <div class="kontak-icon">✉️</div>
+          <div>
+            <div style="font-size:11px;color:var(--text-muted);text-transform:uppercase;letter-spacing:.1em;">Email</div>
+            <a href="#" id="emailLink">santoso@gmail.com</a>
+          </div>
+        </div>
+        <div class="kontak-item">
+          <div class="kontak-icon">📸</div>
+          <div>
+            <div style="font-size:11px;color:var(--text-muted);text-transform:uppercase;letter-spacing:.1em;">Instagram</div>
+            <a href="#" id="igLink">@santoso</a>
+          </div>
+        </div>
+        <a href="#" class="btn btn-wa" id="btnWa">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.890-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+          Chat WhatsApp
+        </a>
+      </div>
+      <div class="reveal">
+        <h3 style="font-size:1.1rem;font-weight:700;margin-bottom:20px;">Kirim Pesan</h3>
+        <form class="kontak-form" id="contactForm">
+          <div class="form-group">
+            <label for="cName">Nama Lengkap</label>
+            <input type="text" id="cName" placeholder="Nama Anda" required />
+          </div>
+          <div class="form-group">
+            <label for="cEmail">Email</label>
+            <input type="email" id="cEmail" placeholder="email@anda.com" required />
+          </div>
+          <div class="form-group">
+            <label for="cPurpose">Keperluan</label>
+            <select id="cPurpose">
+              <option value="">Pilih keperluan...</option>
+              <option value="Booking Penampilan">Booking Penampilan Musik</option>
+              <option value="Konsultasi MUA">Konsultasi MUA / Usaha</option>
+              <option value="Pendidikan">Terkait Pendidikan</option>
+              <option value="Kolaborasi">Kolaborasi / Kerjasama</option>
+              <option value="Lainnya">Lainnya</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="cMessage">Pesan</label>
+            <textarea id="cMessage" placeholder="Tulis pesan Anda..." required></textarea>
+          </div>
+          <div id="form-status"></div>
+          <button type="submit" class="btn btn-submit" id="btnSubmit">Kirim Pesan</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     FOOTER
+     ============================================================ -->
+<footer>
+  <div class="container">
+    <p>© 2024 <strong>Santoso, S.Pd., M.Pd.</strong> — Pendidik · Penyanyi · Entrepreneur</p>
+    <p style="margin-top:8px;">
+      <a href="pendidikan.html">Pendidikan</a>
+      <a href="musik.html">Musik</a>
+      <a href="usaha.html">Usaha</a>
+      <a href="prestasi.html">Prestasi</a>
+      <a href="#kontak">Kontak</a>
+    </p>
+  </div>
+</footer>
+
+<script src="config.js"></script>
+<script>
+/* ================================================================
+   UTILS
+   ================================================================ */
+const API = () => window.APP_CONFIG.API_URL;
+
+async function fetchAPI(params, options = {}) {
+  const qs = new URLSearchParams(params).toString();
+  const url = `${API()}?${qs}`;
+  try {
+    const res = await fetch(url, { ...options, redirect: 'follow' });
+    return await res.json();
+  } catch (e) {
+    return { status: 'error', message: e.message };
+  }
+}
+
+async function postAPI(params, body) {
+  const qs = new URLSearchParams(params).toString();
+  const url = `${API()}?${qs}`;
+  try {
+    const res = await fetch(url, {
+      method: 'POST', redirect: 'follow',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(body)
+    });
+    return await res.json();
+  } catch (e) {
+    return { status: 'error', message: e.message };
+  }
+}
+
+/* ================================================================
+   NAVBAR
+   ================================================================ */
+function toggleNav() {
+  document.getElementById('navLinks').classList.toggle('open');
+}
+function closeNav() {
+  document.getElementById('navLinks').classList.remove('open');
+}
+
+/* ================================================================
+   SCROLL REVEAL
+   ================================================================ */
+const revealObserver = new IntersectionObserver((entries) => {
+  entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); revealObserver.unobserve(e.target); } });
+}, { threshold: 0.12 });
+document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
+
+/* Active nav link */
+window.addEventListener('scroll', () => {
+  const sections = ['hero','tiga-dunia','tentang','kutipan','prestasi-home','kontak'];
+  let current = 'hero';
+  sections.forEach(id => {
+    const s = document.getElementById(id);
+    if (s && window.scrollY >= s.offsetTop - 80) current = id;
+  });
+  document.querySelectorAll('.nav-links a').forEach(a => {
+    a.classList.toggle('active', a.getAttribute('href') === '#' + current);
+  });
+}, { passive: true });
+
+/* ================================================================
+   LOAD PROFILE DATA
+   ================================================================ */
+async function loadProfile() {
+  const res = await fetchAPI({ action: 'getProfile' });
+  if (res.status === 'success' && res.data) {
+    const d = res.data;
+    if (d.name) {
+      document.getElementById('heroName').innerHTML = d.name.replace(',', ',<br />');
+      document.getElementById('kutipanBy').textContent = '— ' + d.name;
+    }
+    if (d.tagline) {
+      document.getElementById('heroTitle').textContent = d.tagline;
+    }
+    if (d.philosophy) {
+      document.getElementById('heroBio').textContent = d.philosophy;
+      document.getElementById('kutipanText').textContent = d.philosophy;
+    }
+    if (d.bio) document.getElementById('aboutBio').textContent = d.bio;
+    if (d.school) document.getElementById('aboutSchool').textContent = d.school;
+
+    // Contact info
+    if (d.whatsapp) {
+      const waFormatted = '+' + d.whatsapp.replace(/\D/g, '');
+      document.getElementById('waLink').textContent = waFormatted;
+      document.getElementById('waLink').href = 'https://wa.me/' + d.whatsapp;
+      document.getElementById('btnWa').href = 'https://wa.me/' + d.whatsapp;
+    }
+    if (d.email) {
+      document.getElementById('emailLink').textContent = d.email;
+      document.getElementById('emailLink').href = 'mailto:' + d.email;
+    }
+    if (d.instagram) {
+      document.getElementById('igLink').textContent = '@' + d.instagram.replace('https://instagram.com/', '').replace('@', '');
+      document.getElementById('igLink').href = d.instagram;
+    }
+
+    // Photo
+    if (d.photo_url) {
+      const ph = document.getElementById('heroPhotoPlaceholder');
+      const hi = document.getElementById('heroPhoto');
+      const ap = document.getElementById('aboutPhotoPlaceholder');
+      const ai = document.getElementById('aboutPhoto');
+      hi.src = d.photo_url;
+      hi.style.display = 'block';
+      ph.style.display = 'none';
+      ai.src = d.photo_url;
+      ai.style.display = 'block';
+      ap.style.display = 'none';
+    }
+
+    document.title = (d.name || 'Santoso') + ' — Pendidik · Penyanyi · Entrepreneur';
+  }
+}
+
+/* ================================================================
+   LOAD PRESTASI HIGHLIGHT (latest 3 from achievements)
+   ================================================================ */
+async function loadPrestasiHighlight() {
+  const grid = document.getElementById('prestasiGrid');
+  const res = await fetchAPI({ action: 'getAll', sheet: 'achievements' });
+  if (res.status === 'success' && res.data && res.data.length > 0) {
+    const items = res.data.slice(0, 6);
+    grid.innerHTML = items.map(p => {
+      const catMap = { Pendidikan: 'cat-edu', Musik: 'cat-music', Usaha: 'cat-biz' };
+      const catClass = catMap[p.category] || 'cat-edu';
+      return `
+        <div class="prestasi-card reveal">
+          <span class="prestasi-cat ${catClass}">${p.category || 'Prestasi'}</span>
+          <h4>${p.title || ''}</h4>
+          <p class="prestasi-meta">${p.organizer || ''} ${p.year ? '· ' + p.year : ''} ${p.level ? '· ' + p.level : ''}</p>
+        </div>`;
+    }).join('');
+    grid.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
+  } else {
+    grid.innerHTML = '<p style="color:var(--text-muted);font-size:14px;">Data prestasi belum tersedia. Admin dapat menambahkan melalui dashboard.</p>';
+  }
+}
+
+/* ================================================================
+   CONTACT FORM
+   ================================================================ */
+document.getElementById('contactForm').addEventListener('submit', async (e) => {
+  e.preventDefault();
+  const btn = document.getElementById('btnSubmit');
+  const status = document.getElementById('form-status');
+  btn.disabled = true;
+  btn.textContent = 'Mengirim...';
+  status.style.display = 'none';
+
+  const body = {
+    name: document.getElementById('cName').value,
+    email: document.getElementById('cEmail').value,
+    purpose: document.getElementById('cPurpose').value,
+    message: document.getElementById('cMessage').value,
+  };
+
+  const res = await postAPI({ action: 'sendMessage' }, body);
+
+  if (res.status === 'success') {
+    status.className = 'success';
+    status.textContent = '✓ ' + res.message;
+    status.style.display = 'block';
+    e.target.reset();
+  } else {
+    status.className = 'error';
+    status.textContent = '✕ Gagal: ' + (res.message || 'Coba lagi.');
+    status.style.display = 'block';
+  }
+  btn.disabled = false;
+  btn.textContent = 'Kirim Pesan';
+});
+
+/* ================================================================
+   INIT
+   ================================================================ */
+loadProfile();
+loadPrestasiHighlight();
+</script>
+</body>
+</html>
