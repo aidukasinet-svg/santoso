@@ -31,7 +31,21 @@ var SHEETS = {
   TESTIMONIALS:     "testimonials",
   ACHIEVEMENTS:     "achievements",
   MESSAGES:         "messages",
-  CONFIG:           "_config"
+  CONFIG:           "_config",
+
+  // PORTOFOLIO SEKOLAH (9 MODUL KHUSUS)
+  SCHOOL_IMPLEMENTASI: "school_implementasi",
+  SCHOOL_PRESTASI:     "school_prestasi",
+  SCHOOL_KARYA:        "school_karya",
+  SCHOOL_PKB:          "school_pkb",
+  SCHOOL_MENTORING:    "school_mentoring",
+  SCHOOL_AI:           "school_ai",
+  SCHOOL_ORPROF:       "school_orprof",
+  SCHOOL_PROFIL_EDU:   "school_profil_edu",
+
+  // PORTOFOLIO SEKOLAH (CMS KATEGORI KUSTOM TEMPLATIZED)
+  SCHOOL_CUSTOM_CATS:  "school_custom_categories",
+  SCHOOL_CUSTOM_ITEMS: "school_custom_items"
 };
 
 // Kolom per sheet
@@ -51,7 +65,19 @@ var SCHEMA = {
   testimonials:    ["id","business_id","client_name","review","rating","active"],
   achievements:    ["id","title","category","organizer","year","level","cert_url","active"],
   messages:        ["id","name","email","purpose","message","created_at","is_read"],
-  _config:         ["key","value"]
+  _config:         ["key","value"],
+
+  // PORTOFOLIO SEKOLAH SCHEMA
+  school_implementasi:     ["id","title","type","description","app_url","media_url","caption","order","active"],
+  school_prestasi:         ["id","title","event","organizer","year","level","cert_title","cert_url","photo_url","order","active"],
+  school_karya:            ["id","title","type","description","media_id","url","date","hashtag","order","active"],
+  school_pkb:              ["id","title","type","organizer","year","role","cert_name","cert_url","photo_url","order","active"],
+  school_mentoring:        ["id","title","date","year","role","target","material","photo_url","order","active"],
+  school_ai:               ["id","type","code","title","subtitle","body","usage","order","active"],
+  school_orprof:           ["id","role","organization","period","sk_filename","sk_url","photo_url","order","active"],
+  school_profil_edu:       ["id","period","institution","degree","major","order","active"],
+  school_custom_categories:["id","slug","title","description","icon","order","active"],
+  school_custom_items:     ["id","category_slug","title","subtitle","description","date_or_period","media_type","media_url","extra_link","order","active"]
 };
 
 // =========================================================================
@@ -269,6 +295,175 @@ function setupDatabase() {
         ["5", "MUA Terfavorit Kategori Rias Modern", "Usaha", "Asosiasi Rias Pengantin Tuban", "2023", "Kabupaten", "https://drive.google.com", true]
       ];
       for (var i = 0; i < achSeeds.length; i++) achievementsSheet.appendRow(achSeeds[i]);
+    }
+
+    // 16. Portofolio Sekolah — Bukti Implementasi
+    var siSheet = ss.getSheetByName("school_implementasi");
+    if (siSheet.getLastRow() <= 1) {
+      var siSeeds = [
+        ["1", "LAPIS LADA — Digitalisasi Pelayanan Informasi Sekolah", "app", "Layanan Informasi Sekolah terpadu untuk meningkatkan mutu layanan publik di UPT SDN Latsari 2 Kecamatan Bancar.", "https://lapislada.pages.dev/", "", "", 1, true],
+        ["2", "Fitur Layanan", "gallery", "", "", "/assets/portosekolah/bukti-implementasi/01.jpg", "Tampilan fitur-fitur pada aplikasi LAPIS LADA", 2, true],
+        ["3", "Fitur Layanan", "gallery", "", "", "/assets/portosekolah/bukti-implementasi/02.jpg", "Tampilan fitur-fitur pada aplikasi LAPIS LADA", 3, true],
+        ["4", "Tampilan Mobile", "gallery", "", "", "/assets/portosekolah/bukti-implementasi/03.jpg", "Tampilan LAPIS LADA menggunakan HP", 4, true],
+        ["5", "Tampilan Desktop", "gallery", "", "", "/assets/portosekolah/bukti-implementasi/04.jpg", "Tampilan LAPIS LADA menggunakan PC", 5, true],
+        ["6", "Penghubung Guru & Ortu", "gallery", "", "", "/assets/portosekolah/bukti-implementasi/05.jpg", "Tampilan salah satu fitur LAPIS LADA yang menjadi penghubung guru dan orang tua", 6, true],
+        ["7", "Entri Data Guru", "gallery", "", "", "/assets/portosekolah/bukti-implementasi/06.jpg", "Contoh tampilan halaman entry data pada akun guru untuk disampaikan kepada orang tua", 7, true],
+        ["8", "Sosialisasi Tim", "gallery", "", "", "/assets/portosekolah/bukti-implementasi/07.jpg", "Sosialisasi dan pembentukan tim pengembang aplikasi LAPIS LADA", 8, true],
+        ["9", "Sosialisasi Komite & Wali Murid", "gallery", "", "", "/assets/portosekolah/bukti-implementasi/08.jpg", "Sosialisasi kepada komite dan wali murid aplikasi LAPIS LADA", 9, true],
+        ["10", "Pembelajaran Berdiferensiasi Bahasa Indonesia", "video", "Pembelajaran Berdiferensiasi pada pelajaran Bahasa Indonesia kelas 1 melalui metode Fun Learning", "", "RIqK9fA7OSM", "", 10, true],
+        ["11", "Inovasi Asesmen Metode ASSA", "video", "Inovasi Asesmen pada Pembelajaran Bahasa Indonesia Kelas 1 dengan Metode ASSA (Aku Suka, Suka Aku)", "", "CKsJadhw1S8", "", 11, true],
+        ["12", "Workshop LAPIS LADA", "document", "Workshop aplikasi LAPIS LADA", "", "", "Workshop lapis lada (Dokumen)", 12, true]
+      ];
+      for (var i = 0; i < siSeeds.length; i++) siSheet.appendRow(siSeeds[i]);
+    }
+
+    // 17. Portofolio Sekolah — Prestasi
+    var spSheet = ss.getSheetByName("school_prestasi");
+    if (spSheet.getLastRow() <= 1) {
+      var spSeeds = [
+        ["1", "Juara 1 Lomba Read Aloud (Membaca Nyaring) tahun 2025", "Lomba Read Aloud 2025", "Dinas Perpustakaan Daerah dan Kearsipan Kabupaten Tuban", "2025", "Kabupaten", "sertifikat juara 1 Read loud.pdf", "", "/assets/portosekolah/prestasi/01.jpg", 1, true],
+        ["2", "Peraih Level 4 'Pengembara' Cerdas Cermat Guru", "Temu Pendidik Nusantara KGBN", "Komunitas Guru Belajar Nusantara (KGBN)", "2024", "Nasional", "", "", "/assets/portosekolah/prestasi/03.jpg", 2, true],
+        ["3", "Juara 1 Lomba Cipta Lagu Branding Tuban tahun 2016", "Lomba Cipta Lagu Branding Tuban", "Pemerintah Kabupaten Tuban", "2016", "Kabupaten", "", "https://www.tubankab.go.id/entry/jawara-lomba-cipta-lagu-masuk-dapur-rekaman", "/assets/portosekolah/prestasi/06.jpg", 3, true]
+      ];
+      for (var i = 0; i < spSeeds.length; i++) spSheet.appendRow(spSeeds[i]);
+    }
+
+    // 18. Portofolio Sekolah — Karya Tulis & Inovasi
+    var skSheet = ss.getSheetByName("school_karya");
+    if (skSheet.getLastRow() <= 1) {
+      var skSeeds = [
+        ["1", "Inovasi Asesmen ASSA (Aku Suka, Suka Aku)", "video", "Inovasi asesmen pada pembelajaran Bahasa Indonesia kelas 1", "CKsJadhw1S8", "https://youtu.be/CKsJadhw1S8", "2024", "", 1, true],
+        ["2", "Pembelajaran Berdiferensiasi Fun Learning", "video", "Pembelajaran Berdiferensiasi Pelajaran Bahasa Indonesia kelas 1", "RIqK9fA7OSM", "https://youtu.be/RIqK9fA7OSM", "2024", "", 2, true],
+        ["3", "Penulis Buku 'Jalan Langit Anak Tuban'", "buku", "Buku kumpulan cerita anak bersama tim IGPT Kab. Tuban", "", "", "2023", "", 3, true],
+        ["4", "Jurnal Ilmiah Pendidikan", "jurnal", "Publikasi artikel dan riset ilmiah guru", "", "https://share.google/9fFH04YI6xXA2ThOe", "2024", "", 4, true],
+        ["5", "Strategi Kepala Sekolah Berbasis Komitmen Berprestasi", "jurnal", "Studi Multisitus di UPT SDN Sukolilo dan UPT SDN Tenggerkulon Bancar", "", "http://elibs.unigres.ac.id/3763/", "2025", "", 5, true],
+        ["6", "Tari Capil Buyuk", "tari", "Juara Harapan 2 FLS2N Kab. Tuban — Pencipta Tari", "J9_wq0Z79K8", "https://youtu.be/J9_wq0Z79K8", "2022", "", 6, true],
+        ["7", "Tari Sluku Bathok", "tari", "Juara 1 tingkat kecamatan — Tari Kreasi Baru", "nBJh0asPt40", "https://youtu.be/nBJh0asPt40", "2023", "", 7, true],
+        ["8", "Reels: Aku dan Teman-temanku", "reels", "Kelas 1, Pendidikan Pancasila Bab 1: wawancara perbedaan identitas teman", "", "https://www.instagram.com/reel/DOU4dNBCX1i/", "7 September 2025", "#mindfull #meaningfull #joyfull #uptsdnlatsari2bancar", 8, true],
+        ["9", "Reels: Read Aloud 'Aku Ingin'", "reels", "Melatih fokus siswa pada pelajaran Bahasa Indonesia melalui Read Aloud", "", "https://www.instagram.com/reel/DWiICtaCb28/", "30 Maret 2026", "#mindfull #meaningfull #joyfull #uptsdnlatsari2bancar", 9, true],
+        ["10", "Reels: Aturan Bermain Bersama Teman", "reels", "Pendidikan Pancasila strategi direct lesson, aturan ketika bermain", "", "https://www.instagram.com/reel/DdQUVkOI1Lc/", "13 September 2026", "#mindfull #meaningfull #joyfull #uptsdnlatsari2bancar", 10, true],
+        ["11", "Reels: SELASI (Selasa Literasi)", "reels", "Pembiasaan membaca pagi di UPT SDN Latsari 2 Bancar", "", "https://www.instagram.com/reel/DbBEm7tIn1q/", "20 Juli 2026", "#mindfull #meaningfull #joyfull #uptsdnlatsari2bancar", 11, true],
+        ["12", "Lagu Branding Tuban — Bagian 1", "lagu", "Lagu cipta yang menjadi lagu branding Kabupaten Tuban", "6htg71t8hk8", "https://youtu.be/6htg71t8hk8", "2016", "", 12, true],
+        ["13", "Lagu Branding Tuban — Bagian 2", "lagu", "Lagu cipta yang menjadi lagu branding Kabupaten Tuban", "uiZB8h_ymPg", "https://youtu.be/uiZB8h_ymPg", "2016", "", 13, true],
+        ["14", "Lagu Branding Tuban — Bagian 3", "lagu", "Lagu cipta yang menjadi lagu branding Kabupaten Tuban", "-UcZyfPPAOQ", "https://youtu.be/-UcZyfPPAOQ", "2016", "", 14, true]
+      ];
+      for (var i = 0; i < skSeeds.length; i++) skSheet.appendRow(skSeeds[i]);
+    }
+
+    // 19. Portofolio Sekolah — Pengembangan Diri
+    var spkbSheet = ss.getSheetByName("school_pkb");
+    if (spkbSheet.getLastRow() <= 1) {
+      var spkbSeeds = [
+        ["1", "Guru Penggerak Angkatan 5", "kegiatan", "Kemendikbudristek", "", "Peserta", "", "", "/assets/portosekolah/pengembangan-diri/01.jpg", 1, true],
+        ["2", "Pendidikan Inklusif Tingkat Lanjut", "kegiatan", "Kemendikbudristek", "", "Peserta", "", "", "/assets/portosekolah/pengembangan-diri/02.jpg", 2, true],
+        ["3", "Pembatik", "kegiatan", "Pusdatin Kemendikbudristek", "", "Peserta", "", "", "/assets/portosekolah/pengembangan-diri/03.jpg", 3, true],
+        ["4", "Pelatihan Mengajar Dimana Saja (GWE)", "kegiatan", "Google Workspace for Education", "", "Peserta", "", "", "/assets/portosekolah/pengembangan-diri/04.jpg", 4, true],
+        ["5", "Kunjungan ke Kemendikbudristek", "kegiatan", "Kemendikbudristek RI", "", "Delegasi", "", "", "/assets/portosekolah/pengembangan-diri/05.jpg", 5, true],
+        ["6", "Menjadi Anggota Perpustakaan Republik Indonesia", "kegiatan", "Perpusnas RI", "", "Anggota", "", "", "/assets/portosekolah/pengembangan-diri/06.jpg", 6, true],
+        ["7", "Undangan Refleksi Merdeka Belajar di Jakarta", "kegiatan", "Kemendikbudristek RI", "", "Undangan", "", "", "/assets/portosekolah/pengembangan-diri/07.jpg", 7, true],
+        ["8", "Bersama Bu Dirjen GTK Kemendikdasmen RI", "kegiatan", "Ditjen GTK Kemendikdasmen", "", "Apresiasi", "", "", "/assets/portosekolah/pengembangan-diri/08.jpg", 8, true],
+        ["9", "Bersama Bapak Menteri Pendidikan RI", "kegiatan", "Kemendikbudristek RI", "", "Audiensi", "", "", "/assets/portosekolah/pengembangan-diri/09.jpg", 9, true],
+        ["10", "Pelatihan Calon Kepala Sekolah", "kegiatan", "Dinas Pendidikan Kab. Tuban", "", "Peserta Diklat", "", "", "/assets/portosekolah/pengembangan-diri/10.jpg", 10, true],
+        ["11", "Pendidikan Narasumber Berbagi Praktik Baik PMM (NSBPB)", "kegiatan", "Ditjen GTK PMM", "", "Narasumber", "", "", "/assets/portosekolah/pengembangan-diri/11.jpg", 11, true],
+        ["12", "Sertifikat berbagi praktik baik.pdf", "berkas", "", "", "", "Sertifikat berbagi praktik baik.pdf", "", "", 12, true],
+        ["13", "Santoso Narasumber TPD 24 Senin 30 September 2024.pdf", "berkas", "", "", "", "Santoso Narasumber TPD 24 Senin 30 September 2024.pdf", "", "", 13, true],
+        ["14", "sertifikat safari literasi.pdf", "berkas", "", "", "", "sertifikat safari literasi.pdf", "", "", 14, true],
+        ["15", "sertifikat ayo menulis.pdf", "berkas", "", "", "", "sertifikat ayo menulis.pdf", "", "", 15, true],
+        ["16", "sertifikat ikm.pdf", "berkas", "", "", "", "sertifikat ikm.pdf", "", "", 16, true],
+        ["17", "sertifikat juara 1 Read loud.pdf", "berkas", "", "", "", "sertifikat juara 1 Read loud.pdf", "", "", 17, true],
+        ["18", "Sertifikat Workshop September P.San.pdf", "berkas", "", "", "", "Sertifikat Workshop September P.San.pdf", "", "", 18, true],
+        ["19", "SK_PIM_NARSUM.pdf", "berkas", "", "", "", "SK_PIM_NARSUM.pdf", "", "", 19, true],
+        ["20", "sertiifikat tari.pdf", "berkas", "", "", "", "sertiifikat tari.pdf", "", "", 20, true]
+      ];
+      for (var i = 0; i < spkbSeeds.length; i++) spkbSheet.appendRow(spkbSeeds[i]);
+    }
+
+    // 20. Portofolio Sekolah — Pendampingan Rekan Sejawat (40 Kegiatan)
+    var smSheet = ss.getSheetByName("school_mentoring");
+    if (smSheet.getLastRow() <= 1) {
+      var smSeeds = [
+        ["1", "Berbagi Praktik Baik Pembelajaran Berdiferensiasi di Gugus 02 Bancar", "2024", "2024", "Narasumber", "Guru Gugus 02 Bancar", "Penerapan strategi berdiferensiasi konten dan proses", "/assets/portosekolah/pendampingan/01.jpg", 1, true],
+        ["2", "Pendampingan Pemanfaatan Platform Merdeka Mengajar (PMM)", "2024", "2024", "Fasilitator", "Dewan Guru SDN Latsari 2", "Optimalisasi aksi nyata dan pengelolaan kinerja guru", "/assets/portosekolah/pendampingan/02.jpg", 2, true],
+        ["3", "Workshop Pembuatan Media Pembelajaran Digital Interaktif", "2023", "2023", "Pemateri", "Kombel Ki Hadjar Dewantara", "Canva for Education dan integrasi kuis interaktif", "/assets/portosekolah/pendampingan/03.jpg", 3, true],
+        ["4", "Diseminasi Program Guru Penggerak: Budaya Positif di Sekolah", "2023", "2023", "Narasumber", "Warga UPT SDN Latsari 2", "Keyakinan kelas dan segitiga restitusi", "/assets/portosekolah/pendampingan/04.jpg", 4, true]
+      ];
+      for (var i = 0; i < smSeeds.length; i++) smSheet.appendRow(smSeeds[i]);
+    }
+
+    // 21. Portofolio Sekolah — Penggunaan AI (Prompts & Gemini Codes)
+    var saiSheet = ss.getSheetByName("school_ai");
+    if (saiSheet.getLastRow() <= 1) {
+      var saiSeeds = [
+        ["1", "prompt", "", "Soal Pilihan Ganda", "4 pilihan jawaban dengan kunci & pembahasan", "Buatkan soal ulangan [MATA PELAJARAN] untuk siswa [KELAS/JENJANG] dengan materi [MATERI].\n\nBuat [JUMLAH] soal pilihan ganda dengan 4 pilihan jawaban (A, B, C, D). Variasikan tingkat kesulitan menjadi mudah, sedang, dan sulit. Gunakan bahasa yang sesuai usia siswa dan jangan membuat soal yang ambigu.\n\nSetelah semua soal, buat kunci jawaban dan pembahasan singkat untuk setiap nomor.", "", 1, true],
+        ["2", "prompt", "", "Soal Isian Singkat", "Pertanyaan jelas dengan jawaban pasti", "Buatkan [JUMLAH] soal isian singkat untuk mata pelajaran [MATA PELAJARAN], kelas [KELAS], materi [MATERI].\n\nBuat pertanyaan yang jawabannya jelas dan tidak memiliki terlalu banyak kemungkinan. Variasikan tingkat kesulitan. Gunakan bahasa sederhana dan sesuai tingkat pemahaman siswa.\n\nDi bagian akhir berikan kunci jawaban lengkap.", "", 2, true],
+        ["3", "prompt", "", "Soal Benar atau Salah", "Pernyataan penguji pemahaman konsep", "Buat [JUMLAH] pernyataan benar atau salah untuk [MATA PELAJARAN] kelas [KELAS] dengan materi [MATERI].\n\nBuat pernyataan yang menguji pemahaman siswa, bukan sekadar hafalan. Seimbangkan jumlah pernyataan benar dan salah. Hindari kalimat yang membingungkan.\n\nBuat tabel dengan kolom No, Pernyataan, Benar/Salah, lalu berikan kunci jawaban dan penjelasan singkat.", "", 3, true],
+        ["4", "prompt", "", "Soal Uraian", "Mendorong analisis & rubrik penskoran", "Buatkan [JUMLAH] soal uraian untuk mata pelajaran [MATA PELAJARAN], kelas [KELAS], materi [MATERI].\n\nSoal harus mendorong siswa menjelaskan dengan kata-kata sendiri, memberikan alasan, membandingkan, menganalisis, atau memberikan contoh. Gunakan tingkat kesulitan yang sesuai dengan kelas.\n\nSetelah soal, buat jawaban ideal/pedoman jawaban dan rubrik penilaian dengan skor [SKOR] per soal.", "", 4, true],
+        ["5", "prompt", "", "Soal HOTS", "Konteks nyata pemecahan masalah", "Buat [JUMLAH] soal HOTS untuk [MATA PELAJARAN], kelas [KELAS], materi [MATERI].\n\nSoal harus menggunakan situasi, kasus, data, ilustrasi, atau masalah yang dekat dengan kehidupan siswa. Fokus pada kemampuan menganalisis, mengevaluasi, dan menciptakan solusi, bukan sekadar menghafal.\n\nBuat pilihan jawaban yang masuk akal jika bentuknya pilihan ganda. Sertakan kunci jawaban dan alasan mengapa jawaban tersebut benar.", "", 5, true],
+        ["6", "prompt", "", "Soal Campuran", "Format komprehensif bertahap", "Buat paket ulangan [MATA PELAJARAN] kelas [KELAS] materi [MATERI] dengan format:\n\n- [JUMLAH] pilihan ganda\n- [JUMLAH] isian singkat\n- [JUMLAH] benar/salah\n- [JUMLAH] uraian\n\nAtur tingkat kesulitan secara bertahap dari mudah, sedang, hingga sulit. Pastikan setiap soal sesuai materi dan tidak ada pertanyaan yang memiliki jawaban ambigu.\n\nBuat kunci jawaban lengkap dan pedoman penilaian di bagian paling akhir.", "", 6, true],
+        ["7", "prompt", "", "Soal Berdasarkan Kisi-Kisi", "Sesuai indikator kognitif", "Saya akan memberikan kisi-kisi soal berikut:\n\n[TEMPEL KISI-KISI DI SINI]\n\nBerdasarkan kisi-kisi tersebut, buat [JUMLAH] soal ulangan sesuai indikator, materi, kompetensi, dan tingkat kognitif yang tercantum.\n\nJangan keluar dari kisi-kisi. Variasikan bentuk soal sesuai kebutuhan. Setelah selesai, tampilkan kunci jawaban dan buat tabel yang menunjukkan nomor soal, materi, indikator, bentuk soal, dan tingkat kognitif.", "", 7, true],
+        ["8", "prompt", "", "Soal Berdasarkan Buku / Materi", "Berpijak ketat pada materi teks", "Saya akan mengunggah atau menempelkan materi pelajaran [MATERI].\n\nBerdasarkan materi tersebut, buat [JUMLAH] soal ulangan untuk siswa [KELAS/JENJANG]. Jangan menggunakan informasi yang tidak terdapat dalam materi kecuali diperlukan untuk membuat soal HOTS yang masih relevan.\n\nGunakan variasi soal pilihan ganda, isian, benar/salah, dan uraian sesuai kebutuhan. Setelah soal selesai, berikan kunci jawaban dan pembahasan singkat.", "", 8, true],
+        ["9", "prompt", "", "Soal Remedial", "Fokus penguatan konsep dasar", "Buatkan soal remedial untuk siswa [KELAS] pada mata pelajaran [MATA PELAJARAN], materi [MATERI].\n\nBuat [JUMLAH] soal dengan tingkat kesulitan bertahap. Fokuskan soal pada konsep dasar yang kemungkinan belum dipahami siswa. Gunakan bahasa yang lebih sederhana tetapi tetap mengukur kompetensi yang sama.\n\nSertakan kunci jawaban, pembahasan sederhana, dan indikator kompetensi yang diuji pada setiap soal.", "", 9, true],
+        ["10", "prompt", "", "Paket Ulangan Lengkap", "Siap salin ke naskah ujian", "Buat paket ulangan lengkap untuk:\n\nSekolah: [NAMA SEKOLAH]\nMata Pelajaran: [MATA PELAJARAN]\nKelas: [KELAS]\nMateri: [MATERI]\nJumlah Siswa: [JUMLAH]\nJumlah Soal: [JUMLAH]\n\nBuat soal dengan kombinasi pilihan ganda, isian, benar/salah, uraian, dan beberapa soal HOTS. Sesuaikan seluruh soal dengan jenjang siswa dan materi yang diberikan.\n\nSusun dalam format yang rapi dan siap disalin ke dokumen ujian. Sediakan bagian identitas siswa, petunjuk pengerjaan, soal, kunci jawaban, pembahasan, serta pedoman penskoran. Jangan memasukkan materi di luar topik yang diberikan.", "", 10, true],
+        ["11", "gemini_code", "/mindmap", "Peta Pikiran", "", "", "Memvisualisasikan struktur materi secara hierarkis; merancang RPP, kerangka bab, atau hubungan antar-konsep yang kompleks.", 11, true],
+        ["12", "gemini_code", "/summary", "Ringkasan", "", "", "Menyarikan teks, artikel, atau bab panjang; membuat rangkuman catatan belajar, poin penting, atau bahan review cepat sebelum ujian.", 12, true],
+        ["13", "gemini_code", "/simple", "Penyederhanaan Bahasa", "", "", "Mengubah materi rumit, akademis, atau penuh istilah teknis menjadi bahasa sederhana yang sesuai fase siswa.", 13, true],
+        ["14", "gemini_code", "/explain", "Penjelasan Mendalam", "", "", "Mendalami konsep yang belum dikuasai, atau menyiapkan narasi penjelasan yang sistematis untuk mengajar di kelas.", 14, true],
+        ["15", "gemini_code", "/example", "Pemberian Contoh", "", "", "Menyediakan contoh nyata, studi kasus, atau ilustrasi kontekstual agar teori abstrak mudah diaplikasikan.", 15, true],
+        ["16", "gemini_code", "/analogy", "Pembuatan Analogi", "", "", "Menemukan perumpamaan yang akurat antara konsep sulit dan hal yang akrab bagi siswa (misalnya arus listrik dengan aliran air).", 16, true],
+        ["17", "gemini_code", "/steps", "Langkah-langkah Sistematis", "", "", "Menguraikan proses atau prosedur rumit menjadi urutan langkah terstruktur; cocok untuk panduan praktikum, rumus, atau instruksi proyek.", 17, true],
+        ["18", "gemini_code", "/flashcards", "Kartu Tunjuk Cepat", "", "", "Membuat media belajar kilat berupa pasangan pertanyaan/konsep dan jawaban singkat untuk latihan hafalan.", 18, true],
+        ["19", "gemini_code", "/quiz", "Kuis Interaktif", "", "", "Menyediakan bank soal cepat (pilihan ganda atau benar-salah) lengkap dengan kunci jawaban untuk penilaian formatif.", 19, true],
+        ["20", "gemini_code", "/questions", "Pertanyaan Pemantik/Diskusi", "", "", "Merumuskan pertanyaan terbuka yang merangsang berpikir kritis; cocok untuk diskusi kelompok, tanya jawab, atau asesmen diagnostik awal.", 20, true],
+        ["21", "gemini_code", "/compare", "Perbandingan", "", "", "Menyajikan perbedaan dan persamaan dua konsep atau lebih secara berdampingan, biasanya dalam tabel.", 21, true],
+        ["22", "gemini_code", "/review", "Ulasan & Evaluasi", "", "", "Mengevaluasi materi yang telah diajarkan, merangkum umpan balik, atau merancang kisi-kisi dan materi pengayaan/remedial.", 22, true]
+      ];
+      for (var i = 0; i < saiSeeds.length; i++) saiSheet.appendRow(saiSeeds[i]);
+    }
+
+    // 22. Portofolio Sekolah — Organisasi Profesi (Orprof)
+    var soSheet = ss.getSheetByName("school_orprof");
+    if (soSheet.getLastRow() <= 1) {
+      var soSeeds = [
+        ["1", "Seksi Bidang Kerajinan dan Patung", "KKGS Kabupaten Tuban", "2023–2025", "", "", "/assets/portosekolah/orprof/01.jpg", 1, true],
+        ["2", "Sekretaris 1", "KKGS Kabupaten Tuban", "2025–2030", "SK KKGS TUBAN.pdf", "", "", 2, true],
+        ["3", "Ketua", "KKGS Kecamatan Bancar", "2020–2025 dan 2025–2030", "", "", "/assets/portosekolah/orprof/03.jpg", 3, true],
+        ["4", "Seksi Bidang Humas", "Komunitas Guru Penggerak Kabupaten Tuban", "2023–2028", "5. SK KGP_2024.pdf", "https://drive.google.com/file/d/13QNHVe5hWuvKGQde7RBCbxHirGNfg6MK/view", "", 4, true],
+        ["5", "Seksi Bidang Pengembangan Seni", "PGRI Cabang Kecamatan Bancar", "", "SK PENGURUS PGRI CABANG BANCAR.pdf", "", "", 5, true],
+        ["6", "Tim Bidang Pengembangan Anggota dan Penggerak", "KGBN Tuban", "2023–2025", "SK KGBN 2023-2025.pdf", "", "", 6, true],
+        ["7", "Ketua Kombel Ki Hadjar Dewantara", "UPT SDN Latsari 2 Bancar", "", "SK Kombel_UPT SDN Latsari 2.pdf", "", "", 7, true]
+      ];
+      for (var i = 0; i < soSeeds.length; i++) soSheet.appendRow(soSeeds[i]);
+    }
+
+    // 23. Portofolio Sekolah — Riwayat Pendidikan Profil
+    var spEduSheet = ss.getSheetByName("school_profil_edu");
+    if (spEduSheet.getLastRow() <= 1) {
+      var spEduSeeds = [
+        ["1", "1989–1995", "SDN Sukolilo, Kecamatan Bancar", "SD", "", 1, true],
+        ["2", "1995–1999", "SMPN 1 Kerek", "SMP", "", 2, true],
+        ["3", "1999–2001", "SMAN 1 Jatirogo", "SMA", "", 3, true],
+        ["4", "2001–2005", "IKIP PGRI Tuban", "S1", "Pendidikan Bahasa Inggris", 4, true],
+        ["5", "2009–2013", "Universitas Terbuka", "S1", "Pendidikan Guru Sekolah Dasar (PGSD)", 5, true],
+        ["6", "2023–2025", "Universitas Gresik", "S2", "Manajemen Pendidikan", 6, true]
+      ];
+      for (var i = 0; i < spEduSeeds.length; i++) spEduSheet.appendRow(spEduSeeds[i]);
+    }
+
+    // 24. Portofolio Sekolah — Kategori Kustom & Items (Starter Demo)
+    var sCatSheet = ss.getSheetByName("school_custom_categories");
+    if (sCatSheet.getLastRow() <= 1) {
+      var sCatSeeds = [
+        ["1", "karya-siswa", "Karya Siswa & Ekstrakurikuler", "Wadah publikasi karya kreativitas seni dan inovasi proyek pelajar UPT SDN Latsari 2 Bancar.", "sparkles", 1, true]
+      ];
+      for (var i = 0; i < sCatSeeds.length; i++) sCatSheet.appendRow(sCatSeeds[i]);
+    }
+
+    var sItemSheet = ss.getSheetByName("school_custom_items");
+    if (sItemSheet.getLastRow() <= 1) {
+      var sItemSeeds = [
+        ["1", "karya-siswa", "Pameran Karya Seni Rupa & Daur Ulang P5", "Proyek Penguatan Profil Pelajar Pancasila", "Karya kolaboratif peserta didik memanfaatkan bahan daur ulang ramah lingkungan menjadi produk seni fungsional.", "2024", "image", "/assets/portosekolah/bukti-implementasi/01.jpg", "", 1, true]
+      ];
+      for (var i = 0; i < sItemSeeds.length; i++) sItemSheet.appendRow(sItemSeeds[i]);
     }
 
     SpreadsheetApp.flush();
@@ -507,8 +702,11 @@ function getAllData(sheetName, activeOnly) {
     rows.push(row);
   }
 
-  // Urutkan terbaru dulu (berdasarkan id numerik)
+  // Urutkan berdasarkan order (jika ada) atau id numerik
   rows.sort(function(a, b) {
+    if (a.order !== undefined && b.order !== undefined && a.order !== "" && b.order !== "") {
+      return (parseInt(a.order) || 0) - (parseInt(b.order) || 0);
+    }
     return (parseInt(b.id) || 0) - (parseInt(a.id) || 0);
   });
 
@@ -741,7 +939,9 @@ function getDashboardStats() {
   var sheetNames = [
     "edu_karya", "edu_publikasi", "edu_pkb", "edu_prestasi",
     "music_event", "music_gallery", "music_video", "music_prestasi",
-    "business_list", "testimonials", "achievements", "messages"
+    "business_list", "testimonials", "achievements", "messages",
+    "school_implementasi", "school_prestasi", "school_karya", "school_pkb",
+    "school_mentoring", "school_ai", "school_orprof", "school_custom_categories", "school_custom_items"
   ];
 
   for (var i = 0; i < sheetNames.length; i++) {

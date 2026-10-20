@@ -256,6 +256,7 @@
       content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px;
     }
     .stat-edu::before { background: var(--edu); }
+    .stat-school::before { background: var(--accent); }
     .stat-music::before { background: var(--music); }
     .stat-biz::before { background: var(--biz); }
     .stat-msg::before { background: var(--warn); }
@@ -511,7 +512,39 @@
           <span class="icon"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></span> Timeline Hidup
         </button>
 
-        <div class="nav-group-label" style="margin-top:8px;">Pendidikan</div>
+        <div class="nav-group-label" style="margin-top:8px;">Portofolio Sekolah</div>
+        <button class="nav-item" onclick="showPage('school_implementasi')" id="nav-school_implementasi">
+          <span class="icon"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg></span> Bukti Implementasi
+        </button>
+        <button class="nav-item" onclick="showPage('school_prestasi')" id="nav-school_prestasi">
+          <span class="icon"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="8" r="6"/><path d="M15.477 12.89 17 22l-5-3-5 3 1.523-9.11"/></svg></span> Prestasi Guru
+        </button>
+        <button class="nav-item" onclick="showPage('school_karya')" id="nav-school_karya">
+          <span class="icon"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1-2.5-2.5Z"/><path d="M6 6h10"/><path d="M6 10h10"/></svg></span> Karya & Inovasi
+        </button>
+        <button class="nav-item" onclick="showPage('school_pkb')" id="nav-school_pkb">
+          <span class="icon"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg></span> Pengembangan Diri
+        </button>
+        <button class="nav-item" onclick="showPage('school_mentoring')" id="nav-school_mentoring">
+          <span class="icon"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></span> Pendampingan Rekan
+        </button>
+        <button class="nav-item" onclick="showPage('school_ai')" id="nav-school_ai">
+          <span class="icon"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m12 3-1.9 5.8a2 2 0 0 1-1.3 1.3L3 12l5.8 1.9a2 2 0 0 1 1.3 1.3L12 21l1.9-5.8a2 2 0 0 1 1.3-1.3L21 12l-5.8-1.9a2 2 0 0 1-1.3-1.3Z"/></svg></span> Penggunaan AI
+        </button>
+        <button class="nav-item" onclick="showPage('school_orprof')" id="nav-school_orprof">
+          <span class="icon"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></span> Organisasi Profesi
+        </button>
+        <button class="nav-item" onclick="showPage('school_profil_edu')" id="nav-school_profil_edu">
+          <span class="icon"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg></span> Pendidikan Profil
+        </button>
+        <button class="nav-item" onclick="showPage('school_custom_categories')" id="nav-school_custom_categories">
+          <span class="icon"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect width="7" height="7" x="3" y="3" rx="1"/><rect width="7" height="7" x="14" y="3" rx="1"/><rect width="7" height="7" x="14" y="14" rx="1"/><rect width="7" height="7" x="3" y="14" rx="1"/></svg></span> Kategori Kustom
+        </button>
+        <button class="nav-item" onclick="showPage('school_custom_items')" id="nav-school_custom_items">
+          <span class="icon"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"/></svg></span> Konten Kategori
+        </button>
+
+        <div class="nav-group-label" style="margin-top:8px;">Pendidikan (Publik)</div>
         <button class="nav-item" onclick="showPage('edu_karya')" id="nav-edu_karya">
           <span class="icon"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg></span> Karya & Inovasi
         </button>
@@ -602,6 +635,11 @@
         <!-- DASHBOARD OVERVIEW -->
         <div class="page-section active" id="page-dashboard">
           <div class="stats-grid" id="statsGrid">
+            <div class="stat-card stat-school">
+              <div class="stat-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg></div>
+              <div class="stat-num" id="st-school">—</div>
+              <div class="stat-label">Portofolio Sekolah</div>
+            </div>
             <div class="stat-card stat-edu">
               <div class="stat-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--edu)" stroke-width="2"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg></div>
               <div class="stat-num" id="st-edu">—</div>
@@ -628,6 +666,8 @@
               <h3>Navigasi Cepat</h3>
             </div>
             <div style="display:grid;grid-template-columns:repeat(auto-fit, minmax(140px, 1fr));gap:12px;padding:20px;">
+              <button class="nav-item" style="background:var(--surface2);" onclick="showPage('school_implementasi')">Porto Sekolah</button>
+              <button class="nav-item" style="background:var(--surface2);" onclick="showPage('school_custom_categories')">Kategori Kustom</button>
               <button class="nav-item" style="background:var(--surface2);" onclick="showPage('edu_karya')">Karya & Inovasi</button>
               <button class="nav-item" style="background:var(--surface2);" onclick="showPage('music_event')">Event Musik</button>
               <button class="nav-item" style="background:var(--surface2);" onclick="showPage('business_list')">Daftar Usaha</button>
@@ -721,9 +761,9 @@
       <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect width="7" height="9" x="3" y="3" rx="1"/><rect width="7" height="5" x="14" y="3" rx="1"/><rect width="7" height="9" x="14" y="12" rx="1"/><rect width="7" height="5" x="3" y="16" rx="1"/></svg>
       <span>Dashboard</span>
     </button>
-    <button class="bottom-nav-item" id="bnav-edu_karya" onclick="showPage('edu_karya')">
-      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>
-      <span>Pendidikan</span>
+    <button class="bottom-nav-item" id="bnav-school_implementasi" onclick="showPage('school_implementasi')">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+      <span>Sekolah</span>
     </button>
     <button class="bottom-nav-item" id="bnav-music_event" onclick="showPage('music_event')">
       <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2a3 3 0 0 0-3 3v7a3 3 0 0 0 6 0V5a3 3 0 0 0-3-3Z"/><path d="M19 10v2a7 7 0 0 1-14 0v-2"/><line x1="12" x2="12" y1="19" y2="22"/></svg>
@@ -923,6 +963,9 @@ function showPage(page) {
   const bnavBtn = document.getElementById('bnav-' + page);
   if (bnavBtn) {
     bnavBtn.classList.add('active');
+  } else if (page.startsWith('school_')) {
+    const sBtn = document.getElementById('bnav-school_implementasi');
+    if (sBtn) sBtn.classList.add('active');
   } else if (page.startsWith('edu_')) {
     const pBtn = document.getElementById('bnav-edu_karya');
     if (pBtn) pBtn.classList.add('active');
@@ -942,6 +985,20 @@ function showPage(page) {
     dashboard:       { title: 'Dashboard', section: 'dashboard' },
     profil:          { title: 'Profil', section: 'generic', sheet: 'profile', label: 'Profil' },
     timeline:        { title: 'Timeline Hidup', section: 'generic', sheet: 'timeline', label: 'Milestone' },
+
+    // PORTOFOLIO SEKOLAH
+    school_implementasi:     { title: 'Bukti Implementasi', section: 'generic', sheet: 'school_implementasi', label: 'Implementasi' },
+    school_prestasi:         { title: 'Prestasi Guru', section: 'generic', sheet: 'school_prestasi', label: 'Prestasi' },
+    school_karya:            { title: 'Karya Tulis & Inovasi', section: 'generic', sheet: 'school_karya', label: 'Karya' },
+    school_pkb:              { title: 'Pengembangan Diri (PKB)', section: 'generic', sheet: 'school_pkb', label: 'Kegiatan PKB' },
+    school_mentoring:        { title: 'Pendampingan Rekan Sejawat', section: 'generic', sheet: 'school_mentoring', label: 'Pendampingan' },
+    school_ai:               { title: 'Penggunaan AI & Prompt', section: 'generic', sheet: 'school_ai', label: 'AI Prompt' },
+    school_orprof:           { title: 'Organisasi Profesi', section: 'generic', sheet: 'school_orprof', label: 'Jabatan Orprof' },
+    school_profil_edu:       { title: 'Riwayat Pendidikan Profil', section: 'generic', sheet: 'school_profil_edu', label: 'Jenjang' },
+    school_custom_categories:{ title: 'Kelola Kategori Kustom', section: 'generic', sheet: 'school_custom_categories', label: 'Kategori' },
+    school_custom_items:     { title: 'Kelola Konten Kategori Kustom', section: 'generic', sheet: 'school_custom_items', label: 'Konten' },
+
+    // UMUM / LEGACY
     edu_karya:       { title: 'Karya & Inovasi', section: 'generic', sheet: 'edu_karya', label: 'Karya' },
     edu_publikasi:   { title: 'Karya Tulis', section: 'generic', sheet: 'edu_publikasi', label: 'Publikasi' },
     edu_pkb:         { title: 'Pengembangan Diri', section: 'generic', sheet: 'edu_pkb', label: 'Kegiatan PKB' },
@@ -991,6 +1048,10 @@ async function loadDashboard() {
   const res = await apiGet({ action: 'getDashboardStats' });
   if (res.status === 'success' && res.data) {
     const d = res.data;
+    const schoolTotal = (d.school_implementasi||0) + (d.school_prestasi||0) + (d.school_karya||0) + (d.school_pkb||0) + (d.school_mentoring||0) + (d.school_ai||0) + (d.school_orprof||0) + (d.school_custom_items||0);
+    const elSchool = document.getElementById('st-school');
+    if (elSchool) elSchool.textContent = schoolTotal;
+
     const eduTotal = (d.edu_karya||0) + (d.edu_publikasi||0) + (d.edu_pkb||0) + (d.edu_prestasi||0);
     document.getElementById('st-edu').textContent = eduTotal;
     document.getElementById('st-music').textContent = d.music_event || 0;
@@ -1020,11 +1081,20 @@ const FIELD_LABELS = {
   school: 'Sekolah', whatsapp: 'WhatsApp', email: 'Email', instagram: 'Instagram',
   facebook: 'Facebook', youtube: 'YouTube', updated_at: 'Diperbarui',
   milestone: 'Milestone',
+
+  // Portofolio Sekolah Labels
+  app_url: 'URL Aplikasi', media_url: 'URL Foto / Media', cert_title: 'Judul Sertifikat',
+  media_id: 'ID Media', hashtag: 'Hashtag', role: 'Peran / Jabatan', target: 'Sasaran / Peserta',
+  material: 'Materi / Topik', code: 'Kode Prompt', subtitle: 'Sub-judul', body: 'Isi Prompt',
+  usage: 'Kegunaan', organization: 'Organisasi', period: 'Periode', sk_filename: 'Nama File SK',
+  sk_url: 'Link SK Drive', institution: 'Institusi', degree: 'Jenjang', major: 'Jurusan / Prodi',
+  slug: 'Slug URL', icon: 'Ikon', order: 'Urutan Tampil', category_slug: 'Slug Kategori',
+  date_or_period: 'Tanggal / Periode', media_type: 'Tipe Media', extra_link: 'Link Bukti', cert_name: 'Nama Sertifikat'
 };
 
 const HIDDEN_COLS = ['id', 'updated_at', 'created_at'];
-const TEXTAREA_FIELDS = ['description', 'bio', 'philosophy', 'review'];
-const URL_FIELDS = ['photo_url', 'proof_url', 'cert_url', 'cover_url', 'link', 'embed_url', 'ig_url'];
+const TEXTAREA_FIELDS = ['description', 'bio', 'philosophy', 'review', 'body', 'usage', 'material', 'caption'];
+const URL_FIELDS = ['photo_url', 'proof_url', 'cert_url', 'cover_url', 'link', 'embed_url', 'ig_url', 'app_url', 'media_url', 'url', 'sk_url', 'extra_link'];
 
 let _tableData = [];
 
@@ -1100,6 +1170,20 @@ function filterTable() {
 const SCHEMA = {
   profile:          ['name','title','bio','photo_url','tagline','philosophy','school','whatsapp','email','instagram','facebook','youtube'],
   timeline:         ['year','title','description','category'],
+
+  // Portofolio Sekolah Schemas
+  school_implementasi:     ['title','type','description','app_url','media_url','caption','order'],
+  school_prestasi:         ['title','event','organizer','year','level','cert_title','cert_url','photo_url','order'],
+  school_karya:            ['title','type','description','media_id','url','date','hashtag','order'],
+  school_pkb:              ['title','type','organizer','year','role','cert_name','cert_url','photo_url','order'],
+  school_mentoring:        ['title','date','year','role','target','material','photo_url','order'],
+  school_ai:               ['type','code','title','subtitle','body','usage','order'],
+  school_orprof:           ['role','organization','period','sk_filename','sk_url','photo_url','order'],
+  school_profil_edu:       ['period','institution','degree','major','order'],
+  school_custom_categories:['slug','title','description','icon','order'],
+  school_custom_items:     ['category_slug','title','subtitle','description','date_or_period','media_type','media_url','extra_link','order'],
+
+  // Umum / Legacy Schemas
   edu_karya:        ['title','description','year','proof_url','category'],
   edu_publikasi:    ['title','journal','year','link','cover_url'],
   edu_pkb:          ['title','organizer','year','cert_url','hours'],
@@ -1138,6 +1222,31 @@ function renderModalFields(sheet, data) {
     const val = data[f] !== undefined ? data[f] : '';
     if (TEXTAREA_FIELDS.includes(f)) {
       return `<div class="f-group"><label>${label.toUpperCase()}</label><textarea id="mf-${f}" rows="3">${val}</textarea></div>`;
+    }
+    if (f === 'media_type') {
+      return `
+        <div class="f-group">
+          <label>${label.toUpperCase()}</label>
+          <select id="mf-${f}">
+            <option value="image" ${val==='image'?'selected':''}>Foto / Gambar (image)</option>
+            <option value="youtube" ${val==='youtube'?'selected':''}>Video YouTube (youtube)</option>
+            <option value="drive_doc" ${val==='drive_doc'?'selected':''}>Dokumen Google Drive (drive_doc)</option>
+            <option value="link" ${val==='link'?'selected':''}>Tautan Luar (link)</option>
+          </select>
+        </div>`;
+    }
+    if (sheet === 'school_ai' && f === 'type') {
+      return `
+        <div class="f-group">
+          <label>${label.toUpperCase()}</label>
+          <select id="mf-${f}">
+            <option value="prompt" ${val==='prompt'?'selected':''}>AI Prompt</option>
+            <option value="gemini_code" ${val==='gemini_code'?'selected':''}>Gemini Slash Code</option>
+          </select>
+        </div>`;
+    }
+    if (f === 'order') {
+      return `<div class="f-group"><label>${label.toUpperCase()}</label><input type="number" id="mf-${f}" value="${val !== '' ? val : '1'}" min="1" /></div>`;
     }
     return `<div class="f-group"><label>${label.toUpperCase()}</label><input type="text" id="mf-${f}" value="${val}" /></div>`;
   }).join('');

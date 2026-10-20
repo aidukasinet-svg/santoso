@@ -319,6 +319,7 @@ footer a:hover{text-decoration:underline}
   </div>
 </footer>
 
+<script src="/config.js"></script>
 <script>
 /* ================================================================
    DATA 9 BAGIAN PORTOFOLIO SEKOLAH
@@ -474,7 +475,79 @@ window.addEventListener('DOMContentLoaded', () => {
   if (activeTab) {
     activeTab.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
   }
+  loadDynamicCategories();
 });
+
+async function loadDynamicCategories() {
+  try {
+    const apiUrl = (window.APP_CONFIG && window.APP_CONFIG.API_URL) || '/api';
+    const [catRes, itemsRes] = await Promise.all([
+      fetch(`${apiUrl}?action=getAll&sheet=school_custom_categories`).then(r => r.json()),
+      fetch(`${apiUrl}?action=getAll&sheet=school_custom_items`).then(r => r.json())
+    ]);
+
+    const cats = (catRes && catRes.status === 'success' && Array.isArray(catRes.data)) ? catRes.data : [];
+    const items = (itemsRes && itemsRes.status === 'success' && Array.isArray(itemsRes.data)) ? itemsRes.data : [];
+
+    const subnavList = document.getElementById('subnavList');
+    const mGrid = document.getElementById('moduleGrid');
+
+    cats.forEach(c => {
+      if (c.active === false || c.active === 'FALSE' || c.active === 'false') return;
+
+      // Append to Subnav
+      if (subnavList && !document.querySelector(`[data-custom-tab="${c.slug}"]`)) {
+        const a = document.createElement('a');
+        a.href = `/portosekolah/kategori.html?tab=${encodeURIComponent(c.slug)}`;
+        a.className = 'subnav-item';
+        a.setAttribute('data-tab', c.slug);
+        a.setAttribute('data-custom-tab', c.slug);
+        a.innerHTML = `
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <rect width="7" height="7" x="3" y="3" rx="1"/><rect width="7" height="7" x="14" y="3" rx="1"/>
+            <rect width="7" height="7" x="14" y="14" rx="1"/><rect width="7" height="7" x="3" y="14" rx="1"/>
+          </svg>
+          ${c.title}
+        `;
+        subnavList.appendChild(a);
+      }
+
+      // Append to Module Grid
+      if (mGrid && !document.querySelector(`[data-custom-card="${c.slug}"]`)) {
+        const catItems = items.filter(it => it.category_slug === c.slug && it.active !== false && it.active !== 'false');
+        const count = catItems.length;
+        const card = document.createElement('article');
+        card.className = 'module-card';
+        card.setAttribute('data-custom-card', c.slug);
+        card.innerHTML = `
+          <div>
+            <div class="module-top">
+              <div class="module-icon">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <rect width="7" height="7" x="3" y="3" rx="1"/><rect width="7" height="7" x="14" y="3" rx="1"/>
+                  <rect width="7" height="7" x="14" y="14" rx="1"/><rect width="7" height="7" x="3" y="14" rx="1"/>
+                </svg>
+              </div>
+              <span class="module-badge">${count} Karya / Item</span>
+            </div>
+            <h3 class="module-title">${c.title}</h3>
+            <p class="module-scope">Kategori Portofolio Kustom</p>
+            <p class="module-desc">${c.description || 'Dokumentasi portofolio sekolah UPT SDN Latsari 2 Bancar.'}</p>
+          </div>
+          <div>
+            <a href="/portosekolah/kategori.html?tab=${encodeURIComponent(c.slug)}" class="btn-open-module">
+              Buka Dokumentasi (${count} Item)
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+            </a>
+          </div>
+        `;
+        mGrid.appendChild(card);
+      }
+    });
+  } catch (err) {
+    // Fail gracefully
+  }
+}
 </script>
 
 </body>

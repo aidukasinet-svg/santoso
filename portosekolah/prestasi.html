@@ -400,13 +400,41 @@ function zoom(src) {
 }
 document.addEventListener('keydown', e => { if (e.key === 'Escape') document.getElementById('lb').classList.remove('open'); });
 
-// Auto-scroll active subnav into view
+// Auto-scroll active subnav into view and load custom categories
 window.addEventListener('DOMContentLoaded', () => {
   const activeTab = document.querySelector('.subnav-item.active');
   if (activeTab) {
     activeTab.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
   }
+  loadDynamicCustomNav();
 });
+
+async function loadDynamicCustomNav() {
+  try {
+    const res = await fetch('/api?action=getAll&sheet=school_custom_categories').then(r => r.json());
+    if (res && res.status === 'success' && Array.isArray(res.data)) {
+      const subnavList = document.getElementById('subnavList');
+      if (!subnavList) return;
+      res.data.forEach(c => {
+        if (c.active === false || c.active === 'FALSE' || c.active === 'false') return;
+        if (document.querySelector(`[data-custom-tab="${c.slug}"]`)) return;
+        const a = document.createElement('a');
+        a.href = `/portosekolah/kategori.html?tab=${encodeURIComponent(c.slug)}`;
+        a.className = 'subnav-item';
+        a.setAttribute('data-tab', c.slug);
+        a.setAttribute('data-custom-tab', c.slug);
+        a.innerHTML = `
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <rect width="7" height="7" x="3" y="3" rx="1"/><rect width="7" height="7" x="14" y="3" rx="1"/>
+            <rect width="7" height="7" x="14" y="14" rx="1"/><rect width="7" height="7" x="3" y="14" rx="1"/>
+          </svg>
+          ${c.title}
+        `;
+        subnavList.appendChild(a);
+      });
+    }
+  } catch (e) {}
+}
 </script>
 </body>
 </html>
