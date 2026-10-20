@@ -43,8 +43,12 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;height:64px;background:rgba(
 .nav-links a.active{color:var(--edu);font-weight:700;background:var(--edu-soft)}
 .nav-links .btn-admin{background:var(--text);color:#fff;padding:6px 12px;font-size:13px;font-weight:600}
 .nav-links .btn-admin:hover{background:var(--edu);color:#fff}
-.nav-hamburger{display:none;background:none;border:none;cursor:pointer;padding:8px}
-.nav-hamburger span{display:block;width:22px;height:2px;background:var(--text);margin:5px 0;border-radius:2px}
+.nav-hamburger{display:none;background:none;border:none;cursor:pointer;padding:10px;border-radius:var(--r-sm);transition:background .2s}
+.nav-hamburger:hover{background:var(--bg-subtle)}
+.nav-hamburger span{display:block;width:22px;height:2px;background:var(--text);margin:5px 0;border-radius:2px;transition:transform .25s ease,opacity .25s ease;pointer-events:none}
+nav.menu-open .nav-hamburger span:nth-child(1){transform:translateY(7px) rotate(45deg)}
+nav.menu-open .nav-hamburger span:nth-child(2){opacity:0}
+nav.menu-open .nav-hamburger span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
 
 @media(max-width:1180px) and (min-width:961px){
   .nav-links{gap:2px}
@@ -53,8 +57,21 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;height:64px;background:rgba(
 }
 @media(max-width:960px){
   .nav-links{display:none}.nav-hamburger{display:block}
-  .nav-links.open{display:flex;flex-direction:column;align-items:stretch;position:fixed;top:64px;left:0;right:0;bottom:0;background:var(--bg);padding:20px;overflow-y:auto;gap:4px}
-  .nav-links.open a{padding:12px 16px;font-size:16px}
+  nav.menu-open{background:var(--bg);backdrop-filter:none;-webkit-backdrop-filter:none}
+  .nav-links.open{
+    display:flex;flex-direction:column;align-items:stretch;
+    position:fixed;top:64px;left:0;width:100vw;height:calc(100dvh - 64px);
+    background:var(--bg);padding:24px 20px;gap:8px;overflow-y:auto;
+    box-shadow:var(--shadow-lg);border-top:1px solid var(--border);z-index:999;
+  }
+  .nav-links.open a{
+    padding:14px 18px;font-size:16px;font-weight:600;
+    border-radius:var(--r-sm);border:1px solid var(--border);
+    background:var(--surface);color:var(--text);text-decoration:none;
+  }
+  .nav-links.open a:hover{background:var(--bg-subtle);color:var(--edu)}
+  .nav-links.open a.active{background:var(--edu-soft);color:var(--edu);border-color:var(--edu-border)}
+  .nav-links.open .btn-admin{background:var(--text);color:#fff;text-align:center;margin-top:10px;display:flex;align-items:center;justify-content:center}
 }
 
 /* SUBNAV BAR (PORTFOLIO SEKOLAH TABS) */
@@ -153,6 +170,7 @@ footer a:hover{text-decoration:underline}
 }
 @media(prefers-reduced-motion:reduce){*{transition:none!important}html{scroll-behavior:auto}}
 </style>
+<script>function toggleNav(){const n=document.querySelector("nav"),l=document.getElementById("navLinks");if(l){const o=l.classList.toggle("open");if(n)n.classList.toggle("menu-open",o);}}</script>
 </head>
 <body>
 
@@ -171,7 +189,7 @@ footer a:hover{text-decoration:underline}
       <a href="/index.html#kontak">Kontak</a>
       <a href="/admin.html" class="btn-admin"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="vertical-align:-1px;margin-right:5px;"><path d="M12.22 2h-.44a2 2 0 0 0-2 2v.18a2 2 0 0 1-1 1.73l-.43.25a2 2 0 0 1-2 0l-.15-.08a2 2 0 0 0-2.73.73l-.22.38a2 2 0 0 0 .73 2.73l.15.1a2 2 0 0 1 1 1.72v.51a2 2 0 0 1-1 1.74l-.15.09a2 2 0 0 0-.73 2.73l.22.38a2 2 0 0 0 2.73.73l.15-.08a2 2 0 0 1 2 0l.43.25a2 2 0 0 1 1 1.73V20a2 2 0 0 0 2 2h.44a2 2 0 0 0 2-2v-.18a2 2 0 0 1 1-1.73l.43-.25a2 2 0 0 1 2 0l.15.08a2 2 0 0 0 2.73-.73l.22-.39a2 2 0 0 0-.73-2.73l-.15-.08a2 2 0 0 1-1-1.74v-.5a2 2 0 0 1 1-1.74l.15-.09a2 2 0 0 0 .73-2.73l-.22-.38a2 2 0 0 0-2.73-.73l-.15.08a2 2 0 0 1-2 0l-.43-.25a2 2 0 0 1-1-1.73V4a2 2 0 0 0-2-2z"/><circle cx="12" cy="12" r="3"/></svg>Admin</a>
     </div>
-    <button class="nav-hamburger" onclick="document.getElementById('navLinks').classList.toggle('open')" aria-label="Menu"><span></span><span></span><span></span></button>
+    <button class="nav-hamburger" onclick="toggleNav()" aria-label="Menu"><span></span><span></span><span></span></button>
   </div>
 </nav>
 
