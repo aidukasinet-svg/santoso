@@ -85,7 +85,7 @@ function setupDatabase() {
   try {
     var ss = SpreadsheetApp.openById(SPREADSHEET_ID);
 
-    // Buat semua sheet jika belum ada
+    // Buat semua sheet jika belum ada & pasang header bergaya
     for (var sheetKey in SHEETS) {
       var sheetName = SHEETS[sheetKey];
       var headers = SCHEMA[sheetName];
@@ -93,45 +93,189 @@ function setupDatabase() {
       styleHeader(sheet, headers, "#1C1A17", "#F9F7F4");
     }
 
-    // Isi data default _config
+    // 1. Config
     var configSheet = ss.getSheetByName("_config");
     if (configSheet.getLastRow() <= 1) {
-      var defaults = [
+      var configDefaults = [
         ["admin_username", "admin"],
-        ["admin_password_hash", "admin123"],  // Ganti dengan password yang diinginkan
+        ["admin_password_hash", "admin123"],
         ["site_title", "Santoso, S.Pd., M.Pd."],
         ["site_tagline", "Satu nama. Banyak dunia."],
         ["owner_whatsapp", "6281234567890"],
         ["owner_email", "santoso@gmail.com"],
         ["api_key", generateApiKey()]
       ];
-      configSheet.getRange(2, 1, defaults.length, 2).setValues(defaults);
+      configSheet.getRange(2, 1, configDefaults.length, 2).setValues(configDefaults);
     }
 
-    // Isi data profile default
+    // 2. Profile
     var profileSheet = ss.getSheetByName("profile");
     if (profileSheet.getLastRow() <= 1) {
       profileSheet.appendRow([
         "1",
         "Santoso, S.Pd., M.Pd.",
         "Pendidik · Penyanyi · Entrepreneur",
-        "Saya adalah seorang pendidik yang berdedikasi, penyanyi profesional, dan entrepreneur. Selama lebih dari satu dekade, saya telah membentuk generasi penerus bangsa di kelas, menyebarkan kebahagiaan lewat musik di panggung, dan membangun usaha dengan sepenuh hati.",
+        "Saya adalah seorang pendidik yang berdedikasi, penyanyi profesional, dan entrepreneur. Selama lebih dari satu dekade, saya telah membentuk generasi penerus bangsa di kelas, menyebarkan kebahagiaan lewat musik di panggung, dan membangun usaha tata rias serta busana dengan sepenuh hati.",
         "",
         "Satu nama. Banyak dunia.",
         "Mengajar adalah panggilan. Bernyanyi adalah jiwa. Berwirausaha adalah bukti bahwa hidup bisa terus tumbuh.",
         "SD Negeri — Tuban, Jawa Timur",
         "6281234567890",
         "santoso@gmail.com",
-        "",
-        "",
+        "https://instagram.com/santoso",
+        "https://youtube.com/@santoso",
         "",
         new Date().toISOString()
       ]);
     }
 
+    // 3. Timeline
+    var timelineSheet = ss.getSheetByName("timeline");
+    if (timelineSheet.getLastRow() <= 1) {
+      var tlSeeds = [
+        ["1", "2012", "Lulus S.Pd. & Mulai Mengabdi", "Menyelesaikan studi Sarjana Pendidikan Guru SD dan memulai pengabdian mengajar di Kabupaten Tuban.", "Pendidikan", "🎓", true],
+        ["2", "2015", "Debut Panggung Musik Profesional", "Aktif tampil solo vocal di berbagai panggung festival seni dan event resmi daerah Jawa Timur.", "Musik", "🎤", true],
+        ["3", "2018", "Mendirikan Unit Usaha MUA & Wardrobe", "Mengembangkan keahlian tata rias dan busana pengantin menjadi unit usaha profesional berbadan layanan.", "Usaha", "💼", true],
+        ["4", "2021", "Meraih Gelar Magister Pendidikan (M.Pd.)", "Menuntaskan studi pascasarjana dengan fokus inovasi media pembelajaran interaktif tingkat sekolah dasar.", "Pendidikan", "📚", true],
+        ["5", "2023", "Guru Inovatif & Pembina Seni Vokal", "Meraih apresiasi pendidik inovatif dinas pendidikan serta aktif melatih paduan suara dan seni vokal pelajar.", "Pendidikan", "🏅", true]
+      ];
+      for (var i = 0; i < tlSeeds.length; i++) timelineSheet.appendRow(tlSeeds[i]);
+    }
+
+    // 4. Edu Karya
+    var eduKaryaSheet = ss.getSheetByName("edu_karya");
+    if (eduKaryaSheet.getLastRow() <= 1) {
+      var ekSeeds = [
+        ["1", "Media Interaktif Gamifikasi Tematik SD", "Media ajar berbasis digital interaktif untuk meningkatkan minat belajar dan pemahaman materi IPAS siswa SD.", "2023", "https://drive.google.com", "Inovasi Digital", true],
+        ["2", "Modul Ajar Berbasis Kearifan Lokal Tuban", "Perangkat pembelajaran kontekstual mengintegrasikan budaya pesisir Tuban dalam kurikulum sekolah.", "2022", "https://drive.google.com", "Perangkat Ajar", true],
+        ["3", "Gerakan Gemar Membaca & Pojok Literasi Kelas", "Inovasi manajemen kelas menghidupkan ruang baca ramah anak yang mendongkrak minat baca hingga 90%.", "2021", "https://drive.google.com", "Metode Belajar", true]
+      ];
+      for (var i = 0; i < ekSeeds.length; i++) eduKaryaSheet.appendRow(ekSeeds[i]);
+    }
+
+    // 5. Edu Publikasi
+    var eduPublikasiSheet = ss.getSheetByName("edu_publikasi");
+    if (eduPublikasiSheet.getLastRow() <= 1) {
+      var epSeeds = [
+        ["1", "Pengembangan Media Interaktif Gamifikasi untuk Siswa Sekolah Dasar", "Jurnal Inovasi & Riset Pendidikan Dasar", "2023", "https://ejournal.kemdikbud.go.id", "", true],
+        ["2", "Pendekatan Humanis dalam Pendidikan Karakter Anak Usia Sekolah Dasar", "Prosiding Seminar Nasional Pendidikan", "2022", "https://ejournal.kemdikbud.go.id", "", true]
+      ];
+      for (var i = 0; i < epSeeds.length; i++) eduPublikasiSheet.appendRow(epSeeds[i]);
+    }
+
+    // 6. Edu PKB
+    var eduPkbSheet = ss.getSheetByName("edu_pkb");
+    if (eduPkbSheet.getLastRow() <= 1) {
+      var pkbSeeds = [
+        ["1", "Program Pendidikan Guru Penggerak", "Kemendikbudristek RI", "2022", "https://drive.google.com", "310", true],
+        ["2", "Bimtek Implementasi Kurikulum Merdeka & Asesmen Autentik", "Dinas Pendidikan Kab. Tuban", "2023", "https://drive.google.com", "64", true],
+        ["3", "Pelatihan Pemanfaatan AI & Teknologi Digital dalam Pembelajaran", "Balai Guru Penggerak Jawa Timur", "2024", "https://drive.google.com", "32", true]
+      ];
+      for (var i = 0; i < pkbSeeds.length; i++) eduPkbSheet.appendRow(pkbSeeds[i]);
+    }
+
+    // 7. Edu Prestasi
+    var eduPrestasiSheet = ss.getSheetByName("edu_prestasi");
+    if (eduPrestasiSheet.getLastRow() <= 1) {
+      var edpSeeds = [
+        ["1", "Juara 1 Lomba Inovasi Pembelajaran Guru SD", "Dinas Pendidikan Kab. Tuban", "2023", "Kabupaten", "https://drive.google.com", true],
+        ["2", "Pendidik Berdedikasi dan Kreatif", "Gugus Sekolah Dasar Tuban", "2022", "Kecamatan", "https://drive.google.com", true]
+      ];
+      for (var i = 0; i < edpSeeds.length; i++) eduPrestasiSheet.appendRow(edpSeeds[i]);
+    }
+
+    // 8. Music Event
+    var musicEventSheet = ss.getSheetByName("music_event");
+    if (musicEventSheet.getLastRow() <= 1) {
+      var meSeeds = [
+        ["1", "Festival Lagu Nusantara & Pesta Seni Pendidik", "2024-05-18", "Gedung Graha Kencana", "Tuban", "https://images.unsplash.com/photo-1516450360452-9312f5e86fc7?w=800&q=80", "Penampilan solo vocal membawakan medley lagu pop dan tembang nusantara aransemen akustik.", true],
+        ["2", "Gala Dinner & Annual Celebration Soloist", "2024-02-14", "Grand Ballroom Hotel Aston", "Tuban", "https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?w=800&q=80", "Solois utama membawakan repertoar lagu jazz dan pop akustik pengiring jamuan makan malam.", true],
+        ["3", "Konser Amal & Nada Peduli Pendidikan", "2023-11-25", "Taman Budaya Pesisir", "Tuban", "https://images.unsplash.com/photo-1465847899084-d164df4dedc6?w=800&q=80", "Konser musik amal bersama musisi daerah penggalangan beasiswa siswa prasejahtera.", true]
+      ];
+      for (var i = 0; i < meSeeds.length; i++) musicEventSheet.appendRow(meSeeds[i]);
+    }
+
+    // 9. Music Gallery
+    var musicGallerySheet = ss.getSheetByName("music_gallery");
+    if (musicGallerySheet.getLastRow() <= 1) {
+      var mgSeeds = [
+        ["1", "https://images.unsplash.com/photo-1516450360452-9312f5e86fc7?w=800&q=80", "Penampilan panggung solo vokal Festival Musik Nusantara", "1", true],
+        ["2", "https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?w=800&q=80", "Sesi rekaman audio dan take vocal di studio akustik", "2", true],
+        ["3", "https://images.unsplash.com/photo-1465847899084-d164df4dedc6?w=800&q=80", "Apresiasi penonton setelah konser amal bertema pendidikan", "3", true]
+      ];
+      for (var i = 0; i < mgSeeds.length; i++) musicGallerySheet.appendRow(mgSeeds[i]);
+    }
+
+    // 10. Music Video
+    var musicVideoSheet = ss.getSheetByName("music_video");
+    if (musicVideoSheet.getLastRow() <= 1) {
+      var mvSeeds = [
+        ["1", "Santoso — Menghujam Jantung (Live Vocal Acoustic Cover)", "https://www.youtube.com/embed/dQw4w9WgXcQ", "YouTube", "2024", true],
+        ["2", "Santoso — Medley Tembang Jawa & Pop Nusantara Akustik", "https://www.youtube.com/embed/dQw4w9WgXcQ", "YouTube", "2023", true]
+      ];
+      for (var i = 0; i < mvSeeds.length; i++) musicVideoSheet.appendRow(mvSeeds[i]);
+    }
+
+    // 11. Music Prestasi
+    var musicPrestasiSheet = ss.getSheetByName("music_prestasi");
+    if (musicPrestasiSheet.getLastRow() <= 1) {
+      var mpSeeds = [
+        ["1", "Juara 1 Lomba Solo Vokal Pop Pria Dewasa", "Dewan Kesenian Tuban", "2023", "Kabupaten", "https://drive.google.com", true],
+        ["2", "Penyanyi Favorit Festival Musik Akustik Pesisir", "Komunitas Musisi Jawa Timur", "2022", "Provinsi", "https://drive.google.com", true]
+      ];
+      for (var i = 0; i < mpSeeds.length; i++) musicPrestasiSheet.appendRow(mpSeeds[i]);
+    }
+
+    // 12. Business List
+    var businessListSheet = ss.getSheetByName("business_list");
+    if (businessListSheet.getLastRow() <= 1) {
+      var blSeeds = [
+        ["1", "Santoso Wedding & MUA", "Kecantikan Elegan di Momen Terindah Anda", "Layanan Make Up Artist (MUA) profesional melayani rias pengantin adat Jawa paes modern, wisuda, siraman, dan makeup pesta dengan kosmetik premium tahan lama.", "MUA & Tata Rias", "https://instagram.com/santoso", "6281234567890", true],
+        ["2", "Santoso Wardrobe & Kebaya Rental", "Koleksi Busana Pengantin, Kebaya & Gaun Elegan", "Penyewaan busana pengantin tradisional modern, kebaya wisuda kekinian, beskap adat Jawa, dan jas formal dengan kondisi sangat prima dan bersih.", "Persewaan Busana", "https://instagram.com/santoso", "6281234567890", true]
+      ];
+      for (var i = 0; i < blSeeds.length; i++) businessListSheet.appendRow(blSeeds[i]);
+    }
+
+    // 13. Business Gallery
+    var businessGallerySheet = ss.getSheetByName("business_gallery");
+    if (businessGallerySheet.getLastRow() <= 1) {
+      var bgSeeds = [
+        ["1", "1", "https://images.unsplash.com/photo-1487412720507-e7ab37603c6f?w=800&q=80", "Makeup pengantin muslimah modern flawless glowing", true],
+        ["2", "1", "https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?w=800&q=80", "Tata rias paes ageng pengantin adat Jawa anggun", true],
+        ["3", "2", "https://images.unsplash.com/photo-1558769132-cb1aea458c5e?w=800&q=80", "Koleksi kebaya brokat wisuda modern warna sage green", true]
+      ];
+      for (var i = 0; i < bgSeeds.length; i++) businessGallerySheet.appendRow(bgSeeds[i]);
+    }
+
+    // 14. Testimonials
+    var testimonialsSheet = ss.getSheetByName("testimonials");
+    if (testimonialsSheet.getLastRow() <= 1) {
+      var tSeeds = [
+        ["1", "1", "Dina & Rian (Pengantin)", "Pak Santoso sangat telaten dan sabar! Riasan pernikahanku tahan seharian dan hasilnya flawless natural, semua keluarga serta tamu memuji keanggunannya. Sangat puas!", "5", true],
+        ["2", "1", "Siti Nurjanah, S.Kom. (Wisudawati)", "Make up wisuda Pak Santoso juara banget! Nggak dempul, foto hasilnya cantik banget dan nggak bikin jerawatan. Pasti rekomendasiin ke adik tingkat!", "5", true],
+        ["3", "2", "Ibu Ratih (Panitia Acara Seni)", "Busana adat dan kebaya yang disewa bersih, wangi, dan jahitannya sangat rapi. Pelayanan ramah dan harga sangat bersahabat.", "5", true]
+      ];
+      for (var i = 0; i < tSeeds.length; i++) testimonialsSheet.appendRow(tSeeds[i]);
+    }
+
+    // 15. Achievements
+    var achievementsSheet = ss.getSheetByName("achievements");
+    if (achievementsSheet.getLastRow() <= 1) {
+      var achSeeds = [
+        ["1", "Juara 1 Lomba Inovasi Pembelajaran Guru SD", "Pendidikan", "Dinas Pendidikan Kab. Tuban", "2023", "Kabupaten", "https://drive.google.com", true],
+        ["2", "Juara 1 Lomba Solo Vokal Pop Pria", "Musik", "Dewan Kesenian Tuban", "2023", "Kabupaten", "https://drive.google.com", true],
+        ["3", "Pendidik Berdedikasi dan Kreatif", "Pendidikan", "Gugus SD Kab. Tuban", "2022", "Kecamatan", "https://drive.google.com", true],
+        ["4", "Penyanyi Favorit Festival Musik Akustik Pesisir", "Musik", "Komunitas Seni Jawa Timur", "2022", "Provinsi", "https://drive.google.com", true],
+        ["5", "MUA Terfavorit Kategori Rias Modern", "Usaha", "Asosiasi Rias Pengantin Tuban", "2023", "Kabupaten", "https://drive.google.com", true]
+      ];
+      for (var i = 0; i < achSeeds.length; i++) achievementsSheet.appendRow(achSeeds[i]);
+    }
+
     SpreadsheetApp.flush();
     Logger.log("Setup database selesai! Spreadsheet: " + ss.getUrl());
-    Browser.msgBox("Setup Selesai!", "Database Santoso Biopage berhasil diinisialisasi.\n\nLangkah berikutnya:\n1. Deploy sebagai Web App\n2. Salin URL /exec ke config.js", Browser.Buttons.OK);
+    try {
+      Browser.msgBox("Setup Selesai!", "Database Santoso Biopage berhasil diinisialisasi beserta seluruh data starter.\n\nLangkah berikutnya:\n1. Deploy sebagai Web App\n2. Salin URL /exec ke config.js", Browser.Buttons.OK);
+    } catch (msgErr) {}
     return { status: "success", url: ss.getUrl() };
   } catch (err) {
     Logger.log("Error setupDatabase: " + err.toString());

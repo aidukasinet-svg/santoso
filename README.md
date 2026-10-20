@@ -10,11 +10,15 @@
 ```
 Code.gs              → Backend Google Apps Script (Setup DB, API CRUD)
 _worker.js           → Cloudflare Pages Worker (CORS proxy ke Apps Script)
-index.html           → Halaman publik utama (Hero, Tentang, Prestasi, Kontak)
-admin.html           → Dashboard admin (Login, CRUD semua modul, Pesan)
 config.js            → Konfigurasi endpoint API & data pemilik
+index.html           → Halaman portal publik utama (Hero, Tiga Dunia Bento, Timeline, Prestasi, Kontak)
+pendidikan.html      → Portofolio Pendidikan (Karya inovasi, publikasi, PKB, prestasi)
+musik.html           → Portofolio Musik (Event panggung, galeri, video cover, prestasi)
+usaha.html           → Portofolio Usaha & MUA (Layanan, galeri rias/busana, testimoni)
+prestasi.html        → Rekam Jejak Prestasi & Capaian (Filter kategori & pencarian)
+admin.html           → Dashboard admin profesional (Login, 15 modul CRUD, Pesan masuk, Pengaturan)
 .gitignore           → Git ignore rules
-README.md            → Panduan ini
+README.md            → Panduan setup & deployment
 ```
 
 ---

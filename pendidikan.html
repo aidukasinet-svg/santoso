@@ -1,0 +1,463 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Portofolio Pendidikan — Santoso, S.Pd., M.Pd.</title>
+  <meta name="description" content="Rekam jejak, karya inovasi, publikasi ilmiah, dan sertifikasi pendidik Santoso, S.Pd., M.Pd." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;900&family=DM+Serif+Display:ital@0;1&display=swap" rel="stylesheet" />
+
+  <style>
+    :root {
+      --bg:            #F9F7F4;
+      --bg-subtle:     #F2EFE9;
+      --surface:       #FFFFFF;
+      --border:        #E4DED6;
+      --text:          #1C1A17;
+      --text-sec:      #6B6560;
+      --text-muted:    #A09890;
+
+      --edu:           #1B3A6B;
+      --edu-light:     #2D5AA0;
+      --edu-soft:      #EEF2F9;
+      --edu-border:    #C5D4ED;
+
+      --radius-sm:     6px;
+      --radius-md:     14px;
+      --radius-lg:     22px;
+      --shadow-sm:     0 1px 3px rgba(28,26,23,.08);
+      --shadow-md:     0 6px 20px rgba(28,26,23,.10);
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Outfit', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      font-size: 16px;
+    }
+
+    .container { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
+    section { padding: 70px 0; }
+    section + section { border-top: 1px solid var(--border); }
+
+    /* ---- NAVBAR ---- */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      height: 64px;
+      background: rgba(249,247,244,.88);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+    }
+    nav .nav-inner {
+      max-width: 1200px; margin: 0 auto; padding: 0 24px;
+      height: 100%; display: flex; align-items: center; justify-content: space-between;
+    }
+    .nav-logo {
+      display: flex; align-items: center; gap: 10px;
+      text-decoration: none; color: var(--text); font-weight: 700; font-size: 17px;
+    }
+    .nav-logo-mark {
+      width: 36px; height: 36px; border-radius: 50%;
+      background: var(--edu); color: #fff;
+      display: flex; align-items: center; justify-content: center;
+      font-weight: 900; font-size: 15px; flex-shrink: 0;
+    }
+    .nav-links { display: flex; align-items: center; gap: 6px; }
+    .nav-links a {
+      padding: 6px 12px; border-radius: var(--radius-sm);
+      text-decoration: none; color: var(--text-sec); font-size: 14px; font-weight: 500;
+      transition: color .2s, background .2s;
+    }
+    .nav-links a:hover { color: var(--text); background: var(--bg-subtle); }
+    .nav-links a.active { color: var(--edu); font-weight: 700; background: var(--edu-soft); }
+    .btn-admin {
+      background: var(--text); color: #fff !important; padding: 6px 14px;
+      border-radius: var(--radius-sm); font-size: 13px; font-weight: 600;
+    }
+    .btn-admin:hover { background: var(--edu) !important; }
+    .nav-hamburger { display: none; background: none; border: none; cursor: pointer; padding: 8px; }
+    .nav-hamburger span { display: block; width: 22px; height: 2px; background: var(--text); margin: 5px 0; border-radius: 2px; }
+
+    @media (max-width: 768px) {
+      .nav-links { display: none; }
+      .nav-hamburger { display: block; }
+      .nav-links.open {
+        display: flex; flex-direction: column; align-items: stretch;
+        position: fixed; top: 64px; left: 0; right: 0; bottom: 0;
+        background: var(--bg); padding: 20px; gap: 6px; overflow-y: auto;
+      }
+      .nav-links.open a { padding: 12px 16px; font-size: 16px; }
+    }
+
+    /* ---- HERO HEADER ---- */
+    .edu-header {
+      padding: 130px 0 60px;
+      background: linear-gradient(170deg, var(--edu-soft) 0%, var(--bg) 100%);
+      border-bottom: 1px solid var(--border);
+    }
+    .edu-badge {
+      display: inline-flex; align-items: center; gap: 8px;
+      padding: 5px 14px; border-radius: 999px;
+      background: #fff; border: 1.5px solid var(--edu-border);
+      color: var(--edu); font-size: 12px; font-weight: 700;
+      letter-spacing: .08em; text-transform: uppercase; margin-bottom: 16px;
+    }
+    .edu-title {
+      font-size: clamp(2.2rem, 4vw, 3.2rem);
+      font-weight: 900; letter-spacing: -.03em; line-height: 1.15;
+      margin-bottom: 14px;
+    }
+    .edu-subtitle {
+      font-family: 'DM Serif Display', serif; font-style: italic;
+      font-size: 1.3rem; color: var(--text-sec); max-width: 700px;
+      margin-bottom: 24px;
+    }
+    .edu-meta-bar {
+      display: flex; flex-wrap: wrap; gap: 24px;
+      padding-top: 18px; border-top: 1px solid var(--edu-border);
+    }
+    .edu-meta-item { display: flex; align-items: center; gap: 10px; font-size: 14px; color: var(--text-sec); }
+    .edu-meta-item strong { color: var(--text); }
+
+    /* ---- TABS NAV ---- */
+    .tabs-wrapper {
+      position: sticky; top: 64px; z-index: 90;
+      background: var(--bg);
+      border-bottom: 1px solid var(--border);
+      padding: 12px 0;
+    }
+    .tabs-list {
+      display: flex; gap: 8px; overflow-x: auto; scrollbar-width: none;
+      -webkit-overflow-scrolling: touch; padding: 2px 0;
+    }
+    .tabs-list::-webkit-scrollbar { display: none; }
+    .tab-btn {
+      padding: 9px 18px; border-radius: 999px;
+      border: 1px solid var(--border); background: var(--surface);
+      font-family: 'Outfit', sans-serif; font-size: 14px; font-weight: 600;
+      color: var(--text-sec); cursor: pointer; white-space: nowrap;
+      transition: all .2s;
+    }
+    .tab-btn:hover { border-color: var(--edu); color: var(--edu); }
+    .tab-btn.active { background: var(--edu); border-color: var(--edu); color: #fff; }
+
+    /* ---- SECTION STYLES ---- */
+    .section-title {
+      font-size: 1.8rem; font-weight: 800; letter-spacing: -.02em; margin-bottom: 8px;
+    }
+    .section-desc { font-size: 15px; color: var(--text-sec); margin-bottom: 32px; max-width: 600px; }
+
+    /* ---- CARDS GRID ---- */
+    .card-grid {
+      display: grid; grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+      gap: 20px;
+    }
+    .edu-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-md);
+      padding: 24px;
+      display: flex; flex-direction: column; justify-content: space-between;
+      transition: transform .2s, box-shadow .2s, border-color .2s;
+    }
+    .edu-card:hover {
+      transform: translateY(-3px);
+      box-shadow: var(--shadow-md);
+      border-color: var(--edu-border);
+    }
+    .card-top { margin-bottom: 16px; }
+    .card-tag {
+      display: inline-block; font-size: 11px; font-weight: 700;
+      padding: 3px 10px; border-radius: 999px;
+      background: var(--edu-soft); color: var(--edu);
+      text-transform: uppercase; letter-spacing: .06em; margin-bottom: 12px;
+    }
+    .card-title {
+      font-size: 1.15rem; font-weight: 700; line-height: 1.35;
+      margin-bottom: 10px; color: var(--text);
+    }
+    .card-text { font-size: 14px; color: var(--text-sec); line-height: 1.6; }
+    .card-footer {
+      display: flex; align-items: center; justify-content: space-between;
+      padding-top: 16px; border-top: 1px solid var(--border);
+      font-size: 13px; color: var(--text-muted);
+    }
+    .card-btn {
+      display: inline-flex; align-items: center; gap: 5px;
+      text-decoration: none; color: var(--edu); font-weight: 600; font-size: 13px;
+    }
+    .card-btn:hover { text-decoration: underline; }
+
+    /* SKELETON */
+    .skeleton-card {
+      height: 180px; border-radius: var(--radius-md);
+      background: linear-gradient(90deg, #EEEAE3 25%, #F7F5F2 50%, #EEEAE3 75%);
+      background-size: 200% 100%;
+      animation: shimmer 1.5s infinite;
+    }
+    @keyframes shimmer { 0% { background-position: 200% 0; } 100% { background-position: -200% 0; } }
+
+    .empty-box {
+      text-align: center; padding: 48px 20px;
+      background: var(--surface); border: 1.5px dashed var(--border);
+      border-radius: var(--radius-md); color: var(--text-sec);
+    }
+    .empty-box span { font-size: 36px; display: block; margin-bottom: 12px; }
+
+    /* FOOTER */
+    footer {
+      background: #fff; border-top: 1px solid var(--border);
+      padding: 48px 0; text-align: center; font-size: 14px; color: var(--text-sec);
+    }
+    footer a { color: var(--edu); text-decoration: none; margin: 0 10px; }
+  </style>
+</head>
+<body>
+
+<!-- NAVBAR -->
+<nav>
+  <div class="nav-inner">
+    <a href="index.html" class="nav-logo">
+      <div class="nav-logo-mark">S</div>
+      <span>Santoso</span>
+    </a>
+    <div class="nav-links" id="navLinks">
+      <a href="index.html">Beranda</a>
+      <a href="pendidikan.html" class="active">Pendidikan</a>
+      <a href="musik.html">Musik</a>
+      <a href="usaha.html">Usaha</a>
+      <a href="prestasi.html">Prestasi</a>
+      <a href="index.html#kontak">Kontak</a>
+      <a href="admin.html" class="btn-admin">⚙ Admin</a>
+    </div>
+    <button class="nav-hamburger" onclick="toggleNav()" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<!-- HEADER -->
+<header class="edu-header">
+  <div class="container">
+    <div class="edu-badge">🎓 Portofolio Akademik & Pendidik</div>
+    <h1 class="edu-title">Mendidik dengan Jiwa,<br />Menginspirasi Lewat Karya.</h1>
+    <p class="edu-subtitle" id="eduBio">
+      Dedikasi seorang guru sekolah dasar dalam menghadirkan ruang belajar yang humanis, kreatif, dan berorientasi pada masa depan.
+    </p>
+    <div class="edu-meta-bar">
+      <div class="edu-meta-item"><span>👨‍🏫</span> <div>Nama: <strong id="eduName">Santoso, S.Pd., M.Pd.</strong></div></div>
+      <div class="edu-meta-item"><span>🏫</span> <div>Satuan Pendidikan: <strong id="eduSchool">SD Negeri — Tuban</strong></div></div>
+      <div class="edu-meta-item"><span>📚</span> <div>Fokus: <strong>Pendidikan Dasar & Inovasi Pembelajaran</strong></div></div>
+    </div>
+  </div>
+</header>
+
+<!-- TABS NAVIGATION -->
+<div class="tabs-wrapper">
+  <div class="container">
+    <div class="tabs-list">
+      <button class="tab-btn active" onclick="switchTab('karya', this)">💡 Karya & Inovasi</button>
+      <button class="tab-btn" onclick="switchTab('publikasi', this)">📄 Publikasi Ilmiah</button>
+      <button class="tab-btn" onclick="switchTab('pkb', this)">🏅 Pengembangan Diri (PKB)</button>
+      <button class="tab-btn" onclick="switchTab('prestasi', this)">🏆 Prestasi Pendidikan</button>
+    </div>
+  </div>
+</div>
+
+<!-- CONTENT SECTIONS -->
+<main class="container" style="padding-top:40px;padding-bottom:80px;">
+
+  <!-- TAB 1: KARYA & INOVASI -->
+  <div id="tab-karya" class="tab-content">
+    <h2 class="section-title">Karya & Inovasi Pembelajaran</h2>
+    <p class="section-desc">Media pembelajaran interaktif, modul kontekstual, dan strategi pengajaran kreatif yang telah diimplementasikan di ruang kelas.</p>
+    <div class="card-grid" id="gridKarya">
+      <div class="skeleton-card"></div>
+      <div class="skeleton-card"></div>
+      <div class="skeleton-card"></div>
+    </div>
+  </div>
+
+  <!-- TAB 2: PUBLIKASI ILMIAH -->
+  <div id="tab-publikasi" class="tab-content" style="display:none;">
+    <h2 class="section-title">Karya Tulis & Publikasi Ilmiah</h2>
+    <p class="section-desc">Artikel jurnal, buku pendidikan, dan kajian ilmiah sebagai wujud pemikiran kritis dalam memajukan dunia pendidikan dasar.</p>
+    <div class="card-grid" id="gridPublikasi">
+      <div class="skeleton-card"></div>
+      <div class="skeleton-card"></div>
+    </div>
+  </div>
+
+  <!-- TAB 3: PENGEMBANGAN DIRI (PKB) -->
+  <div id="tab-pkb" class="tab-content" style="display:none;">
+    <h2 class="section-title">Pengembangan Keprofesian Berkelanjutan (PKB)</h2>
+    <p class="section-desc">Pelatihan, bimbingan teknis, dan sertifikasi keahlian pendidik untuk senantiasa adaptif terhadap perkembangan kurikulum dan teknologi.</p>
+    <div class="card-grid" id="gridPkb">
+      <div class="skeleton-card"></div>
+      <div class="skeleton-card"></div>
+      <div class="skeleton-card"></div>
+    </div>
+  </div>
+
+  <!-- TAB 4: PRESTASI PENDIDIKAN -->
+  <div id="tab-prestasi" class="tab-content" style="display:none;">
+    <h2 class="section-title">Prestasi & Penghargaan Pendidikan</h2>
+    <p class="section-desc">Apresiasi dan pengakuan atas inovasi pengajaran dan dedikasi dalam ekosistem pendidikan dasar.</p>
+    <div class="card-grid" id="gridPrestasi">
+      <div class="skeleton-card"></div>
+      <div class="skeleton-card"></div>
+    </div>
+  </div>
+
+</main>
+
+<!-- FOOTER -->
+<footer>
+  <div class="container">
+    <p>© 2024 <strong>Santoso, S.Pd., M.Pd.</strong> — Pendidik · Penyanyi · Entrepreneur</p>
+    <p style="margin-top:10px;">
+      <a href="index.html">Beranda</a>
+      <a href="pendidikan.html">Pendidikan</a>
+      <a href="musik.html">Musik</a>
+      <a href="usaha.html">Usaha</a>
+      <a href="prestasi.html">Prestasi</a>
+      <a href="index.html#kontak">Kontak</a>
+    </p>
+  </div>
+</footer>
+
+<script src="config.js"></script>
+<script>
+const API = () => window.APP_CONFIG.API_URL;
+
+async function fetchAPI(params) {
+  const qs = new URLSearchParams(params).toString();
+  try {
+    const res = await fetch(`${API()}?${qs}`, { redirect: 'follow' });
+    return await res.json();
+  } catch (e) {
+    return { status: 'error', message: e.message };
+  }
+}
+
+function toggleNav() {
+  document.getElementById('navLinks').classList.toggle('open');
+}
+
+function switchTab(tabId, btn) {
+  document.querySelectorAll('.tab-content').forEach(el => el.style.display = 'none');
+  document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+  document.getElementById(`tab-${tabId}`).style.display = 'block';
+  btn.classList.add('active');
+}
+
+async function loadData() {
+  // Load Profile Header
+  fetchAPI({ action: 'getProfile' }).then(res => {
+    if (res.status === 'success' && res.data) {
+      const d = res.data;
+      if (d.name) document.getElementById('eduName').textContent = d.name;
+      if (d.school) document.getElementById('eduSchool').textContent = d.school;
+      if (d.philosophy) document.getElementById('eduBio').textContent = d.philosophy;
+    }
+  });
+
+  // 1. Karya Inovasi
+  fetchAPI({ action: 'getAll', sheet: 'edu_karya' }).then(res => {
+    const grid = document.getElementById('gridKarya');
+    if (res.status === 'success' && res.data && res.data.length > 0) {
+      grid.innerHTML = res.data.map(k => `
+        <div class="edu-card">
+          <div class="card-top">
+            <span class="card-tag">${k.category || 'Inovasi'}</span>
+            <h3 class="card-title">${k.title || ''}</h3>
+            <p class="card-text">${k.description || ''}</p>
+          </div>
+          <div class="card-footer">
+            <span>Tahun: ${k.year || '-'}</span>
+            ${k.proof_url ? `<a href="${k.proof_url}" target="_blank" rel="noopener" class="card-btn">Lihat Bukti ↗</a>` : ''}
+          </div>
+        </div>
+      `).join('');
+    } else {
+      grid.innerHTML = `<div class="empty-box" style="grid-column:1/-1;"><span>💡</span>Belum ada data karya inovasi yang dipublikasikan.</div>`;
+    }
+  });
+
+  // 2. Publikasi Ilmiah
+  fetchAPI({ action: 'getAll', sheet: 'edu_publikasi' }).then(res => {
+    const grid = document.getElementById('gridPublikasi');
+    if (res.status === 'success' && res.data && res.data.length > 0) {
+      grid.innerHTML = res.data.map(p => `
+        <div class="edu-card">
+          <div class="card-top">
+            <span class="card-tag" style="background:#F4EBF7;color:#6C2E7A;">Publikasi</span>
+            <h3 class="card-title">${p.title || ''}</h3>
+            <p class="card-text" style="font-style:italic;">${p.journal || ''}</p>
+          </div>
+          <div class="card-footer">
+            <span>Tahun: ${p.year || '-'}</span>
+            ${p.link ? `<a href="${p.link}" target="_blank" rel="noopener" class="card-btn">Buka Artikel ↗</a>` : ''}
+          </div>
+        </div>
+      `).join('');
+    } else {
+      grid.innerHTML = `<div class="empty-box" style="grid-column:1/-1;"><span>📄</span>Belum ada publikasi ilmiah yang ditambahkan.</div>`;
+    }
+  });
+
+  // 3. PKB
+  fetchAPI({ action: 'getAll', sheet: 'edu_pkb' }).then(res => {
+    const grid = document.getElementById('gridPkb');
+    if (res.status === 'success' && res.data && res.data.length > 0) {
+      grid.innerHTML = res.data.map(item => `
+        <div class="edu-card">
+          <div class="card-top">
+            <span class="card-tag">Pelatihan & PKB</span>
+            <h3 class="card-title">${item.title || ''}</h3>
+            <p class="card-text">Penyelenggara: <strong>${item.organizer || '-'}</strong></p>
+          </div>
+          <div class="card-footer">
+            <span>${item.year || ''} ${item.hours ? `(${item.hours} JP)` : ''}</span>
+            ${item.cert_url ? `<a href="${item.cert_url}" target="_blank" rel="noopener" class="card-btn">Sertifikat ↗</a>` : ''}
+          </div>
+        </div>
+      `).join('');
+    } else {
+      grid.innerHTML = `<div class="empty-box" style="grid-column:1/-1;"><span>🏅</span>Belum ada rekam jejak PKB.</div>`;
+    }
+  });
+
+  // 4. Prestasi Pendidikan
+  fetchAPI({ action: 'getAll', sheet: 'edu_prestasi' }).then(res => {
+    const grid = document.getElementById('gridPrestasi');
+    if (res.status === 'success' && res.data && res.data.length > 0) {
+      grid.innerHTML = res.data.map(pr => `
+        <div class="edu-card">
+          <div class="card-top">
+            <span class="card-tag" style="background:#FEF3C7;color:#92400E;">${pr.level || 'Penghargaan'}</span>
+            <h3 class="card-title">${pr.title || ''}</h3>
+            <p class="card-text">${pr.organizer || ''}</p>
+          </div>
+          <div class="card-footer">
+            <span>Tahun ${pr.year || '-'}</span>
+            ${pr.cert_url ? `<a href="${pr.cert_url}" target="_blank" rel="noopener" class="card-btn">Piagam ↗</a>` : ''}
+          </div>
+        </div>
+      `).join('');
+    } else {
+      grid.innerHTML = `<div class="empty-box" style="grid-column:1/-1;"><span>🏆</span>Belum ada data prestasi pendidikan.</div>`;
+    }
+  });
+}
+
+loadData();
+</script>
+</body>
+</html>

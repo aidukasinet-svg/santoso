@@ -448,6 +448,38 @@
     @media (prefers-reduced-motion: reduce) {
       .reveal { opacity: 1 !important; transform: none !important; transition: none !important; }
     }
+
+    /* ---- TIMELINE ---- */
+    #timeline { background: var(--bg-subtle); }
+    .timeline-container {
+      position: relative; max-width: 860px; margin: 0 auto;
+      padding: 10px 0 10px 32px;
+      border-left: 2px solid var(--border);
+    }
+    .timeline-item {
+      position: relative; margin-bottom: 30px;
+    }
+    .timeline-item:last-child { margin-bottom: 0; }
+    .timeline-dot {
+      position: absolute; left: -45px; top: 6px;
+      width: 26px; height: 26px; border-radius: 50%;
+      background: var(--surface); border: 2.5px solid var(--edu);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 12px; box-shadow: var(--shadow-sm);
+    }
+    .timeline-card {
+      background: var(--surface); border: 1px solid var(--border);
+      border-radius: var(--radius-md); padding: 22px 26px;
+      box-shadow: var(--shadow-sm); transition: transform .2s, box-shadow .2s;
+    }
+    .timeline-card:hover { transform: translateX(4px); box-shadow: var(--shadow-md); }
+    .timeline-year {
+      display: inline-block; font-size: 11px; font-weight: 700;
+      padding: 3px 10px; border-radius: 999px; background: var(--edu-soft);
+      color: var(--edu); margin-bottom: 8px; letter-spacing: .05em; text-transform: uppercase;
+    }
+    .timeline-title { font-size: 1.15rem; font-weight: 700; margin-bottom: 6px; }
+    .timeline-desc { font-size: 14px; color: var(--text-sec); line-height: 1.6; }
   </style>
 </head>
 <body>
@@ -464,10 +496,11 @@
     <div class="nav-links" id="navLinks">
       <a href="#hero" class="active" onclick="closeNav()">Beranda</a>
       <a href="#tentang" onclick="closeNav()">Tentang</a>
+      <a href="#timeline" onclick="closeNav()">Jejak Langkah</a>
       <a href="pendidikan.html" onclick="closeNav()">Pendidikan</a>
       <a href="musik.html" onclick="closeNav()">Musik</a>
       <a href="usaha.html" onclick="closeNav()">Usaha</a>
-      <a href="#prestasi-home" onclick="closeNav()">Prestasi</a>
+      <a href="prestasi.html" onclick="closeNav()">Prestasi</a>
       <a href="#kontak" onclick="closeNav()">Kontak</a>
       <a href="admin.html" class="btn-admin" onclick="closeNav()">⚙ Admin</a>
     </div>
@@ -584,6 +617,24 @@
           </div>
         </div>
       </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     TIMELINE JEJAK LANGKAH
+     ============================================================ -->
+<section id="timeline">
+  <div class="container">
+    <div class="section-header reveal">
+      <p class="section-label">Milestone & Jejak Langkah</p>
+      <h2 class="section-title">Perjalanan Tiga Dunia</h2>
+      <p class="section-sub">Rekam jejak dedikasi dari bangku pendidikan, panggung musik, hingga rintisan wirausaha.</p>
+    </div>
+    <div class="timeline-container" id="timelineList">
+      <div class="loading-shimmer" style="height:90px;margin-bottom:16px;"></div>
+      <div class="loading-shimmer" style="height:90px;margin-bottom:16px;"></div>
+      <div class="loading-shimmer" style="height:90px;margin-bottom:16px;"></div>
     </div>
   </div>
 </section>
@@ -766,7 +817,7 @@ document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
 
 /* Active nav link */
 window.addEventListener('scroll', () => {
-  const sections = ['hero','tiga-dunia','tentang','kutipan','prestasi-home','kontak'];
+  const sections = ['hero','tiga-dunia','tentang','timeline','kutipan','prestasi-home','kontak'];
   let current = 'hero';
   sections.forEach(id => {
     const s = document.getElementById(id);
@@ -891,9 +942,33 @@ document.getElementById('contactForm').addEventListener('submit', async (e) => {
 });
 
 /* ================================================================
+   LOAD TIMELINE DATA
+   ================================================================ */
+async function loadTimeline() {
+  const container = document.getElementById('timelineList');
+  const res = await fetchAPI({ action: 'getAll', sheet: 'timeline' });
+  if (res.status === 'success' && res.data && res.data.length > 0) {
+    container.innerHTML = res.data.map(item => `
+      <div class="timeline-item reveal">
+        <div class="timeline-dot">${item.icon || '📍'}</div>
+        <div class="timeline-card">
+          <span class="timeline-year">${item.year || ''} · ${item.category || ''}</span>
+          <h3 class="timeline-title">${item.title || ''}</h3>
+          <p class="timeline-desc">${item.description || ''}</p>
+        </div>
+      </div>
+    `).join('');
+    container.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
+  } else {
+    container.innerHTML = '<p style="color:var(--text-muted);font-size:14px;padding-left:10px;">Data timeline belum tersedia.</p>';
+  }
+}
+
+/* ================================================================
    INIT
    ================================================================ */
 loadProfile();
+loadTimeline();
 loadPrestasiHighlight();
 </script>
 </body>

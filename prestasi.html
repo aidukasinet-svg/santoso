@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Rekam Jejak Prestasi & Penghargaan — Santoso, S.Pd., M.Pd.</title>
+  <meta name="description" content="Koleksi prestasi, piagam penghargaan, dan pencapaian Santoso di bidang pendidikan, musik, dan wirausaha." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;900&family=DM+Serif+Display:ital@0;1&display=swap" rel="stylesheet" />
+
+  <style>
+    :root {
+      --bg:            #F9F7F4;
+      --bg-subtle:     #F2EFE9;
+      --surface:       #FFFFFF;
+      --border:        #E4DED6;
+      --text:          #1C1A17;
+      --text-sec:      #6B6560;
+      --text-muted:    #A09890;
+
+      --edu:           #1B3A6B;
+      --edu-soft:      #EEF2F9;
+      --music:         #7B1E2E;
+      --music-soft:    #F9EEEF;
+      --biz:           #1E4A3A;
+      --biz-soft:      #EEF5F2;
+
+      --radius-sm:     6px;
+      --radius-md:     14px;
+      --radius-lg:     22px;
+      --shadow-sm:     0 1px 3px rgba(28,26,23,.08);
+      --shadow-md:     0 6px 20px rgba(28,26,23,.10);
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Outfit', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      font-size: 16px;
+    }
+
+    .container { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
+
+    /* NAVBAR */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      height: 64px;
+      background: rgba(249,247,244,.88);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+    }
+    nav .nav-inner {
+      max-width: 1200px; margin: 0 auto; padding: 0 24px;
+      height: 100%; display: flex; align-items: center; justify-content: space-between;
+    }
+    .nav-logo {
+      display: flex; align-items: center; gap: 10px;
+      text-decoration: none; color: var(--text); font-weight: 700; font-size: 17px;
+    }
+    .nav-logo-mark {
+      width: 36px; height: 36px; border-radius: 50%;
+      background: var(--edu); color: #fff;
+      display: flex; align-items: center; justify-content: center;
+      font-weight: 900; font-size: 15px; flex-shrink: 0;
+    }
+    .nav-links { display: flex; align-items: center; gap: 6px; }
+    .nav-links a {
+      padding: 6px 12px; border-radius: var(--radius-sm);
+      text-decoration: none; color: var(--text-sec); font-size: 14px; font-weight: 500;
+      transition: color .2s, background .2s;
+    }
+    .nav-links a:hover { color: var(--text); background: var(--bg-subtle); }
+    .nav-links a.active { color: var(--edu); font-weight: 700; background: var(--edu-soft); }
+    .btn-admin {
+      background: var(--text); color: #fff !important; padding: 6px 14px;
+      border-radius: var(--radius-sm); font-size: 13px; font-weight: 600;
+    }
+    .btn-admin:hover { background: var(--edu) !important; }
+    .nav-hamburger { display: none; background: none; border: none; cursor: pointer; padding: 8px; }
+    .nav-hamburger span { display: block; width: 22px; height: 2px; background: var(--text); margin: 5px 0; border-radius: 2px; }
+
+    @media (max-width: 768px) {
+      .nav-links { display: none; }
+      .nav-hamburger { display: block; }
+      .nav-links.open {
+        display: flex; flex-direction: column; align-items: stretch;
+        position: fixed; top: 64px; left: 0; right: 0; bottom: 0;
+        background: var(--bg); padding: 20px; gap: 6px; overflow-y: auto;
+      }
+      .nav-links.open a { padding: 12px 16px; font-size: 16px; }
+    }
+
+    /* HEADER */
+    .header-section {
+      padding: 130px 0 50px;
+      border-bottom: 1px solid var(--border);
+      background: linear-gradient(180deg, var(--bg-subtle) 0%, var(--bg) 100%);
+    }
+    .header-badge {
+      display: inline-flex; align-items: center; gap: 8px;
+      padding: 5px 14px; border-radius: 999px;
+      background: #fff; border: 1.5px solid var(--border);
+      color: var(--text-sec); font-size: 12px; font-weight: 700;
+      letter-spacing: .08em; text-transform: uppercase; margin-bottom: 16px;
+    }
+    .header-title {
+      font-size: clamp(2.2rem, 4vw, 3.2rem);
+      font-weight: 900; letter-spacing: -.03em; line-height: 1.15;
+      margin-bottom: 14px;
+    }
+    .header-sub {
+      font-family: 'DM Serif Display', serif; font-style: italic;
+      font-size: 1.25rem; color: var(--text-sec); max-width: 650px;
+      margin-bottom: 30px;
+    }
+
+    /* CONTROLS (FILTER & SEARCH) */
+    .controls-bar {
+      display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center;
+      gap: 16px; margin: 36px 0;
+    }
+    .filter-pills { display: flex; flex-wrap: wrap; gap: 8px; }
+    .filter-btn {
+      padding: 8px 18px; border-radius: 999px;
+      border: 1px solid var(--border); background: var(--surface);
+      font-family: 'Outfit', sans-serif; font-size: 14px; font-weight: 600;
+      color: var(--text-sec); cursor: pointer; transition: all .2s;
+    }
+    .filter-btn:hover { border-color: var(--text); color: var(--text); }
+    .filter-btn.active { background: var(--text); color: #fff; border-color: var(--text); }
+
+    .search-box input {
+      padding: 9px 16px; border-radius: 999px;
+      border: 1.5px solid var(--border); background: var(--surface);
+      font-family: 'Outfit', sans-serif; font-size: 14px; color: var(--text);
+      width: 260px; outline: none; transition: border-color .2s;
+    }
+    .search-box input:focus { border-color: var(--edu); }
+
+    /* ACHIEVEMENTS GRID */
+    .ach-grid {
+      display: grid; grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+      gap: 20px; margin-bottom: 80px;
+    }
+    .ach-card {
+      background: var(--surface); border: 1px solid var(--border);
+      border-radius: var(--radius-md); padding: 24px;
+      display: flex; flex-direction: column; justify-content: space-between;
+      transition: transform .2s, box-shadow .2s;
+    }
+    .ach-card:hover { transform: translateY(-3px); box-shadow: var(--shadow-md); }
+    .ach-top { margin-bottom: 16px; }
+    .ach-badge-row { display: flex; gap: 8px; align-items: center; margin-bottom: 12px; }
+    .ach-cat {
+      font-size: 11px; font-weight: 700; padding: 3px 10px; border-radius: 999px;
+      text-transform: uppercase; letter-spacing: .06em;
+    }
+    .ach-cat-edu   { background: var(--edu-soft);   color: var(--edu); }
+    .ach-cat-music { background: var(--music-soft); color: var(--music); }
+    .ach-cat-biz   { background: var(--biz-soft);   color: var(--biz); }
+
+    .ach-level {
+      font-size: 11px; font-weight: 600; color: #92400E; background: #FEF3C7;
+      padding: 3px 10px; border-radius: 999px;
+    }
+    .ach-title { font-size: 1.2rem; font-weight: 700; line-height: 1.35; margin-bottom: 8px; }
+    .ach-organizer { font-size: 14px; color: var(--text-sec); }
+    .ach-footer {
+      display: flex; align-items: center; justify-content: space-between;
+      padding-top: 16px; border-top: 1px solid var(--border);
+      font-size: 13px; color: var(--text-muted);
+    }
+    .ach-btn {
+      color: var(--edu); font-weight: 600; font-size: 13px; text-decoration: none;
+      display: inline-flex; align-items: center; gap: 4px;
+    }
+    .ach-btn:hover { text-decoration: underline; }
+
+    /* SKELETON */
+    .skeleton-card {
+      height: 160px; border-radius: var(--radius-md);
+      background: linear-gradient(90deg, #EEEAE3 25%, #F7F5F2 50%, #EEEAE3 75%);
+      background-size: 200% 100%; animation: shimmer 1.5s infinite;
+    }
+    @keyframes shimmer { 0% { background-position: 200% 0; } 100% { background-position: -200% 0; } }
+
+    .empty-box {
+      text-align: center; padding: 48px 20px;
+      background: var(--surface); border: 1.5px dashed var(--border);
+      border-radius: var(--radius-md); color: var(--text-sec);
+    }
+    .empty-box span { font-size: 36px; display: block; margin-bottom: 12px; }
+
+    footer {
+      background: #fff; border-top: 1px solid var(--border);
+      padding: 48px 0; text-align: center; font-size: 14px; color: var(--text-sec);
+    }
+    footer a { color: var(--edu); text-decoration: none; margin: 0 10px; }
+  </style>
+</head>
+<body>
+
+<!-- NAVBAR -->
+<nav>
+  <div class="nav-inner">
+    <a href="index.html" class="nav-logo">
+      <div class="nav-logo-mark">S</div>
+      <span>Santoso</span>
+    </a>
+    <div class="nav-links" id="navLinks">
+      <a href="index.html">Beranda</a>
+      <a href="pendidikan.html">Pendidikan</a>
+      <a href="musik.html">Musik</a>
+      <a href="usaha.html">Usaha</a>
+      <a href="prestasi.html" class="active">Prestasi</a>
+      <a href="index.html#kontak">Kontak</a>
+      <a href="admin.html" class="btn-admin">⚙ Admin</a>
+    </div>
+    <button class="nav-hamburger" onclick="toggleNav()" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<!-- HEADER -->
+<header class="header-section">
+  <div class="container">
+    <div class="header-badge">🏅 Rekam Jejak Prestasi</div>
+    <h1 class="header-title">Capaian & Penghargaan</h1>
+    <p class="header-sub">
+      Dedikasi yang berbuah apresiasi — bukti kerja keras di bidang pendidikan, panggung musik, dan dunia wirausaha.
+    </p>
+  </div>
+</header>
+
+<main class="container">
+
+  <!-- CONTROLS -->
+  <div class="controls-bar">
+    <div class="filter-pills">
+      <button class="filter-btn active" onclick="setFilter('Semua', this)">Semua Kategori</button>
+      <button class="filter-btn" onclick="setFilter('Pendidikan', this)">🎓 Pendidikan</button>
+      <button class="filter-btn" onclick="setFilter('Musik', this)">🎤 Musik & Vokal</button>
+      <button class="filter-btn" onclick="setFilter('Usaha', this)">💼 Usaha / MUA</button>
+    </div>
+    <div class="search-box">
+      <input type="text" id="achSearch" placeholder="Cari nama penghargaan..." oninput="handleSearch()" />
+    </div>
+  </div>
+
+  <!-- ACHIEVEMENTS GRID -->
+  <div class="ach-grid" id="achGrid">
+    <div class="skeleton-card"></div>
+    <div class="skeleton-card"></div>
+    <div class="skeleton-card"></div>
+    <div class="skeleton-card"></div>
+  </div>
+
+</main>
+
+<footer>
+  <div class="container">
+    <p>© 2024 <strong>Santoso, S.Pd., M.Pd.</strong> — Pendidik · Penyanyi · Entrepreneur</p>
+    <p style="margin-top:10px;">
+      <a href="index.html">Beranda</a>
+      <a href="pendidikan.html">Pendidikan</a>
+      <a href="musik.html">Musik</a>
+      <a href="usaha.html">Usaha</a>
+      <a href="prestasi.html">Prestasi</a>
+      <a href="index.html#kontak">Kontak</a>
+    </p>
+  </div>
+</footer>
+
+<script src="config.js"></script>
+<script>
+const API = () => window.APP_CONFIG.API_URL;
+
+let _allAchievements = [];
+let _currentFilter = 'Semua';
+
+async function fetchAPI(params) {
+  const qs = new URLSearchParams(params).toString();
+  try {
+    const res = await fetch(`${API()}?${qs}`, { redirect: 'follow' });
+    return await res.json();
+  } catch (e) {
+    return { status: 'error', message: e.message };
+  }
+}
+
+function toggleNav() {
+  document.getElementById('navLinks').classList.toggle('open');
+}
+
+function setFilter(cat, btn) {
+  _currentFilter = cat;
+  document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  renderAchievements();
+}
+
+function handleSearch() {
+  renderAchievements();
+}
+
+function renderAchievements() {
+  const query = (document.getElementById('achSearch').value || '').toLowerCase();
+  const grid = document.getElementById('achGrid');
+
+  let filtered = _allAchievements.filter(a => {
+    const matchCat = _currentFilter === 'Semua' || (a.category && a.category.toLowerCase().includes(_currentFilter.toLowerCase()));
+    const matchQuery = !query ||
+      (a.title && a.title.toLowerCase().includes(query)) ||
+      (a.organizer && a.organizer.toLowerCase().includes(query));
+    return matchCat && matchQuery;
+  });
+
+  if (filtered.length > 0) {
+    grid.innerHTML = filtered.map(a => {
+      let catClass = 'ach-cat-edu';
+      if (a.category && a.category.toLowerCase().includes('musik')) catClass = 'ach-cat-music';
+      if (a.category && a.category.toLowerCase().includes('usaha')) catClass = 'ach-cat-biz';
+
+      return `
+        <div class="ach-card">
+          <div class="ach-top">
+            <div class="ach-badge-row">
+              <span class="ach-cat ${catClass}">${a.category || 'Prestasi'}</span>
+              ${a.level ? `<span class="ach-level">${a.level}</span>` : ''}
+            </div>
+            <h3 class="ach-title">${a.title || ''}</h3>
+            <p class="ach-organizer">${a.organizer || ''}</p>
+          </div>
+          <div class="ach-footer">
+            <span>Tahun ${a.year || '-'}</span>
+            ${a.cert_url ? `<a href="${a.cert_url}" target="_blank" rel="noopener" class="ach-btn">Lihat Piagam ↗</a>` : ''}
+          </div>
+        </div>
+      `;
+    }).join('');
+  } else {
+    grid.innerHTML = `<div class="empty-box" style="grid-column:1/-1;"><span>🏅</span>Tidak ada data prestasi yang cocok dengan filter.</div>`;
+  }
+}
+
+async function loadAchievements() {
+  const res = await fetchAPI({ action: 'getAll', sheet: 'achievements' });
+  if (res.status === 'success' && res.data) {
+    _allAchievements = res.data;
+  }
+  renderAchievements();
+}
+
+loadAchievements();
+</script>
+</body>
+</html>

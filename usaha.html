@@ -1,0 +1,444 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Portofolio Usaha & MUA — Santoso, S.Pd., M.Pd.</title>
+  <meta name="description" content="Layanan Make Up Artist (MUA), Persewaan Busana & Kebaya Pengantin, dan unit usaha profesional oleh Santoso." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;900&family=DM+Serif+Display:ital@0;1&display=swap" rel="stylesheet" />
+
+  <style>
+    :root {
+      --bg:            #F7FAF8;
+      --bg-subtle:     #EEF4F0;
+      --surface:       #FFFFFF;
+      --border:        #D8E5DD;
+      --text:          #1C1A17;
+      --text-sec:      #5E6B64;
+      --text-muted:    #8F9C95;
+
+      --biz:           #1E4A3A;
+      --biz-light:     #2A6450;
+      --biz-soft:      #EEF5F2;
+      --biz-border:    #BCDDD3;
+
+      --radius-sm:     6px;
+      --radius-md:     14px;
+      --radius-lg:     22px;
+      --shadow-sm:     0 1px 3px rgba(28,26,23,.08);
+      --shadow-md:     0 6px 20px rgba(30,74,58,.12);
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Outfit', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      font-size: 16px;
+    }
+
+    .container { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
+    section { padding: 70px 0; }
+    section + section { border-top: 1px solid var(--border); }
+
+    /* ---- NAVBAR ---- */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      height: 64px;
+      background: rgba(247,250,248,.88);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+    }
+    nav .nav-inner {
+      max-width: 1200px; margin: 0 auto; padding: 0 24px;
+      height: 100%; display: flex; align-items: center; justify-content: space-between;
+    }
+    .nav-logo {
+      display: flex; align-items: center; gap: 10px;
+      text-decoration: none; color: var(--text); font-weight: 700; font-size: 17px;
+    }
+    .nav-logo-mark {
+      width: 36px; height: 36px; border-radius: 50%;
+      background: var(--biz); color: #fff;
+      display: flex; align-items: center; justify-content: center;
+      font-weight: 900; font-size: 15px; flex-shrink: 0;
+    }
+    .nav-links { display: flex; align-items: center; gap: 6px; }
+    .nav-links a {
+      padding: 6px 12px; border-radius: var(--radius-sm);
+      text-decoration: none; color: var(--text-sec); font-size: 14px; font-weight: 500;
+      transition: color .2s, background .2s;
+    }
+    .nav-links a:hover { color: var(--text); background: var(--bg-subtle); }
+    .nav-links a.active { color: var(--biz); font-weight: 700; background: var(--biz-soft); }
+    .btn-admin {
+      background: var(--text); color: #fff !important; padding: 6px 14px;
+      border-radius: var(--radius-sm); font-size: 13px; font-weight: 600;
+    }
+    .btn-admin:hover { background: var(--biz) !important; }
+    .nav-hamburger { display: none; background: none; border: none; cursor: pointer; padding: 8px; }
+    .nav-hamburger span { display: block; width: 22px; height: 2px; background: var(--text); margin: 5px 0; border-radius: 2px; }
+
+    @media (max-width: 768px) {
+      .nav-links { display: none; }
+      .nav-hamburger { display: block; }
+      .nav-links.open {
+        display: flex; flex-direction: column; align-items: stretch;
+        position: fixed; top: 64px; left: 0; right: 0; bottom: 0;
+        background: var(--bg); padding: 20px; gap: 6px; overflow-y: auto;
+      }
+      .nav-links.open a { padding: 12px 16px; font-size: 16px; }
+    }
+
+    /* ---- HERO HEADER ---- */
+    .biz-header {
+      padding: 130px 0 60px;
+      background: linear-gradient(170deg, var(--biz-soft) 0%, var(--bg) 100%);
+      border-bottom: 1px solid var(--border);
+    }
+    .biz-badge {
+      display: inline-flex; align-items: center; gap: 8px;
+      padding: 5px 14px; border-radius: 999px;
+      background: #fff; border: 1.5px solid var(--biz-border);
+      color: var(--biz); font-size: 12px; font-weight: 700;
+      letter-spacing: .08em; text-transform: uppercase; margin-bottom: 16px;
+    }
+    .biz-title {
+      font-size: clamp(2.2rem, 4vw, 3.2rem);
+      font-weight: 900; letter-spacing: -.03em; line-height: 1.15;
+      margin-bottom: 14px;
+    }
+    .biz-subtitle {
+      font-family: 'DM Serif Display', serif; font-style: italic;
+      font-size: 1.3rem; color: var(--text-sec); max-width: 700px;
+      margin-bottom: 24px;
+    }
+    .biz-cta-row { display: flex; gap: 12px; flex-wrap: wrap; }
+    .btn-biz {
+      display: inline-flex; align-items: center; gap: 8px;
+      padding: 11px 22px; border-radius: var(--radius-sm);
+      background: var(--biz); color: #fff; text-decoration: none;
+      font-weight: 600; font-size: 14px; transition: background .2s;
+    }
+    .btn-biz:hover { background: var(--biz-light); }
+
+    /* ---- TABS NAV ---- */
+    .tabs-wrapper {
+      position: sticky; top: 64px; z-index: 90;
+      background: var(--bg);
+      border-bottom: 1px solid var(--border);
+      padding: 12px 0;
+    }
+    .tabs-list {
+      display: flex; gap: 8px; overflow-x: auto; scrollbar-width: none;
+      -webkit-overflow-scrolling: touch; padding: 2px 0;
+    }
+    .tabs-list::-webkit-scrollbar { display: none; }
+    .tab-btn {
+      padding: 9px 18px; border-radius: 999px;
+      border: 1px solid var(--border); background: var(--surface);
+      font-family: 'Outfit', sans-serif; font-size: 14px; font-weight: 600;
+      color: var(--text-sec); cursor: pointer; white-space: nowrap;
+      transition: all .2s;
+    }
+    .tab-btn:hover { border-color: var(--biz); color: var(--biz); }
+    .tab-btn.active { background: var(--biz); border-color: var(--biz); color: #fff; }
+
+    /* ---- SECTIONS ---- */
+    .section-title { font-size: 1.8rem; font-weight: 800; letter-spacing: -.02em; margin-bottom: 8px; }
+    .section-desc { font-size: 15px; color: var(--text-sec); margin-bottom: 32px; max-width: 600px; }
+
+    /* BIZ UNITS GRID */
+    .biz-grid {
+      display: grid; grid-template-columns: repeat(auto-fill, minmax(360px, 1fr));
+      gap: 24px;
+    }
+    .biz-unit-card {
+      background: var(--surface); border: 1px solid var(--border);
+      border-radius: var(--radius-lg); padding: 32px;
+      display: flex; flex-direction: column; justify-content: space-between;
+      transition: transform .2s, box-shadow .2s;
+    }
+    .biz-unit-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-md); border-color: var(--biz-border); }
+    .biz-unit-type {
+      display: inline-block; font-size: 11px; font-weight: 700;
+      padding: 4px 12px; border-radius: 999px;
+      background: var(--biz-soft); color: var(--biz);
+      text-transform: uppercase; letter-spacing: .08em; margin-bottom: 16px;
+    }
+    .biz-unit-name { font-size: 1.4rem; font-weight: 800; margin-bottom: 8px; }
+    .biz-unit-tagline { font-family: 'DM Serif Display', serif; font-style: italic; font-size: 1.1rem; color: var(--biz-light); margin-bottom: 16px; }
+    .biz-unit-desc { font-size: 14px; color: var(--text-sec); line-height: 1.7; margin-bottom: 24px; }
+    .biz-unit-actions {
+      display: flex; gap: 10px; align-items: center; flex-wrap: wrap;
+      padding-top: 20px; border-top: 1px solid var(--border);
+    }
+    .btn-wa-unit {
+      display: inline-flex; align-items: center; gap: 6px;
+      background: #25D366; color: #fff; text-decoration: none;
+      padding: 8px 16px; border-radius: var(--radius-sm); font-size: 13px; font-weight: 700;
+    }
+    .btn-ig-unit {
+      display: inline-flex; align-items: center; gap: 6px;
+      background: var(--bg-subtle); color: var(--text); text-decoration: none;
+      padding: 8px 16px; border-radius: var(--radius-sm); font-size: 13px; font-weight: 600;
+    }
+
+    /* GALLERY */
+    .gallery-grid {
+      display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 18px;
+    }
+    .gallery-item {
+      position: relative; border-radius: var(--radius-md); overflow: hidden;
+      aspect-ratio: 4/3; background: var(--bg-subtle); border: 1px solid var(--border);
+    }
+    .gallery-item img {
+      width: 100%; height: 100%; object-fit: cover; transition: transform .3s;
+    }
+    .gallery-item:hover img { transform: scale(1.05); }
+    .gallery-caption {
+      position: absolute; bottom: 0; left: 0; right: 0;
+      background: linear-gradient(transparent, rgba(0,0,0,.75));
+      color: #fff; padding: 24px 16px 12px; font-size: 13px;
+    }
+
+    /* TESTIMONIALS */
+    .testi-grid {
+      display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+      gap: 20px;
+    }
+    .testi-card {
+      background: var(--surface); border: 1px solid var(--border);
+      border-radius: var(--radius-md); padding: 26px;
+      display: flex; flex-direction: column; justify-content: space-between;
+    }
+    .testi-stars { color: #F59E0B; font-size: 16px; margin-bottom: 12px; }
+    .testi-review { font-size: 14px; color: var(--text); line-height: 1.7; font-style: italic; margin-bottom: 18px; }
+    .testi-author { font-size: 13px; font-weight: 700; color: var(--biz); }
+
+    /* SKELETON */
+    .skeleton-card {
+      height: 220px; border-radius: var(--radius-md);
+      background: linear-gradient(90deg, #E6EFEA 25%, #F4F8F6 50%, #E6EFEA 75%);
+      background-size: 200% 100%; animation: shimmer 1.5s infinite;
+    }
+    @keyframes shimmer { 0% { background-position: 200% 0; } 100% { background-position: -200% 0; } }
+
+    .empty-box {
+      text-align: center; padding: 48px 20px;
+      background: var(--surface); border: 1.5px dashed var(--border);
+      border-radius: var(--radius-md); color: var(--text-sec);
+    }
+    .empty-box span { font-size: 36px; display: block; margin-bottom: 12px; }
+
+    footer {
+      background: #fff; border-top: 1px solid var(--border);
+      padding: 48px 0; text-align: center; font-size: 14px; color: var(--text-sec);
+    }
+    footer a { color: var(--biz); text-decoration: none; margin: 0 10px; }
+  </style>
+</head>
+<body>
+
+<!-- NAVBAR -->
+<nav>
+  <div class="nav-inner">
+    <a href="index.html" class="nav-logo">
+      <div class="nav-logo-mark">S</div>
+      <span>Santoso</span>
+    </a>
+    <div class="nav-links" id="navLinks">
+      <a href="index.html">Beranda</a>
+      <a href="pendidikan.html">Pendidikan</a>
+      <a href="musik.html">Musik</a>
+      <a href="usaha.html" class="active">Usaha</a>
+      <a href="prestasi.html">Prestasi</a>
+      <a href="index.html#kontak">Kontak</a>
+      <a href="admin.html" class="btn-admin">⚙ Admin</a>
+    </div>
+    <button class="nav-hamburger" onclick="toggleNav()" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<!-- HEADER -->
+<header class="biz-header">
+  <div class="container">
+    <div class="biz-badge">💼 Portofolio Bisnis & Wirausaha</div>
+    <h1 class="biz-title">Jiwa Wirausaha,<br />Estetika & Pelayanan Profesional.</h1>
+    <p class="biz-subtitle">
+      Dari seni tata rias pengantin (MUA) hingga persewaan busana adat dan kebaya modern — melayani setiap momen istimewa dengan sempurna.
+    </p>
+    <div class="biz-cta-row">
+      <a href="#" id="consultWa" target="_blank" class="btn-biz">Konsultasi Rias & Booking WA ↗</a>
+      <a href="index.html#kontak" class="btn-biz" style="background:transparent;color:var(--text);border:1.5px solid var(--border);">Kirim Formulir Pemesanan</a>
+    </div>
+  </div>
+</header>
+
+<!-- TABS NAVIGATION -->
+<div class="tabs-wrapper">
+  <div class="container">
+    <div class="tabs-list">
+      <button class="tab-btn active" onclick="switchTab('unit', this)">🏪 Unit Usaha & Layanan</button>
+      <button class="tab-btn" onclick="switchTab('galeri', this)">📸 Galeri Karya & Portofolio</button>
+      <button class="tab-btn" onclick="switchTab('testimoni', this)">💬 Testimoni Klien</button>
+    </div>
+  </div>
+</div>
+
+<main class="container" style="padding-top:40px;padding-bottom:80px;">
+
+  <!-- TAB 1: DAFTAR UNIT USAHA -->
+  <div id="tab-unit" class="tab-content">
+    <h2 class="section-title">Layanan & Unit Usaha</h2>
+    <p class="section-desc">Pilihan layanan komprehensif untuk pernikahan, wisuda, acara resmi, dan sewa busana adat.</p>
+    <div class="biz-grid" id="gridUnit">
+      <div class="skeleton-card"></div>
+      <div class="skeleton-card"></div>
+    </div>
+  </div>
+
+  <!-- TAB 2: GALERI KARYA -->
+  <div id="tab-galeri" class="tab-content" style="display:none;">
+    <h2 class="section-title">Galeri Hasil Riasan & Busana</h2>
+    <p class="section-desc">Dokumentasi hasil tata rias pengantin, paes modern, wisuda, dan koleksi busana.</p>
+    <div class="gallery-grid" id="gridGaleri">
+      <div class="skeleton-card"></div>
+      <div class="skeleton-card"></div>
+      <div class="skeleton-card"></div>
+    </div>
+  </div>
+
+  <!-- TAB 3: TESTIMONI -->
+  <div id="tab-testimoni" class="tab-content" style="display:none;">
+    <h2 class="section-title">Testimoni Klien Puas</h2>
+    <p class="section-desc">Kepuasan pengantin, keluarga, dan pelanggan atas layanan ramah dan profesional.</p>
+    <div class="testi-grid" id="gridTestimoni">
+      <div class="skeleton-card"></div>
+      <div class="skeleton-card"></div>
+      <div class="skeleton-card"></div>
+    </div>
+  </div>
+
+</main>
+
+<footer>
+  <div class="container">
+    <p>© 2024 <strong>Santoso, S.Pd., M.Pd.</strong> — Pendidik · Penyanyi · Entrepreneur</p>
+    <p style="margin-top:10px;">
+      <a href="index.html">Beranda</a>
+      <a href="pendidikan.html">Pendidikan</a>
+      <a href="musik.html">Musik</a>
+      <a href="usaha.html">Usaha</a>
+      <a href="prestasi.html">Prestasi</a>
+      <a href="index.html#kontak">Kontak</a>
+    </p>
+  </div>
+</footer>
+
+<script src="config.js"></script>
+<script>
+const API = () => window.APP_CONFIG.API_URL;
+
+async function fetchAPI(params) {
+  const qs = new URLSearchParams(params).toString();
+  try {
+    const res = await fetch(`${API()}?${qs}`, { redirect: 'follow' });
+    return await res.json();
+  } catch (e) {
+    return { status: 'error', message: e.message };
+  }
+}
+
+function toggleNav() {
+  document.getElementById('navLinks').classList.toggle('open');
+}
+
+function switchTab(tabId, btn) {
+  document.querySelectorAll('.tab-content').forEach(el => el.style.display = 'none');
+  document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+  document.getElementById(`tab-${tabId}`).style.display = 'block';
+  btn.classList.add('active');
+}
+
+async function loadData() {
+  // WA link
+  fetchAPI({ action: 'getProfile' }).then(res => {
+    if (res.status === 'success' && res.data && res.data.whatsapp) {
+      document.getElementById('consultWa').href = `https://wa.me/${res.data.whatsapp}?text=Halo%20Pak%20Santoso,%20saya%20ingin%20konsultasi%20layanan%20usaha/MUA`;
+    }
+  });
+
+  // 1. Business List
+  fetchAPI({ action: 'getAll', sheet: 'business_list' }).then(res => {
+    const grid = document.getElementById('gridUnit');
+    if (res.status === 'success' && res.data && res.data.length > 0) {
+      grid.innerHTML = res.data.map(u => `
+        <div class="biz-unit-card">
+          <div>
+            <span class="biz-unit-type">${u.type || 'Layanan'}</span>
+            <h3 class="biz-unit-name">${u.name || ''}</h3>
+            <p class="biz-unit-tagline">${u.tagline || ''}</p>
+            <p class="biz-unit-desc">${u.description || ''}</p>
+          </div>
+          <div class="biz-unit-actions">
+            ${u.wa_number ? `<a href="https://wa.me/${u.wa_number}?text=Halo%20${encodeURIComponent(u.name)}" target="_blank" class="btn-wa-unit">💬 Chat WA</a>` : ''}
+            ${u.ig_url ? `<a href="${u.ig_url}" target="_blank" class="btn-ig-unit">📸 Instagram</a>` : ''}
+          </div>
+        </div>
+      `).join('');
+    } else {
+      grid.innerHTML = `<div class="empty-box" style="grid-column:1/-1;"><span>💼</span>Belum ada unit usaha yang didaftarkan.</div>`;
+    }
+  });
+
+  // 2. Business Gallery
+  fetchAPI({ action: 'getAll', sheet: 'business_gallery' }).then(res => {
+    const grid = document.getElementById('gridGaleri');
+    if (res.status === 'success' && res.data && res.data.length > 0) {
+      grid.innerHTML = res.data.map(g => `
+        <div class="gallery-item">
+          <img src="${g.photo_url}" alt="${g.caption || 'Foto Karya'}" loading="lazy" />
+          ${g.caption ? `<div class="gallery-caption">${g.caption}</div>` : ''}
+        </div>
+      `).join('');
+    } else {
+      grid.innerHTML = `<div class="empty-box" style="grid-column:1/-1;"><span>📸</span>Belum ada foto galeri karya usaha.</div>`;
+    }
+  });
+
+  // 3. Testimonials
+  fetchAPI({ action: 'getAll', sheet: 'testimonials' }).then(res => {
+    const grid = document.getElementById('gridTestimoni');
+    if (res.status === 'success' && res.data && res.data.length > 0) {
+      grid.innerHTML = res.data.map(t => {
+        const rating = parseInt(t.rating) || 5;
+        const stars = '★'.repeat(rating) + '☆'.repeat(Math.max(0, 5 - rating));
+        return `
+          <div class="testi-card">
+            <div>
+              <div class="testi-stars">${stars}</div>
+              <p class="testi-review">"${t.review || ''}"</p>
+            </div>
+            <div class="testi-author">— ${t.client_name || 'Klien'}</div>
+          </div>
+        `;
+      }).join('');
+    } else {
+      grid.innerHTML = `<div class="empty-box" style="grid-column:1/-1;"><span>💬</span>Belum ada testimoni klien.</div>`;
+    }
+  });
+}
+
+loadData();
+</script>
+</body>
+</html>

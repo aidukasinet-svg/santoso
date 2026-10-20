@@ -1,0 +1,466 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Portofolio Musik & Vokal — Santoso, S.Pd., M.Pd.</title>
+  <meta name="description" content="Koleksi panggung, galeri penampilan festival, video rekaman vokal, dan rekam jejak musisi Santoso." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;900&family=DM+Serif+Display:ital@0;1&display=swap" rel="stylesheet" />
+
+  <style>
+    :root {
+      --bg:            #FDFBF9;
+      --bg-subtle:     #F7F2EE;
+      --surface:       #FFFFFF;
+      --border:        #E8DFD8;
+      --text:          #1C1A17;
+      --text-sec:      #6B6560;
+      --text-muted:    #A09890;
+
+      --music:         #7B1E2E;
+      --music-light:   #A5263A;
+      --music-soft:    #F9EEEF;
+      --music-border:  #E8BFBF;
+
+      --radius-sm:     6px;
+      --radius-md:     14px;
+      --radius-lg:     22px;
+      --shadow-sm:     0 1px 3px rgba(28,26,23,.08);
+      --shadow-md:     0 6px 20px rgba(123,30,46,.12);
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Outfit', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      font-size: 16px;
+    }
+
+    .container { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
+    section { padding: 70px 0; }
+    section + section { border-top: 1px solid var(--border); }
+
+    /* ---- NAVBAR ---- */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      height: 64px;
+      background: rgba(253,251,249,.88);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+    }
+    nav .nav-inner {
+      max-width: 1200px; margin: 0 auto; padding: 0 24px;
+      height: 100%; display: flex; align-items: center; justify-content: space-between;
+    }
+    .nav-logo {
+      display: flex; align-items: center; gap: 10px;
+      text-decoration: none; color: var(--text); font-weight: 700; font-size: 17px;
+    }
+    .nav-logo-mark {
+      width: 36px; height: 36px; border-radius: 50%;
+      background: var(--music); color: #fff;
+      display: flex; align-items: center; justify-content: center;
+      font-weight: 900; font-size: 15px; flex-shrink: 0;
+    }
+    .nav-links { display: flex; align-items: center; gap: 6px; }
+    .nav-links a {
+      padding: 6px 12px; border-radius: var(--radius-sm);
+      text-decoration: none; color: var(--text-sec); font-size: 14px; font-weight: 500;
+      transition: color .2s, background .2s;
+    }
+    .nav-links a:hover { color: var(--text); background: var(--bg-subtle); }
+    .nav-links a.active { color: var(--music); font-weight: 700; background: var(--music-soft); }
+    .btn-admin {
+      background: var(--text); color: #fff !important; padding: 6px 14px;
+      border-radius: var(--radius-sm); font-size: 13px; font-weight: 600;
+    }
+    .btn-admin:hover { background: var(--music) !important; }
+    .nav-hamburger { display: none; background: none; border: none; cursor: pointer; padding: 8px; }
+    .nav-hamburger span { display: block; width: 22px; height: 2px; background: var(--text); margin: 5px 0; border-radius: 2px; }
+
+    @media (max-width: 768px) {
+      .nav-links { display: none; }
+      .nav-hamburger { display: block; }
+      .nav-links.open {
+        display: flex; flex-direction: column; align-items: stretch;
+        position: fixed; top: 64px; left: 0; right: 0; bottom: 0;
+        background: var(--bg); padding: 20px; gap: 6px; overflow-y: auto;
+      }
+      .nav-links.open a { padding: 12px 16px; font-size: 16px; }
+    }
+
+    /* ---- HERO HEADER ---- */
+    .music-header {
+      padding: 130px 0 60px;
+      background: linear-gradient(170deg, var(--music-soft) 0%, var(--bg) 100%);
+      border-bottom: 1px solid var(--border);
+    }
+    .music-badge {
+      display: inline-flex; align-items: center; gap: 8px;
+      padding: 5px 14px; border-radius: 999px;
+      background: #fff; border: 1.5px solid var(--music-border);
+      color: var(--music); font-size: 12px; font-weight: 700;
+      letter-spacing: .08em; text-transform: uppercase; margin-bottom: 16px;
+    }
+    .music-title {
+      font-size: clamp(2.2rem, 4vw, 3.2rem);
+      font-weight: 900; letter-spacing: -.03em; line-height: 1.15;
+      margin-bottom: 14px;
+    }
+    .music-subtitle {
+      font-family: 'DM Serif Display', serif; font-style: italic;
+      font-size: 1.3rem; color: var(--text-sec); max-width: 700px;
+      margin-bottom: 24px;
+    }
+    .music-cta-row { display: flex; gap: 12px; flex-wrap: wrap; }
+    .btn-booking {
+      display: inline-flex; align-items: center; gap: 8px;
+      padding: 11px 22px; border-radius: var(--radius-sm);
+      background: var(--music); color: #fff; text-decoration: none;
+      font-weight: 600; font-size: 14px; transition: background .2s;
+    }
+    .btn-booking:hover { background: var(--music-light); }
+
+    /* ---- TABS NAV ---- */
+    .tabs-wrapper {
+      position: sticky; top: 64px; z-index: 90;
+      background: var(--bg);
+      border-bottom: 1px solid var(--border);
+      padding: 12px 0;
+    }
+    .tabs-list {
+      display: flex; gap: 8px; overflow-x: auto; scrollbar-width: none;
+      -webkit-overflow-scrolling: touch; padding: 2px 0;
+    }
+    .tabs-list::-webkit-scrollbar { display: none; }
+    .tab-btn {
+      padding: 9px 18px; border-radius: 999px;
+      border: 1px solid var(--border); background: var(--surface);
+      font-family: 'Outfit', sans-serif; font-size: 14px; font-weight: 600;
+      color: var(--text-sec); cursor: pointer; white-space: nowrap;
+      transition: all .2s;
+    }
+    .tab-btn:hover { border-color: var(--music); color: var(--music); }
+    .tab-btn.active { background: var(--music); border-color: var(--music); color: #fff; }
+
+    /* ---- GRIDS ---- */
+    .section-title { font-size: 1.8rem; font-weight: 800; letter-spacing: -.02em; margin-bottom: 8px; }
+    .section-desc { font-size: 15px; color: var(--text-sec); margin-bottom: 32px; max-width: 600px; }
+
+    .event-grid {
+      display: grid; grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+      gap: 22px;
+    }
+    .event-card {
+      background: var(--surface); border: 1px solid var(--border);
+      border-radius: var(--radius-md); overflow: hidden;
+      display: flex; flex-direction: column;
+      transition: transform .2s, box-shadow .2s;
+    }
+    .event-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-md); border-color: var(--music-border); }
+    .event-card-img {
+      width: 100%; height: 200px; object-fit: cover; background: var(--bg-subtle);
+    }
+    .event-card-body { padding: 22px; flex: 1; display: flex; flex-direction: column; justify-content: space-between; }
+    .event-meta { font-size: 12px; font-weight: 700; color: var(--music); text-transform: uppercase; letter-spacing: .08em; margin-bottom: 8px; }
+    .event-card-title { font-size: 1.2rem; font-weight: 700; margin-bottom: 8px; line-height: 1.3; }
+    .event-card-desc { font-size: 14px; color: var(--text-sec); margin-bottom: 14px; }
+    .event-venue { font-size: 13px; color: var(--text-muted); display: flex; align-items: center; gap: 6px; }
+
+    /* GALLERY */
+    .gallery-grid {
+      display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 16px;
+    }
+    .gallery-item {
+      position: relative; border-radius: var(--radius-md); overflow: hidden;
+      aspect-ratio: 4/3; background: var(--bg-subtle); border: 1px solid var(--border);
+    }
+    .gallery-item img {
+      width: 100%; height: 100%; object-fit: cover;
+      transition: transform .3s;
+    }
+    .gallery-item:hover img { transform: scale(1.05); }
+    .gallery-caption {
+      position: absolute; bottom: 0; left: 0; right: 0;
+      background: linear-gradient(transparent, rgba(0,0,0,.75));
+      color: #fff; padding: 24px 16px 12px; font-size: 13px;
+    }
+
+    /* VIDEOS */
+    .video-grid {
+      display: grid; grid-template-columns: repeat(auto-fill, minmax(420px, 1fr));
+      gap: 24px;
+    }
+    @media (max-width: 600px) { .video-grid { grid-template-columns: 1fr; } }
+    .video-card {
+      background: var(--surface); border: 1px solid var(--border);
+      border-radius: var(--radius-md); overflow: hidden;
+    }
+    .video-wrapper {
+      position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;
+    }
+    .video-wrapper iframe {
+      position: absolute; top:0; left: 0; width: 100%; height: 100%; border: none;
+    }
+    .video-info { padding: 18px; }
+    .video-info h3 { font-size: 1.1rem; font-weight: 700; margin-bottom: 6px; }
+    .video-info p { font-size: 13px; color: var(--text-muted); }
+
+    /* SKELETON */
+    .skeleton-card {
+      height: 240px; border-radius: var(--radius-md);
+      background: linear-gradient(90deg, #EEEAE3 25%, #F7F5F2 50%, #EEEAE3 75%);
+      background-size: 200% 100%; animation: shimmer 1.5s infinite;
+    }
+    @keyframes shimmer { 0% { background-position: 200% 0; } 100% { background-position: -200% 0; } }
+
+    .empty-box {
+      text-align: center; padding: 48px 20px;
+      background: var(--surface); border: 1.5px dashed var(--border);
+      border-radius: var(--radius-md); color: var(--text-sec);
+    }
+    .empty-box span { font-size: 36px; display: block; margin-bottom: 12px; }
+
+    footer {
+      background: #fff; border-top: 1px solid var(--border);
+      padding: 48px 0; text-align: center; font-size: 14px; color: var(--text-sec);
+    }
+    footer a { color: var(--music); text-decoration: none; margin: 0 10px; }
+  </style>
+</head>
+<body>
+
+<!-- NAVBAR -->
+<nav>
+  <div class="nav-inner">
+    <a href="index.html" class="nav-logo">
+      <div class="nav-logo-mark">S</div>
+      <span>Santoso</span>
+    </a>
+    <div class="nav-links" id="navLinks">
+      <a href="index.html">Beranda</a>
+      <a href="pendidikan.html">Pendidikan</a>
+      <a href="musik.html" class="active">Musik</a>
+      <a href="usaha.html">Usaha</a>
+      <a href="prestasi.html">Prestasi</a>
+      <a href="index.html#kontak">Kontak</a>
+      <a href="admin.html" class="btn-admin">⚙ Admin</a>
+    </div>
+    <button class="nav-hamburger" onclick="toggleNav()" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<!-- HEADER -->
+<header class="music-header">
+  <div class="container">
+    <div class="music-badge">🎤 Portofolio Musik & Vokal</div>
+    <h1 class="music-title">Bernyanyi dengan Jiwa,<br />Menghidupkan Suasana Panggung.</h1>
+    <p class="music-subtitle">
+      Perjalanan panggung, melodi nada akustik, dan dedikasi seni tarik suara dari solois profesional Santoso.
+    </p>
+    <div class="music-cta-row">
+      <a href="#" id="bookingWa" target="_blank" class="btn-booking">Hubungi untuk Booking Panggung ↗</a>
+      <a href="index.html#kontak" class="btn-booking" style="background:transparent;color:var(--text);border:1.5px solid var(--border);">Kirim Formulir Undangan</a>
+    </div>
+  </div>
+</header>
+
+<!-- TABS NAVIGATION -->
+<div class="tabs-wrapper">
+  <div class="container">
+    <div class="tabs-list">
+      <button class="tab-btn active" onclick="switchTab('event', this)">🎪 Event & Panggung</button>
+      <button class="tab-btn" onclick="switchTab('galeri', this)">📸 Galeri Penampilan</button>
+      <button class="tab-btn" onclick="switchTab('video', this)">🎬 Rekaman Video</button>
+      <button class="tab-btn" onclick="switchTab('prestasi', this)">🏆 Prestasi Musik</button>
+    </div>
+  </div>
+</div>
+
+<main class="container" style="padding-top:40px;padding-bottom:80px;">
+
+  <!-- TAB 1: EVENT PENAMPILAN -->
+  <div id="tab-event" class="tab-content">
+    <h2 class="section-title">Rekam Jejak Event & Panggung</h2>
+    <p class="section-desc">Dokumentasi penampilan solo vocal di berbagai panggung festival budaya, gala dinner, resepsi resmi, dan konser amal.</p>
+    <div class="event-grid" id="gridEvent">
+      <div class="skeleton-card"></div>
+      <div class="skeleton-card"></div>
+      <div class="skeleton-card"></div>
+    </div>
+  </div>
+
+  <!-- TAB 2: GALERI PENAMPILAN -->
+  <div id="tab-galeri" class="tab-content" style="display:none;">
+    <h2 class="section-title">Galeri Foto Panggung</h2>
+    <p class="section-desc">Momen-momen visual dari sorotan lampu panggung dan studio rekaman.</p>
+    <div class="gallery-grid" id="gridGaleri">
+      <div class="skeleton-card"></div>
+      <div class="skeleton-card"></div>
+      <div class="skeleton-card"></div>
+    </div>
+  </div>
+
+  <!-- TAB 3: VIDEO PENAMPILAN -->
+  <div id="tab-video" class="tab-content" style="display:none;">
+    <h2 class="section-title">Rekaman Video Penampilan</h2>
+    <p class="section-desc">Tonton penampilan solo akustik, cover lagu nusantara, dan rekaman panggung pilihan.</p>
+    <div class="video-grid" id="gridVideo">
+      <div class="skeleton-card"></div>
+      <div class="skeleton-card"></div>
+    </div>
+  </div>
+
+  <!-- TAB 4: PRESTASI MUSIK -->
+  <div id="tab-prestasi" class="tab-content" style="display:none;">
+    <h2 class="section-title">Prestasi Musik & Seni Vokal</h2>
+    <p class="section-desc">Pencapaian dalam festival menyanyi solo, kompetisi musik daerah, dan penghargaan tarik suara.</p>
+    <div class="event-grid" id="gridPrestasi">
+      <div class="skeleton-card"></div>
+      <div class="skeleton-card"></div>
+    </div>
+  </div>
+
+</main>
+
+<footer>
+  <div class="container">
+    <p>© 2024 <strong>Santoso, S.Pd., M.Pd.</strong> — Pendidik · Penyanyi · Entrepreneur</p>
+    <p style="margin-top:10px;">
+      <a href="index.html">Beranda</a>
+      <a href="pendidikan.html">Pendidikan</a>
+      <a href="musik.html">Musik</a>
+      <a href="usaha.html">Usaha</a>
+      <a href="prestasi.html">Prestasi</a>
+      <a href="index.html#kontak">Kontak</a>
+    </p>
+  </div>
+</footer>
+
+<script src="config.js"></script>
+<script>
+const API = () => window.APP_CONFIG.API_URL;
+
+async function fetchAPI(params) {
+  const qs = new URLSearchParams(params).toString();
+  try {
+    const res = await fetch(`${API()}?${qs}`, { redirect: 'follow' });
+    return await res.json();
+  } catch (e) {
+    return { status: 'error', message: e.message };
+  }
+}
+
+function toggleNav() {
+  document.getElementById('navLinks').classList.toggle('open');
+}
+
+function switchTab(tabId, btn) {
+  document.querySelectorAll('.tab-content').forEach(el => el.style.display = 'none');
+  document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+  document.getElementById(`tab-${tabId}`).style.display = 'block';
+  btn.classList.add('active');
+}
+
+async function loadData() {
+  // Profile WA
+  fetchAPI({ action: 'getProfile' }).then(res => {
+    if (res.status === 'success' && res.data && res.data.whatsapp) {
+      document.getElementById('bookingWa').href = `https://wa.me/${res.data.whatsapp}?text=Halo%20Pak%20Santoso,%20saya%20ingin%20booking%20penampilan%20musik`;
+    }
+  });
+
+  // 1. Events
+  fetchAPI({ action: 'getAll', sheet: 'music_event' }).then(res => {
+    const grid = document.getElementById('gridEvent');
+    if (res.status === 'success' && res.data && res.data.length > 0) {
+      grid.innerHTML = res.data.map(ev => `
+        <div class="event-card">
+          ${ev.photo_url ? `<img src="${ev.photo_url}" alt="${ev.event_name || 'Event'}" class="event-card-img" />` : ''}
+          <div class="event-card-body">
+            <div>
+              <div class="event-meta">${ev.date || ''} · ${ev.city || 'Tuban'}</div>
+              <h3 class="event-card-title">${ev.event_name || ''}</h3>
+              <p class="event-card-desc">${ev.description || ''}</p>
+            </div>
+            <div class="event-venue">📍 ${ev.venue || '-'}</div>
+          </div>
+        </div>
+      `).join('');
+    } else {
+      grid.innerHTML = `<div class="empty-box" style="grid-column:1/-1;"><span>🎤</span>Belum ada data event musik yang dipublikasikan.</div>`;
+    }
+  });
+
+  // 2. Galeri
+  fetchAPI({ action: 'getAll', sheet: 'music_gallery' }).then(res => {
+    const grid = document.getElementById('gridGaleri');
+    if (res.status === 'success' && res.data && res.data.length > 0) {
+      grid.innerHTML = res.data.map(g => `
+        <div class="gallery-item">
+          <img src="${g.photo_url}" alt="${g.caption || 'Foto Penampilan'}" loading="lazy" />
+          ${g.caption ? `<div class="gallery-caption">${g.caption}</div>` : ''}
+        </div>
+      `).join('');
+    } else {
+      grid.innerHTML = `<div class="empty-box" style="grid-column:1/-1;"><span>📸</span>Belum ada foto galeri penampilan.</div>`;
+    }
+  });
+
+  // 3. Video
+  fetchAPI({ action: 'getAll', sheet: 'music_video' }).then(res => {
+    const grid = document.getElementById('gridVideo');
+    if (res.status === 'success' && res.data && res.data.length > 0) {
+      grid.innerHTML = res.data.map(v => {
+        let embed = v.embed_url || '';
+        if (embed.includes('watch?v=')) {
+          embed = embed.replace('watch?v=', 'embed/');
+        }
+        return `
+          <div class="video-card">
+            <div class="video-wrapper">
+              <iframe src="${embed}" title="${v.title || 'Video'}" allowfullscreen loading="lazy"></iframe>
+            </div>
+            <div class="video-info">
+              <h3>${v.title || ''}</h3>
+              <p>${v.platform || 'YouTube'} · ${v.date || ''}</p>
+            </div>
+          </div>
+        `;
+      }).join('');
+    } else {
+      grid.innerHTML = `<div class="empty-box" style="grid-column:1/-1;"><span>🎬</span>Belum ada video rekaman musik.</div>`;
+    }
+  });
+
+  // 4. Prestasi Musik
+  fetchAPI({ action: 'getAll', sheet: 'music_prestasi' }).then(res => {
+    const grid = document.getElementById('gridPrestasi');
+    if (res.status === 'success' && res.data && res.data.length > 0) {
+      grid.innerHTML = res.data.map(p => `
+        <div class="event-card" style="padding:22px;">
+          <div class="event-meta" style="color:#B45309;">${p.level || 'Penghargaan'} · Tahun ${p.year || '-'}</div>
+          <h3 class="event-card-title">${p.title || ''}</h3>
+          <p class="event-card-desc">Penyelenggara: <strong>${p.organizer || '-'}</strong></p>
+          ${p.cert_url ? `<a href="${p.cert_url}" target="_blank" rel="noopener" style="color:var(--music);font-weight:600;font-size:13px;text-decoration:none;">Lihat Sertifikat / Bukti ↗</a>` : ''}
+        </div>
+      `).join('');
+    } else {
+      grid.innerHTML = `<div class="empty-box" style="grid-column:1/-1;"><span>🏆</span>Belum ada data prestasi vokal & musik.</div>`;
+    }
+  });
+}
+
+loadData();
+</script>
+</body>
+</html>
