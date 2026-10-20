@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Profil & Sosial Media — Santoso, S.Pd., M.Pd. | Portofolio Sekolah</title>
+<title>Profil & Sosial Media — Santoso, S.Pd., M.Pd. | Portofolio Digital</title>
 <meta name="description" content="Biodata pendidik, kualifikasi akademik, riwayat pendidikan formal, hobi, dan kanal media sosial resmi Santoso, S.Pd., M.Pd." />
 <meta property="og:title" content="Profil & Sosial Media — Santoso, S.Pd., M.Pd." />
 <meta property="og:description" content="Profil pendidik UPT SDN Latsari 2 Bancar, riwayat pendidikan S1 & S2, dan media sosial resmi." />
@@ -208,9 +208,11 @@ footer a:hover{text-decoration:underline}
       <a href="/index.html">Beranda</a>
       <a href="/index.html#tentang">Tentang</a>
       <a href="/index.html#timeline">Jejak Langkah</a>
-      <a href="/portosekolah" class="active">Portofolio Sekolah</a>
+      <a href="/portosekolah" class="active">Portofolio Digital</a>
+      <!-- Menu Musik dan Usaha disembunyikan sementara
       <a href="/musik.html">Musik</a>
       <a href="/usaha.html">Usaha</a>
+      -->
       <a href="/prestasi.html">Prestasi</a>
       <a href="/index.html#kontak">Kontak</a>
       <a href="/admin.html" class="btn-admin"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="vertical-align:-1px;margin-right:5px;"><path d="M12.22 2h-.44a2 2 0 0 0-2 2v.18a2 2 0 0 1-1 1.73l-.43.25a2 2 0 0 1-2 0l-.15-.08a2 2 0 0 0-2.73.73l-.22.38a2 2 0 0 0 .73 2.73l.15.1a2 2 0 0 1 1 1.72v.51a2 2 0 0 1-1 1.74l-.15.09a2 2 0 0 0-.73 2.73l.22.38a2 2 0 0 0 2.73.73l.15-.08a2 2 0 0 1 2 0l.43.25a2 2 0 0 1 1 1.73V20a2 2 0 0 0 2 2h.44a2 2 0 0 0 2-2v-.18a2 2 0 0 1 1-1.73l.43-.25a2 2 0 0 1 2 0l.15.08a2 2 0 0 0 2.73-.73l.22-.39a2 2 0 0 0-.73-2.73l-.15-.08a2 2 0 0 1-1-1.74v-.5a2 2 0 0 1 1-1.74l.15-.09a2 2 0 0 0 .73-2.73l-.22-.38a2 2 0 0 0-2.73-.73l-.15.08a2 2 0 0 1-2 0l-.43-.25a2 2 0 0 1-1-1.73V4a2 2 0 0 0-2-2z"/><circle cx="12" cy="12" r="3"/></svg>Admin</a>
@@ -367,9 +369,11 @@ footer a:hover{text-decoration:underline}
     <p>&copy; 2026 <strong>Santoso, S.Pd., M.Pd.</strong> — UPT SDN Latsari 2 Bancar</p>
     <p class="links" style="margin-top:10px">
       <a href="/index.html">Beranda</a>
-      <a href="/portosekolah">Portofolio Sekolah</a>
+      <a href="/portosekolah">Portofolio Digital</a>
+      <!-- Musik dan Usaha disembunyikan sementara
       <a href="/musik.html">Musik</a>
       <a href="/usaha.html">Usaha</a>
+      -->
       <a href="/prestasi.html">Prestasi</a>
       <a href="/index.html#kontak">Kontak</a>
       <a href="https://sites.google.com/admin.sd.belajar.id/portofoliopaksan/sosial-media-profil" target="_blank" rel="noopener">Sumber: Google Sites</a>
@@ -377,12 +381,13 @@ footer a:hover{text-decoration:underline}
   </div>
 </footer>
 
+<script src="/config.js"></script>
 <script>
 /* ================================================================
    DATA RIWAYAT PENDIDIKAN
    Sumber tunggal: konten-portosekolah.md
    ================================================================ */
-const RIWAYAT = [
+const DEFAULT_RIWAYAT = [
   {
     period: '2023–2025',
     inst: 'Universitas Gresik',
@@ -415,17 +420,38 @@ const RIWAYAT = [
   }
 ];
 
-const tEl = document.getElementById('eduTimeline');
-tEl.innerHTML = RIWAYAT.map(r => `
-  <div class="timeline-item">
-    <div class="timeline-dot"></div>
-    <div class="timeline-content">
-      <div class="timeline-year">${r.period}</div>
-      <div class="timeline-inst">${r.inst}</div>
-      <div class="timeline-deg">${r.degree}</div>
+function renderEduTimeline(items) {
+  const tEl = document.getElementById('eduTimeline');
+  if (!tEl) return;
+  tEl.innerHTML = items.map(r => `
+    <div class="timeline-item">
+      <div class="timeline-dot"></div>
+      <div class="timeline-content">
+        <div class="timeline-year">${r.period}</div>
+        <div class="timeline-inst">${r.inst || r.institution}</div>
+        <div class="timeline-deg">${r.degree}${r.major ? ` (${r.major})` : ''}</div>
+      </div>
     </div>
-  </div>
-`).join('');
+  `).join('');
+}
+
+async function loadDynamicProfilEdu() {
+  const apiUrl = (window.APP_CONFIG && window.APP_CONFIG.API_URL) || '/api';
+  try {
+    const res = await fetch(`${apiUrl}?action=getAll&sheet=school_profil_edu&_t=${Date.now()}`).then(r => r.json());
+    if (res && res.status === 'success' && Array.isArray(res.data) && res.data.length > 0) {
+      const active = res.data.filter(x => x.active !== false && x.active !== 'false' && x.active !== 'FALSE');
+      if (active.length > 0) {
+        // Urutkan dari jenjang tertinggi/terbaru ke lama (atau sebaliknya)
+        renderEduTimeline(active.slice().reverse());
+        return;
+      }
+    }
+  } catch (e) {
+    console.warn('Gagal memuat profil edu dari server', e);
+  }
+  renderEduTimeline(DEFAULT_RIWAYAT);
+}
 
 function zoom(src) {
   document.getElementById('lbImg').src = src;
@@ -439,12 +465,14 @@ window.addEventListener('DOMContentLoaded', () => {
   if (activeTab) {
     activeTab.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
   }
+  loadDynamicProfilEdu();
   loadDynamicCustomNav();
 });
 
 async function loadDynamicCustomNav() {
+  const apiUrl = (window.APP_CONFIG && window.APP_CONFIG.API_URL) || '/api';
   try {
-    const res = await fetch('/api?action=getAll&sheet=school_custom_categories').then(r => r.json());
+    const res = await fetch(`${apiUrl}?action=getAll&sheet=school_custom_categories&_t=${Date.now()}`).then(r => r.json());
     if (res && res.status === 'success' && Array.isArray(res.data)) {
       const subnavList = document.getElementById('subnavList');
       if (!subnavList) return;

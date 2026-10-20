@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Pengembangan Diri — Santoso, S.Pd., M.Pd. | Portofolio Sekolah</title>
+<title>Pengembangan Diri — Santoso, S.Pd., M.Pd. | Portofolio Digital</title>
 <meta name="description" content="Dokumentasi 11 kegiatan pengembangan keprofesian berkelanjutan, Guru Penggerak, dan arsip sertifikat resmi Santoso, S.Pd., M.Pd." />
 <meta property="og:title" content="Pengembangan Diri — Santoso, S.Pd., M.Pd." />
 <meta property="og:description" content="Program Guru Penggerak Angkatan 5, pendidikan inklusif, pembatik, narasumber praktik baik, dan sertifikasi resmi." />
@@ -182,9 +182,11 @@ footer a:hover{text-decoration:underline}
       <a href="/index.html">Beranda</a>
       <a href="/index.html#tentang">Tentang</a>
       <a href="/index.html#timeline">Jejak Langkah</a>
-      <a href="/portosekolah" class="active">Portofolio Sekolah</a>
+      <a href="/portosekolah" class="active">Portofolio Digital</a>
+      <!-- Menu Musik dan Usaha disembunyikan sementara
       <a href="/musik.html">Musik</a>
       <a href="/usaha.html">Usaha</a>
+      -->
       <a href="/prestasi.html">Prestasi</a>
       <a href="/index.html#kontak">Kontak</a>
       <a href="/admin.html" class="btn-admin"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="vertical-align:-1px;margin-right:5px;"><path d="M12.22 2h-.44a2 2 0 0 0-2 2v.18a2 2 0 0 1-1 1.73l-.43.25a2 2 0 0 1-2 0l-.15-.08a2 2 0 0 0-2.73.73l-.22.38a2 2 0 0 0 .73 2.73l.15.1a2 2 0 0 1 1 1.72v.51a2 2 0 0 1-1 1.74l-.15.09a2 2 0 0 0-.73 2.73l.22.38a2 2 0 0 0 2.73.73l.15-.08a2 2 0 0 1 2 0l.43.25a2 2 0 0 1 1 1.73V20a2 2 0 0 0 2 2h.44a2 2 0 0 0 2-2v-.18a2 2 0 0 1 1-1.73l.43-.25a2 2 0 0 1 2 0l.15.08a2 2 0 0 0 2.73-.73l.22-.39a2 2 0 0 0-.73-2.73l-.15-.08a2 2 0 0 1-1-1.74v-.5a2 2 0 0 1 1-1.74l.15-.09a2 2 0 0 0 .73-2.73l-.22-.38a2 2 0 0 0-2.73-.73l-.15.08a2 2 0 0 1-2 0l-.43-.25a2 2 0 0 1-1-1.73V4a2 2 0 0 0-2-2z"/><circle cx="12" cy="12" r="3"/></svg>Admin</a>
@@ -246,8 +248,8 @@ footer a:hover{text-decoration:underline}
     <h1 class="header-title">Pengembangan Diri</h1>
     <p class="header-sub">Pelatihan kompetensi keprofesian berkelanjutan (PKB), program Guru Penggerak, dan arsip berkas sertifikasi resmi.</p>
     <div class="header-meta">
-      <span><strong>11</strong>Kegiatan Pelatihan & Kunjungan</span>
-      <span><strong>9</strong>Berkas Sertifikat & SK</span>
+      <span><strong id="statKegiatanCount">11</strong>Kegiatan Pelatihan & Kunjungan</span>
+      <span><strong id="statBerkasCount">9</strong>Berkas Sertifikat & SK</span>
       <button class="btn-print" onclick="window.print()">
         <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 6 2 18 2 18 9"/><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><rect width="12" height="8" x="6" y="14"/></svg>
         Cetak / simpan PDF
@@ -276,9 +278,11 @@ footer a:hover{text-decoration:underline}
     <p>&copy; 2026 <strong>Santoso, S.Pd., M.Pd.</strong> — UPT SDN Latsari 2 Bancar</p>
     <p class="links" style="margin-top:10px">
       <a href="/index.html">Beranda</a>
-      <a href="/portosekolah">Portofolio Sekolah</a>
+      <a href="/portosekolah">Portofolio Digital</a>
+      <!-- Musik dan Usaha disembunyikan sementara
       <a href="/musik.html">Musik</a>
       <a href="/usaha.html">Usaha</a>
+      -->
       <a href="/prestasi.html">Prestasi</a>
       <a href="/index.html#kontak">Kontak</a>
       <a href="https://sites.google.com/admin.sd.belajar.id/portofoliopaksan/pengembangan-diri" target="_blank" rel="noopener">Sumber: Google Sites</a>
@@ -286,12 +290,13 @@ footer a:hover{text-decoration:underline}
   </div>
 </footer>
 
+<script src="/config.js"></script>
 <script>
 /* ================================================================
    DATA PENGEMBANGAN DIRI
    Sumber tunggal: konten-portosekolah.md
    ================================================================ */
-const KEGIATAN = [
+const DEFAULT_KEGIATAN = [
   { no: '01', title: 'Guru Penggerak Angkatan 5', photos: ['01'] },
   { no: '02', title: 'Pendidikan Inklusif Tingkat Lanjut', photos: ['02'] },
   { no: '03', title: 'Pembatik', photos: ['03'] },
@@ -305,56 +310,116 @@ const KEGIATAN = [
   { no: '11', title: 'Pendidikan Narasumber Berbagi Praktik Baik PMM (NSBPB)', photos: ['13'] }
 ];
 
-const BERKAS = [
-  'Sertifikat berbagi praktik baik.pdf',
-  'Santoso Narasumber TPD 24 Senin 30 September 2024.pdf',
-  'sertifikat safari literasi.pdf',
-  'sertifikat ayo menulis.pdf',
-  'sertifikat ikm.pdf',
-  'sertifikat juara 1 Read loud.pdf',
-  'Sertifikat Workshop September P.San.pdf',
-  'SK_PIM_NARSUM.pdf',
-  'sertiifikat tari.pdf'
+const DEFAULT_BERKAS = [
+  { name: 'Sertifikat berbagi praktik baik.pdf', url: '' },
+  { name: 'Santoso Narasumber TPD 24 Senin 30 September 2024.pdf', url: '' },
+  { name: 'sertifikat safari literasi.pdf', url: '' },
+  { name: 'sertifikat ayo menulis.pdf', url: '' },
+  { name: 'sertifikat ikm.pdf', url: '' },
+  { name: 'sertifikat juara 1 Read loud.pdf', url: '' },
+  { name: 'Sertifikat Workshop September P.San.pdf', url: '' },
+  { name: 'SK_PIM_NARSUM.pdf', url: '' },
+  { name: 'sertiifikat tari.pdf', url: '' }
 ];
 
-// Render Kegiatan Grid
-const kGrid = document.getElementById('kegiatanGrid');
-kGrid.innerHTML = KEGIATAN.map((k) => {
-  const mainPhoto = k.photos[0];
-  const extraPhotos = k.photos.slice(1);
-  return `
-    <article class="card-kegiatan">
-      <div class="kegiatan-photo">
-        <img src="/assets/portosekolah/pengembangan-diri/${mainPhoto}.jpg" alt="${k.title}" loading="lazy" onerror="this.remove()" onclick="zoom(this.src)" />
-        <span class="ph">${mainPhoto}</span>
-      </div>
-      ${extraPhotos.length ? `
-        <div style="display:flex;gap:6px;padding:8px 12px 0;">
-          ${extraPhotos.map(p => `
-            <div style="width:48px;height:48px;border-radius:4px;overflow:hidden;cursor:zoom-in;border:1px solid var(--border);position:relative;" title="Foto tambahan">
-              <img src="/assets/portosekolah/pengembangan-diri/${p}.jpg" alt="${k.title} - ${p}" style="width:100%;height:100%;object-fit:cover;" onclick="zoom(this.src)" />
-            </div>
-          `).join('')}
-        </div>
-      ` : ''}
-      <div class="kegiatan-body">
-        <span class="kegiatan-num">Kegiatan #${k.no}</span>
-        <h3 class="kegiatan-title">${k.title}</h3>
-      </div>
-    </article>
-  `;
-}).join('');
+function formatMediaUrl(url, fallback) {
+  if (!url || typeof url !== 'string' || !url.trim()) return fallback || '';
+  url = url.trim();
+  const driveMatch = url.match(/drive\.google\.com\/file\/d\/([a-zA-Z0-9_-]+)/);
+  if (driveMatch && driveMatch[1]) {
+    return `https://drive.google.com/thumbnail?id=${driveMatch[1]}&sz=w1200`;
+  }
+  const driveIdMatch = url.match(/[?&]id=([a-zA-Z0-9_-]+)/);
+  if (url.includes('drive.google.com') && driveIdMatch && driveIdMatch[1]) {
+    return `https://drive.google.com/thumbnail?id=${driveIdMatch[1]}&sz=w1200`;
+  }
+  return url;
+}
 
-// Render Berkas
-const cGrid = document.getElementById('certGrid');
-cGrid.innerHTML = BERKAS.map((b, i) => `
-  <div class="cert-item">
-    <div class="cert-icon">
-      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
-    </div>
-    <span class="cert-name" title="${b}">${i + 1}. ${b}</span>
-  </div>
-`).join('');
+function renderPkb(kegiatanList, berkasList) {
+  const kGrid = document.getElementById('kegiatanGrid');
+  if (kGrid) {
+    kGrid.innerHTML = kegiatanList.map((k, idx) => {
+      const numStr = k.no || String(idx + 1).padStart(2, '0');
+      let mainImg = '';
+      let extraImgs = [];
+      if (k.photo_url) {
+        const parts = String(k.photo_url).split(/[\n,;]+/).map(s => s.trim()).filter(Boolean);
+        mainImg = formatMediaUrl(parts[0]);
+        extraImgs = parts.slice(1).map(p => formatMediaUrl(p));
+      } else if (k.photos && k.photos.length) {
+        mainImg = `/assets/portosekolah/pengembangan-diri/${k.photos[0]}.jpg`;
+        extraImgs = k.photos.slice(1).map(p => `/assets/portosekolah/pengembangan-diri/${p}.jpg`);
+      } else {
+        mainImg = `/assets/portosekolah/pengembangan-diri/${numStr}.jpg`;
+      }
+
+      return `
+        <article class="card-kegiatan">
+          <div class="kegiatan-photo">
+            <img src="${mainImg}" alt="${k.title}" loading="lazy" onerror="this.remove()" onclick="zoom(this.src)" />
+            <span class="ph">${numStr}</span>
+          </div>
+          ${extraImgs.length ? `
+            <div style="display:flex;gap:6px;padding:8px 12px 0;">
+              ${extraImgs.map(p => `
+                <div style="width:48px;height:48px;border-radius:4px;overflow:hidden;cursor:zoom-in;border:1px solid var(--border);position:relative;" title="Foto tambahan">
+                  <img src="${p}" alt="${k.title}" style="width:100%;height:100%;object-fit:cover;" onclick="zoom(this.src)" />
+                </div>
+              `).join('')}
+            </div>
+          ` : ''}
+          <div class="kegiatan-body">
+            <span class="kegiatan-num">Kegiatan #${numStr}</span>
+            <h3 class="kegiatan-title">${k.title}</h3>
+            ${k.organizer ? `<p style="font-size:12.5px;color:var(--text-muted);margin-top:4px;">${k.organizer}${k.role ? ` · ${k.role}` : ''}</p>` : ''}
+          </div>
+        </article>
+      `;
+    }).join('');
+  }
+
+  const cGrid = document.getElementById('certGrid');
+  if (cGrid) {
+    cGrid.innerHTML = berkasList.map((b, i) => {
+      const name = b.name || b.title || b.cert_name || `Berkas #${i+1}`;
+      const url = b.url || b.cert_url || '';
+      return `
+        <div class="cert-item" ${url ? `onclick="window.open('${url}','_blank')"` : ''} style="${url ? 'cursor:pointer;' : ''}">
+          <div class="cert-icon">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+          </div>
+          <span class="cert-name" title="${name}">${i + 1}. ${name} ${url ? '&nearr;' : ''}</span>
+        </div>
+      `;
+    }).join('');
+  }
+
+  const kCount = document.getElementById('statKegiatanCount');
+  if (kCount) kCount.textContent = kegiatanList.length;
+  const bCount = document.getElementById('statBerkasCount');
+  if (bCount) bCount.textContent = berkasList.length;
+}
+
+async function loadPkbData() {
+  const apiUrl = (window.APP_CONFIG && window.APP_CONFIG.API_URL) || '/api';
+  try {
+    const res = await fetch(`${apiUrl}?action=getAll&sheet=school_pkb&_t=${Date.now()}`).then(r => r.json());
+    if (res && res.status === 'success' && Array.isArray(res.data) && res.data.length > 0) {
+      const activeData = res.data.filter(x => x.active !== false && x.active !== 'false' && x.active !== 'FALSE');
+      const keg = activeData.filter(x => String(x.type || '').toLowerCase() === 'kegiatan');
+      const ber = activeData.filter(x => String(x.type || '').toLowerCase() === 'berkas');
+      renderPkb(
+        keg.length ? keg : DEFAULT_KEGIATAN,
+        ber.length ? ber : DEFAULT_BERKAS
+      );
+      return;
+    }
+  } catch(e) {
+    console.warn('Gagal memuat school_pkb dari server', e);
+  }
+  renderPkb(DEFAULT_KEGIATAN, DEFAULT_BERKAS);
+}
 
 function zoom(src) {
   document.getElementById('lbImg').src = src;
@@ -368,12 +433,14 @@ window.addEventListener('DOMContentLoaded', () => {
   if (activeTab) {
     activeTab.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
   }
+  loadPkbData();
   loadDynamicCustomNav();
 });
 
 async function loadDynamicCustomNav() {
+  const apiUrl = (window.APP_CONFIG && window.APP_CONFIG.API_URL) || '/api';
   try {
-    const res = await fetch('/api?action=getAll&sheet=school_custom_categories').then(r => r.json());
+    const res = await fetch(`${apiUrl}?action=getAll&sheet=school_custom_categories&_t=${Date.now()}`).then(r => r.json());
     if (res && res.status === 'success' && Array.isArray(res.data)) {
       const subnavList = document.getElementById('subnavList');
       if (!subnavList) return;

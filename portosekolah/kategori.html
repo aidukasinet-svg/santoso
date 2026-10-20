@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title id="pageTitleTag">Kategori Portofolio — Santoso, S.Pd., M.Pd. | Portofolio Sekolah</title>
+<title id="pageTitleTag">Kategori Portofolio — Santoso, S.Pd., M.Pd. | Portofolio Digital</title>
 <meta name="description" content="Dokumentasi portofolio kategori khusus Santoso, S.Pd., M.Pd. di UPT SDN Latsari 2 Bancar." />
 <meta property="og:title" content="Kategori Portofolio — Santoso, S.Pd., M.Pd." />
 <meta property="og:description" content="Dokumentasi portofolio kategori khusus Santoso, S.Pd., M.Pd. di UPT SDN Latsari 2 Bancar." />
@@ -195,9 +195,11 @@ function toggleNav(){
       <a href="/index.html">Beranda</a>
       <a href="/index.html#tentang">Tentang</a>
       <a href="/index.html#timeline">Jejak Langkah</a>
-      <a href="/portosekolah" class="active">Portofolio Sekolah</a>
+      <a href="/portosekolah" class="active">Portofolio Digital</a>
+      <!-- Menu Musik dan Usaha disembunyikan sementara
       <a href="/musik.html">Musik</a>
       <a href="/usaha.html">Usaha</a>
+      -->
       <a href="/prestasi.html">Prestasi</a>
       <a href="/index.html#kontak">Kontak</a>
       <a href="/admin.html" class="btn-admin"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="vertical-align:-1px;margin-right:5px;"><path d="M12.22 2h-.44a2 2 0 0 0-2 2v.18a2 2 0 0 1-1 1.73l-.43.25a2 2 0 0 1-2 0l-.15-.08a2 2 0 0 0-2.73.73l-.22.38a2 2 0 0 0 .73 2.73l.15.1a2 2 0 0 1 1 1.72v.51a2 2 0 0 1-1 1.74l-.15.09a2 2 0 0 0-.73 2.73l.22.38a2 2 0 0 0 2.73.73l.15-.08a2 2 0 0 1 2 0l.43.25a2 2 0 0 1 1 1.73V20a2 2 0 0 0 2 2h.44a2 2 0 0 0 2-2v-.18a2 2 0 0 1 1-1.73l.43-.25a2 2 0 0 1 2 0l.15.08a2 2 0 0 0 2.73-.73l.22-.39a2 2 0 0 0-.73-2.73l-.15-.08a2 2 0 0 1-1-1.74v-.5a2 2 0 0 1 1-1.74l.15-.09a2 2 0 0 0 .73-2.73l-.22-.38a2 2 0 0 0-2.73-.73l-.15.08a2 2 0 0 1-2 0l-.43-.25a2 2 0 0 1-1-1.73V4a2 2 0 0 0-2-2z"/><circle cx="12" cy="12" r="3"/></svg>Admin</a>
@@ -255,10 +257,10 @@ function toggleNav(){
   <div class="container">
     <div class="header-badge" id="catBadge">
       <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect width="7" height="7" x="3" y="3" rx="1"/><rect width="7" height="7" x="14" y="3" rx="1"/><rect width="7" height="7" x="14" y="14" rx="1"/><rect width="7" height="7" x="3" y="14" rx="1"/></svg>
-      Portofolio Sekolah · UPT SDN Latsari 2 Bancar
+      Portofolio Digital · UPT SDN Latsari 2 Bancar
     </div>
     <h1 class="header-title" id="catTitle">Memuat Kategori...</h1>
-    <p class="header-sub" id="catDesc">Dokumentasi portofolio sekolah.</p>
+    <p class="header-sub" id="catDesc">Dokumentasi portofolio digital.</p>
     <div class="header-meta">
       <span><strong id="statCount">0</strong>item terdaftar</span>
       <button class="btn-print" onclick="window.print()">
@@ -299,7 +301,7 @@ function toggleNav(){
   <div class="container">
     <p><strong>Santoso, S.Pd., M.Pd.</strong> — UPT SDN Latsari 2 Bancar, Tuban, Jawa Timur</p>
     <p style="margin-top:6px;font-size:13px;color:var(--text-muted)">
-      Dokumentasi Portofolio Sekolah & Komunitas Belajar
+      Dokumentasi Portofolio Digital & Komunitas Belajar
     </p>
     <div style="margin-top:14px;">
       <a href="/portosekolah">Hub Portofolio</a>
@@ -360,10 +362,21 @@ function renderItems(list){
     const mType = (item.media_type || '').toLowerCase();
     const mUrl = item.media_url || '';
 
+    function formatMediaUrl(url, fallback) {
+      if (!url || typeof url !== 'string' || !url.trim()) return fallback || '';
+      url = url.trim();
+      const driveMatch = url.match(/drive\.google\.com\/file\/d\/([a-zA-Z0-9_-]+)/);
+      if (driveMatch && driveMatch[1]) return `https://drive.google.com/thumbnail?id=${driveMatch[1]}&sz=w1200`;
+      const driveIdMatch = url.match(/[?&]id=([a-zA-Z0-9_-]+)/);
+      if (url.includes('drive.google.com') && driveIdMatch && driveIdMatch[1]) return `https://drive.google.com/thumbnail?id=${driveIdMatch[1]}&sz=w1200`;
+      return url;
+    }
+
     if(mType === 'image' && mUrl){
+      const finalImg = formatMediaUrl(mUrl);
       mediaHtml = `
         <div class="card-media">
-          <img src="${mUrl}" alt="${item.title || 'Dokumentasi'}" loading="lazy" onclick="openLightbox('${mUrl}')" onerror="this.style.display='none'" />
+          <img src="${finalImg}" alt="${item.title || 'Dokumentasi'}" loading="lazy" onclick="openLightbox('${finalImg}')" onerror="this.style.display='none'" />
         </div>
       `;
     } else if(mType === 'youtube' && mUrl){
@@ -465,7 +478,7 @@ async function initPage(){
         <div class="state-box" style="grid-column:1/-1;">
           <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
           <h3>Kategori Belum Tersedia</h3>
-          <p>Silakan pilih kategori lain melalui navigasi tab di atas atau kembali ke beranda Portofolio Sekolah.</p>
+          <p>Silakan pilih kategori lain melalui navigasi tab di atas atau kembali ke beranda Portofolio Digital.</p>
           <a href="/portosekolah" class="btn-doc" style="display:inline-flex;">Kembali ke Beranda Portofolio</a>
         </div>
       `;
@@ -473,10 +486,10 @@ async function initPage(){
     }
 
     // Set Header
-    document.title = `${_category.title} — Santoso, S.Pd., M.Pd. | Portofolio Sekolah`;
+    document.title = `${_category.title} — Santoso, S.Pd., M.Pd. | Portofolio Digital`;
     document.getElementById('pageTitleTag').textContent = document.title;
     document.getElementById('catTitle').textContent = _category.title;
-    document.getElementById('catDesc').textContent = _category.description || 'Dokumentasi portofolio sekolah UPT SDN Latsari 2 Bancar.';
+    document.getElementById('catDesc').textContent = _category.description || 'Dokumentasi portofolio digital UPT SDN Latsari 2 Bancar.';
 
     // 3. Fetch Items
     const itemsRes = await fetch(`${apiUrl}?action=getAll&sheet=school_custom_items`).then(r => r.json());

@@ -3,9 +3,9 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Portofolio Sekolah — Santoso, S.Pd., M.Pd. | UPT SDN Latsari 2 Bancar</title>
+<title>Portofolio Digital — Santoso, S.Pd., M.Pd. | UPT SDN Latsari 2 Bancar</title>
 <meta name="description" content="Portofolio digital pendidik Santoso, S.Pd., M.Pd. di UPT SDN Latsari 2 Bancar: dokumentasi pendampingan rekan sejawat, inovasi pembelajaran, dan karya edukasi." />
-<meta property="og:title" content="Portofolio Sekolah — Santoso, S.Pd., M.Pd." />
+<meta property="og:title" content="Portofolio Digital — Santoso, S.Pd., M.Pd." />
 <meta property="og:description" content="Portofolio digital pendidik Santoso, S.Pd., M.Pd. di UPT SDN Latsari 2 Bancar: 'Semua akan bisa jika mau berdoa dan berusaha.'" />
 <meta property="og:type" content="website" />
 <meta property="og:url" content="https://santoso-504.pages.dev/portosekolah" />
@@ -128,6 +128,65 @@ nav.menu-open .nav-hamburger span:nth-child(3){transform:translateY(-7px) rotate
   font-size:15.5px;color:var(--text-sec);max-width:760px;line-height:1.65;
 }
 
+/* BANNER 16:9 PORTOFOLIO DIGITAL */
+.ps-banner-section{margin-top:32px;width:100%}
+.ps-banner-container{
+  width:100%;
+  aspect-ratio:16 / 9;
+  border-radius:var(--r-lg);
+  overflow:hidden;
+  position:relative;
+  box-shadow:var(--shadow-md);
+  border:1px solid var(--border);
+  background:linear-gradient(135deg,var(--edu-soft),var(--surface));
+  display:flex;align-items:center;justify-content:center;
+  text-decoration:none;
+}
+.ps-banner-img{
+  width:100%;height:100%;
+  object-fit:cover;object-position:center;
+  display:block;transition:transform .4s ease;
+}
+.ps-banner-container:hover .ps-banner-img{transform:scale(1.02)}
+.ps-banner-overlay{
+  position:absolute;inset:0;
+  background:linear-gradient(to top,rgba(15,23,42,.88) 0%,rgba(15,23,42,.35) 50%,transparent 100%);
+  display:flex;flex-direction:column;justify-content:flex-end;
+  padding:28px 32px;color:#fff;
+}
+.ps-banner-title{
+  font-size:clamp(1.15rem,2.4vw,1.8rem);
+  font-weight:800;letter-spacing:-.02em;margin-bottom:6px;text-shadow:0 2px 8px rgba(0,0,0,.6);
+}
+.ps-banner-caption{
+  font-size:clamp(.85rem,1.3vw,1.05rem);
+  opacity:.92;line-height:1.45;text-shadow:0 1px 4px rgba(0,0,0,.6);
+}
+.ps-banner-badge{
+  position:absolute;top:18px;left:20px;
+  background:rgba(27,58,107,.88);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);
+  color:#fff;font-size:12px;font-weight:700;
+  padding:5px 14px;border-radius:999px;border:1px solid rgba(255,255,255,.25);
+  display:inline-flex;align-items:center;gap:6px;
+}
+.ps-banner-placeholder{
+  display:flex;flex-direction:column;align-items:center;justify-content:center;
+  padding:36px 24px;text-align:center;color:var(--text-sec);width:100%;height:100%;
+  border:2px dashed var(--border);border-radius:var(--r-lg);background:var(--surface);
+}
+.ps-banner-placeholder h3{font-size:clamp(1.1rem,2vw,1.4rem);font-weight:800;color:var(--edu);margin:12px 0 6px}
+.ps-banner-placeholder p{font-size:14px;max-width:580px;line-height:1.55;color:var(--text-sec)}
+.ps-banner-placeholder .banner-size-pill{
+  display:inline-flex;align-items:center;gap:6px;font-size:12px;font-weight:700;
+  padding:5px 14px;border-radius:999px;background:var(--edu-soft);color:var(--edu);margin-top:14px;
+}
+@media(max-width:768px){
+  .ps-banner-overlay{padding:16px 18px}
+  .ps-banner-badge{top:12px;left:12px;font-size:11px;padding:4px 10px}
+  .ps-banner-placeholder{padding:20px 14px}
+  .ps-banner-placeholder p{font-size:12.5px}
+}
+
 /* SECTION */
 .ps-section{padding:56px 0 80px}
 .ps-section-header{margin-bottom:32px}
@@ -211,9 +270,8 @@ footer a:hover{text-decoration:underline}
       <a href="/index.html">Beranda</a>
       <a href="/index.html#tentang">Tentang</a>
       <a href="/index.html#timeline">Jejak Langkah</a>
-      <a href="/portosekolah" class="active">Portofolio Sekolah</a>
-      <a href="/musik.html">Musik</a>
-      <a href="/usaha.html">Usaha</a>
+      <a href="/portosekolah" class="active">Portofolio Digital</a>
+      <!-- Menu Musik dan Usaha disembunyikan sementara -->
       <a href="/prestasi.html">Prestasi</a>
       <a href="/index.html#kontak">Kontak</a>
       <a href="/admin.html" class="btn-admin"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="vertical-align:-1px;margin-right:5px;"><path d="M12.22 2h-.44a2 2 0 0 0-2 2v.18a2 2 0 0 1-1 1.73l-.43.25a2 2 0 0 1-2 0l-.15-.08a2 2 0 0 0-2.73.73l-.22.38a2 2 0 0 0 .73 2.73l.15.1a2 2 0 0 1 1 1.72v.51a2 2 0 0 1-1 1.74l-.15.09a2 2 0 0 0-.73 2.73l.22.38a2 2 0 0 0 2.73.73l.15-.08a2 2 0 0 1 2 0l.43.25a2 2 0 0 1 1 1.73V20a2 2 0 0 0 2 2h.44a2 2 0 0 0 2-2v-.18a2 2 0 0 1 1-1.73l.43-.25a2 2 0 0 1 2 0l.15.08a2 2 0 0 0 2.73-.73l.22-.39a2 2 0 0 0-.73-2.73l-.15-.08a2 2 0 0 1-1-1.74v-.5a2 2 0 0 1 1-1.74l.15-.09a2 2 0 0 0 .73-2.73l-.22-.38a2 2 0 0 0-2.73-.73l-.15.08a2 2 0 0 1-2 0l-.43-.25a2 2 0 0 1-1-1.73V4a2 2 0 0 0-2-2z"/><circle cx="12" cy="12" r="3"/></svg>Admin</a>
@@ -222,7 +280,7 @@ footer a:hover{text-decoration:underline}
   </div>
 </nav>
 
-<!-- SUB-NAVIGASI TAB PORTOFOLIO SEKOLAH -->
+<!-- SUB-NAVIGASI TAB PORTOFOLIO DIGITAL -->
 <div class="subnav-bar">
   <div class="container">
     <div class="subnav-list" id="subnavList">
@@ -273,12 +331,19 @@ footer a:hover{text-decoration:underline}
       <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>
       UPT SDN Latsari 2 Bancar
     </div>
-    <h1 class="ps-hero-title">Portofolio Sekolah</h1>
+    <h1 class="ps-hero-title">Portofolio Digital</h1>
     <p class="ps-hero-name">Santoso, S.Pd., M.Pd.</p>
     <p class="ps-hero-motto">"Semua akan bisa jika mau berdoa dan berusaha."</p>
     <p class="ps-hero-desc">
       Portofolio digital dedikasi dan rekam jejak pengabdian sebagai pendidik di lingkungan UPT SDN Latsari 2 Bancar, Kecamatan Bancar, dan Kabupaten Tuban. Halaman ini mendokumentasikan kegiatan nyata sebagai bukti lampiran lomba dan asesmen profesional.
     </p>
+
+    <!-- BANNER PORTOFOLIO DIGITAL (16:9) -->
+    <div class="ps-banner-section" id="psBannerSection">
+      <div class="ps-banner-container" id="psBannerContainer">
+        <!-- Rendered via JS loadDynamicBanner() -->
+      </div>
+    </div>
   </div>
 </header>
 
@@ -287,7 +352,7 @@ footer a:hover{text-decoration:underline}
   <div class="container">
     <div class="ps-section-header">
       <p class="ps-section-label">Dokumentasi Portofolio</p>
-      <h2 class="ps-section-title">Bidang Portofolio Sekolah</h2>
+      <h2 class="ps-section-title">Bidang Portofolio Digital</h2>
     </div>
 
     <div class="module-grid" id="moduleGrid"></div>
@@ -298,7 +363,7 @@ footer a:hover{text-decoration:underline}
         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" x2="12" y1="8" y2="12"/><line x1="12" x2="12.01" y1="16" y2="16"/></svg>
       </div>
       <div class="ps-notice-text">
-        <strong>Lampiran Bukti Resmi:</strong> Halaman portofolio sekolah ini disajikan secara statis dan independen sebagai dokumen pembuktian kinerja pendidik pada UPT SDN Latsari 2 Bancar untuk keperluan lomba dan verifikasi mutu pendidikan.
+        <strong>Lampiran Bukti Resmi:</strong> Halaman portofolio digital ini disajikan secara resmi sebagai dokumen pembuktian kinerja pendidik pada UPT SDN Latsari 2 Bancar untuk keperluan lomba, asesmen profesional, dan verifikasi mutu pendidikan.
       </div>
     </div>
   </div>
@@ -309,9 +374,8 @@ footer a:hover{text-decoration:underline}
     <p>&copy; 2026 <strong>Santoso, S.Pd., M.Pd.</strong> — UPT SDN Latsari 2 Bancar</p>
     <p class="links" style="margin-top:10px">
       <a href="/index.html">Beranda</a>
-      <a href="/portosekolah">Portofolio Sekolah</a>
-      <a href="/musik.html">Musik</a>
-      <a href="/usaha.html">Usaha</a>
+      <a href="/portosekolah">Portofolio Digital</a>
+      <!-- Menu Musik dan Usaha disembunyikan sementara -->
       <a href="/prestasi.html">Prestasi</a>
       <a href="/index.html#kontak">Kontak</a>
       <a href="https://sites.google.com/admin.sd.belajar.id/portofoliopaksan/" target="_blank" rel="noopener">Sumber: Google Sites</a>
@@ -450,7 +514,7 @@ const MODULES = [
 
 const mGrid = document.getElementById('moduleGrid');
 mGrid.innerHTML = MODULES.map(m => `
-  <article class="module-card">
+  <article class="module-card" data-module-slug="${m.slug}">
     <div>
       <div class="module-top">
         <div class="module-icon">${m.icon}</div>
@@ -469,21 +533,125 @@ mGrid.innerHTML = MODULES.map(m => `
   </article>
 `).join('');
 
-// Auto-scroll active subnav into view
+function formatMediaUrl(url, fallback) {
+  if (!url || typeof url !== 'string' || !url.trim()) return fallback || '';
+  url = url.trim();
+  const driveMatch = url.match(/drive\.google\.com\/file\/d\/([a-zA-Z0-9_-]+)/);
+  if (driveMatch && driveMatch[1]) {
+    return `https://drive.google.com/thumbnail?id=${driveMatch[1]}&sz=w1200`;
+  }
+  const driveIdMatch = url.match(/[?&]id=([a-zA-Z0-9_-]+)/);
+  if (url.includes('drive.google.com') && driveIdMatch && driveIdMatch[1]) {
+    return `https://drive.google.com/thumbnail?id=${driveIdMatch[1]}&sz=w1200`;
+  }
+  return url;
+}
+
+// Auto-scroll active subnav into view and initialize dynamic content
 window.addEventListener('DOMContentLoaded', () => {
   const activeTab = document.querySelector('.subnav-item.active');
   if (activeTab) {
     activeTab.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
   }
+  loadDynamicBanner();
   loadDynamicCategories();
+  updateModuleCounts();
 });
+
+/* ================================================================
+   LOAD BANNER 16:9 DARI GOOGLE SHEETS (CRUD DARI ADMIN)
+   ================================================================ */
+async function loadDynamicBanner() {
+  const bannerContainer = document.getElementById('psBannerContainer');
+  if (!bannerContainer) return;
+  const apiUrl = (window.APP_CONFIG && window.APP_CONFIG.API_URL) || '/api';
+
+  try {
+    const res = await fetch(`${apiUrl}?action=getAll&sheet=school_banners&_t=${Date.now()}`).then(r => r.json());
+    if (res && res.status === 'success' && Array.isArray(res.data)) {
+      const activeBanners = res.data.filter(b => b.active !== false && b.active !== 'false' && b.active !== 'FALSE');
+      if (activeBanners.length > 0) {
+        const b = activeBanners[0];
+        const imgSrc = formatMediaUrl(b.image_url);
+        const isLinked = Boolean(b.link_url && String(b.link_url).trim());
+
+        const wrapperTag = isLinked ? 'a' : 'div';
+        const hrefAttr = isLinked ? `href="${b.link_url}" ${String(b.link_url).startsWith('http') ? 'target="_blank" rel="noopener"' : ''}` : '';
+
+        bannerContainer.outerHTML = `
+          <${wrapperTag} ${hrefAttr} class="ps-banner-container" id="psBannerContainer">
+            <div class="ps-banner-badge">
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><rect width="18" height="18" x="3" y="3" rx="2" ry="2"/><circle cx="9" cy="9" r="2"/><path d="m21 15-3.086-3.086a2 2 0 0 0-2.828 0L6 21"/></svg>
+              Banner Portofolio Digital (16:9)
+            </div>
+            <img src="${imgSrc}" alt="${b.title || 'Banner Portofolio Digital'}" class="ps-banner-img" loading="eager" />
+            ${(b.title || b.caption) ? `
+              <div class="ps-banner-overlay">
+                ${b.title ? `<div class="ps-banner-title">${b.title}</div>` : ''}
+                ${b.caption ? `<div class="ps-banner-caption">${b.caption}</div>` : ''}
+              </div>
+            ` : ''}
+          </${wrapperTag}>
+        `;
+        return;
+      }
+    }
+  } catch (e) {
+    console.warn('Gagal memuat banner dinamis', e);
+  }
+
+  // Placeholder standar jika belum ada data banner dari admin
+  bannerContainer.innerHTML = `
+    <div class="ps-banner-placeholder">
+      <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="var(--edu)" stroke-width="1.6"><rect width="18" height="18" x="3" y="3" rx="2" ry="2"/><circle cx="9" cy="9" r="2"/><path d="m21 15-3.086-3.086a2 2 0 0 0-2.828 0L6 21"/></svg>
+      <h3>Banner Portofolio Digital Santoso, S.Pd., M.Pd.</h3>
+      <p>Area banner gambar rasio <strong>16:9</strong> (resolusi rekomendasi 1920 &times; 1080 px atau 1600 &times; 900 px). Tampilan responsif optimal di desktop maupun mobile tanpa terpotong.</p>
+      <div class="banner-size-pill">
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+        Rasio 16:9 &middot; Dapat di-CRUD langsung dari Dashboard Admin
+      </div>
+    </div>
+  `;
+}
+
+/* ================================================================
+   UPDATE BADGE JUMLAH ITEM MODUL SECARA REAL-TIME DARI SPREADSHEET
+   ================================================================ */
+async function updateModuleCounts() {
+  const apiUrl = (window.APP_CONFIG && window.APP_CONFIG.API_URL) || '/api';
+  const sheetMapping = {
+    'bukti-implementasi': 'school_implementasi',
+    'prestasi': 'school_prestasi',
+    'karya-tulis': 'school_karya',
+    'pengembangan-diri': 'school_pkb',
+    'pendampingan': 'school_mentoring',
+    'penggunaan-ai': 'school_ai',
+    'orprof': 'school_orprof',
+    'profil': 'school_profil_edu'
+  };
+
+  await Promise.all(Object.entries(sheetMapping).map(async ([slug, sheet]) => {
+    try {
+      const res = await fetch(`${apiUrl}?action=getAll&sheet=${sheet}&_t=${Date.now()}`).then(r => r.json());
+      if (res && res.status === 'success' && Array.isArray(res.data) && res.data.length > 0) {
+        const badgeEl = document.querySelector(`[data-module-slug="${slug}"] .module-badge`);
+        const btnEl = document.querySelector(`[data-module-slug="${slug}"] .btn-open-module`);
+        const mod = MODULES.find(m => m.slug === slug);
+        if (badgeEl && mod) badgeEl.textContent = `${res.data.length} ${mod.unit}`;
+        if (btnEl && mod) {
+          btnEl.innerHTML = `Buka Dokumentasi (${res.data.length} ${mod.unit}) <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>`;
+        }
+      }
+    } catch (e) {}
+  }));
+}
 
 async function loadDynamicCategories() {
   try {
     const apiUrl = (window.APP_CONFIG && window.APP_CONFIG.API_URL) || '/api';
     const [catRes, itemsRes] = await Promise.all([
-      fetch(`${apiUrl}?action=getAll&sheet=school_custom_categories`).then(r => r.json()),
-      fetch(`${apiUrl}?action=getAll&sheet=school_custom_items`).then(r => r.json())
+      fetch(`${apiUrl}?action=getAll&sheet=school_custom_categories&_t=${Date.now()}`).then(r => r.json()),
+      fetch(`${apiUrl}?action=getAll&sheet=school_custom_items&_t=${Date.now()}`).then(r => r.json())
     ]);
 
     const cats = (catRes && catRes.status === 'success' && Array.isArray(catRes.data)) ? catRes.data : [];

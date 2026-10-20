@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Pengalaman Organisasi Profesi — Santoso, S.Pd., M.Pd. | Portofolio Sekolah</title>
+<title>Pengalaman Organisasi Profesi — Santoso, S.Pd., M.Pd. | Portofolio Digital</title>
 <meta name="description" content="Rekam jejak kepemimpinan dan dedikasi Santoso, S.Pd., M.Pd. dalam organisasi profesi pendidikan di Kabupaten Tuban: KKGS, PGRI, KGBN, Komunitas Guru Penggerak, dan Kombel." />
 <meta property="og:title" content="Pengalaman Organisasi Profesi — Santoso, S.Pd., M.Pd." />
 <meta property="og:description" content="Dedikasi kepengurusan pada kelompok kerja guru, organisasi profesi PGRI, KGBN, dan komunitas belajar." />
@@ -184,9 +184,11 @@ footer a:hover{text-decoration:underline}
       <a href="/index.html">Beranda</a>
       <a href="/index.html#tentang">Tentang</a>
       <a href="/index.html#timeline">Jejak Langkah</a>
-      <a href="/portosekolah" class="active">Portofolio Sekolah</a>
+      <a href="/portosekolah" class="active">Portofolio Digital</a>
+      <!-- Menu Musik dan Usaha disembunyikan sementara
       <a href="/musik.html">Musik</a>
       <a href="/usaha.html">Usaha</a>
+      -->
       <a href="/prestasi.html">Prestasi</a>
       <a href="/index.html#kontak">Kontak</a>
       <a href="/admin.html" class="btn-admin"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="vertical-align:-1px;margin-right:5px;"><path d="M12.22 2h-.44a2 2 0 0 0-2 2v.18a2 2 0 0 1-1 1.73l-.43.25a2 2 0 0 1-2 0l-.15-.08a2 2 0 0 0-2.73.73l-.22.38a2 2 0 0 0 .73 2.73l.15.1a2 2 0 0 1 1 1.72v.51a2 2 0 0 1-1 1.74l-.15.09a2 2 0 0 0-.73 2.73l.22.38a2 2 0 0 0 2.73.73l.15-.08a2 2 0 0 1 2 0l.43.25a2 2 0 0 1 1 1.73V20a2 2 0 0 0 2 2h.44a2 2 0 0 0 2-2v-.18a2 2 0 0 1 1-1.73l.43-.25a2 2 0 0 1 2 0l.15.08a2 2 0 0 0 2.73-.73l.22-.39a2 2 0 0 0-.73-2.73l-.15-.08a2 2 0 0 1-1-1.74v-.5a2 2 0 0 1 1-1.74l.15-.09a2 2 0 0 0 .73-2.73l-.22-.38a2 2 0 0 0-2.73-.73l-.15.08a2 2 0 0 1-2 0l-.43-.25a2 2 0 0 1-1-1.73V4a2 2 0 0 0-2-2z"/><circle cx="12" cy="12" r="3"/></svg>Admin</a>
@@ -271,9 +273,11 @@ footer a:hover{text-decoration:underline}
     <p>&copy; 2026 <strong>Santoso, S.Pd., M.Pd.</strong> — UPT SDN Latsari 2 Bancar</p>
     <p class="links" style="margin-top:10px">
       <a href="/index.html">Beranda</a>
-      <a href="/portosekolah">Portofolio Sekolah</a>
+      <a href="/portosekolah">Portofolio Digital</a>
+      <!-- Musik dan Usaha disembunyikan sementara
       <a href="/musik.html">Musik</a>
       <a href="/usaha.html">Usaha</a>
+      -->
       <a href="/prestasi.html">Prestasi</a>
       <a href="/index.html#kontak">Kontak</a>
       <a href="https://sites.google.com/admin.sd.belajar.id/portofoliopaksan/pengalaman-orprof" target="_blank" rel="noopener">Sumber: Google Sites</a>
@@ -281,13 +285,14 @@ footer a:hover{text-decoration:underline}
   </div>
 </footer>
 
+<script src="/config.js"></script>
 <script>
 /* ================================================================
    DATA PENGALAMAN ORPROF
    Sumber tunggal: konten-portosekolah.md
    Elemen bertanda [PERLU DILENGKAPI] disembunyikan.
    ================================================================ */
-const ORPROF_DATA = [
+const DEFAULT_ORPROF_DATA = [
   {
     role: 'Seksi Bidang Kerajinan dan Patung',
     org: 'KKGS Kabupaten Tuban',
@@ -346,60 +351,96 @@ const ORPROF_DATA = [
   }
 ];
 
-const listEl = document.getElementById('orprofList');
-listEl.innerHTML = ORPROF_DATA.map(d => `
-  <article class="card-orprof">
-    <div class="orprof-top">
-      <span class="orprof-role-badge">${d.role}</span>
-      ${d.period ? `<span class="orprof-period">Periode: ${d.period}</span>` : ''}
-    </div>
-    <div>
-      <h2 class="orprof-org">${d.org}</h2>
-      <p class="orprof-role">Amanah Jabatan: ${d.role}</p>
-    </div>
-
-    ${d.skFile ? `
-      <div>
-        ${d.driveUrl ? `
-          <div style="display:flex;align-items:center;flex-wrap:wrap;gap:12px;">
-            <div class="orprof-sk-box">
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
-              <span>Berkas: ${d.skFile}</span>
-            </div>
-            <a href="${d.driveUrl}" target="_blank" rel="noopener" class="btn-sk-drive">
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
-              Buka SK di Google Drive
-            </a>
-          </div>
-        ` : `
-          <div class="orprof-sk-box">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
-            <span>Berkas SK: ${d.skFile}</span>
-          </div>
-        `}
-      </div>
-    ` : ''}
-
-    ${d.photos.length ? `
-      <div>
-        <div class="orprof-gallery">
-          ${d.photos.map(p => `
-            <div class="photo-box">
-              <img src="/assets/portosekolah/orprof/${p}.jpg" alt="Dokumentasi ${d.org} - ${p}" loading="lazy" onerror="this.remove()" onclick="zoom(this.src)" />
-              <span class="ph">${p}</span>
-            </div>
-          `).join('')}
-        </div>
-      </div>
-    ` : ''}
-  </article>
-`).join('');
-
-function zoom(src) {
-  document.getElementById('lbImg').src = src;
-  document.getElementById('lb').classList.add('open');
+function formatMediaUrl(url, fallback) {
+  if (!url || typeof url !== 'string' || !url.trim()) return fallback || '';
+  url = url.trim();
+  const driveMatch = url.match(/drive\.google\.com\/file\/d\/([a-zA-Z0-9_-]+)/);
+  if (driveMatch && driveMatch[1]) return `https://drive.google.com/thumbnail?id=${driveMatch[1]}&sz=w1200`;
+  const driveIdMatch = url.match(/[?&]id=([a-zA-Z0-9_-]+)/);
+  if (url.includes('drive.google.com') && driveIdMatch && driveIdMatch[1]) return `https://drive.google.com/thumbnail?id=${driveIdMatch[1]}&sz=w1200`;
+  return url;
 }
-document.addEventListener('keydown', e => { if (e.key === 'Escape') document.getElementById('lb').classList.remove('open'); });
+
+function renderOrprof(items) {
+  const listEl = document.getElementById('orprofList');
+  if (!listEl) return;
+  listEl.innerHTML = items.map(d => {
+    let photoItems = [];
+    if (d.photo_url) {
+      photoItems = String(d.photo_url).split(/[\n,;]+/).map(s => s.trim()).filter(Boolean);
+    } else if (Array.isArray(d.photos)) {
+      photoItems = d.photos.map(p => `/assets/portosekolah/orprof/${p}.jpg`);
+    }
+
+    const driveLink = d.sk_url || d.driveUrl || '';
+    const skFileName = d.sk_filename || d.skFile || '';
+
+    return `
+      <article class="card-orprof">
+        <div class="orprof-top">
+          <span class="orprof-role-badge">${d.role}</span>
+          ${d.period ? `<span class="orprof-period">Periode: ${d.period}</span>` : ''}
+        </div>
+        <div>
+          <h2 class="orprof-org">${d.organization || d.org}</h2>
+          <p class="orprof-role">Amanah Jabatan: ${d.role}</p>
+        </div>
+
+        ${skFileName ? `
+          <div>
+            ${driveLink ? `
+              <div style="display:flex;align-items:center;flex-wrap:wrap;gap:12px;">
+                <div class="orprof-sk-box">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+                  <span>Berkas: ${skFileName}</span>
+                </div>
+                <a href="${driveLink}" target="_blank" rel="noopener" class="btn-sk-drive">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+                  Buka SK di Google Drive
+                </a>
+              </div>
+            ` : `
+              <div class="orprof-sk-box">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+                <span>Berkas SK: ${skFileName}</span>
+              </div>
+            `}
+          </div>
+        ` : ''}
+
+        ${photoItems.length ? `
+          <div>
+            <div class="orprof-gallery">
+              ${photoItems.map((p, idx) => `
+                <div class="photo-box">
+                  <img src="${formatMediaUrl(p)}" alt="Dokumentasi ${d.organization || d.org} - ${idx + 1}" loading="lazy" onerror="this.remove()" onclick="zoom(this.src)" />
+                  <span class="ph">${String(idx + 1).padStart(2, '0')}</span>
+                </div>
+              `).join('')}
+            </div>
+          </div>
+        ` : ''}
+      </article>
+    `;
+  }).join('');
+}
+
+async function loadDynamicOrprof() {
+  const apiUrl = (window.APP_CONFIG && window.APP_CONFIG.API_URL) || '/api';
+  try {
+    const res = await fetch(`${apiUrl}?action=getAll&sheet=school_orprof&_t=${Date.now()}`).then(r => r.json());
+    if (res && res.status === 'success' && Array.isArray(res.data) && res.data.length > 0) {
+      const active = res.data.filter(x => x.active !== false && x.active !== 'false' && x.active !== 'FALSE');
+      if (active.length > 0) {
+        renderOrprof(active);
+        return;
+      }
+    }
+  } catch (e) {
+    console.warn('Gagal memuat school_orprof dari server', e);
+  }
+  renderOrprof(DEFAULT_ORPROF_DATA);
+}
 
 // Auto-scroll active subnav into view and load custom categories
 window.addEventListener('DOMContentLoaded', () => {
@@ -407,12 +448,14 @@ window.addEventListener('DOMContentLoaded', () => {
   if (activeTab) {
     activeTab.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
   }
+  loadDynamicOrprof();
   loadDynamicCustomNav();
 });
 
 async function loadDynamicCustomNav() {
+  const apiUrl = (window.APP_CONFIG && window.APP_CONFIG.API_URL) || '/api';
   try {
-    const res = await fetch('/api?action=getAll&sheet=school_custom_categories').then(r => r.json());
+    const res = await fetch(`${apiUrl}?action=getAll&sheet=school_custom_categories&_t=${Date.now()}`).then(r => r.json());
     if (res && res.status === 'success' && Array.isArray(res.data)) {
       const subnavList = document.getElementById('subnavList');
       if (!subnavList) return;

@@ -43,7 +43,7 @@ var SHEETS = {
   MESSAGES:         "messages",
   CONFIG:           "_config",
 
-  // PORTOFOLIO SEKOLAH (9 MODUL KHUSUS)
+  // PORTOFOLIO DIGITAL (9 MODUL KHUSUS)
   SCHOOL_IMPLEMENTASI: "school_implementasi",
   SCHOOL_PRESTASI:     "school_prestasi",
   SCHOOL_KARYA:        "school_karya",
@@ -53,9 +53,10 @@ var SHEETS = {
   SCHOOL_ORPROF:       "school_orprof",
   SCHOOL_PROFIL_EDU:   "school_profil_edu",
 
-  // PORTOFOLIO SEKOLAH (CMS KATEGORI KUSTOM TEMPLATIZED)
+  // PORTOFOLIO DIGITAL (CMS KATEGORI KUSTOM & BANNER)
   SCHOOL_CUSTOM_CATS:  "school_custom_categories",
-  SCHOOL_CUSTOM_ITEMS: "school_custom_items"
+  SCHOOL_CUSTOM_ITEMS: "school_custom_items",
+  SCHOOL_BANNERS:      "school_banners"
 };
 
 // Kolom per sheet
@@ -77,7 +78,7 @@ var SCHEMA = {
   messages:        ["id","name","email","purpose","message","created_at","is_read"],
   _config:         ["key","value"],
 
-  // PORTOFOLIO SEKOLAH SCHEMA
+  // PORTOFOLIO DIGITAL SCHEMA
   school_implementasi:     ["id","title","type","description","app_url","media_url","caption","order","active"],
   school_prestasi:         ["id","title","event","organizer","year","level","cert_title","cert_url","photo_url","order","active"],
   school_karya:            ["id","title","type","description","media_id","url","date","hashtag","order","active"],
@@ -87,7 +88,8 @@ var SCHEMA = {
   school_orprof:           ["id","role","organization","period","sk_filename","sk_url","photo_url","order","active"],
   school_profil_edu:       ["id","period","institution","degree","major","order","active"],
   school_custom_categories:["id","slug","title","description","icon","order","active"],
-  school_custom_items:     ["id","category_slug","title","subtitle","description","date_or_period","media_type","media_url","extra_link","order","active"]
+  school_custom_items:     ["id","category_slug","title","subtitle","description","date_or_period","media_type","media_url","extra_link","order","active"],
+  school_banners:          ["id","title","image_url","link_url","caption","order","active"]
 };
 
 // =========================================================================
@@ -732,7 +734,14 @@ function getAllData(sheetName, activeOnly) {
   if (!sheetName) return { status: "error", message: "Parameter 'sheet' diperlukan." };
   var ss = getDatabase();
   var sheet = ss.getSheetByName(sheetName);
-  if (!sheet) return { status: "error", message: "Sheet tidak ditemukan: " + sheetName };
+  if (!sheet) {
+    if (SCHEMA[sheetName]) {
+      sheet = ss.insertSheet(sheetName);
+      styleHeader(sheet, SCHEMA[sheetName], "#1B3A6B", "#FFFFFF");
+    } else {
+      return { status: "error", message: "Sheet tidak ditemukan: " + sheetName };
+    }
+  }
 
   var data = sheet.getDataRange().getValues();
   if (data.length <= 1) return { status: "success", data: [] };
@@ -771,7 +780,14 @@ function getOneData(sheetName, id) {
 function addItem(sheetName, body) {
   var ss = getDatabase();
   var sheet = ss.getSheetByName(sheetName);
-  if (!sheet) return { status: "error", message: "Sheet tidak ditemukan: " + sheetName };
+  if (!sheet) {
+    if (SCHEMA[sheetName]) {
+      sheet = ss.insertSheet(sheetName);
+      styleHeader(sheet, SCHEMA[sheetName], "#1B3A6B", "#FFFFFF");
+    } else {
+      return { status: "error", message: "Sheet tidak ditemukan: " + sheetName };
+    }
+  }
 
   var headers = sheet.getRange(1, 1, 1, sheet.getLastColumn()).getValues()[0];
 

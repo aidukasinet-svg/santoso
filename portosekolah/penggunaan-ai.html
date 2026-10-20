@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Penggunaan AI dalam Pendidikan — Santoso, S.Pd., M.Pd. | Portofolio Sekolah</title>
+<title>Penggunaan AI dalam Pendidikan — Santoso, S.Pd., M.Pd. | Portofolio Digital</title>
 <meta name="description" content="Panduan pemanfaatan Artificial Intelligence (AI) untuk guru: 10 prompt pembuatan instrumen ulangan dan 12 kode rahasia Gemini AI untuk akselerasi pedagogis." />
 <meta property="og:title" content="Penggunaan AI dalam Pendidikan — Santoso, S.Pd., M.Pd." />
 <meta property="og:description" content="10 prompt ulangan siap pakai dan 12 kode perintah Gemini AI untuk mendukung guru cerdas." />
@@ -210,9 +210,11 @@ footer a:hover{text-decoration:underline}
       <a href="/index.html">Beranda</a>
       <a href="/index.html#tentang">Tentang</a>
       <a href="/index.html#timeline">Jejak Langkah</a>
-      <a href="/portosekolah" class="active">Portofolio Sekolah</a>
+      <a href="/portosekolah" class="active">Portofolio Digital</a>
+      <!-- Menu Musik dan Usaha disembunyikan sementara
       <a href="/musik.html">Musik</a>
       <a href="/usaha.html">Usaha</a>
+      -->
       <a href="/prestasi.html">Prestasi</a>
       <a href="/index.html#kontak">Kontak</a>
       <a href="/admin.html" class="btn-admin"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="vertical-align:-1px;margin-right:5px;"><path d="M12.22 2h-.44a2 2 0 0 0-2 2v.18a2 2 0 0 1-1 1.73l-.43.25a2 2 0 0 1-2 0l-.15-.08a2 2 0 0 0-2.73.73l-.22.38a2 2 0 0 0 .73 2.73l.15.1a2 2 0 0 1 1 1.72v.51a2 2 0 0 1-1 1.74l-.15.09a2 2 0 0 0-.73 2.73l.22.38a2 2 0 0 0 2.73.73l.15-.08a2 2 0 0 1 2 0l.43.25a2 2 0 0 1 1 1.73V20a2 2 0 0 0 2 2h.44a2 2 0 0 0 2-2v-.18a2 2 0 0 1 1-1.73l.43-.25a2 2 0 0 1 2 0l.15.08a2 2 0 0 0 2.73-.73l.22-.39a2 2 0 0 0-.73-2.73l-.15-.08a2 2 0 0 1-1-1.74v-.5a2 2 0 0 1 1-1.74l.15-.09a2 2 0 0 0 .73-2.73l-.22-.38a2 2 0 0 0-2.73-.73l-.15.08a2 2 0 0 1-2 0l-.43-.25a2 2 0 0 1-1-1.73V4a2 2 0 0 0-2-2z"/><circle cx="12" cy="12" r="3"/></svg>Admin</a>
@@ -341,9 +343,11 @@ footer a:hover{text-decoration:underline}
     <p>&copy; 2026 <strong>Santoso, S.Pd., M.Pd.</strong> — UPT SDN Latsari 2 Bancar</p>
     <p class="links" style="margin-top:10px">
       <a href="/index.html">Beranda</a>
-      <a href="/portosekolah">Portofolio Sekolah</a>
+      <a href="/portosekolah">Portofolio Digital</a>
+      <!-- Musik dan Usaha disembunyikan sementara
       <a href="/musik.html">Musik</a>
       <a href="/usaha.html">Usaha</a>
+      -->
       <a href="/prestasi.html">Prestasi</a>
       <a href="/index.html#kontak">Kontak</a>
       <a href="https://sites.google.com/admin.sd.belajar.id/portofoliopaksan/penggunaan-ai" target="_blank" rel="noopener">Sumber: Google Sites</a>
@@ -351,6 +355,7 @@ footer a:hover{text-decoration:underline}
   </div>
 </footer>
 
+<script src="/config.js"></script>
 <script>
 /* ================================================================
    DATA PROMPTS & KODE GEMINI AI
@@ -469,11 +474,70 @@ function copyPrompt(btn, idx) {
   });
 }
 
-function zoom(src) {
-  document.getElementById('lbImg').src = src;
-  document.getElementById('lb').classList.add('open');
+function renderAi(prompts, codes) {
+  const pGrid = document.getElementById('promptsGrid');
+  if (pGrid) {
+    pGrid.innerHTML = prompts.map(p => `
+      <article class="prompt-card">
+        <div class="prompt-header">
+          <h3 class="prompt-title">${p.title}</h3>
+          <button class="btn-copy" onclick="copyPrompt(this)" aria-label="Salin Prompt">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><rect width="14" height="14" x="8" y="8" rx="2" ry="2"/><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"/></svg>
+            <span>Salin</span>
+          </button>
+        </div>
+        <div class="prompt-body">
+          <pre>${p.text}</pre>
+        </div>
+      </article>
+    `).join('');
+  }
+
+  const cGrid = document.getElementById('codesGrid');
+  if (cGrid) {
+    cGrid.innerHTML = codes.map(c => `
+      <article class="code-card">
+        <div class="code-header">
+          <span class="code-badge">${c.code}</span>
+          <button class="btn-copy" onclick="copyCode(this, '${c.code}')" aria-label="Salin Kode">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><rect width="14" height="14" x="8" y="8" rx="2" ry="2"/><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"/></svg>
+            <span>Salin</span>
+          </button>
+        </div>
+        <h4 class="code-name">${c.name}</h4>
+        <p class="code-desc">${c.desc}</p>
+      </article>
+    `).join('');
+  }
 }
-document.addEventListener('keydown', e => { if (e.key === 'Escape') document.getElementById('lb').classList.remove('open'); });
+
+async function loadDynamicAi() {
+  const apiUrl = (window.APP_CONFIG && window.APP_CONFIG.API_URL) || '/api';
+  try {
+    const res = await fetch(`${apiUrl}?action=getAll&sheet=school_ai&_t=${Date.now()}`).then(r => r.json());
+    if (res && res.status === 'success' && Array.isArray(res.data) && res.data.length > 0) {
+      const activeData = res.data.filter(x => x.active !== false && x.active !== 'false' && x.active !== 'FALSE');
+      const promptsFromSheet = activeData.filter(x => String(x.type || '').toLowerCase() === 'prompt').map((x, idx) => ({
+        title: x.title ? (x.title.match(/^\d+\./) ? x.title : `${idx + 1}. ${x.title}`) : `Prompt #${idx+1}`,
+        text: x.body || x.usage || ''
+      }));
+      const codesFromSheet = activeData.filter(x => String(x.type || '').toLowerCase() === 'code').map(x => ({
+        code: x.code || '/prompt',
+        name: x.title || x.subtitle || '',
+        desc: x.body || x.usage || ''
+      }));
+
+      renderAi(
+        promptsFromSheet.length ? promptsFromSheet : PROMPTS,
+        codesFromSheet.length ? codesFromSheet : GEMINI_CODES
+      );
+      return;
+    }
+  } catch(e) {
+    console.warn('Gagal memuat school_ai dari server', e);
+  }
+  renderAi(PROMPTS, GEMINI_CODES);
+}
 
 // Auto-scroll active subnav into view and load custom categories
 window.addEventListener('DOMContentLoaded', () => {
@@ -481,12 +545,14 @@ window.addEventListener('DOMContentLoaded', () => {
   if (activeTab) {
     activeTab.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
   }
+  loadDynamicAi();
   loadDynamicCustomNav();
 });
 
 async function loadDynamicCustomNav() {
+  const apiUrl = (window.APP_CONFIG && window.APP_CONFIG.API_URL) || '/api';
   try {
-    const res = await fetch('/api?action=getAll&sheet=school_custom_categories').then(r => r.json());
+    const res = await fetch(`${apiUrl}?action=getAll&sheet=school_custom_categories&_t=${Date.now()}`).then(r => r.json());
     if (res && res.status === 'success' && Array.isArray(res.data)) {
       const subnavList = document.getElementById('subnavList');
       if (!subnavList) return;

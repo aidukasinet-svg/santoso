@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Pendampingan Rekan Sejawat — Santoso, S.Pd., M.Pd. | Portofolio Sekolah</title>
+<title>Pendampingan Rekan Sejawat — Santoso, S.Pd., M.Pd. | Portofolio Digital</title>
 <meta name="description" content="Dokumentasi 40 kegiatan pendampingan rekan sejawat Santoso, S.Pd., M.Pd. (UPT SDN Latsari 2 Bancar): penyusunan BKS, narasumber, coaching, aktivasi Belajar.id, dan komunitas." />
 <meta property="og:title" content="Pendampingan Rekan Sejawat — Santoso, S.Pd., M.Pd." />
 <meta property="og:description" content="Dokumentasi 40 kegiatan pendampingan rekan sejawat Santoso, S.Pd., M.Pd. di Kecamatan Bancar dan Kabupaten Tuban." />
@@ -166,9 +166,11 @@ footer a:hover{text-decoration:underline}
       <a href="/index.html">Beranda</a>
       <a href="/index.html#tentang">Tentang</a>
       <a href="/index.html#timeline">Jejak Langkah</a>
-      <a href="/portosekolah" class="active">Portofolio Sekolah</a>
+      <a href="/portosekolah" class="active">Portofolio Digital</a>
+      <!-- Menu Musik dan Usaha disembunyikan sementara
       <a href="/musik.html">Musik</a>
       <a href="/usaha.html">Usaha</a>
+      -->
       <a href="/prestasi.html">Prestasi</a>
       <a href="/index.html#kontak">Kontak</a>
       <a href="/admin.html" class="btn-admin"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="vertical-align:-1px;margin-right:5px;"><path d="M12.22 2h-.44a2 2 0 0 0-2 2v.18a2 2 0 0 1-1 1.73l-.43.25a2 2 0 0 1-2 0l-.15-.08a2 2 0 0 0-2.73.73l-.22.38a2 2 0 0 0 .73 2.73l.15.1a2 2 0 0 1 1 1.72v.51a2 2 0 0 1-1 1.74l-.15.09a2 2 0 0 0-.73 2.73l.22.38a2 2 0 0 0 2.73.73l.15-.08a2 2 0 0 1 2 0l.43.25a2 2 0 0 1 1 1.73V20a2 2 0 0 0 2 2h.44a2 2 0 0 0 2-2v-.18a2 2 0 0 1 1-1.73l.43-.25a2 2 0 0 1 2 0l.15.08a2 2 0 0 0 2.73-.73l.22-.39a2 2 0 0 0-.73-2.73l-.15-.08a2 2 0 0 1-1-1.74v-.5a2 2 0 0 1 1-1.74l.15-.09a2 2 0 0 0 .73-2.73l-.22-.38a2 2 0 0 0-2.73-.73l-.15.08a2 2 0 0 1-2 0l-.43-.25a2 2 0 0 1-1-1.73V4a2 2 0 0 0-2-2z"/><circle cx="12" cy="12" r="3"/></svg>Admin</a>
@@ -255,9 +257,11 @@ footer a:hover{text-decoration:underline}
     <p>&copy; 2026 <strong>Santoso, S.Pd., M.Pd.</strong> — UPT SDN Latsari 2 Bancar</p>
     <p class="links" style="margin-top:10px">
       <a href="/index.html">Beranda</a>
-      <a href="/portosekolah">Portofolio Sekolah</a>
+      <a href="/portosekolah">Portofolio Digital</a>
+      <!-- Musik dan Usaha disembunyikan sementara
       <a href="/musik.html">Musik</a>
       <a href="/usaha.html">Usaha</a>
+      -->
       <a href="/prestasi.html">Prestasi</a>
       <a href="/index.html#kontak">Kontak</a>
       <a href="https://sites.google.com/admin.sd.belajar.id/portofoliopaksan/pendampingan-rekan-sejawat" target="_blank" rel="noopener">Sumber: Google Sites</a>
@@ -265,6 +269,7 @@ footer a:hover{text-decoration:underline}
   </div>
 </footer>
 
+<script src="/config.js"></script>
 <script>
 /* Foto: simpan di assets/portosekolah/pendampingan/ dengan nama 01.jpg, 02.jpg, dst. sesuai urutan data di bawah.
    Jika foto belum ada, kartu menampilkan nomor sebagai penanda. */
@@ -276,7 +281,7 @@ const CATS = {
   komunitas:{label:'Komunitas & Seni'}
 };
 /* [kategori, judul, keterangan (opsional)] */
-const DATA = [
+const DEFAULT_DATA = [
   ['bks','Tim penyusun dan validasi BKS Kabupaten Tuban'],
   ['bks','Fasilitator penyusunan BKS tingkat Kecamatan Bancar'],
   ['bks','Pendampingan workshop BKS Klaster Jatirogo','Bancar, Jatirogo, Kenduruan, Bangilan, Senori'],
@@ -319,8 +324,19 @@ const DATA = [
   ['komunitas','Pembina juara 1 Tari SFW','2023']
 ].map((d,i)=>({id:i+1,cat:d[0],title:d[1],note:d[2]||'',img:'/assets/portosekolah/pendampingan/'+String(i+1).padStart(2,'0')+'.jpg'}));
 
+let DATA = DEFAULT_DATA;
 let filter='semua';
 const $=id=>document.getElementById(id);
+
+function formatMediaUrl(url, fallback) {
+  if (!url || typeof url !== 'string' || !url.trim()) return fallback || '';
+  url = url.trim();
+  const driveMatch = url.match(/drive\.google\.com\/file\/d\/([a-zA-Z0-9_-]+)/);
+  if (driveMatch && driveMatch[1]) return `https://drive.google.com/thumbnail?id=${driveMatch[1]}&sz=w1200`;
+  const driveIdMatch = url.match(/[?&]id=([a-zA-Z0-9_-]+)/);
+  if (url.includes('drive.google.com') && driveIdMatch && driveIdMatch[1]) return `https://drive.google.com/thumbnail?id=${driveIdMatch[1]}&sz=w1200`;
+  return url;
+}
 
 function buildPills(){
   const counts={};DATA.forEach(d=>counts[d.cat]=(counts[d.cat]||0)+1);
@@ -351,10 +367,46 @@ function render(){
 function zoom(src){$('lbImg').src=src;$('lb').classList.add('open')}
 document.addEventListener('keydown',e=>{if(e.key==='Escape')$('lb').classList.remove('open')});
 
-$('statTotal').textContent=DATA.length;
-$('statCat').textContent=Object.keys(CATS).length;
 $('q').addEventListener('input',render);
-buildPills();render();
+
+async function loadDynamicMentoring() {
+  const apiUrl = (window.APP_CONFIG && window.APP_CONFIG.API_URL) || '/api';
+  try {
+    const res = await fetch(`${apiUrl}?action=getAll&sheet=school_mentoring&_t=${Date.now()}`).then(r => r.json());
+    if (res && res.status === 'success' && Array.isArray(res.data) && res.data.length > 0) {
+      const activeData = res.data.filter(x => x.active !== false && x.active !== 'false' && x.active !== 'FALSE');
+      // Identifikasi item-item tambahan baru yang diupload admin
+      const existingTitles = new Set(DEFAULT_DATA.map(d => d.title.toLowerCase().trim()));
+      const customItems = activeData.filter(x => !existingTitles.has(String(x.title || '').toLowerCase().trim())).map((x, idx) => {
+        let cat = 'narsum';
+        const role = String(x.role || '').toLowerCase();
+        if (role.includes('bks')) cat = 'bks';
+        else if (role.includes('coach') || role.includes('fasilitator')) cat = 'coaching';
+        else if (role.includes('belajar.id')) cat = 'belajarid';
+        else if (role.includes('seni') || role.includes('komunitas')) cat = 'komunitas';
+        
+        const noteParts = [x.target, x.material, x.role].filter(Boolean).join(' · ');
+        return {
+          id: DEFAULT_DATA.length + idx + 1,
+          cat: cat,
+          title: x.title,
+          note: noteParts,
+          img: formatMediaUrl(x.photo_url, `/assets/portosekolah/pendampingan/01.jpg`)
+        };
+      });
+
+      if (customItems.length > 0) {
+        DATA = [...customItems, ...DEFAULT_DATA];
+      }
+    }
+  } catch (e) {
+    console.warn('Gagal memuat mentoring dari server', e);
+  }
+  $('statTotal').textContent=DATA.length;
+  $('statCat').textContent=Object.keys(CATS).length;
+  buildPills();
+  render();
+}
 
 // Auto-scroll active subnav into view and load custom categories
 window.addEventListener('DOMContentLoaded', () => {
@@ -362,12 +414,14 @@ window.addEventListener('DOMContentLoaded', () => {
   if (activeTab) {
     activeTab.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
   }
+  loadDynamicMentoring();
   loadDynamicCustomNav();
 });
 
 async function loadDynamicCustomNav() {
+  const apiUrl = (window.APP_CONFIG && window.APP_CONFIG.API_URL) || '/api';
   try {
-    const res = await fetch('/api?action=getAll&sheet=school_custom_categories').then(r => r.json());
+    const res = await fetch(`${apiUrl}?action=getAll&sheet=school_custom_categories&_t=${Date.now()}`).then(r => r.json());
     if (res && res.status === 'success' && Array.isArray(res.data)) {
       const subnavList = document.getElementById('subnavList');
       if (!subnavList) return;

@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Karya Tulis & Inovasi — Santoso, S.Pd., M.Pd. | Portofolio Sekolah</title>
+<title>Karya Tulis & Inovasi — Santoso, S.Pd., M.Pd. | Portofolio Digital</title>
 <meta name="description" content="Koleksi karya tulis ilmiah, buku cerita anak, inovasi pembelajaran, kreasi seni tari, dan konten edukasi Instagram karya Santoso, S.Pd., M.Pd." />
 <meta property="og:title" content="Karya Tulis & Inovasi — Santoso, S.Pd., M.Pd." />
 <meta property="og:description" content="Publikasi ilmiah, buku sastra anak, tari kreasi daerah, dan video pembelajaran kreatif." />
@@ -193,9 +193,11 @@ footer a:hover{text-decoration:underline}
       <a href="/index.html">Beranda</a>
       <a href="/index.html#tentang">Tentang</a>
       <a href="/index.html#timeline">Jejak Langkah</a>
-      <a href="/portosekolah" class="active">Portofolio Sekolah</a>
+      <a href="/portosekolah" class="active">Portofolio Digital</a>
+      <!-- Menu Musik dan Usaha disembunyikan sementara
       <a href="/musik.html">Musik</a>
       <a href="/usaha.html">Usaha</a>
+      -->
       <a href="/prestasi.html">Prestasi</a>
       <a href="/index.html#kontak">Kontak</a>
       <a href="/admin.html" class="btn-admin"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="vertical-align:-1px;margin-right:5px;"><path d="M12.22 2h-.44a2 2 0 0 0-2 2v.18a2 2 0 0 1-1 1.73l-.43.25a2 2 0 0 1-2 0l-.15-.08a2 2 0 0 0-2.73.73l-.22.38a2 2 0 0 0 .73 2.73l.15.1a2 2 0 0 1 1 1.72v.51a2 2 0 0 1-1 1.74l-.15.09a2 2 0 0 0-.73 2.73l.22.38a2 2 0 0 0 2.73.73l.15-.08a2 2 0 0 1 2 0l.43.25a2 2 0 0 1 1 1.73V20a2 2 0 0 0 2 2h.44a2 2 0 0 0 2-2v-.18a2 2 0 0 1 1-1.73l.43-.25a2 2 0 0 1 2 0l.15.08a2 2 0 0 0 2.73-.73l.22-.39a2 2 0 0 0-.73-2.73l-.15-.08a2 2 0 0 1-1-1.74v-.5a2 2 0 0 1 1-1.74l.15-.09a2 2 0 0 0 .73-2.73l-.22-.38a2 2 0 0 0-2.73-.73l-.15.08a2 2 0 0 1-2 0l-.43-.25a2 2 0 0 1-1-1.73V4a2 2 0 0 0-2-2z"/><circle cx="12" cy="12" r="3"/></svg>Admin</a>
@@ -282,9 +284,11 @@ footer a:hover{text-decoration:underline}
     <p>&copy; 2026 <strong>Santoso, S.Pd., M.Pd.</strong> — UPT SDN Latsari 2 Bancar</p>
     <p class="links" style="margin-top:10px">
       <a href="/index.html">Beranda</a>
-      <a href="/portosekolah">Portofolio Sekolah</a>
+      <a href="/portosekolah">Portofolio Digital</a>
+      <!-- Musik dan Usaha disembunyikan sementara
       <a href="/musik.html">Musik</a>
       <a href="/usaha.html">Usaha</a>
+      -->
       <a href="/prestasi.html">Prestasi</a>
       <a href="/index.html#kontak">Kontak</a>
       <a href="https://sites.google.com/admin.sd.belajar.id/portofoliopaksan/karya-tulis-inovasi" target="_blank" rel="noopener">Sumber: Google Sites</a>
@@ -292,6 +296,7 @@ footer a:hover{text-decoration:underline}
   </div>
 </footer>
 
+<script src="/config.js"></script>
 <script>
 /* ================================================================
    DATA KARYA TULIS & INOVASI
@@ -306,7 +311,7 @@ const CAT_MAP = {
   lagu:  { label: 'Lagu Branding Tuban', class: 'c-lagu' }
 };
 
-const KARYA_DATA = [
+const DEFAULT_KARYA_DATA = [
   {
     cat: 'inov',
     title: 'Inovasi asesmen pada pembelajaran Bahasa Indonesia kelas 1 dengan metode ASSA (Aku Suka, Suka Aku)',
@@ -402,6 +407,7 @@ const KARYA_DATA = [
   }
 ];
 
+let KARYA_DATA = DEFAULT_KARYA_DATA;
 let activeFilter = 'semua';
 
 function buildPills() {
@@ -409,6 +415,7 @@ function buildPills() {
   KARYA_DATA.forEach(k => counts[k.cat] = (counts[k.cat] || 0) + 1);
 
   const pEl = document.getElementById('pills');
+  if (!pEl) return;
   pEl.innerHTML = Object.keys(CAT_MAP).map(k => `
     <button class="filter-btn ${activeFilter === k ? 'active' : ''}" data-f="${k}">
       ${CAT_MAP[k].label}
@@ -427,7 +434,10 @@ function buildPills() {
 
 function render() {
   const grid = document.getElementById('karyaGrid');
+  if (!grid) return;
   const items = KARYA_DATA.filter(k => activeFilter === 'semua' || k.cat === activeFilter);
+  const countEl = document.getElementById('statCount');
+  if (countEl) countEl.textContent = KARYA_DATA.length;
 
   grid.innerHTML = items.map(k => {
     const badgeClass = CAT_MAP[k.cat]?.class || 'c-pub';
@@ -528,18 +538,86 @@ function zoom(src) {
 }
 document.addEventListener('keydown', e => { if (e.key === 'Escape') document.getElementById('lb').classList.remove('open'); });
 
+function mapSheetKarya(raw) {
+  return raw.filter(k => k.active !== false && k.active !== 'false' && k.active !== 'FALSE').map(k => {
+    let cat = 'inov';
+    const t = String(k.type || '').toLowerCase();
+    const tit = String(k.title || '').toLowerCase();
+    if (t === 'reels' || t === 'ig') cat = 'ig';
+    else if (t === 'buku' || t === 'jurnal' || t === 'pub') cat = 'pub';
+    else if (t === 'tari') cat = 'tari';
+    else if (t === 'lagu' || tit.includes('lagu') || tit.includes('branding')) cat = 'lagu';
+    else if (t === 'video') cat = 'inov';
+
+    let ytLink = '', igLink = '', linkUrl = '', linkLabel = 'Buka Tautan';
+    if (k.url) {
+      if (k.url.includes('instagram.com')) igLink = k.url;
+      else if (k.url.includes('youtu.be') || k.url.includes('youtube.com')) ytLink = k.url;
+      else {
+        linkUrl = k.url;
+        linkLabel = tit.includes('jurnal') ? 'Buka Jurnal Ilmiah' : (tit.includes('penelitian') ? 'Buka Repositori Penelitian' : 'Buka Tautan');
+      }
+    }
+
+    let dateFormatted = '';
+    if (k.date) {
+      if (String(k.date).includes('T')) {
+        try {
+          const d = new Date(k.date);
+          dateFormatted = d.toLocaleDateString('id-ID', { day: 'numeric', month: 'long', year: 'numeric' });
+        } catch(e) { dateFormatted = k.date; }
+      } else {
+        dateFormatted = k.date;
+      }
+    }
+
+    return {
+      cat: cat,
+      title: k.title || '',
+      desc: k.description || '',
+      video: k.media_id || '',
+      photo: (k.media_id && k.media_id.startsWith('http')) ? k.media_id : (k.type === 'buku' ? '/assets/portosekolah/karya-tulis/02.jpg' : ''),
+      date: dateFormatted,
+      tags: k.hashtag || '',
+      ytLink: ytLink,
+      igLink: igLink,
+      linkUrl: linkUrl,
+      linkLabel: linkLabel
+    };
+  });
+}
+
+async function loadKaryaData() {
+  const apiUrl = (window.APP_CONFIG && window.APP_CONFIG.API_URL) || '/api';
+  try {
+    const res = await fetch(`${apiUrl}?action=getAll&sheet=school_karya&_t=${Date.now()}`).then(r => r.json());
+    if (res && res.status === 'success' && Array.isArray(res.data) && res.data.length > 0) {
+      KARYA_DATA = mapSheetKarya(res.data);
+      buildPills();
+      render();
+      return;
+    }
+  } catch (err) {
+    console.warn('Gagal memuat karya dari server, memakai data fallback', err);
+  }
+  buildPills();
+  render();
+}
+
 // Auto-scroll active subnav into view and load custom categories
 window.addEventListener('DOMContentLoaded', () => {
   const activeTab = document.querySelector('.subnav-item.active');
   if (activeTab) {
     activeTab.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
   }
+  loadKaryaData();
   loadDynamicCustomNav();
 });
 
 async function loadDynamicCustomNav() {
+  const apiUrl = (window.APP_CONFIG && window.APP_CONFIG.API_URL) || '/api';
   try {
-    const res = await fetch('/api?action=getAll&sheet=school_custom_categories').then(r => r.json());
+    const res = await fetch(`${apiUrl}?action=getAll&sheet=school_custom_categories&_t=${Date.now()}`).then(r => r.json());
     if (res && res.status === 'success' && Array.isArray(res.data)) {
       const subnavList = document.getElementById('subnavList');
       if (!subnavList) return;
@@ -563,9 +641,6 @@ async function loadDynamicCustomNav() {
     }
   } catch (e) {}
 }
-
-buildPills();
-render();
 </script>
 </body>
 </html>

@@ -9,7 +9,7 @@ const CONFIG = {
   // Bila di-deploy di Cloudflare Pages, gunakan '/api' (diteruskan via _worker.js)
   // Bila dibuka secara lokal (file://), masukkan URL langsung Google Apps Script Web App
   API_URL: window.location.protocol === 'file:'
-    ? 'PASTE_YOUR_GAS_URL_HERE'
+    ? 'https://script.google.com/macros/s/AKfycbwBU6IumXIHOpIS_kw3bINs2HpIpn5dyqIWw8olQafiUS-LfNyYYY2xKnAZ1ajTE_sVsw/exec'
     : '/api',
 
   // Identitas Pemilik

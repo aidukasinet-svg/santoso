@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Bukti Implementasi Karya / Inovasi — Santoso, S.Pd., M.Pd. | Portofolio Sekolah</title>
+<title>Bukti Implementasi Karya / Inovasi — Santoso, S.Pd., M.Pd. | Portofolio Digital</title>
 <meta name="description" content="Dokumentasi bukti implementasi karya dan inovasi pembelajaran Santoso, S.Pd., M.Pd. di UPT SDN Latsari 2 Bancar: Fun Learning, Asesmen ASSA, dan Digitalisasi Layanan LAPIS LADA." />
 <meta property="og:title" content="Bukti Implementasi Karya / Inovasi — Santoso, S.Pd., M.Pd." />
 <meta property="og:description" content="Bukti nyata implementasi pembelajaran berdiferensiasi, inovasi asesmen ASSA, dan digitalisasi informasi sekolah LAPIS LADA." />
@@ -226,9 +226,8 @@ footer a:hover{text-decoration:underline}
       <a href="/index.html">Beranda</a>
       <a href="/index.html#tentang">Tentang</a>
       <a href="/index.html#timeline">Jejak Langkah</a>
-      <a href="/portosekolah" class="active">Portofolio Sekolah</a>
-      <a href="/musik.html">Musik</a>
-      <a href="/usaha.html">Usaha</a>
+      <a href="/portosekolah" class="active">Portofolio Digital</a>
+      <!-- Menu Musik dan Usaha disembunyikan sementara -->
       <a href="/prestasi.html">Prestasi</a>
       <a href="/index.html#kontak">Kontak</a>
       <a href="/admin.html" class="btn-admin"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="vertical-align:-1px;margin-right:5px;"><path d="M12.22 2h-.44a2 2 0 0 0-2 2v.18a2 2 0 0 1-1 1.73l-.43.25a2 2 0 0 1-2 0l-.15-.08a2 2 0 0 0-2.73.73l-.22.38a2 2 0 0 0 .73 2.73l.15.1a2 2 0 0 1 1 1.72v.51a2 2 0 0 1-1 1.74l-.15.09a2 2 0 0 0-.73 2.73l.22.38a2 2 0 0 0 2.73.73l.15-.08a2 2 0 0 1 2 0l.43.25a2 2 0 0 1 1 1.73V20a2 2 0 0 0 2 2h.44a2 2 0 0 0 2-2v-.18a2 2 0 0 1 1-1.73l.43-.25a2 2 0 0 1 2 0l.15.08a2 2 0 0 0 2.73-.73l.22-.39a2 2 0 0 0-.73-2.73l-.15-.08a2 2 0 0 1-1-1.74v-.5a2 2 0 0 1 1-1.74l.15-.09a2 2 0 0 0 .73-2.73l-.22-.38a2 2 0 0 0-2.73-.73l-.15.08a2 2 0 0 1-2 0l-.43-.25a2 2 0 0 1-1-1.73V4a2 2 0 0 0-2-2z"/><circle cx="12" cy="12" r="3"/></svg>Admin</a>
@@ -237,7 +236,7 @@ footer a:hover{text-decoration:underline}
   </div>
 </nav>
 
-<!-- SUB-NAVIGASI TAB PORTOFOLIO SEKOLAH -->
+<!-- SUB-NAVIGASI TAB PORTOFOLIO DIGITAL -->
 <div class="subnav-bar">
   <div class="container">
     <div class="subnav-list" id="subnavList">
@@ -336,9 +335,8 @@ footer a:hover{text-decoration:underline}
     <p>&copy; 2026 <strong>Santoso, S.Pd., M.Pd.</strong> — UPT SDN Latsari 2 Bancar</p>
     <p class="links" style="margin-top:10px">
       <a href="/index.html">Beranda</a>
-      <a href="/portosekolah">Portofolio Sekolah</a>
-      <a href="/musik.html">Musik</a>
-      <a href="/usaha.html">Usaha</a>
+      <a href="/portosekolah">Portofolio Digital</a>
+      <!-- Menu Musik dan Usaha disembunyikan sementara -->
       <a href="/prestasi.html">Prestasi</a>
       <a href="/index.html#kontak">Kontak</a>
       <a href="https://sites.google.com/admin.sd.belajar.id/portofoliopaksan/bukti-implementasi-karya-inovasi" target="_blank" rel="noopener">Sumber: Google Sites</a>
@@ -346,12 +344,12 @@ footer a:hover{text-decoration:underline}
   </div>
 </footer>
 
+<script src="/config.js"></script>
 <script>
 /* ================================================================
-   DATA BUKTI IMPLEMENTASI
-   Sumber tunggal: konten-portosekolah.md
+   DATA BUKTI IMPLEMENTASI (FALLBACK & DYNAMIC SHEET)
    ================================================================ */
-const LAPIS_PHOTOS = [
+const DEFAULT_LAPIS_PHOTOS = [
   { id: '01', caption: 'Tampilan fitur-fitur pada aplikasi Lapis Lada' },
   { id: '02', caption: 'Tampilan fitur-fitur pada aplikasi Lapis Lada' },
   { id: '03', caption: 'Tampilan LAPIS LADA menggunakan HP' },
@@ -362,7 +360,7 @@ const LAPIS_PHOTOS = [
   { id: '08', caption: 'Sosialisasi kepada komite dan wali murid aplikasi LAPIS LADA' }
 ];
 
-const VIDEOS = [
+const DEFAULT_VIDEOS = [
   {
     id: 'RIqK9fA7OSM',
     tag: 'Pembelajaran Berdiferensiasi',
@@ -377,42 +375,101 @@ const VIDEOS = [
   }
 ];
 
-// Render Lapis Lada Gallery
-const galEl = document.getElementById('lapisGallery');
-galEl.innerHTML = LAPIS_PHOTOS.map(p => `
-  <div class="photo-item">
-    <div class="photo-box">
-      <img src="/assets/portosekolah/bukti-implementasi/${p.id}.jpg" alt="${p.caption}" loading="lazy" onerror="this.remove()" onclick="zoom(this.src)" />
-      <span class="ph">${p.id}</span>
-    </div>
-    <div class="photo-caption">${p.id}. ${p.caption}</div>
-  </div>
-`).join('');
+function formatMediaUrl(url, fallback) {
+  if (!url || typeof url !== 'string' || !url.trim()) return fallback || '';
+  url = url.trim();
+  const driveMatch = url.match(/drive\.google\.com\/file\/d\/([a-zA-Z0-9_-]+)/);
+  if (driveMatch && driveMatch[1]) {
+    return `https://drive.google.com/thumbnail?id=${driveMatch[1]}&sz=w1200`;
+  }
+  const driveIdMatch = url.match(/[?&]id=([a-zA-Z0-9_-]+)/);
+  if (url.includes('drive.google.com') && driveIdMatch && driveIdMatch[1]) {
+    return `https://drive.google.com/thumbnail?id=${driveIdMatch[1]}&sz=w1200`;
+  }
+  return url;
+}
 
-// Render Video Grid with click-to-play thumbnail
-const vidEl = document.getElementById('videoGrid');
-vidEl.innerHTML = VIDEOS.map(v => `
-  <article class="video-card">
-    <div class="video-wrapper">
-      <div class="video-poster" onclick="playVideo(this, '${v.id}')">
-        <img src="https://i.ytimg.com/vi/${v.id}/hqdefault.jpg" alt="${v.title}" loading="lazy" />
-        <button class="video-play-btn" aria-label="Putar Video ${v.title}">
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"/></svg>
-        </button>
+function renderGallery(photos) {
+  const galEl = document.getElementById('lapisGallery');
+  if (!galEl) return;
+  galEl.innerHTML = photos.map((p, idx) => {
+    const num = String(idx + 1).padStart(2, '0');
+    const src = p.media_url ? formatMediaUrl(p.media_url) : `/assets/portosekolah/bukti-implementasi/${p.id || num}.jpg`;
+    const cap = p.caption || p.title || `Dokumentasi Foto ${num}`;
+    return `
+      <div class="photo-item">
+        <div class="photo-box">
+          <img src="${src}" alt="${cap}" loading="lazy" onerror="this.remove()" onclick="zoom(this.src)" />
+          <span class="ph">${num}</span>
+        </div>
+        <div class="photo-caption">${num}. ${cap}</div>
       </div>
-    </div>
-    <div class="video-body">
-      <span class="video-tag">${v.tag}</span>
-      <h3 class="video-title">${v.title}</h3>
-      <div class="video-actions">
-        <a href="${v.url}" target="_blank" rel="noopener" class="btn-yt-fallback">
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
-          Buka di YouTube
-        </a>
-      </div>
-    </div>
-  </article>
-`).join('');
+    `;
+  }).join('');
+}
+
+function renderVideos(videos) {
+  const vidEl = document.getElementById('videoGrid');
+  if (!vidEl) return;
+  vidEl.innerHTML = videos.map(v => {
+    let vidId = v.id || v.media_url || '';
+    if (vidId.includes('youtu.be/')) {
+      vidId = vidId.split('youtu.be/')[1].split('?')[0];
+    } else if (vidId.includes('watch?v=')) {
+      vidId = vidId.split('watch?v=')[1].split('&')[0];
+    }
+    const tag = v.tag || v.title || 'Inovasi Pembelajaran';
+    const title = v.description || v.title || 'Video Inovasi Pembelajaran';
+    const link = v.url || `https://youtu.be/${vidId}`;
+    return `
+      <article class="video-card">
+        <div class="video-wrapper">
+          <div class="video-poster" onclick="playVideo(this, '${vidId}')">
+            <img src="https://i.ytimg.com/vi/${vidId}/hqdefault.jpg" alt="${title}" loading="lazy" onerror="this.src='/assets/images/santoso-portrait.jpg'" />
+            <button class="video-play-btn" aria-label="Putar Video ${title}">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+            </button>
+          </div>
+        </div>
+        <div class="video-body">
+          <span class="video-tag">${tag}</span>
+          <h3 class="video-title">${title}</h3>
+          <div class="video-actions">
+            <a href="${link}" target="_blank" rel="noopener" class="btn-yt-fallback">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+              Buka di YouTube
+            </a>
+          </div>
+        </div>
+      </article>
+    `;
+  }).join('');
+}
+
+async function loadBuktiImplementasi() {
+  const apiUrl = (window.APP_CONFIG && window.APP_CONFIG.API_URL) || '/api';
+  try {
+    const res = await fetch(`${apiUrl}?action=getAll&sheet=school_implementasi&_t=${Date.now()}`).then(r => r.json());
+    if (res && res.status === 'success' && Array.isArray(res.data) && res.data.length > 0) {
+      const activeData = res.data.filter(d => d.active !== false && d.active !== 'false');
+      const galleryItems = activeData.filter(d => d.type === 'gallery');
+      const videoItems = activeData.filter(d => d.type === 'video');
+
+      if (galleryItems.length > 0) renderGallery(galleryItems);
+      else renderGallery(DEFAULT_LAPIS_PHOTOS);
+
+      if (videoItems.length > 0) renderVideos(videoItems);
+      else renderVideos(DEFAULT_VIDEOS);
+
+      return;
+    }
+  } catch (err) {
+    console.warn('Gagal memuat implementasi dari sheet, memakai data cadangan', err);
+  }
+
+  renderGallery(DEFAULT_LAPIS_PHOTOS);
+  renderVideos(DEFAULT_VIDEOS);
+}
 
 function playVideo(posterEl, id) {
   const wrapper = posterEl.parentElement;
@@ -425,18 +482,20 @@ function zoom(src) {
 }
 document.addEventListener('keydown', e => { if (e.key === 'Escape') document.getElementById('lb').classList.remove('open'); });
 
-// Auto-scroll active subnav into view and load custom categories
+// Initial load
 window.addEventListener('DOMContentLoaded', () => {
   const activeTab = document.querySelector('.subnav-item.active');
   if (activeTab) {
     activeTab.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
   }
+  loadBuktiImplementasi();
   loadDynamicCustomNav();
 });
 
 async function loadDynamicCustomNav() {
   try {
-    const res = await fetch('/api?action=getAll&sheet=school_custom_categories').then(r => r.json());
+    const apiUrl = (window.APP_CONFIG && window.APP_CONFIG.API_URL) || '/api';
+    const res = await fetch(`${apiUrl}?action=getAll&sheet=school_custom_categories&_t=${Date.now()}`).then(r => r.json());
     if (res && res.status === 'success' && Array.isArray(res.data)) {
       const subnavList = document.getElementById('subnavList');
       if (!subnavList) return;
