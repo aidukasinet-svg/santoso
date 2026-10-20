@@ -208,16 +208,43 @@ footer a:hover{text-decoration:underline}
 <!-- SUB-NAVIGASI TAB PORTOFOLIO SEKOLAH -->
 <div class="subnav-bar">
   <div class="container">
-    <div class="subnav-list">
-      <a href="/portosekolah" class="subnav-item active">
+    <div class="subnav-list" id="subnavList">
+      <a href="/portosekolah" class="subnav-item active" data-tab="home">
         <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
         Home
       </a>
-      <a href="/portosekolah/pendampingan" class="subnav-item">
-        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
-        Pendampingan Rekan Sejawat
+      <a href="/portosekolah/bukti-implementasi" class="subnav-item" data-tab="bukti-implementasi">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
+        Bukti Implementasi
       </a>
-      <!-- Tambahkan tab baru di sini (misal: bukti-implementasi, prestasi, karya-tulis, dll.) -->
+      <a href="/portosekolah/prestasi" class="subnav-item" data-tab="prestasi">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="8" r="6"/><path d="M15.477 12.89 17 22l-5-3-5 3 1.523-9.11"/></svg>
+        Prestasi
+      </a>
+      <a href="/portosekolah/karya-tulis" class="subnav-item" data-tab="karya-tulis">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1-2.5-2.5Z"/><path d="M6 6h10"/><path d="M6 10h10"/></svg>
+        Karya Tulis
+      </a>
+      <a href="/portosekolah/pengembangan-diri" class="subnav-item" data-tab="pengembangan-diri">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>
+        Pengembangan Diri
+      </a>
+      <a href="/portosekolah/pendampingan" class="subnav-item" data-tab="pendampingan">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+        Pendampingan
+      </a>
+      <a href="/portosekolah/penggunaan-ai" class="subnav-item" data-tab="penggunaan-ai">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m12 3-1.9 5.8a2 2 0 0 1-1.3 1.3L3 12l5.8 1.9a2 2 0 0 1 1.3 1.3L12 21l1.9-5.8a2 2 0 0 1 1.3-1.3L21 12l-5.8-1.9a2 2 0 0 1-1.3-1.3Z"/></svg>
+        Penggunaan AI
+      </a>
+      <a href="/portosekolah/orprof" class="subnav-item" data-tab="orprof">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+        Orprof
+      </a>
+      <a href="/portosekolah/profil" class="subnav-item" data-tab="profil">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+        Profil
+      </a>
     </div>
   </div>
 </div>
@@ -246,37 +273,7 @@ footer a:hover{text-decoration:underline}
       <h2 class="ps-section-title">Bidang Portofolio Sekolah</h2>
     </div>
 
-    <div class="module-grid">
-      <!-- KARTU PENDAMPINGAN REKAN SEJAWAT (40 KEGIATAN) -->
-      <article class="module-card">
-        <div>
-          <div class="module-top">
-            <div class="module-icon">
-              <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
-            </div>
-            <span class="module-badge">40 Kegiatan Terdokumentasi</span>
-          </div>
-          <h3 class="module-title">Pendampingan Rekan Sejawat</h3>
-          <p class="module-scope">Kecamatan Bancar & Kabupaten Tuban</p>
-          <p class="module-desc">
-            Berbagi praktik baik pembelajaran, narasumber kombel & gugus, fasilitator penyusunan BKS, coaching clinic, observer rekan sejawat, hingga aktivasi akun Belajar.id se-Kabupaten Tuban.
-          </p>
-          <div class="module-meta-pills">
-            <span class="module-meta-pill">Penyusunan BKS</span>
-            <span class="module-meta-pill">Narasumber & Pemateri</span>
-            <span class="module-meta-pill">Coaching & Observasi</span>
-            <span class="module-meta-pill">Aktivasi Belajar.id</span>
-            <span class="module-meta-pill">Komunitas & Seni</span>
-          </div>
-        </div>
-        <div>
-          <a href="/portosekolah/pendampingan" class="btn-open-module">
-            Buka Dokumentasi (40 Kegiatan)
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
-          </a>
-        </div>
-      </article>
-    </div>
+    <div class="module-grid" id="moduleGrid"></div>
 
     <!-- NOTICE / INFO BOX -->
     <div class="ps-notice">
@@ -301,10 +298,168 @@ footer a:hover{text-decoration:underline}
       <a href="/usaha.html">Usaha</a>
       <a href="/prestasi.html">Prestasi</a>
       <a href="/index.html#kontak">Kontak</a>
-      <a href="https://sites.google.com/admin.sd.belajar.id/portofoliopaksan/pendampingan-rekan-sejawat" target="_blank" rel="noopener">Sumber: Google Sites</a>
+      <a href="https://sites.google.com/admin.sd.belajar.id/portofoliopaksan/" target="_blank" rel="noopener">Sumber: Google Sites</a>
     </p>
   </div>
 </footer>
+
+<script>
+/* ================================================================
+   DATA 9 BAGIAN PORTOFOLIO SEKOLAH
+   Jumlah item dihitung otomatis dari array items di bawah
+   ================================================================ */
+const MODULES = [
+  {
+    slug: 'bukti-implementasi',
+    title: 'Bukti Implementasi Karya / Inovasi',
+    scope: 'Inovasi Pembelajaran & Digitalisasi',
+    desc: 'Implementasi pembelajaran berdiferensiasi Fun Learning, inovasi asesmen ASSA, dan digitalisasi informasi sekolah melalui LAPIS LADA.',
+    items: [
+      'Pembelajaran Berdiferensiasi Fun Learning',
+      'Inovasi Asesmen ASSA Kelas 1',
+      'Aplikasi LAPIS LADA di SDN Latsari 2'
+    ],
+    unit: 'Inovasi Unggulan',
+    icon: `<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>`
+  },
+  {
+    slug: 'prestasi',
+    title: 'Prestasi & Kejuaraan',
+    scope: 'Tingkat Daerah & Nasional',
+    desc: 'Rekam jejak kejuaraan dan penghargaan di bidang literasi membaca nyaring, cerdas cermat guru nasional, dan cipta lagu branding daerah.',
+    items: [
+      'Juara 1 Lomba Read Aloud 2025',
+      'Level 4 Pengembara Cerdas Cermat Guru KGBN',
+      'Juara 1 Lomba Cipta Lagu Branding Tuban 2016'
+    ],
+    unit: 'Kejuaraan Utama',
+    icon: `<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="8" r="6"/><path d="M15.477 12.89 17 22l-5-3-5 3 1.523-9.11"/></svg>`
+  },
+  {
+    slug: 'karya-tulis',
+    title: 'Karya Tulis / Inovasi',
+    scope: 'Publikasi, Seni & Konten Edukasi',
+    desc: 'Publikasi jurnal ilmiah, buku cerita anak, kreasi seni tari tradisional, lagu branding daerah, dan konten edukasi kreatif Instagram.',
+    items: [
+      'Inovasi Asesmen ASSA',
+      'Pembelajaran Berdiferensiasi',
+      'Buku Cerita Anak Jalan Langit Anak Tuban',
+      'Jurnal Ilmiah Pendidikan',
+      'Penelitian Strategi Kepala Sekolah',
+      'Tari Capil Buyuk',
+      'Tari Sluku Bathok',
+      'Konten Pembelajaran Instagram',
+      'Lagu Branding Kabupaten Tuban'
+    ],
+    unit: 'Karya & Konten',
+    icon: `<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1-2.5-2.5Z"/><path d="M6 6h10"/><path d="M6 10h10"/></svg>`
+  },
+  {
+    slug: 'pengembangan-diri',
+    title: 'Pengembangan Diri',
+    scope: 'Kompetensi Keprofesian & Sertifikasi',
+    desc: 'Program Guru Penggerak Angkatan 5, pendidikan inklusif, pembatik, narasumber berbagi praktik baik, serta 9 berkas sertifikasi resmi.',
+    items: [
+      'Guru Penggerak Angkatan 5',
+      'Pendidikan Inklusif Tingkat Lanjut',
+      'Pembatik',
+      'Pelatihan Mengajar Dimana Saja (GWE)',
+      'Kunjungan ke Kemendikbudristek',
+      'Menjadi Anggota Perpustakaan RI',
+      'Refleksi Merdeka Belajar Jakarta',
+      'Bersama Bu Dirjen GTK',
+      'Bersama Bapak Menteri Pendidikan RI',
+      'Pelatihan Calon Kepala Sekolah',
+      'Narasumber Berbagi Praktik Baik PMM'
+    ],
+    unit: 'Kegiatan PKB',
+    icon: `<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>`
+  },
+  {
+    slug: 'pendampingan',
+    title: 'Pendampingan Rekan Sejawat',
+    scope: 'Kecamatan Bancar & Kabupaten Tuban',
+    desc: 'Berbagi praktik baik pembelajaran, narasumber kombel & gugus, fasilitator penyusunan BKS, coaching clinic, observer, dan aktivasi Belajar.id.',
+    items: new Array(40).fill('kegiatan'), // Menghitung otomatis 40 kegiatan
+    unit: 'Kegiatan Terdokumentasi',
+    icon: `<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>`
+  },
+  {
+    slug: 'penggunaan-ai',
+    title: 'Penggunaan AI dalam Pendidikan',
+    scope: 'Pedagogi & Akselerasi AI Guru',
+    desc: 'Panduan praktis perancangan instrumen ulangan berbasis prompt terstruktur dan 12 kode rahasia Gemini AI untuk akselerasi tugas mengajar.',
+    items: [
+      'Soal Pilihan Ganda', 'Soal Isian Singkat', 'Soal Benar-Salah', 'Soal Uraian', 'Soal HOTS',
+      'Soal Campuran', 'Berdasarkan Kisi-Kisi', 'Berdasarkan Buku/Materi', 'Soal Remedial', 'Paket Lengkap'
+    ],
+    unit: 'Prompt Siap Pakai',
+    icon: `<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m12 3-1.9 5.8a2 2 0 0 1-1.3 1.3L3 12l5.8 1.9a2 2 0 0 1 1.3 1.3L12 21l1.9-5.8a2 2 0 0 1 1.3-1.3L21 12l-5.8-1.9a2 2 0 0 1-1.3-1.3Z"/></svg>`
+  },
+  {
+    slug: 'orprof',
+    title: 'Pengalaman Organisasi Profesi',
+    scope: 'KKGS, PGRI, KGBN & Kombel',
+    desc: 'Dedikasi kepengurusan pada kelompok kerja guru tingkat kecamatan dan kabupaten, organisasi profesi PGRI, KGBN, dan komunitas belajar.',
+    items: [
+      'Seksi Bidang Kerajinan KKGS Tuban',
+      'Sekretaris 1 KKGS Tuban',
+      'Ketua KKGS Bancar',
+      'Seksi Humas KGP Tuban',
+      'Seksi Seni PGRI Bancar',
+      'Bidang Anggota KGBN Tuban',
+      'Ketua Kombel Ki Hadjar Dewantara'
+    ],
+    unit: 'Jabatan Organisasi',
+    icon: `<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>`
+  },
+  {
+    slug: 'profil',
+    title: 'Profil & Sosial Media',
+    scope: 'Biodata & Riwayat Pendidikan Formal',
+    desc: 'Biodata lengkap pendidik, kualifikasi akademik Pascasarjana Manajemen Pendidikan, dan kanal media sosial resmi.',
+    items: [
+      'Universitas Gresik (S2)',
+      'Universitas Terbuka (S1 PGSD)',
+      'IKIP PGRI Tuban (S1)',
+      'SMAN 1 Jatirogo',
+      'SMPN 1 Kerek',
+      'SDN Sukolilo Bancar'
+    ],
+    unit: 'Jenjang Pendidikan Formal',
+    icon: `<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>`
+  }
+];
+
+const mGrid = document.getElementById('moduleGrid');
+mGrid.innerHTML = MODULES.map(m => `
+  <article class="module-card">
+    <div>
+      <div class="module-top">
+        <div class="module-icon">${m.icon}</div>
+        <span class="module-badge">${m.items.length} ${m.unit}</span>
+      </div>
+      <h3 class="module-title">${m.title}</h3>
+      <p class="module-scope">${m.scope}</p>
+      <p class="module-desc">${m.desc}</p>
+    </div>
+    <div>
+      <a href="/portosekolah/${m.slug}" class="btn-open-module">
+        Buka Dokumentasi (${m.items.length} ${m.unit})
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+      </a>
+    </div>
+  </article>
+`).join('');
+
+// Auto-scroll active subnav into view
+window.addEventListener('DOMContentLoaded', () => {
+  const activeTab = document.querySelector('.subnav-item.active');
+  if (activeTab) {
+    activeTab.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
+  }
+});
+</script>
 
 </body>
 </html>

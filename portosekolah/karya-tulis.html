@@ -1,0 +1,527 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Karya Tulis & Inovasi — Santoso, S.Pd., M.Pd. | Portofolio Sekolah</title>
+<meta name="description" content="Koleksi karya tulis ilmiah, buku cerita anak, inovasi pembelajaran, kreasi seni tari, dan konten edukasi Instagram karya Santoso, S.Pd., M.Pd." />
+<meta property="og:title" content="Karya Tulis & Inovasi — Santoso, S.Pd., M.Pd." />
+<meta property="og:description" content="Publikasi ilmiah, buku sastra anak, tari kreasi daerah, dan video pembelajaran kreatif." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://santoso-504.pages.dev/portosekolah/karya-tulis" />
+
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;900&family=DM+Serif+Display:ital@0;1&display=swap" rel="stylesheet" />
+<style>
+:root{
+  --bg:#F9F7F4;--bg-subtle:#F2EFE9;--surface:#fff;--border:#E4DED6;
+  --text:#1C1A17;--text-sec:#6B6560;--text-muted:#A09890;
+  --edu:#1B3A6B;--edu-light:#2D5AA0;--edu-soft:#EEF2F9;--edu-border:#C5D4ED;
+  --music:#7B1E2E;--music-soft:#F9EEEF;
+  --biz:#1E4A3A;--biz-soft:#EEF5F2;
+  --amber:#8A5A00;--amber-soft:#FBF3E2;
+  --slate:#44505C;--slate-soft:#EFF1F3;
+  --r-sm:6px;--r-md:14px;--r-lg:20px;
+  --shadow-sm:0 2px 6px rgba(28,26,23,.06);
+  --shadow-md:0 6px 20px rgba(28,26,23,.10);
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:'Outfit',sans-serif;background:var(--bg);color:var(--text);line-height:1.6;font-size:16px}
+.container{max-width:1200px;margin:0 auto;padding:0 24px}
+a:focus-visible,button:focus-visible{outline:3px solid var(--edu);outline-offset:2px}
+
+/* MAIN NAVBAR */
+nav{position:fixed;top:0;left:0;right:0;z-index:100;height:64px;background:rgba(249,247,244,.88);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-bottom:1px solid var(--border)}
+.nav-inner{max-width:1200px;margin:0 auto;padding:0 24px;height:100%;display:flex;align-items:center;justify-content:space-between}
+.nav-logo{display:flex;align-items:center;gap:10px;text-decoration:none;color:var(--text);font-weight:700;font-size:17px}
+.nav-logo-mark{width:36px;height:36px;border-radius:50%;background:var(--edu);color:#fff;display:flex;align-items:center;justify-content:center;font-weight:900;font-size:15px;flex-shrink:0}
+.nav-links{display:flex;align-items:center;gap:4px}
+.nav-links a{padding:6px 10px;border-radius:var(--r-sm);text-decoration:none;color:var(--text-sec);font-size:13.5px;font-weight:500;white-space:nowrap;transition:color .2s,background .2s}
+.nav-links a:hover{color:var(--text);background:var(--bg-subtle)}
+.nav-links a.active{color:var(--edu);font-weight:700;background:var(--edu-soft)}
+.nav-links .btn-admin{background:var(--text);color:#fff;padding:6px 12px;font-size:13px;font-weight:600}
+.nav-links .btn-admin:hover{background:var(--edu);color:#fff}
+.nav-hamburger{display:none;background:none;border:none;cursor:pointer;padding:8px}
+.nav-hamburger span{display:block;width:22px;height:2px;background:var(--text);margin:5px 0;border-radius:2px}
+
+@media(max-width:1180px) and (min-width:961px){
+  .nav-links{gap:2px}
+  .nav-links a{padding:5px 7px;font-size:12.5px}
+  .nav-links .btn-admin{padding:5px 10px;font-size:12px}
+}
+@media(max-width:960px){
+  .nav-links{display:none}.nav-hamburger{display:block}
+  .nav-links.open{display:flex;flex-direction:column;align-items:stretch;position:fixed;top:64px;left:0;right:0;bottom:0;background:var(--bg);padding:20px;overflow-y:auto;gap:4px}
+  .nav-links.open a{padding:12px 16px;font-size:16px}
+}
+
+/* SUBNAV BAR (PORTFOLIO SEKOLAH TABS) */
+.subnav-bar{
+  margin-top:64px;
+  position:sticky;top:64px;z-index:90;
+  background:rgba(249,247,244,.95);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);
+  border-bottom:1px solid var(--border);
+  padding:10px 0;
+}
+.subnav-list{
+  display:flex;gap:8px;overflow-x:auto;scrollbar-width:none;
+  -webkit-overflow-scrolling:touch;padding:2px 0;align-items:center;
+}
+.subnav-list::-webkit-scrollbar{display:none}
+.subnav-item{
+  display:inline-flex;align-items:center;gap:6px;
+  padding:8px 16px;border-radius:999px;
+  border:1px solid var(--border);background:var(--surface);
+  font-size:13.5px;font-weight:600;color:var(--text-sec);
+  text-decoration:none;white-space:nowrap;transition:all .2s;
+}
+.subnav-item:hover{border-color:var(--edu);color:var(--edu)}
+.subnav-item.active{background:var(--edu);border-color:var(--edu);color:#fff}
+
+/* HEADER SECTION */
+.header-section{padding:44px 0;border-bottom:1px solid var(--border);background:linear-gradient(180deg,var(--bg-subtle),var(--bg))}
+.header-badge{display:inline-flex;align-items:center;gap:6px;padding:4px 12px;background:var(--edu-soft);color:var(--edu);border-radius:999px;font-size:12px;font-weight:700;margin-bottom:12px}
+.header-title{font-size:clamp(2rem,4vw,3rem);font-weight:900;letter-spacing:-.03em;line-height:1.15;margin-bottom:12px;max-width:850px}
+.header-sub{font-family:'DM Serif Display',serif;font-style:italic;font-size:1.2rem;color:var(--text-sec);max-width:760px;margin-bottom:24px}
+.header-meta{display:flex;flex-wrap:wrap;gap:12px 28px;align-items:center;font-size:14px;color:var(--text-sec)}
+.header-meta strong{color:var(--text);font-size:1.4rem;font-weight:900;margin-right:6px;letter-spacing:-.02em}
+.btn-print{margin-left:auto;padding:8px 18px;border-radius:999px;border:1.5px solid var(--text);background:var(--text);color:#fff;font:600 13.5px 'Outfit',sans-serif;cursor:pointer;display:inline-flex;align-items:center;gap:6px;transition:all .2s}
+.btn-print:hover{background:var(--edu);border-color:var(--edu)}
+
+/* CONTROLS */
+main{padding:40px 0 80px}
+.controls-bar{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:16px;margin-bottom:32px}
+.filter-pills{display:flex;flex-wrap:wrap;gap:8px}
+.filter-btn{padding:8px 16px;border-radius:999px;border:1px solid var(--border);background:var(--surface);font:600 13.5px 'Outfit',sans-serif;color:var(--text-sec);cursor:pointer;transition:all .2s}
+.filter-btn:hover{border-color:var(--text);color:var(--text)}
+.filter-btn.active{background:var(--text);color:#fff;border-color:var(--text)}
+.filter-btn small{font-weight:500;opacity:.7;margin-left:4px}
+
+/* GRID */
+.grid-karya{display:grid;grid-template-columns:repeat(auto-fill,minmax(340px,1fr));gap:24px}
+.card-karya{
+  background:var(--surface);border:1px solid var(--border);
+  border-radius:var(--r-lg);overflow:hidden;box-shadow:var(--shadow-sm);
+  display:flex;flex-direction:column;transition:transform .2s,box-shadow .2s;
+}
+.card-karya:hover{transform:translateY(-3px);box-shadow:var(--shadow-md)}
+
+.karya-media{position:relative;aspect-ratio:16/9;background:#000;overflow:hidden}
+.karya-poster{width:100%;height:100%;position:relative;cursor:pointer}
+.karya-poster img{width:100%;height:100%;object-fit:cover;display:block}
+.video-play-btn{
+  position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);
+  width:58px;height:58px;border-radius:50%;background:rgba(27,58,107,.92);
+  color:#fff;border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;
+  box-shadow:0 6px 20px rgba(0,0,0,.35);transition:all .2s;
+}
+.karya-poster:hover .video-play-btn{transform:translate(-50%,-50%) scale(1.1);background:var(--edu)}
+
+.photo-single{aspect-ratio:16/9;background:var(--edu-soft);position:relative;overflow:hidden}
+.photo-single img{width:100%;height:100%;object-fit:cover;display:block;cursor:zoom-in}
+.photo-single .ph{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-size:2.8rem;font-weight:900;color:var(--edu);opacity:.25}
+
+.karya-body{padding:22px;display:flex;flex-direction:column;gap:10px;flex:1}
+.karya-cat{align-self:flex-start;font-size:11.5px;font-weight:700;padding:3px 10px;border-radius:999px}
+.c-pub{background:var(--edu-soft);color:var(--edu)}
+.c-inov{background:var(--amber-soft);color:var(--amber)}
+.c-tari{background:var(--music-soft);color:var(--music)}
+.c-ig{background:rgba(225,48,108,.1);color:#C13584}
+.c-lagu{background:var(--biz-soft);color:var(--biz)}
+
+.karya-title{font-size:1.15rem;font-weight:700;line-height:1.35}
+.karya-desc{font-size:14px;color:var(--text-sec);line-height:1.55}
+.karya-tags{font-size:12px;color:var(--text-muted);font-weight:600;margin-top:auto;padding-top:8px}
+
+.karya-actions{margin-top:auto;padding-top:14px;display:flex;flex-wrap:wrap;gap:8px}
+.btn-action{
+  display:inline-flex;align-items:center;gap:6px;
+  font-size:13px;font-weight:600;text-decoration:none;
+  padding:7px 14px;border-radius:var(--r-sm);transition:all .2s;
+}
+.btn-action-primary{background:var(--edu);color:#fff}
+.btn-action-primary:hover{background:var(--edu-light)}
+.btn-action-ig{background:#C13584;color:#fff}
+.btn-action-ig:hover{background:#E1306C}
+.btn-action-yt{background:var(--music-soft);color:var(--music);border:1px solid rgba(123,30,46,.15)}
+.btn-action-yt:hover{background:rgba(123,30,46,.15)}
+
+/* LIGHTBOX */
+.lightbox{position:fixed;inset:0;background:rgba(20,18,16,.88);display:none;align-items:center;justify-content:center;z-index:200;padding:24px;cursor:zoom-out}
+.lightbox.open{display:flex}
+.lightbox img{max-width:100%;max-height:100%;border-radius:var(--r-sm)}
+
+footer{background:#fff;border-top:1px solid var(--border);padding:44px 0;text-align:center;font-size:14px;color:var(--text-sec)}
+footer a{color:var(--edu);text-decoration:none;margin:0 8px;font-weight:500}
+footer a:hover{text-decoration:underline}
+
+@media print{
+  nav,.subnav-bar,.controls-bar,.btn-print,.btn-action,.lightbox,footer .links{display:none!important}
+  .header-section{padding:20px 0;margin-top:0}
+  body{background:#fff}
+}
+@media(prefers-reduced-motion:reduce){*{transition:none!important}html{scroll-behavior:auto}}
+</style>
+</head>
+<body>
+
+<!-- MAIN NAVBAR -->
+<nav>
+  <div class="nav-inner">
+    <a href="/index.html" class="nav-logo"><div class="nav-logo-mark">S</div><span>Santoso</span></a>
+    <div class="nav-links" id="navLinks">
+      <a href="/index.html">Beranda</a>
+      <a href="/index.html#tentang">Tentang</a>
+      <a href="/index.html#timeline">Jejak Langkah</a>
+      <a href="/pendidikan.html">Pendidikan</a>
+      <a href="/portosekolah" class="active">Portofolio Sekolah</a>
+      <a href="/musik.html">Musik</a>
+      <a href="/usaha.html">Usaha</a>
+      <a href="/prestasi.html">Prestasi</a>
+      <a href="/index.html#kontak">Kontak</a>
+      <a href="/admin.html" class="btn-admin"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="vertical-align:-1px;margin-right:5px;"><path d="M12.22 2h-.44a2 2 0 0 0-2 2v.18a2 2 0 0 1-1 1.73l-.43.25a2 2 0 0 1-2 0l-.15-.08a2 2 0 0 0-2.73.73l-.22.38a2 2 0 0 0 .73 2.73l.15.1a2 2 0 0 1 1 1.72v.51a2 2 0 0 1-1 1.74l-.15.09a2 2 0 0 0-.73 2.73l.22.38a2 2 0 0 0 2.73.73l.15-.08a2 2 0 0 1 2 0l.43.25a2 2 0 0 1 1 1.73V20a2 2 0 0 0 2 2h.44a2 2 0 0 0 2-2v-.18a2 2 0 0 1 1-1.73l.43-.25a2 2 0 0 1 2 0l.15.08a2 2 0 0 0 2.73-.73l.22-.39a2 2 0 0 0-.73-2.73l-.15-.08a2 2 0 0 1-1-1.74v-.5a2 2 0 0 1 1-1.74l.15-.09a2 2 0 0 0 .73-2.73l-.22-.38a2 2 0 0 0-2.73-.73l-.15.08a2 2 0 0 1-2 0l-.43-.25a2 2 0 0 1-1-1.73V4a2 2 0 0 0-2-2z"/><circle cx="12" cy="12" r="3"/></svg>Admin</a>
+    </div>
+    <button class="nav-hamburger" onclick="document.getElementById('navLinks').classList.toggle('open')" aria-label="Menu"><span></span><span></span><span></span></button>
+  </div>
+</nav>
+
+<!-- SUB-NAVIGASI TAB PORTOFOLIO SEKOLAH -->
+<div class="subnav-bar">
+  <div class="container">
+    <div class="subnav-list" id="subnavList">
+      <a href="/portosekolah" class="subnav-item" data-tab="home">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+        Home
+      </a>
+      <a href="/portosekolah/bukti-implementasi" class="subnav-item" data-tab="bukti-implementasi">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
+        Bukti Implementasi
+      </a>
+      <a href="/portosekolah/prestasi" class="subnav-item" data-tab="prestasi">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="8" r="6"/><path d="M15.477 12.89 17 22l-5-3-5 3 1.523-9.11"/></svg>
+        Prestasi
+      </a>
+      <a href="/portosekolah/karya-tulis" class="subnav-item active" data-tab="karya-tulis">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1-2.5-2.5Z"/><path d="M6 6h10"/><path d="M6 10h10"/></svg>
+        Karya Tulis
+      </a>
+      <a href="/portosekolah/pengembangan-diri" class="subnav-item" data-tab="pengembangan-diri">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>
+        Pengembangan Diri
+      </a>
+      <a href="/portosekolah/pendampingan" class="subnav-item" data-tab="pendampingan">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+        Pendampingan
+      </a>
+      <a href="/portosekolah/penggunaan-ai" class="subnav-item" data-tab="penggunaan-ai">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m12 3-1.9 5.8a2 2 0 0 1-1.3 1.3L3 12l5.8 1.9a2 2 0 0 1 1.3 1.3L12 21l1.9-5.8a2 2 0 0 1 1.3-1.3L21 12l-5.8-1.9a2 2 0 0 1-1.3-1.3Z"/></svg>
+        Penggunaan AI
+      </a>
+      <a href="/portosekolah/orprof" class="subnav-item" data-tab="orprof">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+        Orprof
+      </a>
+      <a href="/portosekolah/profil" class="subnav-item" data-tab="profil">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+        Profil
+      </a>
+    </div>
+  </div>
+</div>
+
+<header class="header-section">
+  <div class="container">
+    <div class="header-badge">
+      <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>
+      UPT SDN Latsari 2 Bancar
+    </div>
+    <h1 class="header-title">Karya Tulis / Inovasi</h1>
+    <p class="header-sub">Publikasi ilmiah, buku kumpulan cerita anak, tari kreasi daerah, dan konten edukasi kreatif pembelajaran.</p>
+    <div class="header-meta">
+      <span><strong id="statCount">9</strong>Karya & Konten Terdokumentasi</span>
+      <span><strong>5</strong>Kategori Karya</span>
+      <button class="btn-print" onclick="window.print()">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 6 2 18 2 18 9"/><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><rect width="12" height="8" x="6" y="14"/></svg>
+        Cetak / simpan PDF
+      </button>
+    </div>
+  </div>
+</header>
+
+<main class="container">
+  <div class="controls-bar">
+    <div class="filter-pills" id="pills"></div>
+  </div>
+
+  <div class="grid-karya" id="karyaGrid"></div>
+</main>
+
+<div class="lightbox" id="lb" onclick="this.classList.remove('open')"><img alt="" id="lbImg" /></div>
+
+<footer>
+  <div class="container">
+    <p>&copy; 2026 <strong>Santoso, S.Pd., M.Pd.</strong> — UPT SDN Latsari 2 Bancar</p>
+    <p class="links" style="margin-top:10px">
+      <a href="/index.html">Beranda</a>
+      <a href="/pendidikan.html">Pendidikan</a>
+      <a href="/portosekolah">Portofolio Sekolah</a>
+      <a href="/musik.html">Musik</a>
+      <a href="/usaha.html">Usaha</a>
+      <a href="/prestasi.html">Prestasi</a>
+      <a href="/index.html#kontak">Kontak</a>
+      <a href="https://sites.google.com/admin.sd.belajar.id/portofoliopaksan/karya-tulis-inovasi" target="_blank" rel="noopener">Sumber: Google Sites</a>
+    </p>
+  </div>
+</footer>
+
+<script>
+/* ================================================================
+   DATA KARYA TULIS & INOVASI
+   Sumber tunggal: konten-portosekolah.md
+   ================================================================ */
+const CAT_MAP = {
+  semua: { label: 'Semua' },
+  pub:   { label: 'Publikasi & Buku', class: 'c-pub' },
+  inov:  { label: 'Inovasi Pembelajaran', class: 'c-inov' },
+  tari:  { label: 'Tari Kreasi', class: 'c-tari' },
+  ig:    { label: 'Reel Instagram', class: 'c-ig' },
+  lagu:  { label: 'Lagu Branding Tuban', class: 'c-lagu' }
+};
+
+const KARYA_DATA = [
+  {
+    cat: 'inov',
+    title: 'Inovasi asesmen pada pembelajaran Bahasa Indonesia kelas 1 dengan metode ASSA (Aku Suka, Suka Aku)',
+    desc: 'Metode asesmen kontekstual dan menyenangkan untuk memetakan capaian pembelajaran literasi siswa kelas 1.',
+    video: 'CKsJadhw1S8',
+    ytLink: 'https://youtu.be/CKsJadhw1S8'
+  },
+  {
+    cat: 'inov',
+    title: 'Pembelajaran Berdiferensiasi Pelajaran Bahasa Indonesia kelas 1 menggunakan metode Fun Learning',
+    desc: 'Pendekatan pembelajaran aktif berdiferensiasi konten dan proses sesuai kesiapan belajar murid.',
+    video: 'RIqK9fA7OSM',
+    photo: '/assets/portosekolah/karya-tulis/01.jpg',
+    ph: '01',
+    ytLink: 'https://youtu.be/RIqK9fA7OSM'
+  },
+  {
+    cat: 'pub',
+    title: 'Penulis buku kumpulan cerita anak "Jalan Langit Anak Tuban"',
+    desc: 'Buku literasi cerita anak inspiratif karya kolaboratif bersama tim Ikatan Guru Penulis Tuban (IGPT) Kabupaten Tuban.',
+    photo: '/assets/portosekolah/karya-tulis/02.jpg',
+    ph: '02'
+  },
+  {
+    cat: 'pub',
+    title: 'Jurnal Ilmiah Pendidikan',
+    desc: 'Publikasi artikel ilmiah hasil kajian dan praktik baik pembelajaran guru.',
+    linkUrl: 'https://share.google/9fFH04YI6xXA2ThOe',
+    linkLabel: 'Buka Jurnal Ilmiah'
+  },
+  {
+    cat: 'pub',
+    title: 'Strategi Kepala Sekolah Berbasis Komitmen Berprestasi dalam Meningkatkan Kinerja Guru',
+    desc: 'Studi Multisitus di UPT SDN Sukolilo dan UPT SDN Tenggerkulon Kecamatan Bancar Kabupaten Tuban.',
+    linkUrl: 'http://elibs.unigres.ac.id/3763/',
+    linkLabel: 'Buka Repositori Penelitian'
+  },
+  {
+    cat: 'tari',
+    title: 'Tari Capil Buyuk (Pencipta Tari)',
+    desc: 'Juara Harapan 2 FLS2N Kabupaten Tuban. Karya cipta seni tari edukasi anak sekolah dasar.',
+    video: 'J9_wq0Z79K8',
+    ytLink: 'https://youtu.be/J9_wq0Z79K8'
+  },
+  {
+    cat: 'tari',
+    title: 'Tari kreasi baru: Tari Sluku Bathok (Pencipta Tari)',
+    desc: 'Juara 1 tingkat kecamatan. Kreasi gerak tari tradisi berbasis dolanan anak.',
+    video: 'nBJh0asPt40',
+    ytLink: 'https://youtu.be/nBJh0asPt40'
+  },
+  {
+    cat: 'ig',
+    title: 'Kelas 1, Pendidikan Pancasila, Bab 1 "Aku dan Teman-temanku"',
+    desc: 'Murid menggali informasi tentang perbedaan dan identitas teman melalui kegiatan wawancara langsung.',
+    date: '7 September 2025',
+    tags: '#mindfull #meaningfull #joyfull #uptsdnlatsari2bancar',
+    igLink: 'https://www.instagram.com/reel/DOU4dNBCX1i/'
+  },
+  {
+    cat: 'ig',
+    title: 'Melatih fokus siswa melalui metode Read Aloud, Bab 7 "Aku Ingin"',
+    desc: 'Strategi membaca nyaring pada pelajaran Bahasa Indonesia kelas 1 untuk menumbuhkan konsentrasi dan pemahaman bacaan.',
+    date: '30 Maret 2026',
+    tags: '#mindfull #meaningfull #joyfull #uptsdnlatsari2bancar',
+    igLink: 'https://www.instagram.com/reel/DWiICtaCb28/'
+  },
+  {
+    cat: 'ig',
+    title: 'Pendidikan Pancasila Strategi Direct Lesson: Memahami Aturan Bermain',
+    desc: 'Pembelajaran Fase A / Kelas 1 Bab 1: Mengetahui dan memahami pentingnya aturan ketika bermain bersama rekan.',
+    date: '13 September 2026',
+    tags: '#mindfull #meaningfull #joyfull #uptsdnlatsari2bancar',
+    igLink: 'https://www.instagram.com/reel/DdQUVkOI1Lc/'
+  },
+  {
+    cat: 'ig',
+    title: 'SELASI (Selasa Literasi): Pembiasaan Membaca Pagi',
+    desc: 'Gerakan pembiasaan literasi membaca pagi hari yang konsisten di lingkungan UPT SDN Latsari 2 Bancar.',
+    date: '20 Juli 2026',
+    tags: '#mindfull #meaningfull #joyfull #uptsdnlatsari2bancar',
+    igLink: 'https://www.instagram.com/reel/DbBEm7tIn1q/'
+  },
+  {
+    cat: 'lagu',
+    title: 'Lagu Cipta Branding Kabupaten Tuban (3 Rekaman Resmi)',
+    desc: 'Karya cipta lagu yang terpilih menjadi lagu branding resmi Kabupaten Tuban (Juara 1 Lomba Cipta Lagu Branding Tuban 2016).',
+    videos: [
+      { id: '6htg71t8hk8', label: 'Versi 1' },
+      { id: 'uiZB8h_ymPg', label: 'Versi 2' },
+      { id: '-UcZyfPPAOQ', label: 'Versi 3' }
+    ]
+  }
+];
+
+let activeFilter = 'semua';
+
+function buildPills() {
+  const counts = { semua: KARYA_DATA.length };
+  KARYA_DATA.forEach(k => counts[k.cat] = (counts[k.cat] || 0) + 1);
+
+  const pEl = document.getElementById('pills');
+  pEl.innerHTML = Object.keys(CAT_MAP).map(k => `
+    <button class="filter-btn ${activeFilter === k ? 'active' : ''}" data-f="${k}">
+      ${CAT_MAP[k].label}
+      <small>${counts[k] || 0}</small>
+    </button>
+  `).join('');
+
+  pEl.onclick = e => {
+    const btn = e.target.closest('.filter-btn');
+    if (!btn) return;
+    activeFilter = btn.dataset.f;
+    document.querySelectorAll('.filter-btn').forEach(b => b.classList.toggle('active', b === btn));
+    render();
+  };
+}
+
+function render() {
+  const grid = document.getElementById('karyaGrid');
+  const items = KARYA_DATA.filter(k => activeFilter === 'semua' || k.cat === activeFilter);
+
+  grid.innerHTML = items.map(k => {
+    const badgeClass = CAT_MAP[k.cat]?.class || 'c-pub';
+    const badgeLabel = CAT_MAP[k.cat]?.label || 'Karya';
+
+    let mediaHtml = '';
+    if (k.video) {
+      mediaHtml = `
+        <div class="karya-media">
+          <div class="karya-poster" onclick="playVideo(this, '${k.video}')">
+            <img src="https://i.ytimg.com/vi/${k.video}/hqdefault.jpg" alt="${k.title}" loading="lazy" />
+            <button class="video-play-btn" aria-label="Putar Video"><svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"/></svg></button>
+          </div>
+        </div>
+      `;
+    } else if (k.photo) {
+      mediaHtml = `
+        <div class="photo-single">
+          <img src="${k.photo}" alt="${k.title}" loading="lazy" onerror="this.remove()" onclick="zoom(this.src)" />
+          <span class="ph">${k.ph || '01'}</span>
+        </div>
+      `;
+    } else if (k.videos && k.videos.length) {
+      mediaHtml = `
+        <div class="karya-media">
+          <div class="karya-poster" onclick="playVideo(this, '${k.videos[0].id}')">
+            <img src="https://i.ytimg.com/vi/${k.videos[0].id}/hqdefault.jpg" alt="${k.title}" loading="lazy" />
+            <button class="video-play-btn" aria-label="Putar Video"><svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"/></svg></button>
+          </div>
+        </div>
+      `;
+    }
+
+    let actionsHtml = '';
+    if (k.linkUrl) {
+      actionsHtml = `
+        <div class="karya-actions">
+          <a href="${k.linkUrl}" target="_blank" rel="noopener" class="btn-action btn-action-primary">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+            ${k.linkLabel}
+          </a>
+        </div>
+      `;
+    } else if (k.igLink) {
+      actionsHtml = `
+        <div class="karya-actions">
+          <a href="${k.igLink}" target="_blank" rel="noopener" class="btn-action btn-action-ig">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect width="20" height="20" x="2" y="2" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" x2="17.51" y1="6.5" y2="6.5"/></svg>
+            Buka di Instagram
+          </a>
+        </div>
+      `;
+    } else if (k.ytLink) {
+      actionsHtml = `
+        <div class="karya-actions">
+          <a href="${k.ytLink}" target="_blank" rel="noopener" class="btn-action btn-action-yt">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+            Buka di YouTube
+          </a>
+        </div>
+      `;
+    } else if (k.videos) {
+      actionsHtml = `
+        <div class="karya-actions">
+          ${k.videos.map(v => `
+            <a href="https://youtu.be/${v.id}" target="_blank" rel="noopener" class="btn-action btn-action-yt">
+              ${v.label} &rarr;
+            </a>
+          `).join('')}
+        </div>
+      `;
+    }
+
+    return `
+      <article class="card-karya">
+        ${mediaHtml}
+        <div class="karya-body">
+          <span class="karya-cat ${badgeClass}">${badgeLabel}</span>
+          <h2 class="karya-title">${k.title}</h2>
+          <p class="karya-desc">${k.desc}</p>
+          ${k.date ? `<div style="font-size:12.5px;font-weight:600;color:var(--text-muted);">${k.date}</div>` : ''}
+          ${k.tags ? `<div class="karya-tags">${k.tags}</div>` : ''}
+          ${actionsHtml}
+        </div>
+      </article>
+    `;
+  }).join('');
+}
+
+function playVideo(posterEl, id) {
+  const wrapper = posterEl.parentElement;
+  wrapper.innerHTML = `<iframe width="100%" height="100%" src="https://www.youtube-nocookie.com/embed/${id}?autoplay=1" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen style="position:absolute;top:0;left:0;width:100%;height:100%;border:none;"></iframe>`;
+}
+
+function zoom(src) {
+  document.getElementById('lbImg').src = src;
+  document.getElementById('lb').classList.add('open');
+}
+document.addEventListener('keydown', e => { if (e.key === 'Escape') document.getElementById('lb').classList.remove('open'); });
+
+// Auto-scroll active subnav into view
+window.addEventListener('DOMContentLoaded', () => {
+  const activeTab = document.querySelector('.subnav-item.active');
+  if (activeTab) {
+    activeTab.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
+  }
+});
+
+buildPills();
+render();
+</script>
+</body>
+</html>

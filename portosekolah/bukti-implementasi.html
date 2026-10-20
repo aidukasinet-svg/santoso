@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Bukti Implementasi Karya / Inovasi — Santoso, S.Pd., M.Pd. | Portofolio Sekolah</title>
+<meta name="description" content="Dokumentasi bukti implementasi karya dan inovasi pembelajaran Santoso, S.Pd., M.Pd. di UPT SDN Latsari 2 Bancar: Fun Learning, Asesmen ASSA, dan Digitalisasi Layanan LAPIS LADA." />
+<meta property="og:title" content="Bukti Implementasi Karya / Inovasi — Santoso, S.Pd., M.Pd." />
+<meta property="og:description" content="Bukti nyata implementasi pembelajaran berdiferensiasi, inovasi asesmen ASSA, dan digitalisasi informasi sekolah LAPIS LADA." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://santoso-504.pages.dev/portosekolah/bukti-implementasi" />
+
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;900&family=DM+Serif+Display:ital@0;1&display=swap" rel="stylesheet" />
+<style>
+:root{
+  --bg:#F9F7F4;--bg-subtle:#F2EFE9;--surface:#fff;--border:#E4DED6;
+  --text:#1C1A17;--text-sec:#6B6560;--text-muted:#A09890;
+  --edu:#1B3A6B;--edu-light:#2D5AA0;--edu-soft:#EEF2F9;--edu-border:#C5D4ED;
+  --music:#7B1E2E;--music-soft:#F9EEEF;
+  --biz:#1E4A3A;--biz-soft:#EEF5F2;
+  --amber:#8A5A00;--amber-soft:#FBF3E2;
+  --slate:#44505C;--slate-soft:#EFF1F3;
+  --r-sm:6px;--r-md:14px;--r-lg:20px;
+  --shadow-sm:0 2px 6px rgba(28,26,23,.06);
+  --shadow-md:0 6px 20px rgba(28,26,23,.10);
+  --shadow-lg:0 14px 40px rgba(28,26,23,.14);
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:'Outfit',sans-serif;background:var(--bg);color:var(--text);line-height:1.6;font-size:16px}
+.container{max-width:1200px;margin:0 auto;padding:0 24px}
+a:focus-visible,button:focus-visible{outline:3px solid var(--edu);outline-offset:2px}
+
+/* MAIN NAVBAR */
+nav{position:fixed;top:0;left:0;right:0;z-index:100;height:64px;background:rgba(249,247,244,.88);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-bottom:1px solid var(--border)}
+.nav-inner{max-width:1200px;margin:0 auto;padding:0 24px;height:100%;display:flex;align-items:center;justify-content:space-between}
+.nav-logo{display:flex;align-items:center;gap:10px;text-decoration:none;color:var(--text);font-weight:700;font-size:17px}
+.nav-logo-mark{width:36px;height:36px;border-radius:50%;background:var(--edu);color:#fff;display:flex;align-items:center;justify-content:center;font-weight:900;font-size:15px;flex-shrink:0}
+.nav-links{display:flex;align-items:center;gap:4px}
+.nav-links a{padding:6px 10px;border-radius:var(--r-sm);text-decoration:none;color:var(--text-sec);font-size:13.5px;font-weight:500;white-space:nowrap;transition:color .2s,background .2s}
+.nav-links a:hover{color:var(--text);background:var(--bg-subtle)}
+.nav-links a.active{color:var(--edu);font-weight:700;background:var(--edu-soft)}
+.nav-links .btn-admin{background:var(--text);color:#fff;padding:6px 12px;font-size:13px;font-weight:600}
+.nav-links .btn-admin:hover{background:var(--edu);color:#fff}
+.nav-hamburger{display:none;background:none;border:none;cursor:pointer;padding:8px}
+.nav-hamburger span{display:block;width:22px;height:2px;background:var(--text);margin:5px 0;border-radius:2px}
+
+@media(max-width:1180px) and (min-width:961px){
+  .nav-links{gap:2px}
+  .nav-links a{padding:5px 7px;font-size:12.5px}
+  .nav-links .btn-admin{padding:5px 10px;font-size:12px}
+}
+@media(max-width:960px){
+  .nav-links{display:none}.nav-hamburger{display:block}
+  .nav-links.open{display:flex;flex-direction:column;align-items:stretch;position:fixed;top:64px;left:0;right:0;bottom:0;background:var(--bg);padding:20px;overflow-y:auto;gap:4px}
+  .nav-links.open a{padding:12px 16px;font-size:16px}
+}
+
+/* SUBNAV BAR (PORTFOLIO SEKOLAH TABS) */
+.subnav-bar{
+  margin-top:64px;
+  position:sticky;top:64px;z-index:90;
+  background:rgba(249,247,244,.95);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);
+  border-bottom:1px solid var(--border);
+  padding:10px 0;
+}
+.subnav-list{
+  display:flex;gap:8px;overflow-x:auto;scrollbar-width:none;
+  -webkit-overflow-scrolling:touch;padding:2px 0;align-items:center;
+}
+.subnav-list::-webkit-scrollbar{display:none}
+.subnav-item{
+  display:inline-flex;align-items:center;gap:6px;
+  padding:8px 16px;border-radius:999px;
+  border:1px solid var(--border);background:var(--surface);
+  font-size:13.5px;font-weight:600;color:var(--text-sec);
+  text-decoration:none;white-space:nowrap;transition:all .2s;
+}
+.subnav-item:hover{border-color:var(--edu);color:var(--edu)}
+.subnav-item.active{background:var(--edu);border-color:var(--edu);color:#fff}
+
+/* HEADER SECTION */
+.header-section{padding:44px 0;border-bottom:1px solid var(--border);background:linear-gradient(180deg,var(--bg-subtle),var(--bg))}
+.header-badge{display:inline-flex;align-items:center;gap:6px;padding:4px 12px;background:var(--edu-soft);color:var(--edu);border-radius:999px;font-size:12px;font-weight:700;margin-bottom:12px}
+.header-title{font-size:clamp(2rem,4vw,3rem);font-weight:900;letter-spacing:-.03em;line-height:1.15;margin-bottom:12px;max-width:850px}
+.header-sub{font-family:'DM Serif Display',serif;font-style:italic;font-size:1.2rem;color:var(--text-sec);max-width:760px;margin-bottom:24px}
+.header-meta{display:flex;flex-wrap:wrap;gap:12px 28px;align-items:center;font-size:14px;color:var(--text-sec)}
+.header-meta strong{color:var(--text);font-size:1.4rem;font-weight:900;margin-right:6px;letter-spacing:-.02em}
+.btn-print{margin-left:auto;padding:8px 18px;border-radius:999px;border:1.5px solid var(--text);background:var(--text);color:#fff;font:600 13.5px 'Outfit',sans-serif;cursor:pointer;display:inline-flex;align-items:center;gap:6px;transition:all .2s}
+.btn-print:hover{background:var(--edu);border-color:var(--edu)}
+
+/* MAIN CARDS LAYOUT */
+main{padding:40px 0 80px}
+.section-title{font-size:1.45rem;font-weight:800;letter-spacing:-.02em;margin-bottom:16px;display:flex;align-items:center;gap:10px}
+.section-title::before{content:'';width:4px;height:22px;background:var(--edu);border-radius:2px}
+
+/* FEATURED CARD: LAPIS LADA */
+.card-featured{
+  background:var(--surface);border:1.5px solid var(--edu-border);
+  border-radius:var(--r-lg);padding:36px;margin-bottom:44px;
+  box-shadow:var(--shadow-md);position:relative;overflow:hidden;
+}
+.card-featured::before{
+  content:'';position:absolute;top:0;left:0;right:0;height:5px;
+  background:linear-gradient(90deg,var(--edu),#3B82F6);
+}
+.featured-badge{
+  display:inline-flex;align-items:center;gap:6px;
+  padding:4px 12px;background:var(--edu-soft);color:var(--edu);
+  border-radius:999px;font-size:12px;font-weight:700;margin-bottom:14px;
+}
+.featured-title{
+  font-size:clamp(1.3rem,2.4vw,1.8rem);font-weight:800;letter-spacing:-.02em;line-height:1.3;margin-bottom:10px;
+}
+.featured-scope{font-size:14px;color:var(--text-sec);font-weight:600;margin-bottom:20px}
+.featured-actions{display:flex;flex-wrap:wrap;align-items:center;gap:14px;margin-bottom:28px}
+.btn-featured-app{
+  display:inline-flex;align-items:center;gap:10px;
+  padding:14px 28px;border-radius:var(--r-md);
+  background:var(--edu);color:#fff;font-size:15.5px;font-weight:700;
+  text-decoration:none;box-shadow:0 4px 14px rgba(27,58,107,.25);
+  transition:all .2s ease;
+}
+.btn-featured-app:hover{background:var(--edu-light);transform:translateY(-2px);box-shadow:0 6px 20px rgba(27,58,107,.35)}
+.featured-doc-badge{
+  display:inline-flex;align-items:center;gap:8px;
+  padding:10px 18px;border-radius:var(--r-md);
+  background:var(--bg-subtle);border:1px solid var(--border);
+  font-size:13.5px;color:var(--text-sec);font-weight:600;
+}
+
+/* PHOTO GALLERY */
+.gallery-title{font-size:1.15rem;font-weight:700;margin-bottom:14px;color:var(--text)}
+.gallery-grid{
+  display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:16px;
+}
+.photo-item{
+  background:var(--bg-subtle);border:1px solid var(--border);
+  border-radius:var(--r-md);overflow:hidden;display:flex;flex-direction:column;
+  transition:transform .2s,box-shadow .2s;
+}
+.photo-item:hover{transform:translateY(-3px);box-shadow:var(--shadow-sm)}
+.photo-box{aspect-ratio:4/3;background:var(--edu-soft);position:relative;overflow:hidden}
+.photo-box img{width:100%;height:100%;object-fit:cover;display:block;cursor:zoom-in}
+.photo-box .ph{
+  position:absolute;inset:0;display:flex;align-items:center;justify-content:center;
+  font-size:2.4rem;font-weight:900;color:var(--edu);opacity:.25;
+}
+.photo-caption{padding:12px 14px;font-size:12.5px;color:var(--text-sec);font-weight:500;line-height:1.45;flex:1}
+
+/* VIDEO CARDS */
+.video-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(340px,1fr));gap:24px;margin-bottom:44px}
+.video-card{
+  background:var(--surface);border:1px solid var(--border);
+  border-radius:var(--r-lg);overflow:hidden;box-shadow:var(--shadow-sm);
+  display:flex;flex-direction:column;transition:transform .2s,box-shadow .2s;
+}
+.video-card:hover{transform:translateY(-3px);box-shadow:var(--shadow-md)}
+.video-wrapper{position:relative;aspect-ratio:16/9;background:#000;overflow:hidden}
+.video-poster{width:100%;height:100%;position:relative;cursor:pointer}
+.video-poster img{width:100%;height:100%;object-fit:cover;display:block}
+.video-play-btn{
+  position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);
+  width:64px;height:64px;border-radius:50%;background:rgba(27,58,107,.9);
+  color:#fff;border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;
+  box-shadow:0 6px 20px rgba(0,0,0,.35);transition:all .2s;
+}
+.video-poster:hover .video-play-btn{transform:translate(-50%,-50%) scale(1.1);background:var(--edu)}
+.video-body{padding:22px;display:flex;flex-direction:column;gap:10px;flex:1}
+.video-tag{align-self:flex-start;font-size:11.5px;font-weight:700;padding:3px 10px;border-radius:999px;background:var(--edu-soft);color:var(--edu)}
+.video-title{font-size:1.15rem;font-weight:700;line-height:1.35}
+.video-actions{margin-top:auto;padding-top:12px}
+.btn-yt-fallback{
+  display:inline-flex;align-items:center;gap:6px;
+  font-size:13px;font-weight:600;color:var(--music);
+  text-decoration:none;padding:6px 12px;border-radius:var(--r-sm);
+  background:var(--music-soft);border:1px solid rgba(123,30,46,.15);
+  transition:background .2s;
+}
+.btn-yt-fallback:hover{background:rgba(123,30,46,.15)}
+
+/* LIGHTBOX */
+.lightbox{position:fixed;inset:0;background:rgba(20,18,16,.88);display:none;align-items:center;justify-content:center;z-index:200;padding:24px;cursor:zoom-out}
+.lightbox.open{display:flex}
+.lightbox img{max-width:100%;max-height:100%;border-radius:var(--r-sm)}
+
+footer{background:#fff;border-top:1px solid var(--border);padding:44px 0;text-align:center;font-size:14px;color:var(--text-sec)}
+footer a{color:var(--edu);text-decoration:none;margin:0 8px;font-weight:500}
+footer a:hover{text-decoration:underline}
+
+@media print{
+  nav,.subnav-bar,.btn-print,.btn-featured-app,.btn-yt-fallback,.lightbox,footer .links{display:none!important}
+  .header-section{padding:20px 0;margin-top:0}
+  body{background:#fff}
+}
+@media(prefers-reduced-motion:reduce){*{transition:none!important}html{scroll-behavior:auto}}
+</style>
+</head>
+<body>
+
+<!-- MAIN NAVBAR -->
+<nav>
+  <div class="nav-inner">
+    <a href="/index.html" class="nav-logo"><div class="nav-logo-mark">S</div><span>Santoso</span></a>
+    <div class="nav-links" id="navLinks">
+      <a href="/index.html">Beranda</a>
+      <a href="/index.html#tentang">Tentang</a>
+      <a href="/index.html#timeline">Jejak Langkah</a>
+      <a href="/pendidikan.html">Pendidikan</a>
+      <a href="/portosekolah" class="active">Portofolio Sekolah</a>
+      <a href="/musik.html">Musik</a>
+      <a href="/usaha.html">Usaha</a>
+      <a href="/prestasi.html">Prestasi</a>
+      <a href="/index.html#kontak">Kontak</a>
+      <a href="/admin.html" class="btn-admin"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="vertical-align:-1px;margin-right:5px;"><path d="M12.22 2h-.44a2 2 0 0 0-2 2v.18a2 2 0 0 1-1 1.73l-.43.25a2 2 0 0 1-2 0l-.15-.08a2 2 0 0 0-2.73.73l-.22.38a2 2 0 0 0 .73 2.73l.15.1a2 2 0 0 1 1 1.72v.51a2 2 0 0 1-1 1.74l-.15.09a2 2 0 0 0-.73 2.73l.22.38a2 2 0 0 0 2.73.73l.15-.08a2 2 0 0 1 2 0l.43.25a2 2 0 0 1 1 1.73V20a2 2 0 0 0 2 2h.44a2 2 0 0 0 2-2v-.18a2 2 0 0 1 1-1.73l.43-.25a2 2 0 0 1 2 0l.15.08a2 2 0 0 0 2.73-.73l.22-.39a2 2 0 0 0-.73-2.73l-.15-.08a2 2 0 0 1-1-1.74v-.5a2 2 0 0 1 1-1.74l.15-.09a2 2 0 0 0 .73-2.73l-.22-.38a2 2 0 0 0-2.73-.73l-.15.08a2 2 0 0 1-2 0l-.43-.25a2 2 0 0 1-1-1.73V4a2 2 0 0 0-2-2z"/><circle cx="12" cy="12" r="3"/></svg>Admin</a>
+    </div>
+    <button class="nav-hamburger" onclick="document.getElementById('navLinks').classList.toggle('open')" aria-label="Menu"><span></span><span></span><span></span></button>
+  </div>
+</nav>
+
+<!-- SUB-NAVIGASI TAB PORTOFOLIO SEKOLAH -->
+<div class="subnav-bar">
+  <div class="container">
+    <div class="subnav-list" id="subnavList">
+      <a href="/portosekolah" class="subnav-item" data-tab="home">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+        Home
+      </a>
+      <a href="/portosekolah/bukti-implementasi" class="subnav-item active" data-tab="bukti-implementasi">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
+        Bukti Implementasi
+      </a>
+      <a href="/portosekolah/prestasi" class="subnav-item" data-tab="prestasi">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="8" r="6"/><path d="M15.477 12.89 17 22l-5-3-5 3 1.523-9.11"/></svg>
+        Prestasi
+      </a>
+      <a href="/portosekolah/karya-tulis" class="subnav-item" data-tab="karya-tulis">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1-2.5-2.5Z"/><path d="M6 6h10"/><path d="M6 10h10"/></svg>
+        Karya Tulis
+      </a>
+      <a href="/portosekolah/pengembangan-diri" class="subnav-item" data-tab="pengembangan-diri">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>
+        Pengembangan Diri
+      </a>
+      <a href="/portosekolah/pendampingan" class="subnav-item" data-tab="pendampingan">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+        Pendampingan
+      </a>
+      <a href="/portosekolah/penggunaan-ai" class="subnav-item" data-tab="penggunaan-ai">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m12 3-1.9 5.8a2 2 0 0 1-1.3 1.3L3 12l5.8 1.9a2 2 0 0 1 1.3 1.3L12 21l1.9-5.8a2 2 0 0 1 1.3-1.3L21 12l-5.8-1.9a2 2 0 0 1-1.3-1.3Z"/></svg>
+        Penggunaan AI
+      </a>
+      <a href="/portosekolah/orprof" class="subnav-item" data-tab="orprof">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+        Orprof
+      </a>
+      <a href="/portosekolah/profil" class="subnav-item" data-tab="profil">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+        Profil
+      </a>
+    </div>
+  </div>
+</div>
+
+<header class="header-section">
+  <div class="container">
+    <div class="header-badge">
+      <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>
+      UPT SDN Latsari 2 Bancar
+    </div>
+    <h1 class="header-title">Bukti Implementasi Karya / Inovasi</h1>
+    <p class="header-sub">Implementasi pembelajaran berdiferensiasi, inovasi asesmen ASSA, dan digitalisasi layanan sekolah terpadu LAPIS LADA.</p>
+    <div class="header-meta">
+      <span><strong id="statItems">3</strong>Karya Terdokumentasi</span>
+      <span><strong>8</strong>Foto Dokumentasi LAPIS LADA</span>
+      <button class="btn-print" onclick="window.print()">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 6 2 18 2 18 9"/><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><rect width="12" height="8" x="6" y="14"/></svg>
+        Cetak / simpan PDF
+      </button>
+    </div>
+  </div>
+</header>
+
+<main class="container">
+
+  <!-- KARTU UTAMA: LAPIS LADA -->
+  <article class="card-featured">
+    <span class="featured-badge">Inovasi Digital Sekolah Unggulan</span>
+    <h2 class="featured-title">Digitalisasi Pelayanan Informasi Sekolah untuk Meningkatkan Mutu Layanan Publik melalui "LAPIS LADA" di UPT SDN Latsari 2 Kecamatan Bancar</h2>
+    <p class="featured-scope">UPT SDN Latsari 2 Kecamatan Bancar &middot; Sistem Manajemen & Pelayanan Informasi Sekolah</p>
+    
+    <div class="featured-actions">
+      <a href="https://lapislada.pages.dev/" target="_blank" rel="noopener" class="btn-featured-app">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+        Buka Aplikasi LAPIS LADA
+      </a>
+      <div class="featured-doc-badge">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+        Workshop aplikasi "LAPIS LADA"
+      </div>
+    </div>
+
+    <h3 class="gallery-title">Galeri Dokumentasi Implementasi LAPIS LADA (8 Foto)</h3>
+    <div class="gallery-grid" id="lapisGallery"></div>
+  </article>
+
+  <!-- VIDEO IMPLEMENTASI PEMBELAJARAN -->
+  <h2 class="section-title">Dokumentasi Video Inovasi Pembelajaran</h2>
+  <div class="video-grid" id="videoGrid"></div>
+
+</main>
+
+<div class="lightbox" id="lb" onclick="this.classList.remove('open')"><img alt="" id="lbImg" /></div>
+
+<footer>
+  <div class="container">
+    <p>&copy; 2026 <strong>Santoso, S.Pd., M.Pd.</strong> — UPT SDN Latsari 2 Bancar</p>
+    <p class="links" style="margin-top:10px">
+      <a href="/index.html">Beranda</a>
+      <a href="/pendidikan.html">Pendidikan</a>
+      <a href="/portosekolah">Portofolio Sekolah</a>
+      <a href="/musik.html">Musik</a>
+      <a href="/usaha.html">Usaha</a>
+      <a href="/prestasi.html">Prestasi</a>
+      <a href="/index.html#kontak">Kontak</a>
+      <a href="https://sites.google.com/admin.sd.belajar.id/portofoliopaksan/bukti-implementasi-karya-inovasi" target="_blank" rel="noopener">Sumber: Google Sites</a>
+    </p>
+  </div>
+</footer>
+
+<script>
+/* ================================================================
+   DATA BUKTI IMPLEMENTASI
+   Sumber tunggal: konten-portosekolah.md
+   ================================================================ */
+const LAPIS_PHOTOS = [
+  { id: '01', caption: 'Tampilan fitur-fitur pada aplikasi Lapis Lada' },
+  { id: '02', caption: 'Tampilan fitur-fitur pada aplikasi Lapis Lada' },
+  { id: '03', caption: 'Tampilan LAPIS LADA menggunakan HP' },
+  { id: '04', caption: 'Tampilan LAPIS LADA menggunakan PC' },
+  { id: '05', caption: 'Tampilan salah satu fitur LAPIS LADA yang menjadi penghubung guru dan orang tua' },
+  { id: '06', caption: 'Contoh tampilan halaman entry data pada akun guru untuk disampaikan kepada orang tua' },
+  { id: '07', caption: 'Sosialisasi dan pembentukan tim pengembang aplikasi LAPIS LADA' },
+  { id: '08', caption: 'Sosialisasi kepada komite dan wali murid aplikasi LAPIS LADA' }
+];
+
+const VIDEOS = [
+  {
+    id: 'RIqK9fA7OSM',
+    tag: 'Pembelajaran Berdiferensiasi',
+    title: 'Pembelajaran Berdiferensiasi pada pelajaran Bahasa Indonesia kelas 1 melalui metode Fun Learning',
+    url: 'https://youtu.be/RIqK9fA7OSM'
+  },
+  {
+    id: 'CKsJadhw1S8',
+    tag: 'Inovasi Asesmen',
+    title: 'Inovasi Asesmen pada Pembelajaran Bahasa Indonesia Kelas 1 dengan Metode ASSA (Aku Suka, Suka Aku)',
+    url: 'https://youtu.be/CKsJadhw1S8'
+  }
+];
+
+// Render Lapis Lada Gallery
+const galEl = document.getElementById('lapisGallery');
+galEl.innerHTML = LAPIS_PHOTOS.map(p => `
+  <div class="photo-item">
+    <div class="photo-box">
+      <img src="/assets/portosekolah/bukti-implementasi/${p.id}.jpg" alt="${p.caption}" loading="lazy" onerror="this.remove()" onclick="zoom(this.src)" />
+      <span class="ph">${p.id}</span>
+    </div>
+    <div class="photo-caption">${p.id}. ${p.caption}</div>
+  </div>
+`).join('');
+
+// Render Video Grid with click-to-play thumbnail
+const vidEl = document.getElementById('videoGrid');
+vidEl.innerHTML = VIDEOS.map(v => `
+  <article class="video-card">
+    <div class="video-wrapper">
+      <div class="video-poster" onclick="playVideo(this, '${v.id}')">
+        <img src="https://i.ytimg.com/vi/${v.id}/hqdefault.jpg" alt="${v.title}" loading="lazy" />
+        <button class="video-play-btn" aria-label="Putar Video ${v.title}">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+        </button>
+      </div>
+    </div>
+    <div class="video-body">
+      <span class="video-tag">${v.tag}</span>
+      <h3 class="video-title">${v.title}</h3>
+      <div class="video-actions">
+        <a href="${v.url}" target="_blank" rel="noopener" class="btn-yt-fallback">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+          Buka di YouTube
+        </a>
+      </div>
+    </div>
+  </article>
+`).join('');
+
+function playVideo(posterEl, id) {
+  const wrapper = posterEl.parentElement;
+  wrapper.innerHTML = `<iframe width="100%" height="100%" src="https://www.youtube-nocookie.com/embed/${id}?autoplay=1" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen style="position:absolute;top:0;left:0;width:100%;height:100%;border:none;"></iframe>`;
+}
+
+function zoom(src) {
+  document.getElementById('lbImg').src = src;
+  document.getElementById('lb').classList.add('open');
+}
+document.addEventListener('keydown', e => { if (e.key === 'Escape') document.getElementById('lb').classList.remove('open'); });
+
+// Auto-scroll active subnav into view
+window.addEventListener('DOMContentLoaded', () => {
+  const activeTab = document.querySelector('.subnav-item.active');
+  if (activeTab) {
+    activeTab.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
+  }
+});
+</script>
+</body>
+</html>

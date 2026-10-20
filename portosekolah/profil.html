@@ -1,0 +1,429 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Profil & Sosial Media — Santoso, S.Pd., M.Pd. | Portofolio Sekolah</title>
+<meta name="description" content="Biodata pendidik, kualifikasi akademik, riwayat pendidikan formal, hobi, dan kanal media sosial resmi Santoso, S.Pd., M.Pd." />
+<meta property="og:title" content="Profil & Sosial Media — Santoso, S.Pd., M.Pd." />
+<meta property="og:description" content="Profil pendidik UPT SDN Latsari 2 Bancar, riwayat pendidikan S1 & S2, dan media sosial resmi." />
+<meta property="og:type" content="profile" />
+<meta property="og:url" content="https://santoso-504.pages.dev/portosekolah/profil" />
+
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;900&family=DM+Serif+Display:ital@0;1&display=swap" rel="stylesheet" />
+<style>
+:root{
+  --bg:#F9F7F4;--bg-subtle:#F2EFE9;--surface:#fff;--border:#E4DED6;
+  --text:#1C1A17;--text-sec:#6B6560;--text-muted:#A09890;
+  --edu:#1B3A6B;--edu-light:#2D5AA0;--edu-soft:#EEF2F9;--edu-border:#C5D4ED;
+  --music:#7B1E2E;--music-soft:#F9EEEF;
+  --biz:#1E4A3A;--biz-soft:#EEF5F2;
+  --amber:#8A5A00;--amber-soft:#FBF3E2;
+  --slate:#44505C;--slate-soft:#EFF1F3;
+  --r-sm:6px;--r-md:14px;--r-lg:22px;
+  --shadow-sm:0 2px 6px rgba(28,26,23,.06);
+  --shadow-md:0 6px 20px rgba(28,26,23,.10);
+  --shadow-lg:0 14px 40px rgba(28,26,23,.14);
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:'Outfit',sans-serif;background:var(--bg);color:var(--text);line-height:1.6;font-size:16px}
+.container{max-width:1200px;margin:0 auto;padding:0 24px}
+a:focus-visible,button:focus-visible{outline:3px solid var(--edu);outline-offset:2px}
+
+/* MAIN NAVBAR */
+nav{position:fixed;top:0;left:0;right:0;z-index:100;height:64px;background:rgba(249,247,244,.88);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-bottom:1px solid var(--border)}
+.nav-inner{max-width:1200px;margin:0 auto;padding:0 24px;height:100%;display:flex;align-items:center;justify-content:space-between}
+.nav-logo{display:flex;align-items:center;gap:10px;text-decoration:none;color:var(--text);font-weight:700;font-size:17px}
+.nav-logo-mark{width:36px;height:36px;border-radius:50%;background:var(--edu);color:#fff;display:flex;align-items:center;justify-content:center;font-weight:900;font-size:15px;flex-shrink:0}
+.nav-links{display:flex;align-items:center;gap:4px}
+.nav-links a{padding:6px 10px;border-radius:var(--r-sm);text-decoration:none;color:var(--text-sec);font-size:13.5px;font-weight:500;white-space:nowrap;transition:color .2s,background .2s}
+.nav-links a:hover{color:var(--text);background:var(--bg-subtle)}
+.nav-links a.active{color:var(--edu);font-weight:700;background:var(--edu-soft)}
+.nav-links .btn-admin{background:var(--text);color:#fff;padding:6px 12px;font-size:13px;font-weight:600}
+.nav-links .btn-admin:hover{background:var(--edu);color:#fff}
+.nav-hamburger{display:none;background:none;border:none;cursor:pointer;padding:8px}
+.nav-hamburger span{display:block;width:22px;height:2px;background:var(--text);margin:5px 0;border-radius:2px}
+
+@media(max-width:1180px) and (min-width:961px){
+  .nav-links{gap:2px}
+  .nav-links a{padding:5px 7px;font-size:12.5px}
+  .nav-links .btn-admin{padding:5px 10px;font-size:12px}
+}
+@media(max-width:960px){
+  .nav-links{display:none}.nav-hamburger{display:block}
+  .nav-links.open{display:flex;flex-direction:column;align-items:stretch;position:fixed;top:64px;left:0;right:0;bottom:0;background:var(--bg);padding:20px;overflow-y:auto;gap:4px}
+  .nav-links.open a{padding:12px 16px;font-size:16px}
+}
+
+/* SUBNAV BAR (PORTFOLIO SEKOLAH TABS) */
+.subnav-bar{
+  margin-top:64px;
+  position:sticky;top:64px;z-index:90;
+  background:rgba(249,247,244,.95);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);
+  border-bottom:1px solid var(--border);
+  padding:10px 0;
+}
+.subnav-list{
+  display:flex;gap:8px;overflow-x:auto;scrollbar-width:none;
+  -webkit-overflow-scrolling:touch;padding:2px 0;align-items:center;
+}
+.subnav-list::-webkit-scrollbar{display:none}
+.subnav-item{
+  display:inline-flex;align-items:center;gap:6px;
+  padding:8px 16px;border-radius:999px;
+  border:1px solid var(--border);background:var(--surface);
+  font-size:13.5px;font-weight:600;color:var(--text-sec);
+  text-decoration:none;white-space:nowrap;transition:all .2s;
+}
+.subnav-item:hover{border-color:var(--edu);color:var(--edu)}
+.subnav-item.active{background:var(--edu);border-color:var(--edu);color:#fff}
+
+/* HEADER SECTION */
+.header-section{padding:44px 0;border-bottom:1px solid var(--border);background:linear-gradient(180deg,var(--bg-subtle),var(--bg))}
+.header-badge{display:inline-flex;align-items:center;gap:6px;padding:4px 12px;background:var(--edu-soft);color:var(--edu);border-radius:999px;font-size:12px;font-weight:700;margin-bottom:12px}
+.header-title{font-size:clamp(2rem,4vw,3rem);font-weight:900;letter-spacing:-.03em;line-height:1.15;margin-bottom:12px;max-width:850px}
+.header-sub{font-family:'DM Serif Display',serif;font-style:italic;font-size:1.2rem;color:var(--text-sec);max-width:760px;margin-bottom:24px}
+.header-meta{display:flex;flex-wrap:wrap;gap:12px 28px;align-items:center;font-size:14px;color:var(--text-sec)}
+.header-meta strong{color:var(--text);font-size:1.4rem;font-weight:900;margin-right:6px;letter-spacing:-.02em}
+.btn-print{margin-left:auto;padding:8px 18px;border-radius:999px;border:1.5px solid var(--text);background:var(--text);color:#fff;font:600 13.5px 'Outfit',sans-serif;cursor:pointer;display:inline-flex;align-items:center;gap:6px;transition:all .2s}
+.btn-print:hover{background:var(--edu);border-color:var(--edu)}
+
+/* MAIN CONTENT */
+main{padding:40px 0 80px}
+
+/* PROFILE CARD */
+.profile-card{
+  background:var(--surface);border:1px solid var(--border);
+  border-radius:var(--r-lg);padding:36px;box-shadow:var(--shadow-sm);
+  display:grid;grid-template-columns:300px 1fr;gap:36px;align-items:start;
+  margin-bottom:44px;position:relative;overflow:hidden;
+}
+.profile-card::before{
+  content:'';position:absolute;top:0;left:0;right:0;height:4px;background:var(--edu);
+}
+@media(max-width:840px){
+  .profile-card{grid-template-columns:1fr;gap:24px;padding:24px}
+}
+
+.profile-photos{display:flex;flex-direction:column;gap:14px}
+.profile-avatar-box{
+  aspect-ratio:3/4;border-radius:var(--r-md);overflow:hidden;
+  background:var(--edu-soft);border:1px solid var(--border);position:relative;
+}
+.profile-avatar-box img{width:100%;height:100%;object-fit:cover;display:block;cursor:zoom-in}
+.profile-avatar-box .ph{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-size:3rem;font-weight:900;color:var(--edu);opacity:.25}
+.profile-extra-photos{display:grid;grid-template-columns:repeat(2,1fr);gap:10px}
+.profile-thumb-box{aspect-ratio:1;border-radius:var(--r-sm);overflow:hidden;background:var(--edu-soft);border:1px solid var(--border);position:relative}
+.profile-thumb-box img{width:100%;height:100%;object-fit:cover;display:block;cursor:zoom-in}
+.profile-thumb-box .ph{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-size:1.6rem;font-weight:900;color:var(--edu);opacity:.25}
+
+.profile-info{display:flex;flex-direction:column;gap:18px}
+.profile-name{font-size:1.85rem;font-weight:900;letter-spacing:-.02em;line-height:1.2}
+.profile-title-tag{font-size:14px;color:var(--edu);font-weight:700}
+
+.profile-data-table{width:100%;border-collapse:collapse;font-size:14.5px;margin-top:8px}
+.profile-data-table tr{border-bottom:1px solid var(--border)}
+.profile-data-table tr:last-child{border-bottom:none}
+.profile-data-table td{padding:10px 0;vertical-align:top}
+.profile-data-table td:first-child{color:var(--text-sec);font-weight:600;width:170px}
+.profile-data-table td:last-child{color:var(--text);font-weight:500}
+
+/* SOCIAL BUTTONS */
+.social-buttons{display:flex;flex-wrap:wrap;gap:12px;margin-top:14px}
+.btn-social{
+  display:inline-flex;align-items:center;gap:8px;
+  padding:10px 20px;border-radius:var(--r-sm);font-size:13.5px;font-weight:700;
+  text-decoration:none;transition:all .2s;
+}
+.btn-yt{background:#FF0000;color:#fff}
+.btn-yt:hover{background:#CC0000;transform:translateY(-1px)}
+.btn-ig{background:#C13584;color:#fff}
+.btn-ig:hover{background:#E1306C;transform:translateY(-1px)}
+
+/* EDUCATION TIMELINE */
+.section-title{font-size:1.45rem;font-weight:800;letter-spacing:-.02em;margin-bottom:20px;display:flex;align-items:center;gap:10px}
+.section-title::before{content:'';width:4px;height:22px;background:var(--edu);border-radius:2px}
+
+.timeline{position:relative;padding-left:32px;margin-left:8px;border-left:2px solid var(--border)}
+.timeline-item{position:relative;margin-bottom:28px}
+.timeline-item:last-child{margin-bottom:0}
+.timeline-dot{
+  position:absolute;left:-41px;top:4px;width:16px;height:16px;border-radius:50%;
+  background:var(--surface);border:3px solid var(--edu);
+}
+.timeline-content{
+  background:var(--surface);border:1px solid var(--border);border-radius:var(--r-md);
+  padding:18px 22px;box-shadow:var(--shadow-sm);transition:all .2s;
+}
+.timeline-content:hover{border-color:var(--edu-border);box-shadow:var(--shadow-md)}
+.timeline-year{font-size:12.5px;font-weight:800;color:var(--edu);margin-bottom:4px}
+.timeline-inst{font-size:1.1rem;font-weight:800;color:var(--text);margin-bottom:2px}
+.timeline-deg{font-size:13.5px;color:var(--text-sec);font-weight:500}
+
+/* LIGHTBOX */
+.lightbox{position:fixed;inset:0;background:rgba(20,18,16,.88);display:none;align-items:center;justify-content:center;z-index:200;padding:24px;cursor:zoom-out}
+.lightbox.open{display:flex}
+.lightbox img{max-width:100%;max-height:100%;border-radius:var(--r-sm)}
+
+footer{background:#fff;border-top:1px solid var(--border);padding:44px 0;text-align:center;font-size:14px;color:var(--text-sec)}
+footer a{color:var(--edu);text-decoration:none;margin:0 8px;font-weight:500}
+footer a:hover{text-decoration:underline}
+
+@media print{
+  nav,.subnav-bar,.btn-print,.social-buttons,.lightbox,footer .links{display:none!important}
+  .header-section{padding:20px 0;margin-top:0}
+  body{background:#fff}
+}
+@media(prefers-reduced-motion:reduce){*{transition:none!important}html{scroll-behavior:auto}}
+</style>
+</head>
+<body>
+
+<!-- MAIN NAVBAR -->
+<nav>
+  <div class="nav-inner">
+    <a href="/index.html" class="nav-logo"><div class="nav-logo-mark">S</div><span>Santoso</span></a>
+    <div class="nav-links" id="navLinks">
+      <a href="/index.html">Beranda</a>
+      <a href="/index.html#tentang">Tentang</a>
+      <a href="/index.html#timeline">Jejak Langkah</a>
+      <a href="/pendidikan.html">Pendidikan</a>
+      <a href="/portosekolah" class="active">Portofolio Sekolah</a>
+      <a href="/musik.html">Musik</a>
+      <a href="/usaha.html">Usaha</a>
+      <a href="/prestasi.html">Prestasi</a>
+      <a href="/index.html#kontak">Kontak</a>
+      <a href="/admin.html" class="btn-admin"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="vertical-align:-1px;margin-right:5px;"><path d="M12.22 2h-.44a2 2 0 0 0-2 2v.18a2 2 0 0 1-1 1.73l-.43.25a2 2 0 0 1-2 0l-.15-.08a2 2 0 0 0-2.73.73l-.22.38a2 2 0 0 0 .73 2.73l.15.1a2 2 0 0 1 1 1.72v.51a2 2 0 0 1-1 1.74l-.15.09a2 2 0 0 0-.73 2.73l.22.38a2 2 0 0 0 2.73.73l.15-.08a2 2 0 0 1 2 0l.43.25a2 2 0 0 1 1 1.73V20a2 2 0 0 0 2 2h.44a2 2 0 0 0 2-2v-.18a2 2 0 0 1 1-1.73l.43-.25a2 2 0 0 1 2 0l.15.08a2 2 0 0 0 2.73-.73l.22-.39a2 2 0 0 0-.73-2.73l-.15-.08a2 2 0 0 1-1-1.74v-.5a2 2 0 0 1 1-1.74l.15-.09a2 2 0 0 0 .73-2.73l-.22-.38a2 2 0 0 0-2.73-.73l-.15.08a2 2 0 0 1-2 0l-.43-.25a2 2 0 0 1-1-1.73V4a2 2 0 0 0-2-2z"/><circle cx="12" cy="12" r="3"/></svg>Admin</a>
+    </div>
+    <button class="nav-hamburger" onclick="document.getElementById('navLinks').classList.toggle('open')" aria-label="Menu"><span></span><span></span><span></span></button>
+  </div>
+</nav>
+
+<!-- SUB-NAVIGASI TAB PORTOFOLIO SEKOLAH -->
+<div class="subnav-bar">
+  <div class="container">
+    <div class="subnav-list" id="subnavList">
+      <a href="/portosekolah" class="subnav-item" data-tab="home">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+        Home
+      </a>
+      <a href="/portosekolah/bukti-implementasi" class="subnav-item" data-tab="bukti-implementasi">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
+        Bukti Implementasi
+      </a>
+      <a href="/portosekolah/prestasi" class="subnav-item" data-tab="prestasi">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="8" r="6"/><path d="M15.477 12.89 17 22l-5-3-5 3 1.523-9.11"/></svg>
+        Prestasi
+      </a>
+      <a href="/portosekolah/karya-tulis" class="subnav-item" data-tab="karya-tulis">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1-2.5-2.5Z"/><path d="M6 6h10"/><path d="M6 10h10"/></svg>
+        Karya Tulis
+      </a>
+      <a href="/portosekolah/pengembangan-diri" class="subnav-item" data-tab="pengembangan-diri">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>
+        Pengembangan Diri
+      </a>
+      <a href="/portosekolah/pendampingan" class="subnav-item" data-tab="pendampingan">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+        Pendampingan
+      </a>
+      <a href="/portosekolah/penggunaan-ai" class="subnav-item" data-tab="penggunaan-ai">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m12 3-1.9 5.8a2 2 0 0 1-1.3 1.3L3 12l5.8 1.9a2 2 0 0 1 1.3 1.3L12 21l1.9-5.8a2 2 0 0 1 1.3-1.3L21 12l-5.8-1.9a2 2 0 0 1-1.3-1.3Z"/></svg>
+        Penggunaan AI
+      </a>
+      <a href="/portosekolah/orprof" class="subnav-item" data-tab="orprof">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+        Orprof
+      </a>
+      <a href="/portosekolah/profil" class="subnav-item active" data-tab="profil">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+        Profil
+      </a>
+    </div>
+  </div>
+</div>
+
+<header class="header-section">
+  <div class="container">
+    <div class="header-badge">
+      <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>
+      UPT SDN Latsari 2 Bancar
+    </div>
+    <h1 class="header-title">Profil & Sosial Media</h1>
+    <p class="header-sub">Identitas pendidik, kualifikasi akademik, riwayat pendidikan formal, serta kanal media sosial resmi.</p>
+    <div class="header-meta">
+      <span><strong>6</strong>Jenjang Pendidikan</span>
+      <span><strong>2</strong>Kanal Media Sosial Resmi</span>
+      <button class="btn-print" onclick="window.print()">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 6 2 18 2 18 9"/><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><rect width="12" height="8" x="6" y="14"/></svg>
+        Cetak / simpan PDF
+      </button>
+    </div>
+  </div>
+</header>
+
+<main class="container">
+
+  <!-- KARTU BIODATA & MEDIA SOSIAL -->
+  <article class="profile-card">
+    <div class="profile-photos">
+      <div class="profile-avatar-box">
+        <img src="/assets/portosekolah/profil/01.jpg" alt="Foto Santoso, S.Pd., M.Pd." loading="lazy" onerror="this.src='/assets/images/santoso-portrait.jpg'" onclick="zoom(this.src)" />
+        <span class="ph">01</span>
+      </div>
+      <div class="profile-extra-photos">
+        <div class="profile-thumb-box">
+          <img src="/assets/portosekolah/profil/02.jpg" alt="Foto Santoso 2" loading="lazy" onerror="this.remove()" onclick="zoom(this.src)" />
+          <span class="ph">02</span>
+        </div>
+        <div class="profile-thumb-box">
+          <img src="/assets/images/santoso-hero.jpg" alt="Foto Santoso 3" loading="lazy" onerror="this.remove()" onclick="zoom(this.src)" />
+          <span class="ph">03</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="profile-info">
+      <div>
+        <h2 class="profile-name">Santoso, S.Pd., M.Pd.</h2>
+        <p class="profile-title-tag">Guru Kelas &middot; Pendidik Inovatif UPT SDN Latsari 2 Bancar</p>
+      </div>
+
+      <table class="profile-data-table">
+        <tbody>
+          <tr>
+            <td>Tempat, Tgl Lahir</td>
+            <td>Tuban, 24 Januari 1984</td>
+          </tr>
+          <tr>
+            <td>Pendidikan Terakhir</td>
+            <td>Pascasarjana, Manajemen Pendidikan</td>
+          </tr>
+          <tr>
+            <td>Wilayah Tugas</td>
+            <td>Kecamatan Bancar, Kabupaten Tuban</td>
+          </tr>
+          <tr>
+            <td>Unit Kerja</td>
+            <td>UPT SDN Latsari 2 Bancar</td>
+          </tr>
+          <tr>
+            <td>Motto Hidup</td>
+            <td><em>"Semua akan bisa jika mau berdoa dan berusaha."</em></td>
+          </tr>
+          <tr>
+            <td>Hobi & Passion</td>
+            <td>Passion in art dan berliterasi</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div>
+        <div style="font-size:13px;font-weight:700;color:var(--text-sec);text-transform:uppercase;letter-spacing:.06em;margin-bottom:8px;">Kanal Media Sosial Resmi</div>
+        <div class="social-buttons">
+          <a href="https://www.youtube.com/@santosokece3010" target="_blank" rel="noopener" class="btn-social btn-yt">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
+            YouTube: Santoso KeCe
+          </a>
+          <a href="https://www.instagram.com/pak_sanlatsari2" target="_blank" rel="noopener" class="btn-social btn-ig">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect width="20" height="20" x="2" y="2" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" x2="17.51" y1="6.5" y2="6.5"/></svg>
+            Instagram: @pak_sanlatsari2
+          </a>
+        </div>
+      </div>
+    </div>
+  </article>
+
+  <!-- RIWAYAT PENDIDIKAN FORMAL -->
+  <h2 class="section-title">Riwayat Pendidikan Formal</h2>
+  <div class="timeline" id="eduTimeline"></div>
+
+</main>
+
+<div class="lightbox" id="lb" onclick="this.classList.remove('open')"><img alt="" id="lbImg" /></div>
+
+<footer>
+  <div class="container">
+    <p>&copy; 2026 <strong>Santoso, S.Pd., M.Pd.</strong> — UPT SDN Latsari 2 Bancar</p>
+    <p class="links" style="margin-top:10px">
+      <a href="/index.html">Beranda</a>
+      <a href="/pendidikan.html">Pendidikan</a>
+      <a href="/portosekolah">Portofolio Sekolah</a>
+      <a href="/musik.html">Musik</a>
+      <a href="/usaha.html">Usaha</a>
+      <a href="/prestasi.html">Prestasi</a>
+      <a href="/index.html#kontak">Kontak</a>
+      <a href="https://sites.google.com/admin.sd.belajar.id/portofoliopaksan/sosial-media-profil" target="_blank" rel="noopener">Sumber: Google Sites</a>
+    </p>
+  </div>
+</footer>
+
+<script>
+/* ================================================================
+   DATA RIWAYAT PENDIDIKAN
+   Sumber tunggal: konten-portosekolah.md
+   ================================================================ */
+const RIWAYAT = [
+  {
+    period: '2023–2025',
+    inst: 'Universitas Gresik',
+    degree: 'S2 Manajemen Pendidikan'
+  },
+  {
+    period: '2009–2013',
+    inst: 'Universitas Terbuka',
+    degree: 'S1 PGSD (Pendidikan Guru Sekolah Dasar)'
+  },
+  {
+    period: '2001–2005',
+    inst: 'IKIP PGRI Tuban',
+    degree: 'S1 Pendidikan Bahasa Inggris'
+  },
+  {
+    period: '1999–2001',
+    inst: 'SMAN 1 Jatirogo',
+    degree: 'Sekolah Menengah Atas'
+  },
+  {
+    period: '1995–1999',
+    inst: 'SMPN 1 Kerek',
+    degree: 'Sekolah Menengah Pertama'
+  },
+  {
+    period: '1989–1995',
+    inst: 'SDN Sukolilo, Kecamatan Bancar',
+    degree: 'Sekolah Dasar'
+  }
+];
+
+const tEl = document.getElementById('eduTimeline');
+tEl.innerHTML = RIWAYAT.map(r => `
+  <div class="timeline-item">
+    <div class="timeline-dot"></div>
+    <div class="timeline-content">
+      <div class="timeline-year">${r.period}</div>
+      <div class="timeline-inst">${r.inst}</div>
+      <div class="timeline-deg">${r.degree}</div>
+    </div>
+  </div>
+`).join('');
+
+function zoom(src) {
+  document.getElementById('lbImg').src = src;
+  document.getElementById('lb').classList.add('open');
+}
+document.addEventListener('keydown', e => { if (e.key === 'Escape') document.getElementById('lb').classList.remove('open'); });
+
+// Auto-scroll active subnav into view
+window.addEventListener('DOMContentLoaded', () => {
+  const activeTab = document.querySelector('.subnav-item.active');
+  if (activeTab) {
+    activeTab.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
+  }
+});
+</script>
+</body>
+</html>
