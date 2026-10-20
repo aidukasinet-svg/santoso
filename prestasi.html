@@ -68,23 +68,29 @@
       display: flex; align-items: center; justify-content: center;
       font-weight: 900; font-size: 15px; flex-shrink: 0;
     }
-    .nav-links { display: flex; align-items: center; gap: 6px; }
+    .nav-links { display: flex; align-items: center; gap: 4px; }
     .nav-links a {
-      padding: 6px 12px; border-radius: var(--radius-sm);
-      text-decoration: none; color: var(--text-sec); font-size: 14px; font-weight: 500;
-      transition: color .2s, background .2s;
+      padding: 6px 10px; border-radius: var(--radius-sm);
+      text-decoration: none; color: var(--text-sec); font-size: 13.5px; font-weight: 500;
+      white-space: nowrap; transition: color .2s, background .2s;
     }
     .nav-links a:hover { color: var(--text); background: var(--bg-subtle); }
     .nav-links a.active { color: var(--edu); font-weight: 700; background: var(--edu-soft); }
     .btn-admin {
-      background: var(--text); color: #fff !important; padding: 6px 14px;
+      background: var(--text); color: #fff !important; padding: 6px 12px;
       border-radius: var(--radius-sm); font-size: 13px; font-weight: 600;
     }
     .btn-admin:hover { background: var(--edu) !important; }
     .nav-hamburger { display: none; background: none; border: none; cursor: pointer; padding: 8px; }
     .nav-hamburger span { display: block; width: 22px; height: 2px; background: var(--text); margin: 5px 0; border-radius: 2px; }
 
-    @media (max-width: 768px) {
+    @media (max-width: 1180px) and (min-width: 961px) {
+      .nav-links { gap: 2px; }
+      .nav-links a { padding: 5px 7px; font-size: 12.5px; }
+      .btn-admin { padding: 5px 10px; font-size: 12px; }
+    }
+
+    @media (max-width: 960px) {
       .nav-links { display: none; }
       .nav-hamburger { display: block; }
       .nav-links.open {
@@ -213,13 +219,16 @@
       <span>Santoso</span>
     </a>
     <div class="nav-links" id="navLinks">
-      <a href="index.html">Beranda</a>
-      <a href="pendidikan.html">Pendidikan</a>
-      <a href="musik.html">Musik</a>
-      <a href="usaha.html">Usaha</a>
-      <a href="prestasi.html" class="active">Prestasi</a>
-      <a href="index.html#kontak">Kontak</a>
-      <a href="admin.html" class="btn-admin"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="vertical-align:-1px;margin-right:5px;"><path d="M12.22 2h-.44a2 2 0 0 0-2 2v.18a2 2 0 0 1-1 1.73l-.43.25a2 2 0 0 1-2 0l-.15-.08a2 2 0 0 0-2.73.73l-.22.38a2 2 0 0 0 .73 2.73l.15.1a2 2 0 0 1 1 1.72v.51a2 2 0 0 1-1 1.74l-.15.09a2 2 0 0 0-.73 2.73l.22.38a2 2 0 0 0 2.73.73l.15-.08a2 2 0 0 1 2 0l.43.25a2 2 0 0 1 1 1.73V20a2 2 0 0 0 2 2h.44a2 2 0 0 0 2-2v-.18a2 2 0 0 1 1-1.73l.43-.25a2 2 0 0 1 2 0l.15.08a2 2 0 0 0 2.73-.73l.22-.39a2 2 0 0 0-.73-2.73l-.15-.08a2 2 0 0 1-1-1.74v-.5a2 2 0 0 1 1-1.74l.15-.09a2 2 0 0 0 .73-2.73l-.22-.38a2 2 0 0 0-2.73-.73l-.15.08a2 2 0 0 1-2 0l-.43-.25a2 2 0 0 1-1-1.73V4a2 2 0 0 0-2-2z"/><circle cx="12" cy="12" r="3"/></svg>Admin</a>
+      <a href="/index.html">Beranda</a>
+      <a href="/index.html#tentang">Tentang</a>
+      <a href="/index.html#timeline">Jejak Langkah</a>
+      <a href="/pendidikan.html">Pendidikan</a>
+      <a href="/portosekolah">Portofolio Sekolah</a>
+      <a href="/musik.html">Musik</a>
+      <a href="/usaha.html">Usaha</a>
+      <a href="/prestasi.html" class="active">Prestasi</a>
+      <a href="/index.html#kontak">Kontak</a>
+      <a href="/admin.html" class="btn-admin"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="vertical-align:-1px;margin-right:5px;"><path d="M12.22 2h-.44a2 2 0 0 0-2 2v.18a2 2 0 0 1-1 1.73l-.43.25a2 2 0 0 1-2 0l-.15-.08a2 2 0 0 0-2.73.73l-.22.38a2 2 0 0 0 .73 2.73l.15.1a2 2 0 0 1 1 1.72v.51a2 2 0 0 1-1 1.74l-.15.09a2 2 0 0 0-.73 2.73l.22.38a2 2 0 0 0 2.73.73l.15-.08a2 2 0 0 1 2 0l.43.25a2 2 0 0 1 1 1.73V20a2 2 0 0 0 2 2h.44a2 2 0 0 0 2-2v-.18a2 2 0 0 1 1-1.73l.43-.25a2 2 0 0 1 2 0l.15.08a2 2 0 0 0 2.73-.73l.22-.39a2 2 0 0 0-.73-2.73l-.15-.08a2 2 0 0 1-1-1.74v-.5a2 2 0 0 1 1-1.74l.15-.09a2 2 0 0 0 .73-2.73l-.22-.38a2 2 0 0 0-2.73-.73l-.15.08a2 2 0 0 1-2 0l-.43-.25a2 2 0 0 1-1-1.73V4a2 2 0 0 0-2-2z"/><circle cx="12" cy="12" r="3"/></svg>Admin</a>
     </div>
     <button class="nav-hamburger" onclick="toggleNav()" aria-label="Menu">
       <span></span><span></span><span></span>
@@ -269,12 +278,13 @@
   <div class="container">
     <p>&copy; 2024 <strong>Santoso, S.Pd., M.Pd.</strong> — Pendidik · Penyanyi · Entrepreneur</p>
     <p style="margin-top:10px;">
-      <a href="index.html">Beranda</a>
-      <a href="pendidikan.html">Pendidikan</a>
-      <a href="musik.html">Musik</a>
-      <a href="usaha.html">Usaha</a>
-      <a href="prestasi.html">Prestasi</a>
-      <a href="index.html#kontak">Kontak</a>
+      <a href="/index.html">Beranda</a>
+      <a href="/pendidikan.html">Pendidikan</a>
+      <a href="/portosekolah">Portofolio Sekolah</a>
+      <a href="/musik.html">Musik</a>
+      <a href="/usaha.html">Usaha</a>
+      <a href="/prestasi.html">Prestasi</a>
+      <a href="/index.html#kontak">Kontak</a>
     </p>
   </div>
 </footer>

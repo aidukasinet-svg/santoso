@@ -13,10 +13,14 @@ _worker.js           → Cloudflare Pages Worker (CORS proxy ke Apps Script)
 config.js            → Konfigurasi endpoint API & data pemilik
 index.html           → Halaman portal publik utama (Hero, Tiga Dunia Bento, Timeline, Prestasi, Kontak)
 pendidikan.html      → Portofolio Pendidikan (Karya inovasi, publikasi, PKB, prestasi)
+portosekolah/        → Portofolio Sekolah Digital (UPT SDN Latsari 2 Bancar - Lampiran Bukti Lomba)
+  ├── index.html     → Hub / Portofolio Sekolah (/portosekolah)
+  └── pendampingan.html → Dokumentasi 40 Kegiatan Pendampingan Rekan Sejawat (/portosekolah/pendampingan)
 musik.html           → Portofolio Musik (Event panggung, galeri, video cover, prestasi)
 usaha.html           → Portofolio Usaha & MUA (Layanan, galeri rias/busana, testimoni)
 prestasi.html        → Rekam Jejak Prestasi & Capaian (Filter kategori & pencarian)
 admin.html           → Dashboard admin profesional (Login, 15 modul CRUD, Pesan masuk, Pengaturan)
+assets/portosekolah/ → Folder aset statis pendampingan rekan sejawat
 .gitignore           → Git ignore rules
 README.md            → Panduan setup & deployment
 ```

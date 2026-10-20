@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Portofolio Sekolah — Santoso, S.Pd., M.Pd. | UPT SDN Latsari 2 Bancar</title>
+<meta name="description" content="Portofolio digital pendidik Santoso, S.Pd., M.Pd. di UPT SDN Latsari 2 Bancar: dokumentasi pendampingan rekan sejawat, inovasi pembelajaran, dan karya edukasi." />
+<meta property="og:title" content="Portofolio Sekolah — Santoso, S.Pd., M.Pd." />
+<meta property="og:description" content="Portofolio digital pendidik Santoso, S.Pd., M.Pd. di UPT SDN Latsari 2 Bancar: 'Semua akan bisa jika mau berdoa dan berusaha.'" />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://santoso-504.pages.dev/portosekolah" />
+<meta property="og:image" content="https://santoso-504.pages.dev/assets/images/santoso-portrait.jpg" />
+
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;900&family=DM+Serif+Display:ital@0;1&display=swap" rel="stylesheet" />
+<style>
+:root{
+  --bg:#F9F7F4;--bg-subtle:#F2EFE9;--surface:#fff;--border:#E4DED6;
+  --text:#1C1A17;--text-sec:#6B6560;--text-muted:#A09890;
+  --edu:#1B3A6B;--edu-light:#2D5AA0;--edu-soft:#EEF2F9;--edu-border:#C5D4ED;
+  --music:#7B1E2E;--music-soft:#F9EEEF;
+  --biz:#1E4A3A;--biz-soft:#EEF5F2;
+  --amber:#8A5A00;--amber-soft:#FBF3E2;
+  --slate:#44505C;--slate-soft:#EFF1F3;
+  --r-sm:6px;--r-md:14px;--r-lg:22px;
+  --shadow-sm:0 1px 3px rgba(28,26,23,.08);
+  --shadow-md:0 6px 20px rgba(28,26,23,.10);
+  --shadow-lg:0 16px 48px rgba(28,26,23,.12);
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:'Outfit',sans-serif;background:var(--bg);color:var(--text);line-height:1.6;font-size:16px}
+.container{max-width:1200px;margin:0 auto;padding:0 24px}
+a:focus-visible,button:focus-visible{outline:3px solid var(--edu);outline-offset:2px}
+
+/* MAIN NAVBAR */
+nav{position:fixed;top:0;left:0;right:0;z-index:100;height:64px;background:rgba(249,247,244,.88);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-bottom:1px solid var(--border)}
+.nav-inner{max-width:1200px;margin:0 auto;padding:0 24px;height:100%;display:flex;align-items:center;justify-content:space-between}
+.nav-logo{display:flex;align-items:center;gap:10px;text-decoration:none;color:var(--text);font-weight:700;font-size:17px}
+.nav-logo-mark{width:36px;height:36px;border-radius:50%;background:var(--edu);color:#fff;display:flex;align-items:center;justify-content:center;font-weight:900;font-size:15px;flex-shrink:0}
+.nav-links{display:flex;align-items:center;gap:4px}
+.nav-links a{padding:6px 10px;border-radius:var(--r-sm);text-decoration:none;color:var(--text-sec);font-size:13.5px;font-weight:500;white-space:nowrap;transition:color .2s,background .2s}
+.nav-links a:hover{color:var(--text);background:var(--bg-subtle)}
+.nav-links a.active{color:var(--edu);font-weight:700;background:var(--edu-soft)}
+.nav-links .btn-admin{background:var(--text);color:#fff;padding:6px 12px;font-size:13px;font-weight:600}
+.nav-links .btn-admin:hover{background:var(--edu);color:#fff}
+.nav-hamburger{display:none;background:none;border:none;cursor:pointer;padding:8px}
+.nav-hamburger span{display:block;width:22px;height:2px;background:var(--text);margin:5px 0;border-radius:2px}
+
+@media(max-width:1180px) and (min-width:961px){
+  .nav-links{gap:2px}
+  .nav-links a{padding:5px 7px;font-size:12.5px}
+  .nav-links .btn-admin{padding:5px 10px;font-size:12px}
+}
+@media(max-width:960px){
+  .nav-links{display:none}.nav-hamburger{display:block}
+  .nav-links.open{display:flex;flex-direction:column;align-items:stretch;position:fixed;top:64px;left:0;right:0;bottom:0;background:var(--bg);padding:20px;overflow-y:auto;gap:4px}
+  .nav-links.open a{padding:12px 16px;font-size:16px}
+}
+
+/* SUBNAV BAR (PORTFOLIO SEKOLAH TABS) */
+.subnav-bar{
+  margin-top:64px;
+  position:sticky;top:64px;z-index:90;
+  background:rgba(249,247,244,.95);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);
+  border-bottom:1px solid var(--border);
+  padding:10px 0;
+}
+.subnav-list{
+  display:flex;gap:8px;overflow-x:auto;scrollbar-width:none;
+  -webkit-overflow-scrolling:touch;padding:2px 0;align-items:center;
+}
+.subnav-list::-webkit-scrollbar{display:none}
+.subnav-item{
+  display:inline-flex;align-items:center;gap:6px;
+  padding:8px 16px;border-radius:999px;
+  border:1px solid var(--border);background:var(--surface);
+  font-size:13.5px;font-weight:600;color:var(--text-sec);
+  text-decoration:none;white-space:nowrap;transition:all .2s;
+}
+.subnav-item:hover{border-color:var(--edu);color:var(--edu)}
+.subnav-item.active{background:var(--edu);border-color:var(--edu);color:#fff}
+
+/* HERO SECTION */
+.ps-hero{
+  padding:56px 0 48px;
+  background:linear-gradient(180deg,var(--bg-subtle),var(--bg));
+  border-bottom:1px solid var(--border);
+}
+.ps-hero-badge{
+  display:inline-flex;align-items:center;gap:8px;
+  padding:5px 14px;border-radius:999px;
+  background:var(--edu-soft);color:var(--edu);
+  font-size:12.5px;font-weight:700;letter-spacing:.02em;
+  margin-bottom:16px;
+}
+.ps-hero-title{
+  font-size:clamp(2.4rem,4.6vw,3.6rem);font-weight:900;
+  letter-spacing:-.03em;line-height:1.12;margin-bottom:10px;
+}
+.ps-hero-name{
+  font-size:clamp(1.2rem,2vw,1.5rem);font-weight:700;color:var(--text);margin-bottom:14px;
+}
+.ps-hero-motto{
+  font-family:'DM Serif Display',serif;font-style:italic;
+  font-size:1.35rem;color:var(--edu);line-height:1.4;
+  margin-bottom:20px;max-width:720px;
+}
+.ps-hero-desc{
+  font-size:15.5px;color:var(--text-sec);max-width:760px;line-height:1.65;
+}
+
+/* SECTION */
+.ps-section{padding:56px 0 80px}
+.ps-section-header{margin-bottom:32px}
+.ps-section-label{font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:var(--edu);margin-bottom:6px}
+.ps-section-title{font-size:1.8rem;font-weight:800;letter-spacing:-.02em}
+
+/* MODULE CARD (SINGLE EXISTING TAB: PENDAMPINGAN) */
+.module-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(340px,1fr));gap:24px}
+.module-card{
+  background:var(--surface);border:1px solid var(--border);
+  border-radius:var(--r-lg);padding:32px;
+  display:flex;flex-direction:column;justify-content:space-between;
+  box-shadow:var(--shadow-sm);transition:all .25s ease;
+  position:relative;overflow:hidden;
+}
+.module-card::before{
+  content:'';position:absolute;top:0;left:0;right:0;height:4px;
+  background:linear-gradient(90deg,var(--edu),var(--edu-light));
+}
+.module-card:hover{
+  transform:translateY(-4px);box-shadow:var(--shadow-md);
+  border-color:var(--edu-border);
+}
+.module-top{display:flex;align-items:flex-start;justify-content:space-between;gap:16px;margin-bottom:20px}
+.module-icon{
+  width:52px;height:52px;border-radius:var(--r-md);
+  background:var(--edu-soft);color:var(--edu);
+  display:flex;align-items:center;justify-content:center;flex-shrink:0;
+}
+.module-badge{
+  display:inline-flex;align-items:center;gap:6px;
+  padding:4px 12px;border-radius:999px;
+  background:var(--edu-soft);color:var(--edu);
+  font-size:12px;font-weight:700;
+}
+.module-title{font-size:1.45rem;font-weight:800;letter-spacing:-.02em;margin-bottom:8px;line-height:1.25}
+.module-scope{font-size:13px;font-weight:600;color:var(--text-muted);text-transform:uppercase;letter-spacing:.05em;margin-bottom:14px}
+.module-desc{font-size:15px;color:var(--text-sec);line-height:1.6;margin-bottom:24px}
+
+.module-meta-pills{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:28px}
+.module-meta-pill{
+  font-size:12px;font-weight:600;padding:4px 10px;border-radius:999px;
+  background:var(--bg-subtle);color:var(--text-sec);border:1px solid var(--border);
+}
+
+.btn-open-module{
+  display:inline-flex;align-items:center;justify-content:center;gap:8px;
+  width:100%;padding:12px 20px;border-radius:var(--r-sm);
+  background:var(--edu);color:#fff;text-decoration:none;
+  font-weight:700;font-size:14.5px;transition:background .2s;
+}
+.btn-open-module:hover{background:var(--edu-light)}
+
+/* NOTICE CARD */
+.ps-notice{
+  margin-top:32px;padding:24px 28px;background:var(--surface);
+  border:1px solid var(--border);border-left:4px solid var(--edu);
+  border-radius:var(--r-md);display:flex;align-items:center;gap:18px;
+}
+.ps-notice-icon{
+  width:40px;height:40px;border-radius:50%;
+  background:var(--edu-soft);color:var(--edu);
+  display:flex;align-items:center;justify-content:center;flex-shrink:0;
+}
+.ps-notice-text{font-size:14.5px;color:var(--text-sec);line-height:1.55}
+.ps-notice-text strong{color:var(--text)}
+
+footer{background:#fff;border-top:1px solid var(--border);padding:44px 0;text-align:center;font-size:14px;color:var(--text-sec)}
+footer a{color:var(--edu);text-decoration:none;margin:0 8px;font-weight:500}
+footer a:hover{text-decoration:underline}
+</style>
+</head>
+<body>
+
+<!-- MAIN NAVBAR -->
+<nav>
+  <div class="nav-inner">
+    <a href="/index.html" class="nav-logo"><div class="nav-logo-mark">S</div><span>Santoso</span></a>
+    <div class="nav-links" id="navLinks">
+      <a href="/index.html">Beranda</a>
+      <a href="/index.html#tentang">Tentang</a>
+      <a href="/index.html#timeline">Jejak Langkah</a>
+      <a href="/pendidikan.html">Pendidikan</a>
+      <a href="/portosekolah" class="active">Portofolio Sekolah</a>
+      <a href="/musik.html">Musik</a>
+      <a href="/usaha.html">Usaha</a>
+      <a href="/prestasi.html">Prestasi</a>
+      <a href="/index.html#kontak">Kontak</a>
+      <a href="/admin.html" class="btn-admin"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="vertical-align:-1px;margin-right:5px;"><path d="M12.22 2h-.44a2 2 0 0 0-2 2v.18a2 2 0 0 1-1 1.73l-.43.25a2 2 0 0 1-2 0l-.15-.08a2 2 0 0 0-2.73.73l-.22.38a2 2 0 0 0 .73 2.73l.15.1a2 2 0 0 1 1 1.72v.51a2 2 0 0 1-1 1.74l-.15.09a2 2 0 0 0-.73 2.73l.22.38a2 2 0 0 0 2.73.73l.15-.08a2 2 0 0 1 2 0l.43.25a2 2 0 0 1 1 1.73V20a2 2 0 0 0 2 2h.44a2 2 0 0 0 2-2v-.18a2 2 0 0 1 1-1.73l.43-.25a2 2 0 0 1 2 0l.15.08a2 2 0 0 0 2.73-.73l.22-.39a2 2 0 0 0-.73-2.73l-.15-.08a2 2 0 0 1-1-1.74v-.5a2 2 0 0 1 1-1.74l.15-.09a2 2 0 0 0 .73-2.73l-.22-.38a2 2 0 0 0-2.73-.73l-.15.08a2 2 0 0 1-2 0l-.43-.25a2 2 0 0 1-1-1.73V4a2 2 0 0 0-2-2z"/><circle cx="12" cy="12" r="3"/></svg>Admin</a>
+    </div>
+    <button class="nav-hamburger" onclick="document.getElementById('navLinks').classList.toggle('open')" aria-label="Menu"><span></span><span></span><span></span></button>
+  </div>
+</nav>
+
+<!-- SUB-NAVIGASI TAB PORTOFOLIO SEKOLAH -->
+<div class="subnav-bar">
+  <div class="container">
+    <div class="subnav-list">
+      <a href="/portosekolah" class="subnav-item active">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+        Home
+      </a>
+      <a href="/portosekolah/pendampingan" class="subnav-item">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+        Pendampingan Rekan Sejawat
+      </a>
+      <!-- Tambahkan tab baru di sini (misal: bukti-implementasi, prestasi, karya-tulis, dll.) -->
+    </div>
+  </div>
+</div>
+
+<!-- HERO SECTION -->
+<header class="ps-hero">
+  <div class="container">
+    <div class="ps-hero-badge">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>
+      UPT SDN Latsari 2 Bancar
+    </div>
+    <h1 class="ps-hero-title">Portofolio Sekolah</h1>
+    <p class="ps-hero-name">Santoso, S.Pd., M.Pd.</p>
+    <p class="ps-hero-motto">"Semua akan bisa jika mau berdoa dan berusaha."</p>
+    <p class="ps-hero-desc">
+      Portofolio digital dedikasi dan rekam jejak pengabdian sebagai pendidik di lingkungan UPT SDN Latsari 2 Bancar, Kecamatan Bancar, dan Kabupaten Tuban. Halaman ini mendokumentasikan kegiatan nyata sebagai bukti lampiran lomba dan asesmen profesional.
+    </p>
+  </div>
+</header>
+
+<!-- MAIN CONTENT -->
+<main class="ps-section">
+  <div class="container">
+    <div class="ps-section-header">
+      <p class="ps-section-label">Dokumentasi Portofolio</p>
+      <h2 class="ps-section-title">Bidang Portofolio Sekolah</h2>
+    </div>
+
+    <div class="module-grid">
+      <!-- KARTU PENDAMPINGAN REKAN SEJAWAT (40 KEGIATAN) -->
+      <article class="module-card">
+        <div>
+          <div class="module-top">
+            <div class="module-icon">
+              <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+            </div>
+            <span class="module-badge">40 Kegiatan Terdokumentasi</span>
+          </div>
+          <h3 class="module-title">Pendampingan Rekan Sejawat</h3>
+          <p class="module-scope">Kecamatan Bancar & Kabupaten Tuban</p>
+          <p class="module-desc">
+            Berbagi praktik baik pembelajaran, narasumber kombel & gugus, fasilitator penyusunan BKS, coaching clinic, observer rekan sejawat, hingga aktivasi akun Belajar.id se-Kabupaten Tuban.
+          </p>
+          <div class="module-meta-pills">
+            <span class="module-meta-pill">Penyusunan BKS</span>
+            <span class="module-meta-pill">Narasumber & Pemateri</span>
+            <span class="module-meta-pill">Coaching & Observasi</span>
+            <span class="module-meta-pill">Aktivasi Belajar.id</span>
+            <span class="module-meta-pill">Komunitas & Seni</span>
+          </div>
+        </div>
+        <div>
+          <a href="/portosekolah/pendampingan" class="btn-open-module">
+            Buka Dokumentasi (40 Kegiatan)
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+          </a>
+        </div>
+      </article>
+    </div>
+
+    <!-- NOTICE / INFO BOX -->
+    <div class="ps-notice">
+      <div class="ps-notice-icon">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" x2="12" y1="8" y2="12"/><line x1="12" x2="12.01" y1="16" y2="16"/></svg>
+      </div>
+      <div class="ps-notice-text">
+        <strong>Lampiran Bukti Resmi:</strong> Halaman portofolio sekolah ini disajikan secara statis dan independen sebagai dokumen pembuktian kinerja pendidik pada UPT SDN Latsari 2 Bancar untuk keperluan lomba dan verifikasi mutu pendidikan.
+      </div>
+    </div>
+  </div>
+</main>
+
+<footer>
+  <div class="container">
+    <p>&copy; 2026 <strong>Santoso, S.Pd., M.Pd.</strong> — UPT SDN Latsari 2 Bancar</p>
+    <p class="links" style="margin-top:10px">
+      <a href="/index.html">Beranda</a>
+      <a href="/pendidikan.html">Pendidikan</a>
+      <a href="/portosekolah">Portofolio Sekolah</a>
+      <a href="/musik.html">Musik</a>
+      <a href="/usaha.html">Usaha</a>
+      <a href="/prestasi.html">Prestasi</a>
+      <a href="/index.html#kontak">Kontak</a>
+      <a href="https://sites.google.com/admin.sd.belajar.id/portofoliopaksan/pendampingan-rekan-sejawat" target="_blank" rel="noopener">Sumber: Google Sites</a>
+    </p>
+  </div>
+</footer>
+
+</body>
+</html>
