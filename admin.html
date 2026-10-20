@@ -67,19 +67,41 @@
     #loginError { color: var(--error); font-size: 13px; text-align: center; margin-top: 12px; display: none; }
 
     /* ---- DASHBOARD LAYOUT ---- */
-    #dashApp { display: none; }
-    .layout { display: grid; grid-template-columns: var(--sidebar) 1fr; min-height: 100vh; }
+    #dashApp { display: none; width: 100%; min-height: 100vh; }
+    .layout {
+      display: flex;
+      min-height: 100vh;
+      width: 100%;
+      background: var(--bg);
+      position: relative;
+    }
 
-    /* SIDEBAR */
+    /* SIDEBAR (Desktop: Sticky, Mobile: Drawer) */
     .sidebar {
-      background: var(--surface); border-right: 1px solid var(--border);
-      position: fixed; top: 0; left: 0; width: var(--sidebar);
-      height: 100vh; display: flex; flex-direction: column;
-      overflow-y: auto; z-index: 50;
+      background: var(--surface);
+      border-right: 1px solid var(--border);
+      width: var(--sidebar);
+      flex-shrink: 0;
+      height: 100vh;
+      position: sticky;
+      top: 0;
+      display: flex;
+      flex-direction: column;
+      overflow-y: auto;
+      z-index: 90;
+      transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    .sidebar-header-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 16px 20px;
+      border-bottom: 1px solid var(--border);
     }
     .sidebar-logo {
-      display: flex; align-items: center; gap: 10px;
-      padding: 20px; border-bottom: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      gap: 10px;
     }
     .sidebar-logo-mark {
       width: 36px; height: 36px; border-radius: 50%;
@@ -89,6 +111,37 @@
     }
     .sidebar-logo span { font-weight: 700; font-size: 15px; line-height: 1.2; }
     .sidebar-logo small { font-size: 11px; color: var(--muted); display: block; }
+    .sidebar-close-btn {
+      display: none;
+      background: var(--surface2);
+      border: none;
+      color: var(--muted);
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      cursor: pointer;
+      align-items: center;
+      justify-content: center;
+      transition: color 0.2s, background 0.2s;
+    }
+    .sidebar-close-btn:hover { color: var(--text); background: var(--border); }
+
+    /* BACKDROP FOR MOBILE DRAWER */
+    .sidebar-backdrop {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(15, 23, 42, 0.75);
+      backdrop-filter: blur(4px);
+      -webkit-backdrop-filter: blur(4px);
+      z-index: 85;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+    .sidebar-backdrop.active {
+      display: block;
+      opacity: 1;
+    }
 
     .sidebar-nav { flex: 1; padding: 12px 8px; }
     .nav-group-label {
@@ -104,7 +157,7 @@
     }
     .nav-item:hover { background: var(--surface2); color: var(--text); }
     .nav-item.active { background: rgba(59,130,246,.15); color: var(--accent); font-weight: 600; }
-    .nav-item .icon { width: 20px; text-align: center; font-size: 16px; }
+    .nav-item .icon { width: 20px; text-align: center; font-size: 16px; display: flex; align-items: center; justify-content: center; }
     .nav-badge {
       margin-left: auto; background: var(--error); color: #fff;
       font-size: 10px; font-weight: 700; padding: 2px 7px;
@@ -136,35 +189,69 @@
 
     /* MAIN CONTENT */
     .main-content {
-      margin-left: var(--sidebar); padding: 0; min-height: 100vh;
-      display: flex; flex-direction: column;
+      flex: 1;
+      min-width: 0;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      background: var(--bg);
+      width: 100%;
     }
     .topbar {
       background: var(--surface); border-bottom: 1px solid var(--border);
       padding: 16px 28px; display: flex; align-items: center; justify-content: space-between;
-      position: sticky; top: 0; z-index: 40;
+      gap: 16px; position: sticky; top: 0; z-index: 40;
     }
-    .topbar h2 { font-size: 16px; font-weight: 700; }
-    .breadcrumb { font-size: 12px; color: var(--muted); margin-top: 2px; }
-    .topbar-actions { display: flex; align-items: center; gap: 10px; }
+    .topbar-left {
+      display: flex; align-items: center; gap: 14px; min-width: 0;
+    }
+    .btn-hamburger-admin {
+      display: none;
+      background: var(--surface2); border: 1px solid var(--border);
+      color: var(--text); width: 38px; height: 38px; border-radius: 8px;
+      cursor: pointer; align-items: center; justify-content: center;
+      flex-shrink: 0; transition: background .2s;
+    }
+    .btn-hamburger-admin:hover { background: var(--border); }
+    .topbar-title-wrap { min-width: 0; }
+    .topbar h2 {
+      font-size: 1.15rem; font-weight: 800; letter-spacing: -.02em;
+      white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+    }
+    .breadcrumb {
+      font-size: 12px; color: var(--muted); margin-top: 2px;
+      white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+    }
+    .topbar-actions {
+      display: flex; align-items: center; gap: 10px; flex-shrink: 0;
+    }
     .btn-add {
-      display: flex; align-items: center; gap: 7px;
-      padding: 8px 16px; background: var(--accent); color: #fff;
+      display: inline-flex; align-items: center; gap: 6px;
+      padding: 9px 18px; background: var(--accent); color: #fff;
       border: none; border-radius: 8px; font-family: 'Outfit', sans-serif;
-      font-size: 13px; font-weight: 600; cursor: pointer; transition: background .2s;
+      font-size: 13.5px; font-weight: 700; cursor: pointer;
+      white-space: nowrap; transition: background .2s, transform .1s;
     }
-    .btn-add:hover { background: var(--accent2); }
+    .btn-add:hover { background: var(--accent2); transform: translateY(-1px); }
 
-    .page-content { padding: 28px; flex: 1; }
+    .page-content {
+      padding: 28px; flex: 1; width: 100%; max-width: 1400px;
+    }
 
     /* STATS CARDS */
     .stats-grid {
-      display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; margin-bottom: 28px;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+      gap: 18px;
+      margin-bottom: 28px;
+      width: 100%;
     }
     .stat-card {
       background: var(--surface); border: 1px solid var(--border);
-      border-radius: var(--radius); padding: 20px; position: relative; overflow: hidden;
+      border-radius: var(--radius); padding: 22px 24px; position: relative; overflow: hidden;
+      box-shadow: 0 4px 12px rgba(0,0,0,.15); transition: transform .2s, border-color .2s;
     }
+    .stat-card:hover { transform: translateY(-2px); border-color: var(--accent); }
     .stat-card::before {
       content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px;
     }
@@ -173,37 +260,41 @@
     .stat-biz::before { background: var(--biz); }
     .stat-msg::before { background: var(--warn); }
 
-    .stat-icon { font-size: 24px; margin-bottom: 10px; }
-    .stat-num { font-size: 2rem; font-weight: 800; letter-spacing: -.03em; line-height: 1; }
-    .stat-label { font-size: 12px; color: var(--muted); margin-top: 4px; }
+    .stat-icon { font-size: 24px; margin-bottom: 12px; }
+    .stat-num { font-size: 2.2rem; font-weight: 800; letter-spacing: -.03em; line-height: 1; }
+    .stat-label { font-size: 13px; color: var(--muted); margin-top: 6px; font-weight: 500; }
 
     /* TABLES */
     .table-wrapper {
       background: var(--surface); border: 1px solid var(--border);
-      border-radius: var(--radius); overflow: hidden;
+      border-radius: var(--radius); overflow: hidden; width: 100%;
     }
     .table-header {
       padding: 16px 20px; border-bottom: 1px solid var(--border);
-      display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 10px;
+      display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 12px;
     }
     .table-header h3 { font-size: 15px; font-weight: 700; }
     .table-search input {
-      padding: 7px 12px; background: var(--bg); border: 1px solid var(--border);
+      padding: 8px 14px; background: var(--bg); border: 1px solid var(--border);
       border-radius: 8px; font-family: 'Outfit', sans-serif;
       font-size: 13px; color: var(--text); width: 220px;
     }
     .table-search input:focus { outline: none; border-color: var(--accent); }
 
-    table { width: 100%; border-collapse: collapse; }
+    .table-scroll {
+      width: 100%; overflow-x: auto; -webkit-overflow-scrolling: touch;
+    }
+    table { width: 100%; border-collapse: collapse; min-width: 650px; }
     thead th {
-      padding: 11px 16px; text-align: left;
-      font-size: 11px; font-weight: 600; letter-spacing: .08em; text-transform: uppercase;
+      padding: 12px 18px; text-align: left;
+      font-size: 11px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase;
       color: var(--muted); border-bottom: 1px solid var(--border);
+      background: rgba(30, 41, 59, 0.7);
     }
     tbody tr { border-bottom: 1px solid rgba(71,85,105,.4); transition: background .15s; }
     tbody tr:last-child { border-bottom: none; }
     tbody tr:hover { background: var(--surface2); }
-    tbody td { padding: 12px 16px; font-size: 14px; vertical-align: middle; }
+    tbody td { padding: 13px 18px; font-size: 14px; vertical-align: middle; }
     .td-actions { display: flex; gap: 6px; align-items: center; }
     .btn-sm {
       padding: 5px 10px; border-radius: 6px;
@@ -289,17 +380,57 @@
     #toast.error   { background: #991b1b; }
 
     /* PAGES hidden */
-    .page-section { display: none; }
+    .page-section { display: none; width: 100%; }
     .page-section.active { display: block; }
 
-    /* Responsive */
-    @media (max-width: 900px) {
-      .stats-grid { grid-template-columns: 1fr 1fr; }
+    /* ANDROID BOTTOM NAVIGATION BAR */
+    .bottom-nav-bar {
+      display: none;
+      position: fixed;
+      bottom: 0; left: 0; right: 0;
+      height: 62px;
+      background: var(--surface);
+      border-top: 1px solid var(--border);
+      z-index: 80;
+      box-shadow: 0 -4px 16px rgba(0,0,0,.25);
     }
-    @media (max-width: 640px) {
-      .sidebar { display: none; }
-      .main-content { margin-left: 0; }
+    .bottom-nav-item {
+      flex: 1; height: 100%; background: none; border: none;
+      color: var(--muted); display: flex; flex-direction: column;
+      align-items: center; justify-content: center; gap: 3px;
+      cursor: pointer; font-family: 'Outfit', sans-serif;
+      font-size: 10.5px; font-weight: 600;
+      transition: color .15s, background .15s;
+      padding: 4px 0;
+    }
+    .bottom-nav-item.active { color: var(--accent); }
+    .bottom-nav-item:active { background: rgba(59,130,246,.12); }
+
+    /* RESPONSIVE MEDIA QUERIES */
+    @media (max-width: 900px) {
+      .sidebar {
+        position: fixed; top: 0; bottom: 0; left: 0;
+        width: 285px; z-index: 100;
+        transform: translateX(-100%);
+        box-shadow: 0 0 32px rgba(0,0,0,.5);
+      }
+      .sidebar.open { transform: translateX(0); }
+      .sidebar-close-btn { display: flex; }
+      .btn-hamburger-admin { display: flex; }
+      .bottom-nav-bar { display: flex; }
+      .main-content { width: 100%; margin-left: 0; }
+      .page-content { padding: 16px 16px 80px; }
+      .topbar { padding: 12px 16px; }
+      .stats-grid { grid-template-columns: repeat(2, 1fr); gap: 12px; }
+      .stat-card { padding: 16px; }
+      .stat-num { font-size: 1.8rem; }
+      .btn-add { padding: 7px 12px; font-size: 12.5px; }
+    }
+    @media (max-width: 540px) {
       .stats-grid { grid-template-columns: 1fr; }
+      .topbar-portal-link { display: none !important; }
+      .table-header { flex-direction: column; align-items: stretch; }
+      .table-search input { width: 100%; }
     }
   </style>
 </head>
@@ -352,13 +483,18 @@
   <div class="layout">
 
     <!-- SIDEBAR -->
-    <aside class="sidebar">
-      <div class="sidebar-logo">
-        <div class="sidebar-logo-mark">S</div>
-        <div>
-          <span>Santoso Admin</span>
-          <small>Dashboard</small>
+    <aside class="sidebar" id="sidebarNav">
+      <div class="sidebar-header-row">
+        <div class="sidebar-logo">
+          <div class="sidebar-logo-mark">S</div>
+          <div>
+            <span>Santoso Admin</span>
+            <small>Dashboard</small>
+          </div>
         </div>
+        <button class="sidebar-close-btn" onclick="closeSidebarDrawer()" aria-label="Tutup menu navigasi">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+        </button>
       </div>
 
       <nav class="sidebar-nav">
@@ -439,18 +575,25 @@
       </div>
     </aside>
 
+    <div class="sidebar-backdrop" id="sidebarBackdrop" onclick="closeSidebarDrawer()"></div>
+
     <!-- MAIN -->
     <main class="main-content">
       <div class="topbar">
-        <div>
-          <h2 id="pageTitle">Dashboard</h2>
-          <div class="breadcrumb" id="pageBreadcrumb">Santoso Admin / Dashboard</div>
+        <div class="topbar-left">
+          <button class="btn-hamburger-admin" id="btnHamburgerAdmin" onclick="toggleSidebarDrawer()" aria-label="Buka Menu Navigasi" title="Menu">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+          </button>
+          <div class="topbar-title-wrap">
+            <h2 id="pageTitle">Dashboard</h2>
+            <div class="breadcrumb" id="pageBreadcrumb">Santoso Admin / Dashboard</div>
+          </div>
         </div>
         <div class="topbar-actions">
           <button class="btn-add" id="btnAddTop" onclick="openAddModal()" style="display:none;">
             + Tambah Item
           </button>
-          <a href="index.html" target="_blank" style="font-size:13px;color:var(--muted);text-decoration:none;display:inline-flex;align-items:center;gap:4px;">Lihat Portal Publik <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg></a>
+          <a class="topbar-portal-link" href="index.html" target="_blank" style="font-size:13px;color:var(--muted);text-decoration:none;display:inline-flex;align-items:center;gap:4px;">Lihat Portal Publik <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg></a>
         </div>
       </div>
 
@@ -484,7 +627,7 @@
             <div class="table-header">
               <h3>Navigasi Cepat</h3>
             </div>
-            <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:12px;padding:20px;">
+            <div style="display:grid;grid-template-columns:repeat(auto-fit, minmax(140px, 1fr));gap:12px;padding:20px;">
               <button class="nav-item" style="background:var(--surface2);" onclick="showPage('edu_karya')">Karya & Inovasi</button>
               <button class="nav-item" style="background:var(--surface2);" onclick="showPage('music_event')">Event Musik</button>
               <button class="nav-item" style="background:var(--surface2);" onclick="showPage('business_list')">Daftar Usaha</button>
@@ -504,7 +647,7 @@
                 <input type="text" id="searchInput" placeholder="Cari..." oninput="filterTable()" />
               </div>
             </div>
-            <div style="overflow-x:auto;">
+            <div class="table-scroll">
               <table id="genericTable">
                 <thead id="genericThead"></thead>
                 <tbody id="genericTbody"></tbody>
@@ -519,7 +662,7 @@
             <div class="table-header">
               <h3>Pesan Masuk</h3>
             </div>
-            <div style="overflow-x:auto;">
+            <div class="table-scroll">
               <table>
                 <thead>
                   <tr>
@@ -571,6 +714,30 @@
       </div><!-- end page-content -->
     </main>
   </div>
+
+  <!-- ANDROID-STYLE BOTTOM NAVIGATION BAR -->
+  <nav class="bottom-nav-bar" id="bottomNavBar">
+    <button class="bottom-nav-item active" id="bnav-dashboard" onclick="showPage('dashboard')">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect width="7" height="9" x="3" y="3" rx="1"/><rect width="7" height="5" x="14" y="3" rx="1"/><rect width="7" height="9" x="14" y="12" rx="1"/><rect width="7" height="5" x="3" y="16" rx="1"/></svg>
+      <span>Dashboard</span>
+    </button>
+    <button class="bottom-nav-item" id="bnav-edu_karya" onclick="showPage('edu_karya')">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>
+      <span>Pendidikan</span>
+    </button>
+    <button class="bottom-nav-item" id="bnav-music_event" onclick="showPage('music_event')">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2a3 3 0 0 0-3 3v7a3 3 0 0 0 6 0V5a3 3 0 0 0-3-3Z"/><path d="M19 10v2a7 7 0 0 1-14 0v-2"/><line x1="12" x2="12" y1="19" y2="22"/></svg>
+      <span>Musik</span>
+    </button>
+    <button class="bottom-nav-item" id="bnav-business_list" onclick="showPage('business_list')">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect width="20" height="14" x="2" y="7" rx="2" ry="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg>
+      <span>Usaha</span>
+    </button>
+    <button class="bottom-nav-item" id="bnav-more" onclick="toggleSidebarDrawer()">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="4" y1="6" x2="20" y2="6"/><line x1="4" y1="12" x2="20" y2="12"/><line x1="4" y1="18" x2="20" y2="18"/></svg>
+      <span>Menu</span>
+    </button>
+  </nav>
 </div>
 
 <!-- MODAL -->
@@ -717,15 +884,55 @@ window.addEventListener('DOMContentLoaded', () => {
 });
 
 /* ================================================================
+   MOBILE DRAWER CONTROLS
+   ================================================================ */
+function toggleSidebarDrawer() {
+  const sidebar = document.getElementById('sidebarNav');
+  const backdrop = document.getElementById('sidebarBackdrop');
+  if (sidebar && backdrop) {
+    sidebar.classList.toggle('open');
+    backdrop.classList.toggle('active');
+  }
+}
+
+function closeSidebarDrawer() {
+  const sidebar = document.getElementById('sidebarNav');
+  const backdrop = document.getElementById('sidebarBackdrop');
+  if (sidebar && backdrop) {
+    sidebar.classList.remove('open');
+    backdrop.classList.remove('active');
+  }
+}
+
+/* ================================================================
    NAVIGATION
    ================================================================ */
 function showPage(page) {
   _currentPage = page;
 
-  // Update nav active
+  // Auto-close sidebar drawer on navigation (mobile)
+  closeSidebarDrawer();
+
+  // Update desktop sidebar nav active
   document.querySelectorAll('.nav-item').forEach(b => b.classList.remove('active'));
   const navBtn = document.getElementById('nav-' + page);
   if (navBtn) navBtn.classList.add('active');
+
+  // Update bottom nav active
+  document.querySelectorAll('.bottom-nav-item').forEach(b => b.classList.remove('active'));
+  const bnavBtn = document.getElementById('bnav-' + page);
+  if (bnavBtn) {
+    bnavBtn.classList.add('active');
+  } else if (page.startsWith('edu_')) {
+    const pBtn = document.getElementById('bnav-edu_karya');
+    if (pBtn) pBtn.classList.add('active');
+  } else if (page.startsWith('music_')) {
+    const mBtn = document.getElementById('bnav-music_event');
+    if (mBtn) mBtn.classList.add('active');
+  } else if (page.startsWith('business_') || page === 'testimonials') {
+    const uBtn = document.getElementById('bnav-business_list');
+    if (uBtn) uBtn.classList.add('active');
+  }
 
   // Hide all sections
   document.querySelectorAll('.page-section').forEach(s => s.classList.remove('active'));
