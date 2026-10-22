@@ -83,9 +83,9 @@
     }
     .nav-logo-mark {
       width: 36px; height: 36px; border-radius: 50%;
-      background: var(--edu); color: #fff;
-      display: flex; align-items: center; justify-content: center;
-      font-weight: 900; font-size: 15px; flex-shrink: 0;
+      object-fit: cover; display: block;
+      border: 2px solid var(--edu);
+      flex-shrink: 0;
     }
     .nav-links { display: flex; align-items: center; gap: 4px; }
     .nav-links a {
@@ -246,7 +246,7 @@
 <nav>
   <div class="nav-inner">
     <a href="index.html" class="nav-logo">
-      <div class="nav-logo-mark">S</div>
+      <img src="assets/images/favicon-48x48.png" alt="Santoso" class="nav-logo-mark" />
       <span>Santoso</span>
     </a>
     <div class="nav-links" id="navLinks">

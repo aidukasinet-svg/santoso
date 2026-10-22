@@ -83,9 +83,9 @@
     }
     .nav-logo-mark {
       width: 36px; height: 36px; border-radius: 50%;
-      background: var(--biz); color: #fff;
-      display: flex; align-items: center; justify-content: center;
-      font-weight: 900; font-size: 15px; flex-shrink: 0;
+      object-fit: cover; display: block;
+      border: 2px solid var(--edu);
+      flex-shrink: 0;
     }
     .nav-links { display: flex; align-items: center; gap: 4px; }
     .nav-links a {
@@ -287,7 +287,7 @@
 <nav>
   <div class="nav-inner">
     <a href="index.html" class="nav-logo">
-      <div class="nav-logo-mark">S</div>
+      <img src="assets/images/favicon-48x48.png" alt="Santoso" class="nav-logo-mark" />
       <span>Santoso</span>
     </a>
     <div class="nav-links" id="navLinks">
@@ -425,16 +425,16 @@ async function loadData() {
       tagline: 'Sentuhan Anggun untuk Hari Istimewa Anda',
       type: 'Tata Rias & MUA',
       description: 'Layanan tata rias profesional untuk pengantin modern, rias wisuda, pre-wedding, dan event resmi dengan sentuhan elegan dan tahan lama.',
-      wa_number: '6281234567890',
-      ig_url: 'https://instagram.com/santoso'
+      wa_number: '6282230898376',
+      ig_url: 'https://www.instagram.com/pak_sanlatsari2'
     },
     {
       name: 'Santoso Wardrobe & Kebaya',
       tagline: 'Koleksi Busana Adat & Kebaya Pengantin Elegan',
       type: 'Persewaan Busana',
       description: 'Menyediakan persewaan busana adat Jawa, kebaya pengantin modern, beskap beludru bordir emas, dan busana upacara adat terlengkap di Tuban.',
-      wa_number: '6281234567890',
-      ig_url: 'https://instagram.com/santoso'
+      wa_number: '6282230898376',
+      ig_url: 'https://www.instagram.com/pak_sanlatsari2'
     }
   ];
 

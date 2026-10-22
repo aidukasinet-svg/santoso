@@ -159,7 +159,7 @@ function setupDatabase() {
         ["admin_password_hash", "admin123"],
         ["site_title", "Santoso, S.Pd., M.Pd."],
         ["site_tagline", "Satu nama. Banyak dunia."],
-        ["owner_whatsapp", "6281234567890"],
+        ["owner_whatsapp", "6282230898376"],
         ["owner_email", "santoso@gmail.com"],
         ["api_key", generateApiKey()]
       ];
@@ -177,12 +177,12 @@ function setupDatabase() {
         "",
         "Satu nama. Banyak dunia.",
         "Mengajar adalah panggilan. Bernyanyi adalah jiwa. Berwirausaha adalah bukti bahwa hidup bisa terus tumbuh.",
-        "SD Negeri — Tuban, Jawa Timur",
-        "6281234567890",
+        "UPT SDN Latsari 2 Bancar",
+        "6282230898376",
         "santoso@gmail.com",
-        "https://instagram.com/santoso",
-        "https://youtube.com/@santoso",
+        "https://www.instagram.com/pak_sanlatsari2",
         "",
+        "https://www.youtube.com/@santosokece3010",
         new Date().toISOString()
       ]);
     }

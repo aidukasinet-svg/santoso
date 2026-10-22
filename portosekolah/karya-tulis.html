@@ -45,7 +45,7 @@ a:focus-visible,button:focus-visible{outline:3px solid var(--edu);outline-offset
 nav{position:fixed;top:0;left:0;right:0;z-index:100;height:64px;background:rgba(249,247,244,.88);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-bottom:1px solid var(--border)}
 .nav-inner{max-width:1200px;margin:0 auto;padding:0 24px;height:100%;display:flex;align-items:center;justify-content:space-between}
 .nav-logo{display:flex;align-items:center;gap:10px;text-decoration:none;color:var(--text);font-weight:700;font-size:17px}
-.nav-logo-mark{width:36px;height:36px;border-radius:50%;background:var(--edu);color:#fff;display:flex;align-items:center;justify-content:center;font-weight:900;font-size:15px;flex-shrink:0}
+.nav-logo-mark{width:36px;height:36px;border-radius:50%;object-fit:cover;display:block;border:2px solid var(--edu);flex-shrink:0}
 .nav-links{display:flex;align-items:center;gap:4px}
 .nav-links a{padding:6px 10px;border-radius:var(--r-sm);text-decoration:none;color:var(--text-sec);font-size:13.5px;font-weight:500;white-space:nowrap;transition:color .2s,background .2s}
 .nav-links a:hover{color:var(--text);background:var(--bg-subtle)}
@@ -197,7 +197,7 @@ footer a:hover{text-decoration:underline}
 <!-- MAIN NAVBAR -->
 <nav>
   <div class="nav-inner">
-    <a href="/index.html" class="nav-logo"><div class="nav-logo-mark">S</div><span>Santoso</span></a>
+    <a href="/index.html" class="nav-logo"><img src="/assets/images/favicon-48x48.png" alt="Santoso" class="nav-logo-mark" /><span>Santoso</span></a>
     <div class="nav-links" id="navLinks">
       <a href="/index.html">Beranda</a>
       <a href="/index.html#tentang">Tentang</a>

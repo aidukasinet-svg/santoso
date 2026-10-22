@@ -16,11 +16,12 @@ const CONFIG = {
   OWNER_NAME: "Santoso, S.Pd., M.Pd.",
   OWNER_SHORT: "Santoso",
   OWNER_TITLE: "Pendidik · Penyanyi · Entrepreneur",
-  OWNER_SCHOOL: "SD Negeri — Tuban",
+  OWNER_SCHOOL: "UPT SDN Latsari 2 Bancar",
   OWNER_TAGLINE: "Satu nama. Banyak dunia.",
-  OWNER_WHATSAPP: "6281234567890", // Ganti dengan nomor WA Pak Santoso
-  OWNER_EMAIL: "santoso@gmail.com",    // Ganti dengan email Pak Santoso
-  OWNER_INSTAGRAM: "https://instagram.com/santoso", // Ganti
+  OWNER_WHATSAPP: "6282230898376",
+  OWNER_EMAIL: "santoso@gmail.com",
+  OWNER_INSTAGRAM: "https://www.instagram.com/pak_sanlatsari2",
+  OWNER_YOUTUBE: "https://www.youtube.com/@santosokece3010",
 
   // Admin
   ADMIN_USERNAME: "admin",
