@@ -5,9 +5,32 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Santoso, S.Pd., M.Pd. — Pendidik · Penyanyi · Entrepreneur</title>
   <meta name="description" content="Portal digital Santoso — seorang pendidik berdedikasi, penyanyi profesional, dan entrepreneur. Satu nama. Banyak dunia." />
-  <meta property="og:title" content="Santoso, S.Pd., M.Pd." />
-  <meta property="og:description" content="Satu nama. Banyak dunia. Portal digital Santoso — Pendidik, Penyanyi, Entrepreneur." />
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="assets/images/favicon.svg" />
+  <link rel="icon" type="image/png" sizes="48x48" href="assets/images/favicon-48x48.png" />
+  <link rel="icon" type="image/png" sizes="32x32" href="assets/images/favicon-32x32.png" />
+  <link rel="apple-touch-icon" sizes="180x180" href="assets/images/apple-touch-icon.png" />
+  <link rel="shortcut icon" href="favicon.ico" />
+
+  <!-- Open Graph / Facebook / WhatsApp -->
   <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://paksans.web.id/" />
+  <meta property="og:title" content="Santoso, S.Pd., M.Pd. — Pendidik · Penyanyi · Entrepreneur" />
+  <meta property="og:description" content="Satu nama. Banyak dunia. Portal digital Santoso — Pendidik, Penyanyi, Entrepreneur." />
+  <meta property="og:image" content="https://paksans.web.id/assets/images/og-image.jpg" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:image:type" content="image/jpeg" />
+  <meta property="og:image:alt" content="Santoso, S.Pd., M.Pd. — Portal Digital" />
+
+  <!-- Twitter / X Cards -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:url" content="https://paksans.web.id/" />
+  <meta name="twitter:title" content="Santoso, S.Pd., M.Pd. — Pendidik · Penyanyi · Entrepreneur" />
+  <meta name="twitter:description" content="Satu nama. Banyak dunia. Portal digital Santoso — Pendidik, Penyanyi, Entrepreneur." />
+  <meta name="twitter:image" content="https://paksans.web.id/assets/images/og-image.jpg" />
+
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;900&family=DM+Serif+Display:ital@0;1&display=swap" rel="stylesheet" />
@@ -235,15 +258,28 @@
 
     .hero-visual {
       position: relative; overflow: hidden;
-      background: linear-gradient(160deg, var(--bg-subtle) 0%, var(--edu-soft) 100%);
+      background: radial-gradient(circle at 50% 50%, #ffffff 0%, var(--edu-soft) 55%, var(--bg-subtle) 100%);
+      display: flex;
+      align-items: flex-end;
+      justify-content: center;
+      padding-top: 64px;
     }
     .hero-visual img {
-      width: 100%; height: 100%; object-fit: cover;
-      object-position: top center;
+      width: auto;
+      max-width: 90%;
+      height: 94%;
+      max-height: calc(100dvh - 80px);
+      object-fit: contain;
+      object-position: bottom center;
+      display: block;
+      filter: drop-shadow(0 16px 32px rgba(27, 58, 107, 0.14));
+      z-index: 1;
     }
     .hero-visual-overlay {
       position: absolute; inset: 0;
-      background: linear-gradient(to right, var(--bg) 0%, transparent 30%);
+      background: linear-gradient(to right, var(--bg) 0%, transparent 20%);
+      pointer-events: none;
+      z-index: 2;
     }
     .hero-scroll-hint {
       display: flex; align-items: center; justify-content: center; gap: 8px;
@@ -256,9 +292,10 @@
 
     @media (max-width: 768px) {
       .hero-inner { grid-template-columns: 1fr; }
-      .hero-content { padding: 100px 24px 48px; max-width: none; }
-      .hero-visual { height: 280px; }
-      .hero-visual-overlay { background: linear-gradient(to bottom, var(--bg) 0%, transparent 30%); }
+      .hero-content { padding: 90px 24px 32px; max-width: none; }
+      .hero-visual { height: 380px; padding-top: 20px; }
+      .hero-visual img { max-height: 360px; height: 100%; }
+      .hero-visual-overlay { background: linear-gradient(to bottom, var(--bg) 0%, transparent 25%); }
     }
 
     /* ---- SECTION HEADERS ---- */
@@ -575,7 +612,7 @@
       </div>
     </div>
     <div class="hero-visual">
-      <img id="heroPhoto" src="assets/images/santoso-hero.jpg" alt="Santoso, S.Pd., M.Pd. di Panggung Tuban Creative Festival" style="width:100%;height:100%;object-fit:cover;object-position:top center;display:block;" />
+      <img id="heroPhoto" src="assets/images/hero-image.png" alt="Santoso, S.Pd., M.Pd." />
       <div class="hero-visual-overlay"></div>
     </div>
   </div>
@@ -627,7 +664,7 @@
   <div class="container">
     <div class="about-grid">
       <div class="reveal">
-        <img id="aboutPhoto" src="assets/images/santoso-portrait.jpg" alt="Santoso, S.Pd., M.Pd." class="about-photo" style="display:block;width:100%;aspect-ratio:3/4;object-fit:cover;object-position:top center;border-radius:var(--radius-lg);box-shadow:var(--shadow-lg);" />
+        <img id="aboutPhoto" src="assets/images/tentang-saya.jpg" alt="Santoso, S.Pd., M.Pd." class="about-photo" style="display:block;width:100%;aspect-ratio:3/4;object-fit:cover;object-position:top center;border-radius:var(--radius-lg);box-shadow:var(--shadow-lg);" />
       </div>
       <div>
         <div class="reveal">
@@ -942,10 +979,18 @@ async function loadProfile() {
     }
 
     // Photo override if present in database
-    if (d.photo_url) {
+    if (d.hero_photo_url) {
       const hi = document.getElementById('heroPhoto');
-      const ai = document.getElementById('aboutPhoto');
+      if (hi) hi.src = d.hero_photo_url;
+    } else if (d.photo_url) {
+      const hi = document.getElementById('heroPhoto');
       if (hi) hi.src = d.photo_url;
+    }
+    if (d.about_photo_url) {
+      const ai = document.getElementById('aboutPhoto');
+      if (ai) ai.src = d.about_photo_url;
+    } else if (d.photo_url) {
+      const ai = document.getElementById('aboutPhoto');
       if (ai) ai.src = d.photo_url;
     }
 
