@@ -689,6 +689,9 @@
           </div>
         </div>
         <div class="topbar-actions">
+          <button class="btn-sync-mentoring" id="btnSyncMentoring" onclick="triggerSyncMentoring()" style="display:none;background:#2d8a4e;color:#fff;border:none;border-radius:8px;padding:8px 14px;font-size:13px;font-weight:600;cursor:pointer;align-items:center;gap:6px;">
+            ⚡ Sync 40 Data Bawaan
+          </button>
           <button class="btn-add" id="btnAddTop" onclick="openAddModal()" style="display:none;">
             + Tambah Item
           </button>
@@ -1087,6 +1090,11 @@ function showPage(page) {
   document.getElementById('pageBreadcrumb').textContent = 'Santoso Admin / ' + meta.title;
 
   const addBtn = document.getElementById('btnAddTop');
+  const syncBtn = document.getElementById('btnSyncMentoring');
+  if (syncBtn) {
+    syncBtn.style.display = (page === 'school_mentoring') ? 'inline-flex' : 'none';
+  }
+
   if (meta.section === 'generic' && meta.sheet) {
     _currentSheet = meta.sheet;
     addBtn.style.display = 'flex';
@@ -1447,6 +1455,33 @@ document.getElementById('settingsForm').addEventListener('submit', async (e) => 
     showToast(res.message, 'error');
   }
 });
+
+/* ================================================================
+   SYNC SEED DATA (PORTOFOLIO)
+   ================================================================ */
+async function triggerSyncMentoring() {
+  if (!confirm("Sinkronkan 40 kegiatan pendampingan bawaan lengkap dengan foto dan materi ke spreadsheet? Data pada sheet 'school_mentoring' akan diperbarui dengan data terstruktur lengkap 40 kegiatan.")) {
+    return;
+  }
+  const btn = document.getElementById('btnSyncMentoring');
+  const origText = btn.innerHTML;
+  btn.disabled = true;
+  btn.innerHTML = 'Menyinkronkan...';
+  try {
+    const res = await apiPost({ action: 'syncMentoring' }, {});
+    if (res && res.status === 'success') {
+      showToast(res.message || 'Sinkronisasi 40 kegiatan berhasil!', 'success');
+      loadGenericTable('school_mentoring', 'Pendampingan Rekan Sejawat');
+    } else {
+      showToast('Gagal: ' + (res.message || 'Pastikan Apps Script telah di-deploy ulang.'), 'error');
+    }
+  } catch (err) {
+    showToast('Terjadi kesalahan koneksi: ' + err.message, 'error');
+  } finally {
+    btn.disabled = false;
+    btn.innerHTML = origText;
+  }
+}
 
 /* ================================================================
    TOAST

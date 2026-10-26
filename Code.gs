@@ -99,6 +99,7 @@ function onOpen() {
   var ui = SpreadsheetApp.getUi();
   ui.createMenu("Santoso Biopage")
     .addItem("Setup Database (Inisialisasi Sheet)", "setupDatabase")
+    .addItem("⚡ Sync 40 Kegiatan Pendampingan (Lengkap)", "syncAllSchoolMentoring")
     .addSeparator()
     .addItem("Buka Web Portal Publik", "openWebPortalDialog")
     .addItem("Buka Dashboard Admin", "openAdminDialog")
@@ -410,16 +411,10 @@ function setupDatabase() {
       batchAppend(spkbSheet, spkbSeeds);
     }
 
-    // 20. Portofolio Sekolah — Pendampingan Rekan Sejawat (40 Kegiatan)
+    // 20. Portofolio Sekolah — Pendampingan Rekan Sejawat (40 Kegiatan Lengkap)
     var smSheet = ss.getSheetByName("school_mentoring");
     if (smSheet.getLastRow() <= 1) {
-      var smSeeds = [
-        ["1", "Berbagi Praktik Baik Pembelajaran Berdiferensiasi di Gugus 02 Bancar", "2024", "2024", "Narasumber", "Guru Gugus 02 Bancar", "Penerapan strategi berdiferensiasi konten dan proses", "/assets/portosekolah/pendampingan/01.jpg", 1, true],
-        ["2", "Pendampingan Pemanfaatan Platform Merdeka Mengajar (PMM)", "2024", "2024", "Fasilitator", "Dewan Guru SDN Latsari 2", "Optimalisasi aksi nyata dan pengelolaan kinerja guru", "/assets/portosekolah/pendampingan/02.jpg", 2, true],
-        ["3", "Workshop Pembuatan Media Pembelajaran Digital Interaktif", "2023", "2023", "Pemateri", "Kombel Ki Hadjar Dewantara", "Canva for Education dan integrasi kuis interaktif", "/assets/portosekolah/pendampingan/03.jpg", 3, true],
-        ["4", "Diseminasi Program Guru Penggerak: Budaya Positif di Sekolah", "2023", "2023", "Narasumber", "Warga UPT SDN Latsari 2", "Keyakinan kelas dan segitiga restitusi", "/assets/portosekolah/pendampingan/04.jpg", 4, true]
-      ];
-      batchAppend(smSheet, smSeeds);
+      batchAppend(smSheet, getAllSchoolMentoringSeeds());
     }
 
     // 21. Portofolio Sekolah — Penggunaan AI (Prompts & Gemini Codes)
@@ -668,6 +663,11 @@ function handleRequest(e) {
       case "getDashboardStats":
         checkAdminKey(params, body);
         result = getDashboardStats();
+        break;
+
+      case "syncMentoring":
+        checkAdminKey(params, body);
+        result = syncAllSchoolMentoring();
         break;
 
       default:
@@ -1025,4 +1025,74 @@ function getDashboardStats() {
   stats.unread_messages = unread;
 
   return { status: "success", data: stats };
+}
+
+// =========================================================================
+// SINKRONISASI BATCH 40 KEGIATAN PENDAMPINGAN LENGKAP
+// =========================================================================
+function syncAllSchoolMentoring() {
+  var ss = getDatabase();
+  var sheet = ss.getSheetByName(SHEETS.SCHOOL_MENTORING);
+  if (!sheet) {
+    sheet = ss.insertSheet(SHEETS.SCHOOL_MENTORING);
+    sheet.appendRow(SCHEMA.school_mentoring);
+    formatHeader(sheet, "#1B3A6B", "#FFFFFF");
+  } else {
+    var lastRow = sheet.getLastRow();
+    if (lastRow > 1) {
+      sheet.deleteRows(2, lastRow - 1);
+    }
+  }
+  var seeds = getAllSchoolMentoringSeeds();
+  batchAppend(sheet, seeds);
+  SpreadsheetApp.flush();
+  return {
+    status: "success",
+    message: "Berhasil menyinkronkan " + seeds.length + " kegiatan pendampingan ke sheet " + SHEETS.SCHOOL_MENTORING + "!"
+  };
+}
+
+function getAllSchoolMentoringSeeds() {
+  return [
+    ["1", "Fasilitator Penyusunan BKS Tingkat Kecamatan Bancar", "21–23 April 2025", "2025", "Fasilitator BKS", "Kepala Sekolah & Guru se-Kecamatan Bancar", "Bimbingan Teknis Penyusunan Buku Kerja Siswa (BKS)", "/assets/portosekolah/pendampingan/01.jpg", 1, true],
+    ["2", "Workshop Peningkatan Kualitas Pembelajaran di UPT SDN Karangrejo 2", "28 Oktober 2024", "2024", "Pemateri", "Dewan Guru SDN Karangrejo 2 Bancar", "Peningkatan Kualitas Pembelajaran dan Manajemen Kelas", "/assets/portosekolah/pendampingan/02.jpg", 2, true],
+    ["3", "Observer Rekan Sejawat dalam Observasi Pembelajaran", "2024", "2024", "Observer", "Rekan Guru Sejawat UPT SDN Latsari 2", "Observasi dan Umpan Balik Praktik Pembelajaran di Kelas", "/assets/portosekolah/pendampingan/03.jpg", 3, true],
+    ["4", "Seminar Rancangan Proyek Transformasi Kepemimpinan Sekolah (PTKS)", "2024", "2024", "Pemateri / Calon Kepala Sekolah", "Dewan Guru UPT SDN Latsari 2 Bancar", "Program 7 Kebiasaan Anak Indonesia Hebat melalui Aplikasi ABAT", "/assets/portosekolah/pendampingan/04.jpg", 4, true],
+    ["5", "Presentasi Proyek Transformasi Kepemimpinan Sekolah (Aplikasi ABAT)", "2024", "2024", "Presenter Inovasi", "Komunitas Pendidik & Rekan Sejawat", "Diseminasi Aplikasi ABAT (Aku Bisa, Aku Terbiasa)", "/assets/portosekolah/pendampingan/05.jpg", 5, true],
+    ["6", "Pendampingan Workshop BKS Klaster Jatirogo", "2023", "2023", "Pendamping & Tim BKS", "Klaster Jatirogo (Bancar, Jatirogo, Kenduruan, Bangilan, Senori)", "Workshop Penyusunan dan Penulisan Buku Kerja Siswa", "/assets/portosekolah/pendampingan/06.jpg", 6, true],
+    ["7", "Pemateri Strategi Lolos Guru Penggerak & Aksi Nyata Gugus II Bancar", "25 Juli 2024", "2024", "Narasumber", "Guru ASN Gugus II Kordikcam Bancar", "Strategi Lolos Seleksi Guru Penggerak dan Praktik Aksi Nyata", "/assets/portosekolah/pendampingan/07.jpg", 7, true],
+    ["8", "Narasumber Parenting di SDS Muhammadiyah 1 Bancar", "22 Juli 2024", "2024", "Narasumber Parenting", "Wali Murid & Guru SDS Muhammadiyah 1 Bancar", "Mendidik Anak dengan Keteladanan dan Kasih Sayang", "/assets/portosekolah/pendampingan/08.jpg", 8, true],
+    ["9", "Moderator Road to Temu Pendidik Nusantara XI Tuban", "1 Juli 2024", "2024", "Moderator", "Komunitas Guru Belajar Nusantara (KGBN) Tuban", "CCG (Cerdas Cermat Guru): Cara Seru Belajar Kompetensi Guru", "/assets/portosekolah/pendampingan/09.jpg", 9, true],
+    ["10", "Pemateri Temu Pendidik Nusantara XI: Media Pembelajaran Interaktif", "14 Juli 2024", "2024", "Pemateri", "Peserta TPN XI Kabupaten Tuban", "Membuat Media Pembelajaran Interaktif dengan Mudah & Menarik", "/assets/portosekolah/pendampingan/10.jpg", 10, true],
+    ["11", "Narasumber Temu Pendidik Daerah 24: Transisi PAUD-SD", "29–30 September 2024", "2024", "Narasumber", "Pendidik PAUD & SD KGBN Tuban", "Strategi Transisi PAUD ke SD yang Efektif dan Menyenangkan", "/assets/portosekolah/pendampingan/11.jpg", 11, true],
+    ["12", "Google Master Trainer Level 1", "2023", "2023", "Master Trainer", "Komunitas Pendidik & Rekan Guru", "Pemanfaatan Google Workspace for Education dalam Pembelajaran", "/assets/portosekolah/pendampingan/12.jpg", 12, true],
+    ["13", "TOT Pembelajaran Mendalam (Deep Learning)", "2024", "2024", "Peserta TOT & Pengimbas", "Komunitas Guru Belajar Tuban", "Konsep dan Implementasi Pembelajaran Mendalam (Deep Learning)", "/assets/portosekolah/pendampingan/13.jpg", 13, true],
+    ["14", "Narasumber Implementasi P5: Antara Miskonsepsi dan Aksi Nyata", "2024", "2024", "Narasumber", "Pendidik & Anggota KGBN Tuban", "Meluruskan Miskonsepsi dan Penerapan Autentik Modul P5", "/assets/portosekolah/pendampingan/14.jpg", 14, true],
+    ["15", "Rapat Kerja Komunitas Guru Penggerak (KGP) Kabupaten Tuban", "31 Januari 2024", "2024", "Pengurus KGP / Humas", "Pengurus & Anggota KGP Kabupaten Tuban", "Penyusunan Program Kerja dan Praktik Baik Komunitas", "/assets/portosekolah/pendampingan/15.jpg", 15, true],
+    ["16", "Aktivasi Belajar.id di Kecamatan Tambakboyo", "23 Agustus 2023", "2023", "Fasilitator Belajar.id", "Guru dan Siswa se-Kecamatan Tambakboyo", "Aktivasi 100% Akun Belajar.id dan Pemanfaatan Platform Digital", "/assets/portosekolah/pendampingan/16.jpg", 16, true],
+    ["17", "Aktivasi Belajar.id di Kecamatan Bancar", "Agustus 2023", "2023", "Fasilitator Belajar.id", "Guru SD Negeri & Swasta Kecamatan Bancar", "Sosialisasi dan Pendampingan Teknis Akun Belajar.id", "/assets/portosekolah/pendampingan/17.jpg", 17, true],
+    ["18", "Pemateri IHT Kurikulum Merdeka di UPT SDN Cingklung Bancar", "22–23 Maret 2023", "2023", "Pemateri IHT", "Dewan Guru SDN Cingklung Bancar", "Implementasi Kurikulum Merdeka dan Perangkat Ajar", "/assets/portosekolah/pendampingan/18.jpg", 18, true],
+    ["19", "Pemateri IHT Kurikulum Merdeka di SDS Muhammadiyah Bancar", "2023", "2023", "Pemateri IHT", "Dewan Guru SDS Muhammadiyah Bancar", "Desain Capaian Pembelajaran & Modul Ajar Kurikulum Merdeka", "/assets/portosekolah/pendampingan/19.jpg", 19, true],
+    ["20", "Pendampingan Manajemen Kelas di UPT SDN Karangrejo 2", "28 Oktober 2024", "2024", "Pemateri", "Guru SDN Karangrejo 2", "Strategi Pembelajaran Interaktif dan Budaya Positif Kelas", "/assets/portosekolah/pendampingan/20.jpg", 20, true],
+    ["21", "Mengisi Materi Implementasi Kurikulum Merdeka di Gugus 2 Bancar", "2023", "2023", "Pemateri", "Guru Gugus 2 Kordikcam Bancar", "Penguatan Praktik Pembelajaran Berdiferensiasi", "/assets/portosekolah/pendampingan/21.jpg", 21, true],
+    ["22", "Mengisi Materi Tindak Lanjut IKM di Gugus 3 Bancar", "2023", "2023", "Pemateri", "Guru Gugus 3 Bancar", "Asesmen dan Tindak Lanjut Evaluasi Pembelajaran", "/assets/portosekolah/pendampingan/22.jpg", 22, true],
+    ["23", "SFW bersama IGPT Kabupaten Tuban", "2023", "2023", "Pendamping & Pegiat Seni", "Ikatan Guru Penggerak Tuban (IGPT)", "Kolaborasi Kreativitas Siswa & Guru di Students Festival Week", "/assets/portosekolah/pendampingan/23.jpg", 23, true],
+    ["24", "Pengukuhan Guru Penggerak Kabupaten Tuban", "2023", "2023", "Guru Penggerak Angkatan 5", "Komunitas Pendidik Kabupaten Tuban", "Komitmen Kepemimpinan Pembelajaran Berpusat pada Murid", "/assets/portosekolah/pendampingan/24.jpg", 24, true],
+    ["25", "SFW bersama KKGS Kabupaten Tuban", "2024", "2024", "Pengurus KKGS Tuban", "Kelompok Kerja Guru Seni Kabupaten Tuban", "Apresiasi Seni dan Budaya Pelajar Tingkat Kabupaten", "/assets/portosekolah/pendampingan/25.jpg", 25, true],
+    ["26", "Aktivasi Belajar.id di SMPN 1 Bancar", "2023", "2023", "Fasilitator Belajar.id", "Dewan Guru & Tenaga Kependidikan SMPN 1 Bancar", "Optimalisasi Akun Belajar.id dan Chromebook Sekolah", "/assets/portosekolah/pendampingan/26.jpg", 26, true],
+    ["27", "Mengisi Kombel di UPT SDN Tenggerkulon Bancar", "4 September 2024", "2024", "Narasumber Kombel", "Komunitas Belajar SDN Tenggerkulon", "Penguatan Praktik Baik Pembelajaran Autentik", "/assets/portosekolah/pendampingan/27.jpg", 27, true],
+    ["28", "Mengisi Kombel di UPT SDN Pugoh Bancar", "2024", "2024", "Narasumber Kombel", "Dewan Guru SDN Pugoh Bancar", "Refleksi dan Evaluasi Praktik Mengajar Rekan Sejawat", "/assets/portosekolah/pendampingan/28.jpg", 28, true],
+    ["29", "Lokakarya Panen Belajar Guru Penggerak Angkatan 5", "2023", "2023", "Calon Guru Penggerak / Presenter", "Warga Pendidikan Kabupaten Tuban", "Pameran Inovasi dan Program Berdampak pada Murid", "/assets/portosekolah/pendampingan/29.jpg", 29, true],
+    ["30", "Festival Belajar.id Kabupaten Tuban", "2023", "2023", "Co-Trainer / Fasilitator", "Komunitas Belajar.id Kabupaten Tuban", "Transformasi Pembelajaran Berbasis Digital Google Workspace", "/assets/portosekolah/pendampingan/30.jpg", 30, true],
+    ["31", "Pelatihan Read Aloud, Perpusda Kabupaten Tuban", "2024", "2024", "Fasilitator Literasi", "Guru PAUD, TK, SD Kabupaten Tuban", "Metode Membaca Nyaring (Read Aloud) untuk Penguatan Literasi Siswa", "/assets/portosekolah/pendampingan/31.jpg", 31, true],
+    ["32", "Pemateri Penguatan Implementasi Kurikulum Merdeka Kecamatan Bancar", "8–10 Agustus 2023", "2023", "Pemateri IKM", "Kepala Sekolah & Guru Kelas II dan V", "Penguatan Modul Ajar dan Asesmen Formatif/Sumatif", "/assets/portosekolah/pendampingan/32.jpg", 32, true],
+    ["33", "Bimtek Implementasi Kurikulum Merdeka Jenjang SD Kabupaten Tuban", "18–20 September 2023", "2023", "Narasumber / Tim Pengembang", "Guru SD se-Kabupaten Tuban", "Pendalaman Kurikulum Merdeka dan Struktur Kurikulum Nasional", "/assets/portosekolah/pendampingan/33.jpg", 33, true],
+    ["34", "Pemateri Bimtek Perencanaan Kinerja di PMM Kecamatan Bancar", "Januari 2024", "2024", "Pemateri PMM", "Kepala Sekolah & Guru se-Kecamatan Bancar", "Pengelolaan Kinerja Guru dan KS pada Platform Merdeka Mengajar", "/assets/portosekolah/pendampingan/34.jpg", 34, true],
+    ["35", "Aktivasi Belajar.id bersama IGTK dan IGPAUD Kecamatan Bancar", "2023", "2023", "Fasilitator Belajar.id", "Pendidik PAUD & TK se-Kecamatan Bancar", "Aktivasi Akun dan Pemanfaatan Platform Merdeka Mengajar bagi PAUD", "/assets/portosekolah/pendampingan/35.jpg", 35, true],
+    ["36", "Workshop Pantomim Anak Kecamatan Bancar", "2024", "2024", "Fasilitator Seni", "Siswa & Pembina Seni SD se-Kecamatan Bancar", "Teknik Dasar Gerak Pantomim dan Ekspresi Seni Anak", "/assets/portosekolah/pendampingan/36.jpg", 36, true],
+    ["37", "Pemateri Workshop Penguatan IKM Kecamatan Bancar", "Agustus 2023", "2023", "Pemateri", "Perwakilan Pendidik SD Kecamatan Bancar", "Strategi Kolaborasi Guru dalam Komunitas Belajar Sekolah", "/assets/portosekolah/pendampingan/37.jpg", 37, true],
+    ["38", "Pemateri Kombel Sekolah: Merancang Kokurikuler Bermakna", "13 November 2025", "2025", "Ketua Kombel / Pemateri", "Dewan Guru UPT SDN Latsari 2 Bancar", "Desain dan Pelaksanaan Kegiatan Kokurikuler yang Bermakna", "/assets/portosekolah/pendampingan/38.jpg", 38, true],
+    ["39", "Pembina Juara 1 Lomba Tari Tradisional SFW 2022", "2022", "2022", "Pembina Tari", "Siswi Tim Tari UPT SDN Latsari 2 Bancar", "Pelatihan Tari Tradisional Siswa Berprestasi Tingkat Kabupaten", "/assets/portosekolah/pendampingan/39.jpg", 39, true],
+    ["40", "Pembina Juara 1 Lomba Tari Tradisional SFW 2023", "2023", "2023", "Pembina Tari", "Siswi Tim Tari UPT SDN Latsari 2 Bancar", "Pembinaan Kreativitas Seni dan Tari Tradisional Pelajar", "/assets/portosekolah/pendampingan/40.jpg", 40, true]
+  ];
 }
